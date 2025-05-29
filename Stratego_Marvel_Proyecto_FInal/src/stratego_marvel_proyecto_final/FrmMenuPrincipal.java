@@ -17,7 +17,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         label1 = new java.awt.Label();
-        LoginButton = new javax.swing.JButton();
+        btnLogin = new javax.swing.JButton();
         btnCrearPlayer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -29,10 +29,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         label1.setPreferredSize(new java.awt.Dimension(50, 50));
         label1.setText("Sección de Ingreso Usuario");
 
-        LoginButton.setText("Login");
-        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+        btnLogin.setText("Iniciar Sesión");
+        btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButtonActionPerformed(evt);
+                btnLoginActionPerformed(evt);
             }
         });
 
@@ -55,7 +55,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(172, 172, 172)
-                        .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
                         .addComponent(btnCrearPlayer)))
@@ -67,7 +67,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCrearPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(94, Short.MAX_VALUE))
@@ -76,7 +76,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+    private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
         
         //LÃ³gica del login: se puede realizar algun arreglo que almacene la info creada en el boton de creaciÃ³n de personaje y que la utilice para iniciar login
@@ -86,7 +86,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         this.dispose();
         
          
-    }//GEN-LAST:event_LoginButtonActionPerformed
+    }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnCrearPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPlayerActionPerformed
         FrmCrearPlayer crearPlayer = new FrmCrearPlayer();
@@ -133,8 +133,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LoginButton;
     private javax.swing.JButton btnCrearPlayer;
+    private javax.swing.JButton btnLogin;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables
 }

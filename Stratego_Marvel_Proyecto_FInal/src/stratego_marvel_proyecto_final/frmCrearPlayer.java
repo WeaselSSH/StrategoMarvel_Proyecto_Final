@@ -39,7 +39,7 @@ public class FrmCrearPlayer extends javax.swing.JFrame {
         txtContrasena.setForeground(new java.awt.Color(128, 128, 128));
         txtContrasena.setText("Tu contraseña");
 
-        btnRegresar.setText("Regresar");
+        btnRegresar.setText("Cancelar");
         btnRegresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegresarActionPerformed(evt);
@@ -91,6 +91,7 @@ public class FrmCrearPlayer extends javax.swing.JFrame {
         FrmMenuPrincipal MenuPrincipal = new FrmMenuPrincipal();
         MenuPrincipal.setVisible(true);
         this.dispose();
+         javax.swing.JOptionPane.showMessageDialog(this, "Creación de jugador cancelada.");
     }//GEN-LAST:event_btnRegresarActionPerformed
 
     private void agregarPlaceholder(JTextComponent campo, String placeholder) {

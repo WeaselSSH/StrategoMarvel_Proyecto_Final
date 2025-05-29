@@ -128,7 +128,7 @@ public class Menu2 extends javax.swing.JFrame {
     }//GEN-LAST:event_PerfilButtonActionPerformed
 
     private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
-        new Ventana2().setVisible(true);
+        new frmCrearPlayer().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_LogoutButtonActionPerformed
 

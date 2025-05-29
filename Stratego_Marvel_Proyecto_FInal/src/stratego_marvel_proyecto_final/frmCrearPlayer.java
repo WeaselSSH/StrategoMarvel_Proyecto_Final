@@ -13,6 +13,8 @@ public class frmCrearPlayer extends javax.swing.JFrame {
         initComponents();
         agregarPlaceholder(txtUsuario, placeholderUsuario);
         agregarPlaceholder(txtContrasena, placeholderContrasena);
+        NormalPanelConfig.configuracion(this);
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -72,6 +74,7 @@ public class frmCrearPlayer extends javax.swing.JFrame {
     private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
         // TODO add your handling code here:
         registrarUsuario();
+        
     }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void agregarPlaceholder(JTextComponent campo, String placeholder) {
@@ -145,6 +148,8 @@ public class frmCrearPlayer extends javax.swing.JFrame {
         DatosGlobales.jugadores.put(usuario, nuevoJugador);
         
         javax.swing.JOptionPane.showMessageDialog(this, "Jugador creado correctamente.");
+        new Menu2().setVisible(true);
+        this.dispose();
     }
 
     public static void main(String args[]) {

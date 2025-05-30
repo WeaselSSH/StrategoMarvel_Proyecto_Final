@@ -32,8 +32,8 @@
                           <Component id="SalirButton" min="-2" pref="120" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="label2" max="32767" attributes="0"/>
-                              <Component id="LoginButton" alignment="0" max="32767" attributes="0"/>
-                              <Component id="NuevoPButton" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnLoginAction" alignment="0" max="32767" attributes="0"/>
+                              <Component id="btnCrearPlayer" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
@@ -51,9 +51,9 @@
               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
               <Component id="label2" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="LoginButton" min="-2" pref="36" max="-2" attributes="0"/>
+              <Component id="btnLoginAction" min="-2" pref="36" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="NuevoPButton" min="-2" pref="41" max="-2" attributes="0"/>
+              <Component id="btnCrearPlayer" min="-2" pref="41" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="SalirButton" min="-2" pref="34" max="-2" attributes="0"/>
               <EmptySpace pref="42" max="32767" attributes="0"/>
@@ -80,20 +80,20 @@
         <Property name="text" type="java.lang.String" value="AVENGERS STRATEGO"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="LoginButton">
+    <Component class="javax.swing.JButton" name="btnLoginAction">
       <Properties>
         <Property name="text" type="java.lang.String" value="Login"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LoginButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLoginActionActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="NuevoPButton">
+    <Component class="javax.swing.JButton" name="btnCrearPlayer">
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear Player"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NuevoPButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearPlayerActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="SalirButton">

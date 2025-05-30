@@ -5,17 +5,13 @@
 package stratego_marvel_proyecto_final;
 
 /**
- *
+
  * @author David
  */
 public class Menu2 extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Menu2
-     */
+    
     public Menu2() {
         initComponents();
-        this.setTitle("Menu Inicial");
         NormalPanelConfig.configuracion(this);
     }
 
@@ -129,7 +125,7 @@ public class Menu2 extends javax.swing.JFrame {
     }//GEN-LAST:event_PerfilButtonActionPerformed
 
     private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
-        new frmCrearPlayer().setVisible(true);
+        new FrmMenuInicial().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_LogoutButtonActionPerformed
 

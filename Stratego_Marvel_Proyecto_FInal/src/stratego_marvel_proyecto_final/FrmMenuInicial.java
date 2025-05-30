@@ -12,14 +12,14 @@ import javax.swing.JOptionPane;
  *
  * @author David
  */
-public class Ventana2 extends javax.swing.JFrame {
+public class FrmMenuInicial extends javax.swing.JFrame {
 
     /**
      * Creates new form Ventana 2
      */
-    public Ventana2() {
+    public FrmMenuInicial() {
         initComponents();
-        this.setTitle("Menu Inicial");
+        this.setTitle("VENTANA DE REGISTRO");
         NormalPanelConfig.configuracion(this);
     }
 
@@ -33,8 +33,8 @@ public class Ventana2 extends javax.swing.JFrame {
     private void initComponents() {
 
         label1 = new java.awt.Label();
-        LoginButton = new javax.swing.JButton();
-        NuevoPButton = new javax.swing.JButton();
+        btnLoginAction = new javax.swing.JButton();
+        btnCrearPlayer = new javax.swing.JButton();
         SalirButton = new javax.swing.JButton();
         label2 = new java.awt.Label();
 
@@ -47,17 +47,17 @@ public class Ventana2 extends javax.swing.JFrame {
         label1.setPreferredSize(new java.awt.Dimension(50, 50));
         label1.setText("AVENGERS STRATEGO");
 
-        LoginButton.setText("Login");
-        LoginButton.addActionListener(new java.awt.event.ActionListener() {
+        btnLoginAction.setText("Login");
+        btnLoginAction.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginButtonActionPerformed(evt);
+                btnLoginActionActionPerformed(evt);
             }
         });
 
-        NuevoPButton.setText("Crear Player");
-        NuevoPButton.addActionListener(new java.awt.event.ActionListener() {
+        btnCrearPlayer.setText("Crear Player");
+        btnCrearPlayer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NuevoPButtonActionPerformed(evt);
+                btnCrearPlayerActionPerformed(evt);
             }
         });
 
@@ -87,8 +87,8 @@ public class Ventana2 extends javax.swing.JFrame {
                             .addComponent(SalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(LoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(NuevoPButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(btnLoginAction, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCrearPlayer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(143, 143, 143)))
                 .addGap(25, 25, 25))
         );
@@ -100,9 +100,9 @@ public class Ventana2 extends javax.swing.JFrame {
                 .addGap(1, 1, 1)
                 .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnLoginAction, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(NuevoPButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCrearPlayer, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(SalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(42, Short.MAX_VALUE))
@@ -111,26 +111,27 @@ public class Ventana2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
+    private void btnLoginActionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionActionPerformed
         // TODO add your handling code here:
         
         //Lógica del login: se puede realizar algun arreglo que almacene la info creada en el boton de creación de personaje y que la utilice para iniciar login
         //Sin embargo, sería bueno que se pueda guardar eso en una clase publica, a manera que se pueda acceder en otras partes del proyecto
         
-
-        new frmCrearPlayer().setVisible(true);
-        this.dispose();
+        FrmRegistroInicio crearPlayer = new FrmRegistroInicio("login");
+        crearPlayer.setVisible(true);
+        this.dispose();   
         
          
-    }//GEN-LAST:event_LoginButtonActionPerformed
+    }//GEN-LAST:event_btnLoginActionActionPerformed
 
-    private void NuevoPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoPButtonActionPerformed
+    private void btnCrearPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPlayerActionPerformed
         //Capturacion de nombre y contraseña del nuevo usuario
         
-        new frmCrearPlayer().setVisible(true);
+        FrmRegistroInicio crearPlayer = new FrmRegistroInicio("registro");
+        crearPlayer.setVisible(true);
         this.dispose();
           
-    }//GEN-LAST:event_NuevoPButtonActionPerformed
+    }//GEN-LAST:event_btnCrearPlayerActionPerformed
 
     private void SalirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirButtonActionPerformed
         System.exit(0);
@@ -173,9 +174,9 @@ public class Ventana2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LoginButton;
-    private javax.swing.JButton NuevoPButton;
     private javax.swing.JButton SalirButton;
+    private javax.swing.JButton btnCrearPlayer;
+    private javax.swing.JButton btnLoginAction;
     private java.awt.Label label1;
     private java.awt.Label label2;
     // End of variables declaration//GEN-END:variables

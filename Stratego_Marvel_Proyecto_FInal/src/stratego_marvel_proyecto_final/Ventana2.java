@@ -15,11 +15,11 @@ import javax.swing.JOptionPane;
 public class Ventana2 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Ventana2
+     * Creates new form Ventana 2
      */
     public Ventana2() {
         initComponents();
-        this.setTitle("VENTANA DE REGISTRO");
+        this.setTitle("Menu Inicial");
         NormalPanelConfig.configuracion(this);
     }
 
@@ -35,15 +35,17 @@ public class Ventana2 extends javax.swing.JFrame {
         label1 = new java.awt.Label();
         LoginButton = new javax.swing.JButton();
         NuevoPButton = new javax.swing.JButton();
+        SalirButton = new javax.swing.JButton();
+        label2 = new java.awt.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        label1.setFont(new java.awt.Font("Impact", 0, 18)); // NOI18N
+        label1.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
         label1.setMinimumSize(new java.awt.Dimension(50, 20));
         label1.setPreferredSize(new java.awt.Dimension(50, 50));
-        label1.setText("Secci�n de Ingreso Usuario");
+        label1.setText("AVENGERS STRATEGO");
 
         LoginButton.setText("Login");
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -52,41 +54,58 @@ public class Ventana2 extends javax.swing.JFrame {
             }
         });
 
-        NuevoPButton.setText("Crear Nuevo Personaje");
+        NuevoPButton.setText("Crear Player");
         NuevoPButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NuevoPButtonActionPerformed(evt);
             }
         });
 
+        SalirButton.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        SalirButton.setText("Salir");
+        SalirButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        SalirButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SalirButtonActionPerformed(evt);
+            }
+        });
+
+        label2.setAlignment(java.awt.Label.CENTER);
+        label2.setFont(new java.awt.Font("DialogInput", 3, 14)); // NOI18N
+        label2.setText("�Bienvenido!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(105, Short.MAX_VALUE)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87))
-            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(172, 172, 172)
-                        .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(NuevoPButton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(label1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(SalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(LoginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(NuevoPButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(143, 143, 143)))
+                .addGap(25, 25, 25))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(34, 34, 34)
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(1, 1, 1)
+                .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LoginButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(NuevoPButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(SalirButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         pack();
@@ -98,8 +117,8 @@ public class Ventana2 extends javax.swing.JFrame {
         //Lógica del login: se puede realizar algun arreglo que almacene la info creada en el boton de creación de personaje y que la utilice para iniciar login
         //Sin embargo, sería bueno que se pueda guardar eso en una clase publica, a manera que se pueda acceder en otras partes del proyecto
         
-        JOptionPane.showMessageDialog(null, "¡Ha ingresado exitosamente a su cuenta!");
-        new Menu2().setVisible(true);
+
+        new frmCrearPlayer().setVisible(true);
         this.dispose();
         
          
@@ -107,18 +126,15 @@ public class Ventana2 extends javax.swing.JFrame {
 
     private void NuevoPButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NuevoPButtonActionPerformed
         //Capturacion de nombre y contraseña del nuevo usuario
-        String name= JOptionPane.showInputDialog("Ingrese su nombre");
-        String password = JOptionPane.showInputDialog("Ingrese su contraseña: ");
-        //double realpassword= Double.parseDouble(password); //Esta tecnica peude convertir el password en ya sea un int o double, en caso de ser necesario
-        System.out.println("");
-        System.out.println("Su nombre de usuario es: "+name);
-        System.out.println("Su contraseña es: "+password);
         
-       
-        
-        
-        
+        new frmCrearPlayer().setVisible(true);
+        this.dispose();
+          
     }//GEN-LAST:event_NuevoPButtonActionPerformed
+
+    private void SalirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalirButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_SalirButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +175,8 @@ public class Ventana2 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginButton;
     private javax.swing.JButton NuevoPButton;
+    private javax.swing.JButton SalirButton;
     private java.awt.Label label1;
+    private java.awt.Label label2;
     // End of variables declaration//GEN-END:variables
 }

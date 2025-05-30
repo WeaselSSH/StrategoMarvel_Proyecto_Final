@@ -204,7 +204,7 @@ public class Ventana1 extends javax.swing.JFrame {
     private void BotonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEntrarActionPerformed
         // TODO add your handling code here:
         System.out.println("Entra a la siguiente Parte");
-        new FrmMenuPrincipal().setVisible(true);
+        new FrmMenuInicial().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BotonEntrarActionPerformed
 

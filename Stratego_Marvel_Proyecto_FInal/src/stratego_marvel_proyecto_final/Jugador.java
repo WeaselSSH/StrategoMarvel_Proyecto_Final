@@ -2,8 +2,8 @@ package stratego_marvel_proyecto_final;
 
 public class Jugador {
 
-    private String usuario;
-    private String contrasena;
+    private static String usuario;
+    private static String contrasena;
     
     public Jugador(String usuario, String contrasena) {
         this.usuario = usuario;
@@ -15,7 +15,7 @@ public class Jugador {
         return usuario;
     }
 
-    public String getContrasena() {
+    public static String getContrasena() {
         return contrasena;
     }
 }

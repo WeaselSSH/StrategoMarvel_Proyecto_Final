@@ -4,9 +4,9 @@ package stratego_marvel_proyecto_final;
 import javax.swing.JOptionPane;
 
 
-public class FrmMenuPrincipal extends javax.swing.JFrame {
+public class FrmMenuInicial extends javax.swing.JFrame {
 
-    public FrmMenuPrincipal() {
+    public FrmMenuInicial() {
         initComponents();
         this.setTitle("VENTANA DE REGISTRO");
         NormalPanelConfig.configuracion(this);
@@ -78,18 +78,14 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
-        
-        //Lógica del login: se puede realizar algun arreglo que almacene la info creada en el boton de creación de personaje y que la utilice para iniciar login
-        //Sin embargo, sería bueno que se pueda guardar eso en una clase publica, a manera que se pueda acceder en otras partes del proyecto
-        JOptionPane.showMessageDialog(null, "¡Ha ingresado exitosamente a su cuenta!");
-        new Menu2().setVisible(true);
-        this.dispose();
-        
-         
+               
+        FrmRegistroInicio crearPlayer = new FrmRegistroInicio("login");
+        crearPlayer.setVisible(true);
+        this.dispose();       
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnCrearPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPlayerActionPerformed
-        FrmCrearPlayer crearPlayer = new FrmCrearPlayer();
+        FrmRegistroInicio crearPlayer = new FrmRegistroInicio("registro");
         crearPlayer.setVisible(true);
         this.dispose();     
     }//GEN-LAST:event_btnCrearPlayerActionPerformed
@@ -111,14 +107,18 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenuInicial.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -127,7 +127,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmMenuPrincipal().setVisible(true);
+                new FrmMenuInicial().setVisible(true);
             }
         });
     }

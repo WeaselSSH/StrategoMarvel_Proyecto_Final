@@ -28,12 +28,15 @@
                   <Component id="txtContrasena" min="-2" pref="158" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
-                          <Component id="btnRegistrarse" min="-2" pref="108" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
                           <Component id="txtUsuario" min="-2" pref="158" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="88" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="btnRegistrarInicio" pref="108" max="32767" attributes="0"/>
+                              <Component id="btnCancelarRegresar" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
@@ -49,8 +52,10 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="txtContrasena" min="-2" pref="50" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Component id="btnRegistrarse" min="-2" pref="40" max="-2" attributes="0"/>
-              <EmptySpace pref="72" max="32767" attributes="0"/>
+              <Component id="btnRegistrarInicio" min="-2" pref="40" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnCancelarRegresar" min="-2" pref="42" max="-2" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,12 +69,12 @@
         <Property name="text" type="java.lang.String" value="Tu nombre de usuario"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnRegistrarse">
+    <Component class="javax.swing.JButton" name="btnRegistrarInicio">
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrarse"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarseActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRegistrarInicioActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtContrasena">
@@ -79,6 +84,14 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Tu contrase&#xf1;a"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCancelarRegresar">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cancelar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarRegresarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

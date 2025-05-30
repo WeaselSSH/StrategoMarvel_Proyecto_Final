@@ -18,7 +18,7 @@ public class Ventana1 extends javax.swing.JFrame {
         initComponents();
         this.setTitle("MENU DE INICIO");
         NormalPanelConfig.configuracion(this);
-        
+        //Hola Mundo Cambio
         
         
     }
@@ -247,6 +247,7 @@ public class Ventana1 extends javax.swing.JFrame {
                 new Ventana1().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

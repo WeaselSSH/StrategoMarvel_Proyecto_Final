@@ -41,7 +41,7 @@
                   <Component id="JugarButton" alignment="0" min="-2" pref="115" max="-2" attributes="0"/>
                   <Component id="RankingButton" alignment="0" min="-2" pref="117" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="139" max="32767" attributes="0"/>
+              <EmptySpace pref="142" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="PerfilButton" max="32767" attributes="0"/>
                   <Component id="LogoutButton" min="-2" pref="103" max="-2" attributes="0"/>
@@ -65,7 +65,7 @@
                   <Component id="RankingButton" pref="42" max="32767" attributes="0"/>
                   <Component id="LogoutButton" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="183" max="32767" attributes="0"/>
+              <EmptySpace pref="101" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -77,12 +77,12 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Impact" size="24" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Menu 2"/>
+        <Property name="text" type="java.lang.String" value="Menu Inicial"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="JugarButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Jugar"/>
+        <Property name="text" type="java.lang.String" value="Partida Nueva"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JugarButtonActionPerformed"/>
@@ -98,7 +98,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="PerfilButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Perfil"/>
+        <Property name="text" type="java.lang.String" value="Mi Perfil"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PerfilButtonActionPerformed"/>
@@ -106,7 +106,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="LogoutButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Log Out"/>
+        <Property name="text" type="java.lang.String" value="Cerrar Sesi&#xf3;n"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LogoutButtonActionPerformed"/>

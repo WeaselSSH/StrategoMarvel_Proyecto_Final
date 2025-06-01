@@ -10,6 +10,7 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
     public FrmRegistroInicio(String modo) {
         initComponents();
         this.modo = modo;
+        
         if (modo.equals("login")) {
             btnRegistrarInicio.setText("Iniciar sesión");
         } else if (modo.equals("registro")) {

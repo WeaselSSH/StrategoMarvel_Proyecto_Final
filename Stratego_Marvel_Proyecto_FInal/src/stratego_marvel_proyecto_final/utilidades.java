@@ -65,14 +65,14 @@ public class utilidades {
             return;
         }
 
-        if (DatosGlobales.jugadores.containsKey(usuario)) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Error: Nombre de usuario registrado previamente.");
-            return;
+        for (Jugador jugador : DatosGlobales.jugadores) {
+            if (jugador.getUsuario().equals(usuario)) {
+                javax.swing.JOptionPane.showMessageDialog(null, "Error: Nombre de usuario registrado previamente.");
+                return;
+            }
         }
 
-        Jugador nuevoJugador = new Jugador(usuario, contrasena);
-        DatosGlobales.jugadores.put(usuario, nuevoJugador);
-
+        DatosGlobales.jugadores.add(new Jugador(usuario, contrasena));
         javax.swing.JOptionPane.showMessageDialog(null, "Jugador creado correctamente.");
     }
 
@@ -82,20 +82,17 @@ public class utilidades {
             javax.swing.JOptionPane.showMessageDialog(null, "Error: Uno de los campos se encuentra vacío.");
             return;
         }
-        
-        if (!DatosGlobales.jugadores.containsKey(usuario)) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Error: Usuario no existe.");
-            return;
-        }
-        
-        Jugador jugador = DatosGlobales.jugadores.get(usuario);
-        
-        if (!Jugador.getContrasena().equals(contrasena)) {
-            javax.swing.JOptionPane.showMessageDialog(null, "Error: Usuario o contraseña incorrecta.");
-            return;
-        }
 
-        javax.swing.JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.");
+        for (Jugador jugador : DatosGlobales.jugadores) {
+            if (jugador.getUsuario().equals(usuario)) {
+                if (jugador.getContrasena().equals(contrasena)) {
+                    javax.swing.JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.");
+                    return;
+                } 
+            }
+        }
+        
+        javax.swing.JOptionPane.showMessageDialog(null, "Error: usuario o contraseña incorrecta.");
     }
 
     public static boolean validarCampos(String textoCampo1, String placeholder1, String textoCampo2, String placeholder2) {

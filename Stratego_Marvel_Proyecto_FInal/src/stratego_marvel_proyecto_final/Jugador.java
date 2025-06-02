@@ -2,20 +2,30 @@ package stratego_marvel_proyecto_final;
 
 public class Jugador {
 
-    private static String usuario;
-    private static String contrasena;
+    private String usuario;
+    private String contrasena;
+    private int puntos;
+    private int vecesBueno;
+    private int vecesMalo;
     
     public Jugador(String usuario, String contrasena) {
         this.usuario = usuario;
         this.contrasena = contrasena;
     }
 
-    // Getters y Setters si los necesitás
     public String getUsuario() {
         return usuario;
     }
 
-    public static String getContrasena() {
+    public String getContrasena() {
         return contrasena;
+    }
+    
+    public int getPuntos() {
+        return puntos;
+    }
+    
+    public void partidaGanada() {
+        this.puntos += 3;
     }
 }

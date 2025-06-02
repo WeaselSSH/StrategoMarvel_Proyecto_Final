@@ -99,9 +99,9 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
         String contrasena = new String(txtContrasena.getPassword()).trim();
         
         if (modo.equals("login")) {
-            utilidades.iniciarSesion(usuario, contrasena);
+            utilidades.iniciarSesion(this, usuario, contrasena);
         } else if (modo.equals("registro")) {
-            utilidades.registrarUsuario(usuario, contrasena);
+            utilidades.registrarUsuario(this, usuario, contrasena);
         }
     }//GEN-LAST:event_btnRegistrarInicioActionPerformed
 
@@ -111,10 +111,6 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
         FrmMenuInicial MenuPrincipal = new FrmMenuInicial();
         MenuPrincipal.setVisible(true);
         this.dispose();
-        
-        if(modo.equals("registro")) {
-        javax.swing.JOptionPane.showMessageDialog(this, "Creación de jugador cancelada.");
-        }
     }//GEN-LAST:event_btnCancelarRegresarActionPerformed
 
     public static void main(String args[]) {

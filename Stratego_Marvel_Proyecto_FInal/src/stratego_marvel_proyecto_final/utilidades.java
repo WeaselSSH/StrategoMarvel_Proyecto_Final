@@ -53,7 +53,7 @@ public class utilidades {
         });
     }
 
-    public static void registrarUsuario(String usuario, String contrasena) {
+    public static void registrarUsuario(FrmRegistroInicio form, String usuario, String contrasena) {
 
         if (utilidades.validarCampos(usuario, DatosGlobales.placeholderUsuario, contrasena, DatosGlobales.placeholderContrasena)) {
             javax.swing.JOptionPane.showMessageDialog(null, "Error: Uno de los campos se encuentra vacío.");
@@ -74,9 +74,13 @@ public class utilidades {
 
         DatosGlobales.jugadores.add(new Jugador(usuario, contrasena));
         javax.swing.JOptionPane.showMessageDialog(null, "Jugador creado correctamente.");
+        FrmMenuInicial menuInicial = new FrmMenuInicial();
+        menuInicial.setVisible(true);
+        form.dispose();
+        return;
     }
 
-    public static void iniciarSesion(String usuario, String contrasena) {
+    public static void iniciarSesion(FrmRegistroInicio form, String usuario, String contrasena) {
 
         if (utilidades.validarCampos(usuario, DatosGlobales.placeholderUsuario, contrasena, DatosGlobales.placeholderContrasena)) {
             javax.swing.JOptionPane.showMessageDialog(null, "Error: Uno de los campos se encuentra vacío.");
@@ -87,6 +91,9 @@ public class utilidades {
             if (jugador.getUsuario().equals(usuario)) {
                 if (jugador.getContrasena().equals(contrasena)) {
                     javax.swing.JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.");
+                    FrmMenuPrincipal menuPrincipal = new FrmMenuPrincipal();
+                    menuPrincipal.setVisible(true);
+                    form.dispose();
                     return;
                 } 
             }

@@ -119,7 +119,7 @@ public class SeleccionJugadores extends javax.swing.JFrame {
     }//GEN-LAST:event_hostextFActionPerformed
 
     private void regresarButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarButonActionPerformed
-        new Menu2().setVisible(true);
+        new FrmMenuPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_regresarButonActionPerformed
 

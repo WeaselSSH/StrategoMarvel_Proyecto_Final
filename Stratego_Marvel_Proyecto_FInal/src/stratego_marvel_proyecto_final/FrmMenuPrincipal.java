@@ -1,8 +1,8 @@
 package stratego_marvel_proyecto_final;
 
-public class Menu2 extends javax.swing.JFrame {
+public class FrmMenuPrincipal extends javax.swing.JFrame {
 
-    public Menu2() {
+    public FrmMenuPrincipal() {
         initComponents();
         NormalPanelConfig.configuracion(this);
     }
@@ -14,7 +14,7 @@ public class Menu2 extends javax.swing.JFrame {
         jToggleButton1 = new javax.swing.JToggleButton();
         label1 = new java.awt.Label();
         JugarButton = new javax.swing.JButton();
-        RankingButton = new javax.swing.JButton();
+        btnUniversoMarvel = new javax.swing.JButton();
         PerfilButton = new javax.swing.JButton();
         LogoutButton = new javax.swing.JButton();
 
@@ -24,30 +24,30 @@ public class Menu2 extends javax.swing.JFrame {
 
         label1.setAlignment(java.awt.Label.CENTER);
         label1.setFont(new java.awt.Font("Impact", 0, 24)); // NOI18N
-        label1.setText("Menu 2");
+        label1.setText("MARVEL HEROES STRATEGO");
 
-        JugarButton.setText("Jugar");
+        JugarButton.setText("Partida Nueva");
         JugarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JugarButtonActionPerformed(evt);
             }
         });
 
-        RankingButton.setText("Ranking");
-        RankingButton.addActionListener(new java.awt.event.ActionListener() {
+        btnUniversoMarvel.setText("UNIVERSO MARVEL");
+        btnUniversoMarvel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                RankingButtonActionPerformed(evt);
+                btnUniversoMarvelActionPerformed(evt);
             }
         });
 
-        PerfilButton.setText("Perfil");
+        PerfilButton.setText("Mi Perfil");
         PerfilButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PerfilButtonActionPerformed(evt);
             }
         });
 
-        LogoutButton.setText("Log Out");
+        LogoutButton.setText("Cerrar Sesión");
         LogoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 LogoutButtonActionPerformed(evt);
@@ -59,34 +59,34 @@ public class Menu2 extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(169, 169, 169))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(JugarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RankingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnUniversoMarvel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JugarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(PerfilButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(LogoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(91, 91, 91))
+                    .addComponent(LogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))
+                .addGap(66, 66, 66))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(54, 54, 54))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addContainerGap()
                 .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JugarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(JugarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PerfilButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(RankingButton, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                    .addComponent(btnUniversoMarvel, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
                     .addComponent(LogoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(183, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
@@ -97,12 +97,6 @@ public class Menu2 extends javax.swing.JFrame {
         new SeleccionJugadores().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JugarButtonActionPerformed
-
-    private void RankingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RankingButtonActionPerformed
-        System.out.println("Lleva a la parte de Ranking");
-        new RankingWindow().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_RankingButtonActionPerformed
 
     private void PerfilButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfilButtonActionPerformed
         System.out.println("Lleva a la vista del perfil");
@@ -115,6 +109,13 @@ public class Menu2 extends javax.swing.JFrame {
         new FrmMenuInicial().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_LogoutButtonActionPerformed
+
+    private void btnUniversoMarvelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUniversoMarvelActionPerformed
+        // TODO add your handling code here:
+        FrmUniversoMarvel universoMarvel = new FrmUniversoMarvel();
+        universoMarvel.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnUniversoMarvelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,21 +134,23 @@ public class Menu2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Menu2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Menu2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Menu2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Menu2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu2().setVisible(true);
+                new FrmMenuPrincipal().setVisible(true);
             }
         });
     }
@@ -156,7 +159,7 @@ public class Menu2 extends javax.swing.JFrame {
     private javax.swing.JButton JugarButton;
     private javax.swing.JButton LogoutButton;
     private javax.swing.JButton PerfilButton;
-    private javax.swing.JButton RankingButton;
+    private javax.swing.JButton btnUniversoMarvel;
     private javax.swing.JToggleButton jToggleButton1;
     private java.awt.Label label1;
     // End of variables declaration//GEN-END:variables

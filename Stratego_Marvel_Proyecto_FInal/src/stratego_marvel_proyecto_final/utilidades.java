@@ -53,9 +53,11 @@ public class utilidades {
         });
     }
 
+    //Métodos de registro e inicio de sesión
     public static void registrarUsuario(FrmRegistroInicio form, String usuario, String contrasena) {
 
-        if (utilidades.validarCampos(usuario, DatosGlobales.placeholderUsuario, contrasena, DatosGlobales.placeholderContrasena)) {
+        if (utilidades.validarCampos(usuario, FrmRegistroInicio.placeholderUsuario,
+                contrasena, FrmRegistroInicio.placeholderContrasena)) {
             javax.swing.JOptionPane.showMessageDialog(null, "Error: Uno de los campos se encuentra vacío.");
             return;
         }
@@ -65,14 +67,15 @@ public class utilidades {
             return;
         }
 
-        for (Jugador jugador : DatosGlobales.jugadores) {
+        for (int i = 0; i < DatosGlobales.listaJugadores.cantidad(); i++) {
+            Jugador jugador = DatosGlobales.listaJugadores.obtener(i);
             if (jugador.getUsuario().equals(usuario)) {
                 javax.swing.JOptionPane.showMessageDialog(null, "Error: Nombre de usuario registrado previamente.");
                 return;
             }
         }
 
-        DatosGlobales.jugadores.add(new Jugador(usuario, contrasena));
+        DatosGlobales.listaJugadores.agregar(new Jugador(usuario, contrasena));
         javax.swing.JOptionPane.showMessageDialog(null, "Jugador creado correctamente.");
         FrmMenuInicial menuInicial = new FrmMenuInicial();
         menuInicial.setVisible(true);
@@ -82,12 +85,14 @@ public class utilidades {
 
     public static void iniciarSesion(FrmRegistroInicio form, String usuario, String contrasena) {
 
-        if (utilidades.validarCampos(usuario, DatosGlobales.placeholderUsuario, contrasena, DatosGlobales.placeholderContrasena)) {
+        if (utilidades.validarCampos(usuario, FrmRegistroInicio.placeholderUsuario,
+                contrasena, FrmRegistroInicio.placeholderContrasena)) {
             javax.swing.JOptionPane.showMessageDialog(null, "Error: Uno de los campos se encuentra vacío.");
             return;
         }
 
-        for (Jugador jugador : DatosGlobales.jugadores) {
+        for (int i = 0; i < DatosGlobales.listaJugadores.cantidad(); i++) {
+            Jugador jugador = DatosGlobales.listaJugadores.obtener(i);
             if (jugador.getUsuario().equals(usuario)) {
                 if (jugador.getContrasena().equals(contrasena)) {
                     javax.swing.JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.");
@@ -95,10 +100,10 @@ public class utilidades {
                     menuPrincipal.setVisible(true);
                     form.dispose();
                     return;
-                } 
+                }
             }
         }
-        
+
         javax.swing.JOptionPane.showMessageDialog(null, "Error: usuario o contraseña incorrecta.");
     }
 

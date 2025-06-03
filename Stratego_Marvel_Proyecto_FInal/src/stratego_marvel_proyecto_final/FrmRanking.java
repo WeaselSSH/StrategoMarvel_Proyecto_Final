@@ -3,7 +3,6 @@ package stratego_marvel_proyecto_final;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
-
 public class FrmRanking extends javax.swing.JFrame {
 
     public FrmRanking() {
@@ -86,24 +85,36 @@ public class FrmRanking extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnRegresarActionPerformed
 
-     private void cargarRanking() {
-        ArrayList<Jugador> jugadores = DatosGlobales.jugadores;
+    private void cargarRanking() {
+        Jugador copia[] = new Jugador[DatosGlobales.listaJugadores.cantidad()];
 
-        jugadores.sort((a, b) -> Integer.compare(b.getPuntos(), a.getPuntos()));
+        for (int i = 0; i < DatosGlobales.listaJugadores.cantidad(); i++) {
+            copia[i] = DatosGlobales.listaJugadores.obtener(i);
+        }
+
+        for (int i = 0; i < copia.length - 1; i++) {
+            for (int j = 0; j < copia.length - i - 1; j++) {
+                if (copia[j].getPuntos() < copia[j + 1].getPuntos()) {
+                    Jugador temp = copia[j];
+                    copia[j] = copia[j + 1];
+                    copia[j + 1] = temp;
+                }
+            }
+        }
 
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Posición");
         modelo.addColumn("Usuario");
         modelo.addColumn("Puntos");
 
-        int posicion = 1;
-        for (Jugador jugador : jugadores) {
-            modelo.addRow(new Object[]{posicion++, jugador.getUsuario(), jugador.getPuntos()});
+        for (int i = 0; i < copia.length; i++) {
+            Jugador jugador = copia[i];
+            modelo.addRow(new Object[]{i + 1, jugador.getUsuario(), jugador.getPuntos()});
         }
 
         tblRanking.setModel(modelo);
     }
-    
+
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

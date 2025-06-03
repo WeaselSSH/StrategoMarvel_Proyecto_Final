@@ -5,26 +5,29 @@ import javax.swing.JPasswordField;
 import javax.swing.text.JTextComponent;
 
 public class FrmRegistroInicio extends javax.swing.JFrame {
+
     private String modo;
+    public static String placeholderUsuario = "Tu nombre de usuario";
+    public static String placeholderContrasena = "Tu contraseña";
 
     public FrmRegistroInicio(String modo) {
         initComponents();
         this.modo = modo;
-        
+
         if (modo.equals("login")) {
             btnRegistrarInicio.setText("Iniciar sesión");
         } else if (modo.equals("registro")) {
             btnRegistrarInicio.setText("Registrarse");
         }
-        
+
         if (modo.equals("login")) {
             btnCancelarRegresar.setText("Regresar");
         } else if (modo.equals("registro")) {
             btnCancelarRegresar.setText("Cancelar");
         }
-        
-        utilidades.agregarPlaceholder(txtUsuario, DatosGlobales.placeholderUsuario);
-        utilidades.agregarPlaceholder(txtContrasena, DatosGlobales.placeholderContrasena); 
+
+        utilidades.agregarPlaceholder(txtUsuario, placeholderUsuario);
+        utilidades.agregarPlaceholder(txtContrasena, placeholderContrasena);
     }
 
     @SuppressWarnings("unchecked")
@@ -97,7 +100,7 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         String usuario = txtUsuario.getText();
         String contrasena = new String(txtContrasena.getPassword()).trim();
-        
+
         if (modo.equals("login")) {
             utilidades.iniciarSesion(this, usuario, contrasena);
         } else if (modo.equals("registro")) {
@@ -107,7 +110,7 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
 
     private void btnCancelarRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarRegresarActionPerformed
         // TODO add your handling code here:
-        
+
         FrmMenuInicial MenuPrincipal = new FrmMenuInicial();
         MenuPrincipal.setVisible(true);
         this.dispose();

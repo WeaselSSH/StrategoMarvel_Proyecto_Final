@@ -5,6 +5,9 @@ import javax.swing.JPasswordField;
 import javax.swing.text.JTextComponent;
 
 public class utilidades {
+    
+    //Establecimiento de objeto jugador para poder referenciarlo despues en perfilJugador
+    public static Jugador jugador = null;
 
     public static void agregarPlaceholder(JTextComponent campo, String placeholder) {
         Color colorPlaceholder = Color.gray;
@@ -74,7 +77,7 @@ public class utilidades {
                 return;
             }
         }
-
+        
         DatosGlobales.listaJugadores.agregar(new Jugador(usuario, contrasena));
         javax.swing.JOptionPane.showMessageDialog(null, "Jugador creado correctamente.");
         FrmMenuInicial menuInicial = new FrmMenuInicial();
@@ -92,13 +95,16 @@ public class utilidades {
         }
 
         for (int i = 0; i < DatosGlobales.listaJugadores.cantidad(); i++) {
-            Jugador jugador = DatosGlobales.listaJugadores.obtener(i);
+            jugador = DatosGlobales.listaJugadores.obtener(i);
             if (jugador.getUsuario().equals(usuario)) {
                 if (jugador.getContrasena().equals(contrasena)) {
                     javax.swing.JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.");
                     FrmMenuPrincipal menuPrincipal = new FrmMenuPrincipal();
                     menuPrincipal.setVisible(true);
                     form.dispose();
+                    System.out.println(jugador);
+                    //Otra vez mencion de jugador para poderse guardar de manera global
+                    jugador= DatosGlobales.listaJugadores.obtener(i);
                     return;
                 }
             }
@@ -111,4 +117,8 @@ public class utilidades {
         return textoCampo1.trim().isEmpty() || textoCampo1.equals(placeholder1)
                 || textoCampo2.trim().isEmpty() || textoCampo2.equals(placeholder2);
     }
+    
+        
+    
+    
 }

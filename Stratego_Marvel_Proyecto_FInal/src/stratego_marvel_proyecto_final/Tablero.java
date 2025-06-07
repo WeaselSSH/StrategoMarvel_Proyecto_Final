@@ -17,7 +17,8 @@ public class Tablero {
     public void ocultarBotones() {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                botones[i][j].setVisible(false);
+                botones[i][j].setOpaque(false);
+                botones[i][j].setContentAreaFilled(false);
             }
         }
     }

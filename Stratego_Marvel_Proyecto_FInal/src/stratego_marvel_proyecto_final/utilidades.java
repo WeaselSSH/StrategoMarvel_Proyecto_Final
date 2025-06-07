@@ -3,6 +3,7 @@ package stratego_marvel_proyecto_final;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.text.JTextComponent;
+import javax.swing.JFrame;
 
 public class utilidades {
 

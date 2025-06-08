@@ -152,14 +152,24 @@ public class FrmPartida extends javax.swing.JFrame {
                 if(repetida==false){
                     if(botones[filaRango3][columnarank3].getIcon()== null){
                         botones[filaRango3][columnarank3].setIcon(new ImageIcon(getClass().getResource(fichaSeleccionada)));
-                        fichasGeneradas[controladorRank3]= fichaSeleccionada;
+                        fichasGeneradasRank3[controladorRank3]= fichaSeleccionada;
                         controladorRank3++;
                         Rango3Restantes--;
                     }
                 }
             }//Fin condicional if
             
+            
+          
+            
         }
+
+        /*
+            //Comprobante de fichas generadas rango 3
+            for(int i=0; i<fichasGeneradasRank3.length; i++){
+                System.out.println(fichasGeneradasRank3[i]);
+            }
+        */
             
             
             

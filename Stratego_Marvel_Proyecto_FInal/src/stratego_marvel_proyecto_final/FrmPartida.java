@@ -29,7 +29,9 @@ public class FrmPartida extends javax.swing.JFrame {
     }
 
     private void asignarFichasBuenos() {
-        int filaBandera = 9;
+        //Fila correspondiente a bandera
+        int filaBandera = 9; //De abajo para arriba? xd
+        //columna random para bandera
         int columnaBandera = random.nextInt(8) + 1;
 
         //colocar tierra
@@ -47,12 +49,31 @@ public class FrmPartida extends javax.swing.JFrame {
         while (bombasRestantes > 0) {
             int fila = filasPermitidas[random.nextInt(filasPermitidas.length)];
             int columna = random.nextInt(10);
-
-            if (botones[fila][columna].getIcon() == null) {  
+            
+            //Verificar si no hay nada en el boton como tal
+            if (botones[fila][columna].getIcon() == null) {
+                //Asignacion de bomba
                 botones[fila][columna].setIcon(new ImageIcon(getClass().getResource("/imagenes/novaBlast.png")));
                 bombasRestantes--;
             }
         }
+        
+        
+        //Colocar ficha de rango#2
+        int filasRango2[]= {6,7}; //Se indican las filas correspondientes donde pueden generarse las fichas de rango2
+        
+        //Se toma una fila y columna de manera random
+        int filarank2= filasRango2[random.nextInt(filasRango2.length)];
+        int columnarank2 = random.nextInt(10);
+        
+        //Verifica si no hay ficha en dicha casilla
+        if(botones[filarank2][columnarank2].getIcon()== null){
+            //Colocacion de ficha
+            botones[filarank2][columnarank2].setIcon(new ImageIcon(getClass().getResource("/imagenes/spidergirl.png")));
+        }
+        
+        
+        
     }
 
     @SuppressWarnings("unchecked")

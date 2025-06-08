@@ -1,6 +1,7 @@
 package stratego_marvel_proyecto_final;
 
 import java.awt.GridLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 public class FrmPartida extends javax.swing.JFrame {
@@ -15,16 +16,15 @@ public class FrmPartida extends javax.swing.JFrame {
     }
 
     private void crearBotones() {
-        // Crear los botones dinámicamente
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 botones[i][j] = new javax.swing.JButton();
 
-                // Agregar el botón al panel
                 jPanel2.add(botones[i][j]);
             }
         }
     }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.util.Random;
 
+
 public class FrmPartida extends javax.swing.JFrame {
 
     private JButton botones[][] = new JButton[10][10];
@@ -112,9 +113,58 @@ public class FrmPartida extends javax.swing.JFrame {
                 System.out.println(fichasGeneradas[i]);
             }
             */
+  
+        }
+        
+    
+        //Desarrollo de generacion de fichas rango 3----------------------------------
+        int filaRango3 = 6;
+        int Rango3Restantes= 5;
+        String fichasRango3[]={"/imagenes/emmafrost.png","/imagenes/sheHulk.png","/imagenes/giantMan.png","/imagenes/beast.png","/imagenes/colossus.png"};
+        int controladorRank3= 0;
+        String fichasGeneradasRank3[]= new String[5];
+        
+        while(Rango3Restantes>0){
+            int columnarank3 = random.nextInt(10);
+            int fichaRandom= random.nextInt(5);
+            String fichaSeleccionada= fichasRango3[fichaRandom];
             
+            
+            if(controladorRank3 == 0){
+                //Verifica si no hay ficha en dicha casilla
+                if(botones[filaRango3][columnarank3].getIcon()== null){
+                //Colocacion de ficha
+                botones[filaRango3][columnarank3].setIcon(new ImageIcon(getClass().getResource(fichaSeleccionada)));
+                fichasGeneradasRank3[controladorRank3]= fichaSeleccionada;
+                controladorRank3++;
+                Rango3Restantes--;
+                }
+            }else{
+                //Boolean que controla si ya se repitió la ficha
+                boolean repetida=false;
+                //Ciclo utilizado para revisar el historial de fichas ya colocadas 
+                for(int i=0; i<fichasGeneradasRank3.length; i++){
+                    if(fichaSeleccionada.equals(fichasGeneradasRank3[i])){
+                        repetida=true;
+                    }
+                }
+                
+                if(repetida==false){
+                    if(botones[filaRango3][columnarank3].getIcon()== null){
+                        botones[filaRango3][columnarank3].setIcon(new ImageIcon(getClass().getResource(fichaSeleccionada)));
+                        fichasGeneradas[controladorRank3]= fichaSeleccionada;
+                        controladorRank3++;
+                        Rango3Restantes--;
+                    }
+                }
+            }//Fin condicional if
             
         }
+            
+            
+            
+
+
         
         
         
@@ -138,7 +188,7 @@ public class FrmPartida extends javax.swing.JFrame {
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setOpaque(false);
         jPanel2.setLayout(new java.awt.GridLayout(10, 10));
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 502, 502));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 502, 502));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tablero.png"))); // NOI18N
         jLabel1.setText("jLabel1");

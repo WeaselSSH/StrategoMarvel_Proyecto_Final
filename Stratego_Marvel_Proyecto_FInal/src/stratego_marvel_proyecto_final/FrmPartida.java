@@ -3,16 +3,19 @@ package stratego_marvel_proyecto_final;
 import java.awt.GridLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.util.Random;
 
 public class FrmPartida extends javax.swing.JFrame {
 
     private JButton botones[][] = new JButton[10][10];
+    Random random = new Random();
 
     public FrmPartida() {
         initComponents();
         crearBotones();
         Tablero tablero = new Tablero(botones);
         tablero.inicializar();
+        asignarFichasBuenos();
     }
 
     private void crearBotones() {
@@ -24,7 +27,33 @@ public class FrmPartida extends javax.swing.JFrame {
             }
         }
     }
-    
+
+    private void asignarFichasBuenos() {
+        int filaBandera = 9;
+        int columnaBandera = random.nextInt(8) + 1;
+
+        //colocar tierra
+        botones[filaBandera][columnaBandera].setIcon(new ImageIcon(getClass().getResource("/imagenes/heroEarth.png")));
+
+        //colocar bombas alrededor (por medio de coordenadas)
+        botones[filaBandera][columnaBandera + 1].setIcon(new ImageIcon(getClass().getResource("/imagenes/novaBlast.png")));
+        botones[filaBandera][columnaBandera - 1].setIcon(new ImageIcon(getClass().getResource("/imagenes/novaBlast.png")));
+        botones[filaBandera - 1][columnaBandera].setIcon(new ImageIcon(getClass().getResource("/imagenes/novaBlast.png")));
+
+        //bombas restantes
+        int bombasRestantes = 3;
+        int filasPermitidas[] = {8, 9};
+
+        while (bombasRestantes > 0) {
+            int fila = filasPermitidas[random.nextInt(filasPermitidas.length)];
+            int columna = random.nextInt(10);
+
+            if (botones[fila][columna].getIcon() == null) {  
+                botones[fila][columna].setIcon(new ImageIcon(getClass().getResource("/imagenes/novaBlast.png")));
+                bombasRestantes--;
+            }
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

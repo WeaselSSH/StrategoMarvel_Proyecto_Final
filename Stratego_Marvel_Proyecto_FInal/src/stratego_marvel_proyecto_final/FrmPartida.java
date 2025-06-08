@@ -59,13 +59,15 @@ public class FrmPartida extends javax.swing.JFrame {
         }
         
         
-        //Colocar ficha de rango#2
+        //Colocar ficha de rango#2------------------------
         int filasRango2[]= {6,7}; //Se indican las filas correspondientes donde pueden generarse las fichas de rango2
         int Rango2restantes= 8; //Hay 8 fichas de rango 2 por colocar en el tablero
         String fichasRango2[]= {"/imagenes/spidergirl.png", "/imagenes/gambit.png", "/imagenes/iceMan.png", "/imagenes/storm.png", "/imagenes/phoenix.png", 
             "/imagenes/drStrange.png", "/imagenes/elektra.png", "/imagenes/nightcrawler.png"};
         
         int controlador=0;
+        //Creador de arreglo para llevar historial de fichas de rango 2 en el tablero
+        String fichasGeneradas[]= new String[8];
         
         while(Rango2restantes > 0){
             //Se toma una fila y columna de manera random
@@ -73,11 +75,7 @@ public class FrmPartida extends javax.swing.JFrame {
             int columnarank2 = random.nextInt(10);
             int fichaRandom= random.nextInt(8);
             String fichaSeleccionada= fichasRango2[fichaRandom];
-            String fichasGeneradas[]= new String[8];
-            
-            
-            
-        
+
             //Verificador de ficha repetidas
             if(controlador == 0){
                 //Verifica si no hay ficha en dicha casilla
@@ -108,10 +106,12 @@ public class FrmPartida extends javax.swing.JFrame {
                 }
             }//Fin condicional if
             
+            /*
             //Comprobante de fichas generadas rango 2
             for(int i=0; i<fichasGeneradas.length; i++){
                 System.out.println(fichasGeneradas[i]);
             }
+            */
             
             
         }

@@ -61,16 +61,62 @@ public class FrmPartida extends javax.swing.JFrame {
         
         //Colocar ficha de rango#2
         int filasRango2[]= {6,7}; //Se indican las filas correspondientes donde pueden generarse las fichas de rango2
+        int Rango2restantes= 8; //Hay 8 fichas de rango 2 por colocar en el tablero
+        String fichasRango2[]= {"/imagenes/spidergirl.png", "/imagenes/gambit.png", "/imagenes/iceMan.png", "/imagenes/storm.png", "/imagenes/phoenix.png", 
+            "/imagenes/drStrange.png", "/imagenes/elektra.png", "/imagenes/nightcrawler.png"};
         
-        //Se toma una fila y columna de manera random
-        int filarank2= filasRango2[random.nextInt(filasRango2.length)];
-        int columnarank2 = random.nextInt(10);
+        int controlador=0;
         
-        //Verifica si no hay ficha en dicha casilla
-        if(botones[filarank2][columnarank2].getIcon()== null){
-            //Colocacion de ficha
-            botones[filarank2][columnarank2].setIcon(new ImageIcon(getClass().getResource("/imagenes/spidergirl.png")));
+        while(Rango2restantes > 0){
+            //Se toma una fila y columna de manera random
+            int filarank2= filasRango2[random.nextInt(filasRango2.length)];
+            int columnarank2 = random.nextInt(10);
+            int fichaRandom= random.nextInt(8);
+            String fichaSeleccionada= fichasRango2[fichaRandom];
+            String fichasGeneradas[]= new String[8];
+            
+            
+            
+        
+            //Verificador de ficha repetidas
+            if(controlador == 0){
+                //Verifica si no hay ficha en dicha casilla
+                if(botones[filarank2][columnarank2].getIcon()== null){
+                //Colocacion de ficha
+                botones[filarank2][columnarank2].setIcon(new ImageIcon(getClass().getResource(fichaSeleccionada)));//getResource(fichaSeleccionada) para que puede escoger de las 8 fichas de rango 2
+                fichasGeneradas[controlador]= fichaSeleccionada;
+                controlador++;
+                Rango2restantes--;
+                }
+            }else{
+                //Boolean que controla si ya se repitió la ficha
+                boolean repetida=false;
+                //Ciclo utilizado para revisar el historial de fichas ya colocadas 
+                for(int i=0; i<fichasGeneradas.length; i++){
+                    if(fichaSeleccionada.equals(fichasGeneradas[i])){
+                        repetida=true;
+                    }
+                }
+                
+                if(repetida==false){
+                    if(botones[filarank2][columnarank2].getIcon()== null){
+                        botones[filarank2][columnarank2].setIcon(new ImageIcon(getClass().getResource(fichaSeleccionada)));//getResource(fichaSeleccionada) para que puede escoger de las 8 fichas de rango 2
+                        fichasGeneradas[controlador]= fichaSeleccionada;
+                        controlador++;
+                        Rango2restantes--;
+                    }
+                }
+            }//Fin condicional if
+            
+            //Comprobante de fichas generadas rango 2
+            for(int i=0; i<fichasGeneradas.length; i++){
+                System.out.println(fichasGeneradas[i]);
+            }
+            
+            
         }
+        
+        
         
         
         

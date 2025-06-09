@@ -7,14 +7,15 @@ import java.util.Random;
 
 public class FrmPartida extends javax.swing.JFrame {
 
-    private Ficha fichasBuenos[] = DatosGlobales.obtenerFichasBuenos();
+    private Ficha fichasBuenos[] = DatosGlobales.fichasBuenos();
     private JButton botones[][] = new JButton[10][10];
+    private Tablero tablero;
     Random random = new Random();
 
     public FrmPartida() {
         initComponents();
         crearBotones();
-        Tablero tablero = new Tablero(botones);
+        tablero = new Tablero(botones);
         tablero.inicializar();
     }
 
@@ -22,8 +23,13 @@ public class FrmPartida extends javax.swing.JFrame {
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
                 botones[i][j] = new javax.swing.JButton();
+                int fila = i;
+                int columna = j;
 
-                jPanel2.add(botones[i][j]);
+                botones[i][j].addActionListener(e -> {
+                    tablero.botonClick(fila, columna);
+                });
+                panelTablero.add(botones[i][j]);
             }
         }
     }
@@ -33,22 +39,21 @@ public class FrmPartida extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        panelTablero = new javax.swing.JPanel();
+        lblTablero = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.setOpaque(false);
-        jPanel2.setLayout(new java.awt.GridLayout(10, 10));
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 32, 500, 498));
+        panelTablero.setOpaque(false);
+        panelTablero.setLayout(new java.awt.GridLayout(10, 10));
+        jPanel1.add(panelTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 35, 502, 498));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tablero.png"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 500, 500));
+        lblTablero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tablero.png"))); // NOI18N
+        lblTablero.setText("jLabel1");
+        jPanel1.add(lblTablero, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, 500, 500));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,8 +103,8 @@ public class FrmPartida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblTablero;
+    private javax.swing.JPanel panelTablero;
     // End of variables declaration//GEN-END:variables
 }

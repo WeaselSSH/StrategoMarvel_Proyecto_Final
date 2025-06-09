@@ -4,11 +4,13 @@ public class Ficha {
     private String rutaImagen;
     private String tipo;
     private int rango;
+    private String bando;
     
-    public Ficha(String rutaImagen, String tipo, int rango) {
+    public Ficha(String rutaImagen, String tipo, String bando, int rango) {
         this.rutaImagen = rutaImagen;
         this.tipo = tipo;
         this.rango = rango;
+        this.bando = bando;
     }
     
     public String getRutaImagen() {
@@ -23,5 +25,7 @@ public class Ficha {
         return rango;
     }
     
-    
+    public String getBando() {
+        return bando;
+    }
 }

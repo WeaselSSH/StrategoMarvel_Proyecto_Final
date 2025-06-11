@@ -47,4 +47,48 @@ public class DatosGlobales {
             new Ficha("/imagenes/blackWidow.png", "NORMAL", "BUENO", 1)
         };
     }
+    
+    public static Ficha[] fichasMalos() {
+        return new Ficha[]{
+            //tierra y bombas
+            new Ficha("/imagenes/villainEarth.png", "TIERRA", "MALO", 0),
+            new Ficha("/imagenes/pumpkinBomb.png", "BOMBA", "MALO", 0),
+            
+            // fichas rango 2
+            new Ficha("/imagenes/electro.png", "RANGO_2", "MALO", 2),
+            new Ficha("/imagenes/sentinel.png", "RANGO_2", "MALO", 2),
+            new Ficha("/imagenes/sentinel2.png", "RANGO_2", "MALO", 2),
+            new Ficha("/imagenes/viper.png", "RANGO_2", "MALO", 2),
+            new Ficha("/imagenes/leader.png", "RANGO_2", "MALO", 2),
+            new Ficha("/imagenes/sandman.png", "RANGO_2", "MALO", 2),
+            new Ficha("/imagenes/ultron.png", "RANGO_2", "MALO", 2),
+            new Ficha("/imagenes/mrSinister.png", "RANGO_2", "MALO", 2),
+            // Fichas normales:
+            new Ficha("/imagenes/drDoom.png", "NORMAL", "MALO", 10),
+            new Ficha("/imagenes/galactus.png", "NORMAL", "MALO", 9),
+            new Ficha("/imagenes/kingpin.png", "NORMAL", "MALO", 8),
+            new Ficha("/imagenes/magneto.png", "NORMAL", "MALO", 8),
+            new Ficha("/imagenes/apocalypse.png", "NORMAL", "MALO", 7),
+            new Ficha("/imagenes/greengoblin.png", "NORMAL", "MALO", 7),
+            new Ficha("/imagenes/venom.png", "NORMAL", "MALO", 7),
+            new Ficha("/imagenes/bullseye.png", "NORMAL", "MALO", 6),
+            new Ficha("/imagenes/omegaRed.png", "NORMAL", "MALO", 6),
+            new Ficha("/imagenes/onslaught.png", "NORMAL", "MALO", 6),
+            new Ficha("/imagenes/redSkull.png", "NORMAL", "MALO", 6),
+            new Ficha("/imagenes/mystique.png", "NORMAL", "MALO", 5),
+            new Ficha("/imagenes/mysterio.png", "NORMAL", "MALO", 5),
+            new Ficha("/imagenes/drOctopus.png", "NORMAL", "MALO", 5),
+            new Ficha("/imagenes/deadpool.png", "NORMAL", "MALO", 5),
+            new Ficha("/imagenes/abomination.png", "NORMAL", "MALO", 4),
+            new Ficha("/imagenes/thanos.png", "NORMAL", "MALO", 4),
+            new Ficha("/imagenes/blackCat.png", "NORMAL", "MALO", 4),
+            new Ficha("/imagenes/sabretooth.png", "NORMAL", "MALO", 4),
+            new Ficha("/imagenes/juggernaut.png", "NORMAL", "MALO", 3),
+            new Ficha("/imagenes/rhino.png", "NORMAL", "MALO", 3),
+            new Ficha("/imagenes/carnage.png", "NORMAL", "MALO", 3),
+            new Ficha("/imagenes/moleMan.png", "NORMAL", "MALO", 3),
+            new Ficha("/imagenes/lizard.png", "NORMAL", "MALO", 3),
+            new Ficha("/imagenes/blackWidowVillain.png", "NORMAL", "MALO", 1)
+        };
+    }
 }

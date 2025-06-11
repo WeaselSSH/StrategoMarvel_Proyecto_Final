@@ -7,7 +7,7 @@ import java.util.Random;
 
 public class FrmPartida extends javax.swing.JFrame {
 
-    private Ficha fichasBuenos[] = DatosGlobales.fichasBuenos();
+    private Ficha fichasBuenos[] = DatosGlobales.fichas();
     private JButton botones[][] = new JButton[10][10];
     private Tablero tablero;
     Random random = new Random();

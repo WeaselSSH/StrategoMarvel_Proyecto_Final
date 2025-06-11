@@ -21,8 +21,10 @@ public class Tablero {
 
     public void inicializar() {
         ocultarBotones();
-        asignarTierraYBombas();
-        asignarFichasBuenos(DatosGlobales.fichasBuenos());
+        asignarTierraYBombas(DatosGlobales.fichas());
+        asignarFichasRestantes(DatosGlobales.fichas(), "BUENO");
+        asignarFichasRestantes(DatosGlobales.fichas(), "MALO");
+
     }
 
     public void ocultarBotones() {
@@ -42,56 +44,70 @@ public class Tablero {
         }
     }
 
-    private void asignarTierraYBombas() {
-        int filaBandera = 9;
-        int columnaBandera = random.nextInt(8) + 1;
-
-        // Colocar bandera (tierra)
-        botones[filaBandera][columnaBandera].setIcon(
-                new ImageIcon(getClass().getResource("/imagenes/heroEarth.png"))
-        );
-
-        // Colocar bombas alrededor
-        botones[filaBandera][columnaBandera + 1].setIcon(
-                new ImageIcon(getClass().getResource("/imagenes/novaBlast.png"))
-        );
-        botones[filaBandera][columnaBandera - 1].setIcon(
-                new ImageIcon(getClass().getResource("/imagenes/novaBlast.png"))
-        );
-        botones[filaBandera - 1][columnaBandera].setIcon(
-                new ImageIcon(getClass().getResource("/imagenes/novaBlast.png"))
-        );
-
-        // Colocar 3 bombas restantes en filas 8 y 9
-        int fichasRestantes = 3;
-        int[] filasPermitidas = {8, 9};
-
-        for (int i = 0; i < fichasRestantes;) {
-            int fila = filasPermitidas[random.nextInt(filasPermitidas.length)];
-            int columna = random.nextInt(10);
-
-            if (botones[fila][columna].getIcon() == null) {
+    private void asignarTierraYBombas(Ficha fichas[]) {
+        for (Ficha ficha : DatosGlobales.fichas()) {
+            if (ficha.getTipo().equals("TIERRA")) {
+                int fila = ficha.getBando().equals("BUENO") ? 9 : 0;
+                int columna = random.nextInt(8) + 1;
                 botones[fila][columna].setIcon(
-                        new ImageIcon(getClass().getResource("/imagenes/novaBlast.png"))
-                );
-                i++;
+                        new ImageIcon(getClass().getResource(ficha.getRutaImagen())));
+
+                asignarBombas(columna, fila, ficha.getBando());
+                asignarBombasRestantes(ficha.getBando());
             }
         }
     }
 
-    private void asignarFichasBuenos(Ficha fichas[]) {
+    private void asignarBombas(int columna, int fila, String bando) {
+        String rutaBomba = bando.equals("BUENO")
+                ? "/imagenes/novaBlast.png"
+                : "/imagenes/pumpkinBomb.png";
 
-        //se colocan las rango 2
-        for (Ficha ficha : fichas) {
-            if (ficha.getTipo().equals("RANGO_2")) {
-                colocarFicha(ficha, new int[]{6, 7});
-            }
+        botones[fila][columna - 1].setIcon(
+                new ImageIcon(getClass().getResource(rutaBomba)));
+        botones[fila][columna + 1].setIcon(
+                new ImageIcon(getClass().getResource(rutaBomba)));
+
+        if (bando.equalsIgnoreCase("BUENO")) {
+            botones[fila - 1][columna].setIcon(
+                    new ImageIcon(getClass().getResource(rutaBomba)));
+        } else {
+            botones[fila + 1][columna].setIcon(
+                    new ImageIcon(getClass().getResource(rutaBomba)));
         }
 
-        //luego todas las demas
+    }
+
+    private void asignarBombasRestantes(String bando) {
+        String rutaBomba = bando.equals("BUENO")
+                ? "/imagenes/novaBlast.png"
+                : "/imagenes/pumpkinBomb.png";
+
+        int filasDisponibles[] = bando.equals("BUENO") ? new int[]{8, 9} : new int[]{0, 1};
+
+        int bombasColocadas = 0;
+        while (bombasColocadas < 3) {
+            int fila = filasDisponibles[random.nextInt(filasDisponibles.length)];
+            int columna = random.nextInt(10);
+
+            if (botones[fila][columna].getIcon() == null) {
+                botones[fila][columna].setIcon(new ImageIcon(getClass().getResource(rutaBomba)));
+                bombasColocadas++;
+            }
+        }
+    }
+
+    private void asignarFichasRestantes(Ficha[] fichas, String bando) {
+        int filasRango2[] = bando.equals("BUENO") ? new int[]{6, 7} : new int[]{2, 3};
+        int filasNormales[] = bando.equals("BUENO") ? new int[]{6, 7, 8, 9} : new int[]{0, 1, 2, 3};
+
         for (Ficha ficha : fichas) {
-            if (ficha.getTipo().equals("NORMAL")) {
-                colocarFicha(ficha, new int[]{6, 7, 8, 9});
+            if (ficha.getBando().equalsIgnoreCase(bando)) {
+                if (ficha.getTipo().equals("RANGO_2")) {
+                    colocarFicha(ficha, filasRango2);
+                } else if (ficha.getTipo().equals("NORMAL")) {
+                    colocarFicha(ficha, filasNormales);
+                }
             }
         }
     }
@@ -110,6 +126,20 @@ public class Tablero {
                 colocado = true;
             }
         }
+    }
+
+    private Ficha obtenerFicha(String rutaImagen) {
+        Ficha[] fichas = DatosGlobales.fichas();
+        for (Ficha ficha : fichas) {
+            if (rutaImagen.contains(ficha.getRutaImagen())) {
+                return ficha;
+            }
+        }
+        return null;
+    }
+
+    private boolean posicionValida(int fila, int columna) {
+        return fila >= 0 && fila < 10 && columna >= 0 && columna < 10;
     }
 
     public void botonClick(int fila, int columna) {
@@ -178,19 +208,4 @@ public class Tablero {
         }
     }
 
-    private Ficha obtenerFicha(String rutaImagen) {
-        Ficha[] fichas = DatosGlobales.fichasBuenos();
-        for (Ficha ficha : fichas) {
-            if (rutaImagen.contains(ficha.getRutaImagen())) {
-                return ficha;
-            }
-        }
-        return null;
-    }
-
-    private boolean posicionValida(int fila, int columna) {
-        return fila >= 0 && fila < 10 && columna >= 0 && columna < 10;
-    }
-    
-    
 }

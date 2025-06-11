@@ -4,12 +4,14 @@ public class DatosGlobales {
 
     public static ListaJugadores listaJugadores = new ListaJugadores();
 
-    public static Ficha[] fichasBuenos() {
+    public static Ficha[] fichas() {
         return new Ficha[]{
             //tierra y bombas
             new Ficha("/imagenes/heroEarth.png", "TIERRA", "BUENO", 0),
             new Ficha("/imagenes/novaBlast.png", "BOMBA", "BUENO", 0),
-            
+            //tierra y bombas malos
+            new Ficha("/imagenes/villainEarth.png", "TIERRA", "MALO", 0),
+            new Ficha("/imagenes/pumpkinBomb.png", "BOMBA", "MALO", 0),
             // fichas rango 2
             new Ficha("/imagenes/gambit.png", "RANGO_2", "BUENO", 2),
             new Ficha("/imagenes/spidergirl.png", "RANGO_2", "BUENO", 2),
@@ -44,17 +46,8 @@ public class DatosGlobales {
             new Ficha("/imagenes/giantMan.png", "NORMAL", "BUENO", 3),
             new Ficha("/imagenes/beast.png", "NORMAL", "BUENO", 3),
             new Ficha("/imagenes/colossus.png", "NORMAL", "BUENO", 3),
-            new Ficha("/imagenes/blackWidow.png", "NORMAL", "BUENO", 1)
-        };
-    }
-    
-    public static Ficha[] fichasMalos() {
-        return new Ficha[]{
-            //tierra y bombas
-            new Ficha("/imagenes/villainEarth.png", "TIERRA", "MALO", 0),
-            new Ficha("/imagenes/pumpkinBomb.png", "BOMBA", "MALO", 0),
-            
-            // fichas rango 2
+            new Ficha("/imagenes/blackWidow.png", "NORMAL", "BUENO", 1),
+            // fichas rango 2 malos
             new Ficha("/imagenes/electro.png", "RANGO_2", "MALO", 2),
             new Ficha("/imagenes/sentinel.png", "RANGO_2", "MALO", 2),
             new Ficha("/imagenes/sentinel2.png", "RANGO_2", "MALO", 2),
@@ -63,7 +56,7 @@ public class DatosGlobales {
             new Ficha("/imagenes/sandman.png", "RANGO_2", "MALO", 2),
             new Ficha("/imagenes/ultron.png", "RANGO_2", "MALO", 2),
             new Ficha("/imagenes/mrSinister.png", "RANGO_2", "MALO", 2),
-            // Fichas normales:
+            // Fichas normales malos:
             new Ficha("/imagenes/drDoom.png", "NORMAL", "MALO", 10),
             new Ficha("/imagenes/galactus.png", "NORMAL", "MALO", 9),
             new Ficha("/imagenes/kingpin.png", "NORMAL", "MALO", 8),

@@ -12,6 +12,16 @@ public class FrmPartida extends javax.swing.JFrame {
     private Tablero tablero;
     Random random = new Random();
     
+    private JButton casillaInicio;
+    //Coordenadas para efectuar el movimiento
+    private int filaInicio;
+    private int columnaInicio;
+    private int filaFinal;
+    private int columnaFinal;
+    //------------------
+    private JButton casillaFinal;
+    
+    
     //JButton que servirá para guardar registro de la casilla seleccionada referente a movimiento
     JButton casillaSeleccionada = null;
 
@@ -32,7 +42,7 @@ public class FrmPartida extends javax.swing.JFrame {
                 //Listener que verifica si se le ha hecho click al boton
                 botones[i][j].addActionListener(e -> {
                     tablero.botonClick(fila, columna);
-                    tablero.referenciaBoton(fila, columna);
+                    //tablero.referenciaBoton(fila, columna);
                     
                 });
                 
@@ -41,7 +51,35 @@ public class FrmPartida extends javax.swing.JFrame {
                     if(casillaSeleccionada == null){
                         if(tablero.fichaOcupada(fila,columna)){
                             casillaSeleccionada = botones[fila][columna];
+                            //Aqui se establece la posicion de casilla de inicio para metodo movimiento
+                            
+                            filaInicio=fila;
+                            columnaInicio= columna;
+                        }else{
+                            //Aqui se establece la posicion de casilla para destino en metodo de movimiento
+                            //O en realidad no hago mucho
                         }
+                    }else{
+                        //Caso cuando selecciono ficha y ya tengo algo guardado
+                        //Obtengo las coordenadas de casilla, que vendria a ser casilla de destino
+                        
+                        filaFinal= fila;
+                        columnaFinal=columna;
+                        //efectua el metodo de movimiento
+                        System.out.println("Entro al proceso de mover ficha");
+                        
+                        
+                        ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                        //String rutaImagenInicial = imagenInicial.getDescription();
+                        botones[filaFinal][columnaFinal].setIcon(imagenInicial);
+                        botones[filaInicio][columnaInicio].setIcon(null);
+                        
+                        //Limpia la casilla seleccionada
+                        filaInicio=0;
+                        columnaInicio=0;
+                        filaFinal=0;
+                        columnaFinal=0;
+                        casillaSeleccionada=null;
                     }
                 });
                 

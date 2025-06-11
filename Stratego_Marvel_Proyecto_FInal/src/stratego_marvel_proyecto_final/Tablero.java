@@ -135,7 +135,7 @@ public class Tablero {
         Border bordeActual = botones[fila][columna].getBorder();
         
         agregarQuitarBorde(fila, columna);
-        movimientoFicha(fila, columna);
+        //movimientoFicha(fila, columna);
     }
 
     private void agregarQuitarBorde(int fila, int columna) {
@@ -147,7 +147,7 @@ public class Tablero {
             return;
         }
 
-        quitarTodosLosBordes();//?
+        quitarTodosLosBordes();
 
         //Obtiene información si de casualidad hay una ficha ubicada en la ficha donde se acaba de hacer click
         ImageIcon imagen = (ImageIcon) botones[fila][columna].getIcon();
@@ -232,6 +232,7 @@ public class Tablero {
         return fila >= 0 && fila < 10 && columna >= 0 && columna < 10;
     }
     
+    /*
     private void movimientoFicha(int fila, int columna){
                 JButton fichaMovimiento= referenciaBoton(fila, columna);
         if(fichaMovimiento.getIcon()!= null){
@@ -241,6 +242,7 @@ public class Tablero {
             botones[fila][columna].setIcon(null);
         }
     }
+*/
 
     
     //Este metodo servirá para referenciar al posicion del boton que se ha presionado
@@ -249,7 +251,7 @@ public class Tablero {
         return referenceBoton;
     }
     
-    public void moverFicha(JButton CasillaOrigen, JButton CasillaDestino, int f, int c){
+    public void moverFicha(JButton casillaInicio, JButton FinalCasilla){
        
     }
     

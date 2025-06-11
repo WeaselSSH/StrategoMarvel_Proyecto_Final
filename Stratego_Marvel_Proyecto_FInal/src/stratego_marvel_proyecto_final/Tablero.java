@@ -21,10 +21,10 @@ public class Tablero {
     
     //Metodo que brindara informacion si la ficha se encuentra ocupada
     public boolean fichaOcupada(int fila, int columna){
-        if(botones[fila][columna] != null){
-            return true;
+        if(botones[fila][columna].getIcon() == null){
+            return false;
         }
-        return false;
+        return true;
     }
     
     private boolean fichaDisponible = false; //Variable que dara luz verde para efectuarse el movimiento
@@ -251,8 +251,6 @@ public class Tablero {
         return referenceBoton;
     }
     
-    public void moverFicha(JButton casillaInicio, JButton FinalCasilla){
-       
-    }
+
     
 }

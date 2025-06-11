@@ -11,6 +11,9 @@ public class FrmPartida extends javax.swing.JFrame {
     private JButton botones[][] = new JButton[10][10];
     private Tablero tablero;
     Random random = new Random();
+    
+    //JButton que servirá para guardar registro de la casilla seleccionada referente a movimiento
+    JButton casillaSeleccionada = null;
 
     public FrmPartida() {
         initComponents();
@@ -26,9 +29,22 @@ public class FrmPartida extends javax.swing.JFrame {
                 int fila = i;
                 int columna = j;
 
+                //Listener que verifica si se le ha hecho click al boton
                 botones[i][j].addActionListener(e -> {
                     tablero.botonClick(fila, columna);
+                    tablero.referenciaBoton(fila, columna);
+                    
                 });
+                
+                //Listener de movimiento
+                botones[i][j].addActionListener(e ->{
+                    if(casillaSeleccionada == null){
+                        if(tablero.fichaOcupada(fila,columna)){
+                            casillaSeleccionada = botones[fila][columna];
+                        }
+                    }
+                });
+                
                 panelTablero.add(botones[i][j]);
             }
         }

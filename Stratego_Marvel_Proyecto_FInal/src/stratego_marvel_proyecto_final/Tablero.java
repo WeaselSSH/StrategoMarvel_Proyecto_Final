@@ -217,7 +217,7 @@ public class Tablero {
     }
 
     //Investiga que tipo de ficha es 
-    private Ficha obtenerFicha(String rutaImagen) {
+    public Ficha obtenerFicha(String rutaImagen) {
         Ficha[] fichas = DatosGlobales.fichasBuenos();
         for (Ficha ficha : fichas) {
             if (rutaImagen.contains(ficha.getRutaImagen())) {

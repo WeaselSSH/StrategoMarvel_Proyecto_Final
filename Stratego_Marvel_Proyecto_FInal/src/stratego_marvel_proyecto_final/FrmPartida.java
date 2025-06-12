@@ -18,12 +18,17 @@ public class FrmPartida extends javax.swing.JFrame {
     private int columnaInicio;
     private int filaFinal;
     private int columnaFinal;
+    private int filaInicialProvisional;
+    private int columnaProvisional;
+    
     //------------------
     private JButton casillaFinal;
     
     
     //JButton que servirá para guardar registro de la casilla seleccionada referente a movimiento
     JButton casillaSeleccionada = null;
+    Ficha extractor;
+    
 
     public FrmPartida() {
         initComponents();
@@ -51,14 +56,15 @@ public class FrmPartida extends javax.swing.JFrame {
                     if(casillaSeleccionada == null){
                         //Caso en el que no haya ninguna ficha seleccionada con anterioridad
                         if(tablero.fichaOcupada(fila,columna)){
-                            //La logica de verificacion se desarrolla a partir del click 2
-                            
+                            System.out.println("Obtiene info de click 1");
                             //Indica que si hay una casilla seleccionada
                             casillaSeleccionada = botones[fila][columna];
                             
                             //Posicion de la ficha seleccionada 
                             filaInicio=fila;
                             columnaInicio= columna;
+                            filaInicialProvisional=fila;
+                            columnaProvisional=columna;
                         }else{
                             //No se recoge nada
                         }
@@ -69,59 +75,125 @@ public class FrmPartida extends javax.swing.JFrame {
                         String rangoFichaSeleccionada="";
                         String rangoFichaOcupada="";
                         
-                        //Comprobar si hay una ficha en la casilla hacia donde se va a mover
-                        if(tablero.fichaOcupada(fila, columna)){//Caso en que si haya una ficha 
-                            System.out.println("Entra a campo de ficha Ocupada");
-                            //Proceso para conocer el bando de la ficha seleccionada
-                            ImageIcon tipofichaAMover = (ImageIcon) botones[fila][columna].getIcon();
-                            ImageIcon tipofichaSelecc= (ImageIcon) casillaSeleccionada.getIcon();
-                            String rutaIconoFichaAMover = tipofichaAMover.getDescription();
-                            String rutaIconoFichaSelecc = tipofichaSelecc.getDescription();
-                            
-                            //Proceso para conocer el bando de la ficha que ocupa el lugar de la casilla a donde se va a mover
-                            for(Ficha infoFicha: DatosGlobales.fichasBuenos()){
-                                if(infoFicha.equals(rutaIconoFichaAMover)){
-                                    rangoFichaSeleccionada=infoFicha.getBando();
-                                }
-                            }
-                            
-                            //Mismo proceso pero para ficha ya seleccionada
-                            for(Ficha infoFicha: DatosGlobales.fichasBuenos()){
-                                if(infoFicha.equals(rutaIconoFichaSelecc)){
-                                    rangoFichaOcupada=infoFicha.getBando();
-                                }
-                            }
-                            
-                            //Comprueba caso en que sean del mismo bando -No se efectua movimiento
-                            if(rangoFichaSeleccionada.equals(rangoFichaOcupada)){
-                                System.out.println("No se efectua movimiento");
-                                rangoFichaSeleccionada="";
-                                rangoFichaOcupada=""; //Reseteo del registro de rangos
-                                casillaSeleccionada= null;
-                            }//Aqui se haria un else que inicializaria el procedimiento de combate
-                             
-                        }else{
-                            //Caso en donde casilla no esta ocupada
-                            filaFinal= fila;
-                            columnaFinal=columna;
-                            //efectua el metodo de movimiento
-                            System.out.println("Entro al proceso de mover ficha");
-
-
-                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
-                            //String rutaImagenInicial = imagenInicial.getDescription();
-                            botones[filaFinal][columnaFinal].setIcon(imagenInicial);
-                            botones[filaInicio][columnaInicio].setIcon(null);
-
-                            //Limpia la casilla seleccionada
-                            filaInicio=0;
-                            columnaInicio=0;
-                            filaFinal=0;
-                            columnaFinal=0;
-                            casillaSeleccionada=null;
-                        }
+                        //Obtener informacion de ficha ya seleccionada
                         
-                    
+                        
+                        ImageIcon tipofichaSelecc= (ImageIcon) casillaSeleccionada.getIcon();
+                        
+                        if (tipofichaSelecc == null) {
+                        return;
+                        }
+        
+                        
+                        int rangoFichaSelecc=0;
+                        String rutaIconoFichaSelecc = tipofichaSelecc.getDescription();
+                        System.out.println(rutaIconoFichaSelecc);
+                        
+                        Ficha selected = tablero.obtenerFicha(rutaIconoFichaSelecc);
+                        rangoFichaSelecc= selected.getRango();
+                        
+                        
+                        
+                        
+                        //Obtencion del rango de la ficha ya seleccionado
+                        
+                        /*
+                        for(Ficha infoFicha: fichasBuenos){
+                            System.out.println("Entra a ciclo");
+                            if(rutaIconoFichaSelecc.equals(infoFicha)){
+                                casillaSeleccionada.putClientProperty("Ficha", infoFicha);
+                                Ficha selectedFicha = (Ficha) casillaSeleccionada.getClientProperty("Ficha");
+                                rangoFichaSelecc= selectedFicha.getRango();
+                                System.out.println("Se obtuvo rangooooooo");
+                                System.out.println(rangoFichaSelecc);
+                            }
+                        }
+                        */
+                        
+                        /*
+                        for(Ficha infoFicha: DatosGlobales.fichasBuenos()){
+                            String routeImage= infoFicha.getRutaImagen();
+                            if(routeImage.equals(rutaIconoFichaSelecc)){
+                                rangoFichaSelecc= infoFicha.getRango();
+                                System.out.println("Se obtuvo rangooooooooooo");
+                            }
+                        }
+                        */
+                        System.out.println("Se obtuvo el rango");
+                        System.out.println(rangoFichaSelecc);
+                        
+                        if(rangoFichaSelecc ==1 || rangoFichaSelecc == 3 || rangoFichaSelecc == 4 ||
+                                rangoFichaSelecc == 5 || rangoFichaSelecc == 6 || rangoFichaSelecc == 7 || rangoFichaSelecc == 8 || rangoFichaSelecc == 9){
+                            
+                            System.out.println("Entra al comparador de rango");
+                            //Compara si se esta moviento solamente una casilla
+                            int filaFinalComparativa=filaInicialProvisional-1;
+                            int filaComp=fila;
+                            int columnaComp=columna;
+                            if(filaComp!=filaFinalComparativa || columnaComp !=columnaProvisional){
+                                System.out.println("No se ejecuta el movimiento, se sale del rango destinado");
+                                filaInicialProvisional=0;
+                                rangoFichaSelecc=0;
+                            }else{
+                                //Comprobar si hay una ficha en la casilla hacia donde se va a mover
+                                if(tablero.fichaOcupada(fila, columna)){//Caso en que si haya una ficha 
+                                    System.out.println("Entra a campo de ficha Ocupada");
+                                    //Proceso para conocer el bando de la ficha seleccionada
+                                    ImageIcon tipofichaAMover = (ImageIcon) botones[fila][columna].getIcon();
+                                    String rutaIconoFichaAMover = tipofichaAMover.getDescription();
+
+
+                                    //Proceso para conocer el bando de la ficha que ocupa el lugar de la casilla a donde se va a mover
+                                    for(Ficha infoFicha: DatosGlobales.fichasBuenos()){
+                                        if(infoFicha.equals(rutaIconoFichaAMover)){
+                                            rangoFichaSeleccionada=infoFicha.getBando();
+                                        }
+                                    }
+
+                                    //Mismo proceso pero para ficha ya seleccionada
+                                    for(Ficha infoFicha: DatosGlobales.fichasBuenos()){
+                                        if(infoFicha.equals(rutaIconoFichaSelecc)){
+                                            rangoFichaOcupada=infoFicha.getBando();
+                                        }
+                                    }
+
+                                    //Comprueba caso en que sean del mismo bando -No se efectua movimiento
+                                    if(rangoFichaSeleccionada.equals(rangoFichaOcupada)){
+                                        System.out.println("No se efectua movimiento");
+                                        rangoFichaSeleccionada="";
+                                        rangoFichaOcupada=""; //Reseteo del registro de rangos
+                                        casillaSeleccionada= null;
+                                        rangoFichaSelecc=0;
+                                    }//Aqui se haria un else que inicializaria el procedimiento de combate
+
+                                }else{
+                                    //Caso en donde casilla no esta ocupada
+                                    filaFinal= fila;
+                                    columnaFinal=columna;
+                                    //efectua el metodo de movimiento
+                                    System.out.println("Entro al proceso de mover ficha");
+
+
+                                    ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                    //String rutaImagenInicial = imagenInicial.getDescription();
+                                    botones[filaFinal][columnaFinal].setIcon(imagenInicial);
+                                    botones[filaInicio][columnaInicio].setIcon(null);
+
+                                    //Limpia la casilla seleccionada
+                                    filaInicio=0;
+                                    columnaInicio=0;
+                                    filaFinal=0;
+                                    columnaFinal=0;
+                                    casillaSeleccionada=null;
+                                    rangoFichaSelecc=0;
+                                }
+                            }
+                            
+                            
+                        }else{
+                            System.out.println("Se efectua un movimiento aun mayor mas libre");
+                            rangoFichaSelecc=0;
+                        }
                     }
                 });
                 

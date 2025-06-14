@@ -11,9 +11,9 @@ public class Tablero {
 
     Random random = new Random();
     private JButton[][] botones = new JButton[10][10];
-    private int fila;
     Border bordeAzul = new LineBorder(Color.BLUE, 3);
-    private boolean[][] bordeActivo = new boolean[10][10];
+    Border bordeRojo = new LineBorder(Color.RED, 3);
+    private final boolean[][] bordeActivo = new boolean[10][10];
 
     public Tablero(JButton[][] botones) {
         this.botones = botones;
@@ -21,30 +21,13 @@ public class Tablero {
 
     public void inicializar() {
         ocultarBotones();
-        asignarTierraYBombas(DatosGlobales.fichas());
+        asignarTierraYBombas();
         asignarFichasRestantes(DatosGlobales.fichas(), "BUENO");
         asignarFichasRestantes(DatosGlobales.fichas(), "MALO");
 
     }
 
-    public void ocultarBotones() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                botones[i][j].setOpaque(false);
-                botones[i][j].setContentAreaFilled(false);
-            }
-        }
-    }
-
-    public void mostrarBotones() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                botones[i][j].setVisible(true);
-            }
-        }
-    }
-
-    private void asignarTierraYBombas(Ficha fichas[]) {
+    private void asignarTierraYBombas() {
         for (Ficha ficha : DatosGlobales.fichas()) {
             if (ficha.getTipo().equals("TIERRA")) {
                 int fila = ficha.getBando().equals("BUENO") ? 9 : 0;
@@ -128,8 +111,132 @@ public class Tablero {
         }
     }
 
+    public void ocultarBotones() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                botones[i][j].setOpaque(false);
+                botones[i][j].setContentAreaFilled(false);
+            }
+        }
+    }
+
+    public void mostrarBotones() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                botones[i][j].setVisible(true);
+            }
+        }
+    }
+
+    public void botonClick(int fila, int columna) {
+        agregarQuitarBorde(fila, columna);
+    }
+
+    private void agregarQuitarBorde(int fil, int col) {
+        if (bordeActivo[fil][col]) {
+            quitarBordes();
+            return;
+        }
+
+        quitarBordes();
+
+        ImageIcon imagen = (ImageIcon) botones[fil][col].getIcon();
+        if (imagen == null) {
+            return;
+        }
+
+        String rutaImagen = imagen.getDescription();
+        Ficha fichaSeleccionada = obtenerFicha(rutaImagen);
+        if (fichaSeleccionada == null) {
+            return;
+        }
+
+        Border borde = fichaSeleccionada.getBando().equals("BUENO") ? bordeAzul : bordeRojo;
+
+        botones[fil][col].setBorder(borde);
+        bordeActivo[fil][col] = true;
+
+        boolean esRango2 = fichaSeleccionada.getTipo().equals("RANGO_2");
+
+        marcarBordes(fil, col, borde, esRango2, fichaSeleccionada.getBando());
+    }
+
+    private void marcarBordes(int fil, int col, Border borde, boolean rango2, String bandoFichaSeleccionada) {
+        int direcciones[][] = {
+            {-1, 0},
+            {1, 0},
+            {0, -1},
+            {0, 1}
+        };
+
+        for (int dir[] : direcciones) {
+            int nuevaFila = fil;
+            int nuevaCol = col;
+
+            if (rango2) {
+                while (true) {
+                    nuevaFila += dir[0];
+                    nuevaCol += dir[1];
+
+                    if (!posicionValida(nuevaFila, nuevaCol)) {
+                        break;
+                    }
+
+                    ImageIcon icono = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
+
+                    if (icono != null) {
+                        Ficha fichaEncontrada = obtenerFicha(icono.getDescription());
+                        if (fichaEncontrada != null) {
+                            if (fichaEncontrada.getBando().equals(bandoFichaSeleccionada)) {
+                                break;
+                            } else {
+                                botones[nuevaFila][nuevaCol].setBorder(borde);
+                                bordeActivo[nuevaFila][nuevaCol] = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    botones[nuevaFila][nuevaCol].setBorder(borde);
+                    bordeActivo[nuevaFila][nuevaCol] = true;
+                }
+            } else {
+                nuevaFila += dir[0];
+                nuevaCol += dir[1];
+
+                if (!posicionValida(nuevaFila, nuevaCol)) {
+                    continue;
+                }
+
+                ImageIcon icono = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
+
+                if (icono != null) {
+                    Ficha fichaEncontrada = obtenerFicha(icono.getDescription());
+                    if (fichaEncontrada != null) {
+                        if (!fichaEncontrada.getBando().equals(bandoFichaSeleccionada)) {
+                            botones[nuevaFila][nuevaCol].setBorder(borde);
+                            bordeActivo[nuevaFila][nuevaCol] = true;
+                        }
+                    }
+                } else {
+                    botones[nuevaFila][nuevaCol].setBorder(borde);
+                    bordeActivo[nuevaFila][nuevaCol] = true;
+                }
+            }
+        }
+    }
+
+    private void quitarBordes() {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                botones[i][j].setBorder(null);
+                bordeActivo[i][j] = false;
+            }
+        }
+    }
+
     private Ficha obtenerFicha(String rutaImagen) {
-        Ficha[] fichas = DatosGlobales.fichas();
+        Ficha fichas[] = DatosGlobales.fichas();
         for (Ficha ficha : fichas) {
             if (rutaImagen.contains(ficha.getRutaImagen())) {
                 return ficha;
@@ -141,71 +248,4 @@ public class Tablero {
     private boolean posicionValida(int fila, int columna) {
         return fila >= 0 && fila < 10 && columna >= 0 && columna < 10;
     }
-
-    public void botonClick(int fila, int columna) {
-        Border bordeActual = botones[fila][columna].getBorder();
-        agregarQuitarBorde(fila, columna);
-    }
-
-    private void agregarQuitarBorde(int fila, int columna) {
-
-        if (bordeActivo[fila][columna]) {
-            quitarTodosLosBordes();
-            return;
-        }
-
-        quitarTodosLosBordes();
-
-        ImageIcon imagen = (ImageIcon) botones[fila][columna].getIcon();
-        if (imagen == null) {
-            return;
-        }
-
-        String rutaImagen = imagen.getDescription();
-
-        Ficha fichaSeleccionada = obtenerFicha(rutaImagen);
-
-        if (fichaSeleccionada != null && fichaSeleccionada.getBando().equals("BUENO")) {
-            botones[fila][columna].setBorder(bordeAzul);
-            bordeActivo[fila][columna] = true;
-
-            int movimientos[][] = {
-                {-1, 0},
-                {1, 0},
-                {0, -1},
-                {0, 1}
-            };
-
-            for (int movimiento[] : movimientos) {
-                int nuevaFila = fila + movimiento[0];
-                int nuevaColumna = columna + movimiento[1];
-
-                if (posicionValida(nuevaFila, nuevaColumna)) {
-                    ImageIcon imagenAdyacente = (ImageIcon) botones[nuevaFila][nuevaColumna].getIcon();
-                    if (imagenAdyacente == null) {
-                        botones[nuevaFila][nuevaColumna].setBorder(bordeAzul);
-                        bordeActivo[nuevaFila][nuevaColumna] = true;
-                    } else {
-                        String rutaIconoAdyacente = imagenAdyacente.getDescription();
-
-                        Ficha fichaAdyacente = obtenerFicha(rutaIconoAdyacente);
-                        if (fichaAdyacente != null && !fichaAdyacente.getBando().equals("BUENO")) {
-                            botones[nuevaFila][nuevaColumna].setBorder(bordeAzul);
-                            bordeActivo[nuevaFila][nuevaColumna] = true;
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private void quitarTodosLosBordes() {
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                botones[i][j].setBorder(null);
-                bordeActivo[i][j] = false;
-            }
-        }
-    }
-
 }

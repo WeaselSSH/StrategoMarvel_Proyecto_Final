@@ -1,7 +1,6 @@
 package stratego_marvel_proyecto_final;
 
 import javax.swing.table.DefaultTableModel;
-import java.util.ArrayList;
 
 public class FrmRanking extends javax.swing.JFrame {
 

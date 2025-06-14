@@ -33,6 +33,7 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         hostextF = new javax.swing.JTextField();
         jugadorescont = new javax.swing.JComboBox<>();
         regresarButon = new javax.swing.JButton();
+        btnJugar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,6 +65,13 @@ public class SeleccionJugadores extends javax.swing.JFrame {
             }
         });
 
+        btnJugar.setText("jugar");
+        btnJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnJugarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,6 +98,10 @@ public class SeleccionJugadores extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(regresarButon)))
                 .addContainerGap(54, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(216, 216, 216)
+                .addComponent(btnJugar)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,7 +116,9 @@ public class SeleccionJugadores extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(hostextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jugadorescont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(btnJugar)
+                .addGap(48, 48, 48)
                 .addComponent(regresarButon)
                 .addGap(16, 16, 16))
         );
@@ -122,6 +136,12 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         new FrmMenuPrincipal().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_regresarButonActionPerformed
+
+    private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
+        // TODO add your handling code here:
+        new FrmPartida().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnJugarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,6 +180,7 @@ public class SeleccionJugadores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnJugar;
     private javax.swing.JTextField hostextF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

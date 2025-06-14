@@ -1,9 +1,5 @@
 package stratego_marvel_proyecto_final;
 
-
-import javax.swing.JOptionPane;
-
-
 public class FrmMenuInicial extends javax.swing.JFrame {
 
     public FrmMenuInicial() {

@@ -24,7 +24,6 @@ public class Tablero {
         asignarTierraYBombas();
         asignarFichasRestantes(DatosGlobales.fichas(), "BUENO");
         asignarFichasRestantes(DatosGlobales.fichas(), "MALO");
-
     }
 
     private void asignarTierraYBombas() {
@@ -32,6 +31,7 @@ public class Tablero {
             if (ficha.getTipo().equals("TIERRA")) {
                 int fila = ficha.getBando().equals("BUENO") ? 9 : 0;
                 int columna = random.nextInt(8) + 1;
+
                 botones[fila][columna].setIcon(
                         new ImageIcon(getClass().getResource(ficha.getRutaImagen())));
 
@@ -58,7 +58,6 @@ public class Tablero {
             botones[fila + 1][columna].setIcon(
                     new ImageIcon(getClass().getResource(rutaBomba)));
         }
-
     }
 
     private void asignarBombasRestantes(String bando) {
@@ -66,7 +65,7 @@ public class Tablero {
                 ? "/imagenes/novaBlast.png"
                 : "/imagenes/pumpkinBomb.png";
 
-        int filasDisponibles[] = bando.equals("BUENO") ? new int[]{8, 9} : new int[]{0, 1};
+        int[] filasDisponibles = bando.equals("BUENO") ? new int[]{8, 9} : new int[]{0, 1};
 
         int bombasColocadas = 0;
         while (bombasColocadas < 3) {
@@ -81,8 +80,8 @@ public class Tablero {
     }
 
     private void asignarFichasRestantes(Ficha[] fichas, String bando) {
-        int filasRango2[] = bando.equals("BUENO") ? new int[]{6, 7} : new int[]{2, 3};
-        int filasNormales[] = bando.equals("BUENO") ? new int[]{6, 7, 8, 9} : new int[]{0, 1, 2, 3};
+        int[] filasRango2 = bando.equals("BUENO") ? new int[]{6, 7} : new int[]{2, 3};
+        int[] filasNormales = bando.equals("BUENO") ? new int[]{6, 7, 8, 9} : new int[]{0, 1, 2, 3};
 
         for (Ficha ficha : fichas) {
             if (ficha.getBando().equalsIgnoreCase(bando)) {
@@ -95,7 +94,7 @@ public class Tablero {
         }
     }
 
-    private void colocarFicha(Ficha ficha, int filasPosibles[]) {
+    private void colocarFicha(Ficha ficha, int[] filasPosibles) {
         boolean colocado = false;
 
         while (!colocado) {
@@ -152,24 +151,22 @@ public class Tablero {
         }
 
         Border borde = fichaSeleccionada.getBando().equals("BUENO") ? bordeAzul : bordeRojo;
-
         botones[fil][col].setBorder(borde);
         bordeActivo[fil][col] = true;
 
         boolean esRango2 = fichaSeleccionada.getTipo().equals("RANGO_2");
-
         marcarBordes(fil, col, borde, esRango2, fichaSeleccionada.getBando());
     }
 
     private void marcarBordes(int fil, int col, Border borde, boolean rango2, String bandoFichaSeleccionada) {
-        int direcciones[][] = {
+        int[][] direcciones = {
             {-1, 0},
             {1, 0},
             {0, -1},
             {0, 1}
         };
 
-        for (int dir[] : direcciones) {
+        for (int[] dir : direcciones) {
             int nuevaFila = fil;
             int nuevaCol = col;
 
@@ -212,11 +209,9 @@ public class Tablero {
 
                 if (icono != null) {
                     Ficha fichaEncontrada = obtenerFicha(icono.getDescription());
-                    if (fichaEncontrada != null) {
-                        if (!fichaEncontrada.getBando().equals(bandoFichaSeleccionada)) {
-                            botones[nuevaFila][nuevaCol].setBorder(borde);
-                            bordeActivo[nuevaFila][nuevaCol] = true;
-                        }
+                    if (fichaEncontrada != null && !fichaEncontrada.getBando().equals(bandoFichaSeleccionada)) {
+                        botones[nuevaFila][nuevaCol].setBorder(borde);
+                        bordeActivo[nuevaFila][nuevaCol] = true;
                     }
                 } else {
                     botones[nuevaFila][nuevaCol].setBorder(borde);
@@ -236,7 +231,7 @@ public class Tablero {
     }
 
     private Ficha obtenerFicha(String rutaImagen) {
-        Ficha fichas[] = DatosGlobales.fichas();
+        Ficha[] fichas = DatosGlobales.fichas();
         for (Ficha ficha : fichas) {
             if (rutaImagen.contains(ficha.getRutaImagen())) {
                 return ficha;

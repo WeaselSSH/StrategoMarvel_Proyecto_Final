@@ -3,14 +3,13 @@ package stratego_marvel_proyecto_final;
 import java.awt.Color;
 import javax.swing.JPasswordField;
 import javax.swing.text.JTextComponent;
-import javax.swing.JFrame;
 
 public class RegistroInicio {
 
     private Jugador jugador = null;
 
     public void agregarPlaceholder(JTextComponent campo, String placeholder) {
-        Color colorPlaceholder = Color.gray;
+        Color colorPlaceholder = new Color (51,51,51);
         Color colorTexto = Color.black;
 
         char defaultEchoChar = (campo instanceof JPasswordField)

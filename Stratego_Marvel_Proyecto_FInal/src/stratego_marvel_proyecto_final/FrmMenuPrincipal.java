@@ -101,7 +101,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_JugarButtonActionPerformed
 
     private void PerfilButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfilButtonActionPerformed
-        System.out.println("Lleva a la vista del perfil");
         new frmPerfil().setVisible(true);
         this.dispose();
 

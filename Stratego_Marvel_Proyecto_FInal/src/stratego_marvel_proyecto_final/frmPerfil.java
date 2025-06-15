@@ -1,21 +1,22 @@
 package stratego_marvel_proyecto_final;
 
 public class frmPerfil extends javax.swing.JFrame {
+
     private Jugador jugadorHost = DatosGlobales.jugadorHost;
-    
+
     public frmPerfil() {
         initComponents();
         cargarTextos();
     }
-    
-        private void cargarTextos() {
+
+    private void cargarTextos() {
         lblPuntaje.setText("Puntaje: " + DatosGlobales.jugadorHost.getPuntos());
         lblVictorias.setText("Victorias: " + DatosGlobales.jugadorHost.getVictorias());
         lblDerrotas.setText("Derrotas: " + DatosGlobales.jugadorHost.getDerrotas());
         lblVecesHeroe.setText("Veces como héroe: " + DatosGlobales.jugadorHost.getHeroes());
         lblVecesVillano.setText("Veces como villano: " + DatosGlobales.jugadorHost.getVillanos());
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -48,6 +49,11 @@ public class frmPerfil extends javax.swing.JFrame {
         btnContrasenia.setForeground(new java.awt.Color(255, 255, 255));
         btnContrasenia.setText("CAMBIAR CONTRASEñA");
         btnContrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        btnContrasenia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContraseniaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 180, 40));
 
         btnBorrarCuenta.setBackground(new java.awt.Color(24, 78, 230));
@@ -124,6 +130,31 @@ public class frmPerfil extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContraseniaActionPerformed
+        // TODO add your handling code here:
+        Jugador j = DatosGlobales.jugadorHost;
+
+        String actual = javax.swing.JOptionPane.showInputDialog(this, "Ingresa tu contraseña actual:");
+        if (!actual.equals(j.getContrasena())) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Contraseña actual incorrecta.");
+            return;
+        }
+
+        String nueva = javax.swing.JOptionPane.showInputDialog(this, "Ingresa tu nueva contraseña:");
+        if (nueva.trim().isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error: La nueva contraseña no puede estar vacía.");
+            return;
+        }
+        
+        if (nueva.length() != 5) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error: La nueva contraseña debe tener exactamente 5 caracteres.");
+            return;
+        }
+
+        j.setContrasena(nueva);
+        javax.swing.JOptionPane.showMessageDialog(this, "Contraseña cambiada exitosamente!");
+    }//GEN-LAST:event_btnContraseniaActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -150,10 +181,7 @@ public class frmPerfil extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
-        
-        
-        
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

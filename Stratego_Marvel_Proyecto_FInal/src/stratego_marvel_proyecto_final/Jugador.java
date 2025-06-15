@@ -46,4 +46,8 @@ public class Jugador {
     public int getDerrotas(){
         return derrotas;
     }
+    
+    public void setContrasena(String nuevaContrasena) {
+        this.contrasena = nuevaContrasena;
+    }
 }

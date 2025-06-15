@@ -24,22 +24,21 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Bangers", 0, 48)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Bangers", 1, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("STRATEGO");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 170, 70));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 180, 70));
 
-        jLabel5.setFont(new java.awt.Font("Bangers", 0, 48)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Bangers", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("MARVEL HEROES");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 260, 40));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 270, 40));
 
-        btnSalir.setBackground(new java.awt.Color(174, 17, 42));
+        btnSalir.setBackground(new java.awt.Color(198, 20, 23));
         btnSalir.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("Salir");
         btnSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        btnSalir.setContentAreaFilled(false);
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
@@ -47,12 +46,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         });
         jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 230, 60));
 
-        btnLogin.setBackground(new java.awt.Color(174, 17, 42));
+        btnLogin.setBackground(new java.awt.Color(198, 20, 23));
         btnLogin.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
         btnLogin.setForeground(new java.awt.Color(255, 255, 255));
         btnLogin.setText("Iniciar Sesión");
         btnLogin.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        btnLogin.setContentAreaFilled(false);
         btnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLoginActionPerformed(evt);
@@ -60,12 +58,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         });
         jPanel1.add(btnLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 180, 230, 60));
 
-        btnCrearPlayer.setBackground(new java.awt.Color(174, 17, 42));
+        btnCrearPlayer.setBackground(new java.awt.Color(198, 20, 23));
         btnCrearPlayer.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
         btnCrearPlayer.setForeground(new java.awt.Color(255, 255, 255));
         btnCrearPlayer.setText("Crear Nuevo Personaje");
         btnCrearPlayer.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        btnCrearPlayer.setContentAreaFilled(false);
         btnCrearPlayer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCrearPlayerActionPerformed(evt);

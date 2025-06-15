@@ -9,10 +9,12 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
     private String modo;
     public static String placeholderUsuario = "Tu nombre de usuario";
     public static String placeholderContrasena = "Tu contraseña";
+    
+    private RegistroInicio registroInicio = new RegistroInicio();
 
     public FrmRegistroInicio(String modo) {
-        initComponents();
         this.modo = modo;
+        initComponents();
 
         if (modo.equals("login")) {
             btnRegistrarInicio.setText("Iniciar sesión");
@@ -26,8 +28,8 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
             btnCancelarRegresar.setText("Cancelar");
         }
 
-        utilidades.agregarPlaceholder(txtUsuario, placeholderUsuario);
-        utilidades.agregarPlaceholder(txtContrasena, placeholderContrasena);
+        registroInicio.agregarPlaceholder(txtUsuario, placeholderUsuario);
+        registroInicio.agregarPlaceholder(txtContrasena, placeholderContrasena);
     }
 
     @SuppressWarnings("unchecked")
@@ -102,9 +104,9 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
         String contrasena = new String(txtContrasena.getPassword()).trim();
 
         if (modo.equals("login")) {
-            utilidades.iniciarSesion(this, usuario, contrasena);
+            registroInicio.iniciarSesion(this, usuario, contrasena);
         } else if (modo.equals("registro")) {
-            utilidades.registrarUsuario(this, usuario, contrasena);
+            registroInicio.registrarUsuario(this, usuario, contrasena);
         }
     }//GEN-LAST:event_btnRegistrarInicioActionPerformed
 

@@ -31,12 +31,12 @@ public class PerfilJugador extends javax.swing.JFrame {
         
         //Aparicion de textos segun el usuario activo
 
-        nametxt.setText(utilidades.jugador.getUsuario());
-        victoriastxt.setText(String.valueOf(utilidades.jugador.getVictorias()));
-        derrotastxt.setText(String.valueOf(utilidades.jugador.getDerrotas()));
-        heroestxt.setText(String.valueOf(utilidades.jugador.getHeroes()));
-        villiantxt.setText(String.valueOf(utilidades.jugador.getVillanos()));
-        puntajetxt.setText(String.valueOf(utilidades.jugador.getPuntos()));
+        nametxt.setText(RegistroInicio.jugador.getUsuario());
+        victoriastxt.setText(String.valueOf(RegistroInicio.jugador.getVictorias()));
+        derrotastxt.setText(String.valueOf(RegistroInicio.jugador.getDerrotas()));
+        heroestxt.setText(String.valueOf(RegistroInicio.jugador.getHeroes()));
+        villiantxt.setText(String.valueOf(RegistroInicio.jugador.getVillanos()));
+        puntajetxt.setText(String.valueOf(RegistroInicio.jugador.getPuntos()));
        
         
         

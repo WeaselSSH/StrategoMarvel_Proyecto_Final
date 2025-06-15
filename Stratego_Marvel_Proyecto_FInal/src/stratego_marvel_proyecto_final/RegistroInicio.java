@@ -5,12 +5,11 @@ import javax.swing.JPasswordField;
 import javax.swing.text.JTextComponent;
 import javax.swing.JFrame;
 
-public class utilidades {
-    
-    //Establecimiento de objeto jugador para poder referenciarlo despues en perfilJugador
-    public static Jugador jugador = null;
+public class RegistroInicio {
 
-    public static void agregarPlaceholder(JTextComponent campo, String placeholder) {
+    private Jugador jugador = null;
+
+    public void agregarPlaceholder(JTextComponent campo, String placeholder) {
         Color colorPlaceholder = Color.gray;
         Color colorTexto = Color.black;
 
@@ -57,10 +56,9 @@ public class utilidades {
         });
     }
 
-    //Métodos de registro e inicio de sesión
-    public static void registrarUsuario(FrmRegistroInicio form, String usuario, String contrasena) {
+    public void registrarUsuario(FrmRegistroInicio form, String usuario, String contrasena) {
 
-        if (utilidades.validarCampos(usuario, FrmRegistroInicio.placeholderUsuario,
+        if (validarCampos(usuario, FrmRegistroInicio.placeholderUsuario,
                 contrasena, FrmRegistroInicio.placeholderContrasena)) {
             javax.swing.JOptionPane.showMessageDialog(null, "Error: Uno de los campos se encuentra vacío.");
             return;
@@ -72,13 +70,13 @@ public class utilidades {
         }
 
         for (int i = 0; i < DatosGlobales.listaJugadores.cantidad(); i++) {
-            Jugador jugador = DatosGlobales.listaJugadores.obtener(i);
-            if (jugador.getUsuario().equals(usuario)) {
+            Jugador jugadorTemp = DatosGlobales.listaJugadores.obtener(i);
+            if (jugadorTemp.getUsuario().equals(usuario)) {
                 javax.swing.JOptionPane.showMessageDialog(null, "Error: Nombre de usuario registrado previamente.");
                 return;
             }
         }
-        
+
         DatosGlobales.listaJugadores.agregar(new Jugador(usuario, contrasena));
         javax.swing.JOptionPane.showMessageDialog(null, "Jugador creado correctamente.");
         FrmMenuInicial menuInicial = new FrmMenuInicial();
@@ -87,25 +85,25 @@ public class utilidades {
         return;
     }
 
-    public static void iniciarSesion(FrmRegistroInicio form, String usuario, String contrasena) {
+    public void iniciarSesion(FrmRegistroInicio form, String usuario, String contrasena) {
 
-        if (utilidades.validarCampos(usuario, FrmRegistroInicio.placeholderUsuario,
+        if (validarCampos(usuario, FrmRegistroInicio.placeholderUsuario,
                 contrasena, FrmRegistroInicio.placeholderContrasena)) {
             javax.swing.JOptionPane.showMessageDialog(null, "Error: Uno de los campos se encuentra vacío.");
             return;
         }
 
         for (int i = 0; i < DatosGlobales.listaJugadores.cantidad(); i++) {
-            jugador = DatosGlobales.listaJugadores.obtener(i);
-            if (jugador.getUsuario().equals(usuario)) {
-                if (jugador.getContrasena().equals(contrasena)) {
+            Jugador jugadorTemp = DatosGlobales.listaJugadores.obtener(i);
+            if (jugadorTemp.getUsuario().equals(usuario)) {
+                if (jugadorTemp.getContrasena().equals(contrasena)) {
                     javax.swing.JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.");
                     FrmMenuPrincipal menuPrincipal = new FrmMenuPrincipal();
                     menuPrincipal.setVisible(true);
                     form.dispose();
-                    System.out.println(jugador);
-                    //Otra vez mencion de jugador para poderse guardar de manera global
-                    jugador= DatosGlobales.listaJugadores.obtener(i);
+                    System.out.println(jugadorTemp);
+                    // Guardar globalmente la referencia al jugador
+                    this.jugador = jugadorTemp;
                     return;
                 }
             }
@@ -114,12 +112,12 @@ public class utilidades {
         javax.swing.JOptionPane.showMessageDialog(null, "Error: usuario o contraseña incorrecta.");
     }
 
-    public static boolean validarCampos(String textoCampo1, String placeholder1, String textoCampo2, String placeholder2) {
+    public boolean validarCampos(String textoCampo1, String placeholder1, String textoCampo2, String placeholder2) {
         return textoCampo1.trim().isEmpty() || textoCampo1.equals(placeholder1)
                 || textoCampo2.trim().isEmpty() || textoCampo2.equals(placeholder2);
     }
-    
-        
-    
-    
+
+    public Jugador getJugador() {
+        return jugador;
+    }
 }

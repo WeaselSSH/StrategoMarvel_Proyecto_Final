@@ -7,6 +7,7 @@ public class Jugador {
     private int puntos;
     private int vecesBueno;
     private int vecesMalo;
+    
     //Creacion de variables de victorias y derrotas
     private int victorias;
     private int derrotas;

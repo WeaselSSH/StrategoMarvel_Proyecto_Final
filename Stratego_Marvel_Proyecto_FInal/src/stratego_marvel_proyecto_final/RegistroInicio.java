@@ -9,7 +9,7 @@ public class RegistroInicio {
     private Jugador jugador = null;
 
     public void agregarPlaceholder(JTextComponent campo, String placeholder) {
-        Color colorPlaceholder = new Color (51,51,51);
+        Color colorPlaceholder = new Color(51, 51, 51);
         Color colorTexto = Color.black;
 
         char defaultEchoChar = (campo instanceof JPasswordField)
@@ -81,7 +81,6 @@ public class RegistroInicio {
         FrmMenuInicial menuInicial = new FrmMenuInicial();
         menuInicial.setVisible(true);
         form.dispose();
-        return;
     }
 
     public void iniciarSesion(FrmRegistroInicio form, String usuario, String contrasena) {
@@ -97,14 +96,13 @@ public class RegistroInicio {
             if (jugadorTemp.getUsuario().equals(usuario)) {
                 if (jugadorTemp.getContrasena().equals(contrasena)) {
                     javax.swing.JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.");
+                    DatosGlobales.jugadorHost = jugadorTemp;
                     FrmMenuPrincipal menuPrincipal = new FrmMenuPrincipal();
                     menuPrincipal.setVisible(true);
                     form.dispose();
-                    System.out.println(jugadorTemp);
-                    // Guardar globalmente la referencia al jugador
-                    this.jugador = jugadorTemp;
                     return;
                 }
+
             }
         }
 

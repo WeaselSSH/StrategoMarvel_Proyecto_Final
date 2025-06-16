@@ -15,8 +15,21 @@ public class Tablero {
     Border bordeRojo = new LineBorder(Color.RED, 3);
     private final boolean[][] bordeActivo = new boolean[10][10];
 
+    private boolean fichaDisponible = false; //Variable que dara luz verde para efectuarse el movimiento
+    
+
     public Tablero(JButton[][] botones) {
         this.botones = botones;
+    }
+    
+    
+    
+    //Metodo que brindara informacion si la ficha se encuentra ocupada
+    public boolean fichaOcupada(int fila, int columna){
+        if(botones[fila][columna].getIcon() == null){
+            return false;
+        }
+        return true;
     }
 
     public void inicializar() {
@@ -230,7 +243,7 @@ public class Tablero {
         }
     }
 
-    private Ficha obtenerFicha(String rutaImagen) {
+    public Ficha obtenerFicha(String rutaImagen) {
         Ficha[] fichas = DatosGlobales.fichas();
         for (Ficha ficha : fichas) {
             if (rutaImagen.contains(ficha.getRutaImagen())) {

@@ -21,6 +21,13 @@ public class FrmPartida extends javax.swing.JFrame {
     private int filaInicialProvisional;
     private int columnaProvisional;
     
+        
+    private int filaFinalComparativa;
+    private int filaFinalComparativa2;
+    private int revisionColumna1;
+    private int revisionColumna2;
+    
+    
     //------------------
     private JButton casillaFinal;
     
@@ -65,6 +72,10 @@ public class FrmPartida extends javax.swing.JFrame {
                             columnaInicio= columna;
                             filaInicialProvisional=fila;
                             columnaProvisional=columna;
+                            filaFinalComparativa=filaInicialProvisional-1;//Mueve hacia delante
+                            filaFinalComparativa2=filaInicialProvisional+1;//Mueve hacia atras
+                            revisionColumna1=columnaProvisional+1;
+                            revisionColumna2=columnaProvisional-1;
                         }else{
                             //No se recoge nada
                         }
@@ -91,34 +102,8 @@ public class FrmPartida extends javax.swing.JFrame {
                         
                         Ficha selected = tablero.obtenerFicha(rutaIconoFichaSelecc);
                         rangoFichaSelecc= selected.getRango();
+
                         
-                        
-                        
-                        
-                        //Obtencion del rango de la ficha ya seleccionado
-                        
-                        /*
-                        for(Ficha infoFicha: fichasBuenos){
-                            System.out.println("Entra a ciclo");
-                            if(rutaIconoFichaSelecc.equals(infoFicha)){
-                                casillaSeleccionada.putClientProperty("Ficha", infoFicha);
-                                Ficha selectedFicha = (Ficha) casillaSeleccionada.getClientProperty("Ficha");
-                                rangoFichaSelecc= selectedFicha.getRango();
-                                System.out.println("Se obtuvo rangooooooo");
-                                System.out.println(rangoFichaSelecc);
-                            }
-                        }
-                        */
-                        
-                        /*
-                        for(Ficha infoFicha: DatosGlobales.fichasBuenos()){
-                            String routeImage= infoFicha.getRutaImagen();
-                            if(routeImage.equals(rutaIconoFichaSelecc)){
-                                rangoFichaSelecc= infoFicha.getRango();
-                                System.out.println("Se obtuvo rangooooooooooo");
-                            }
-                        }
-                        */
                         System.out.println("Se obtuvo el rango");
                         System.out.println(rangoFichaSelecc);
                         
@@ -127,13 +112,26 @@ public class FrmPartida extends javax.swing.JFrame {
                             
                             System.out.println("Entra al comparador de rango");
                             //Compara si se esta moviento solamente una casilla
-                            int filaFinalComparativa=filaInicialProvisional-1;
                             int filaComp=fila;
                             int columnaComp=columna;
-                            if(filaComp!=filaFinalComparativa || columnaComp !=columnaProvisional){
+                            
+                            //Desarrollo de comprobante de movimiento a base de valor absoluto
+                            int diferenciaFila =Math.abs(filaComp -filaInicialProvisional);
+                            int diferenciaColumna = Math.abs(columnaComp - columnaProvisional);
+                            
+                            
+                            //Verificador de que casilla se encuentra para establecer que no se pase
+                            if((diferenciaFila+diferenciaColumna)!=1){
                                 System.out.println("No se ejecuta el movimiento, se sale del rango destinado");
+                                casillaSeleccionada= null;
                                 filaInicialProvisional=0;
+                                filaFinalComparativa=0;
+                                filaFinalComparativa2=0;
                                 rangoFichaSelecc=0;
+                                columnaProvisional=0;
+                                revisionColumna1=0;
+                                revisionColumna2=0;
+
                             }else{
                                 //Comprobar si hay una ficha en la casilla hacia donde se va a mover
                                 if(tablero.fichaOcupada(fila, columna)){//Caso en que si haya una ficha 
@@ -144,14 +142,14 @@ public class FrmPartida extends javax.swing.JFrame {
 
 
                                     //Proceso para conocer el bando de la ficha que ocupa el lugar de la casilla a donde se va a mover
-                                    for(Ficha infoFicha: DatosGlobales.fichasBuenos()){
+                                    for(Ficha infoFicha: DatosGlobales.fichas()){
                                         if(infoFicha.equals(rutaIconoFichaAMover)){
                                             rangoFichaSeleccionada=infoFicha.getBando();
                                         }
                                     }
 
                                     //Mismo proceso pero para ficha ya seleccionada
-                                    for(Ficha infoFicha: DatosGlobales.fichasBuenos()){
+                                    for(Ficha infoFicha: DatosGlobales.fichas()){
                                         if(infoFicha.equals(rutaIconoFichaSelecc)){
                                             rangoFichaOcupada=infoFicha.getBando();
                                         }

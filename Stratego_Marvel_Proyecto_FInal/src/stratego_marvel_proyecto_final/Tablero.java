@@ -256,4 +256,13 @@ public class Tablero {
     private boolean posicionValida(int fila, int columna) {
         return fila >= 0 && fila < 10 && columna >= 0 && columna < 10;
     }
+
+     
+    //Este metodo servirá para referenciar al posicion del boton que se ha presionado
+    public JButton referenciaBoton(int fila, int columna){
+        JButton referenceBoton =botones[fila][columna]; 
+        return referenceBoton;
+    }
+    
+
 }

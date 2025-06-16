@@ -9,7 +9,8 @@ public class Jugador {
     private int vecesMalo;
     private int victorias;
     private int derrotas;
-    
+    private boolean eliminado = false;
+
     public Jugador(String usuario, String contrasena) {
         this.usuario = usuario;
         this.contrasena = contrasena;
@@ -22,32 +23,41 @@ public class Jugador {
     public String getContrasena() {
         return contrasena;
     }
-    
+
     public int getPuntos() {
         return puntos;
     }
-    
+
     public void partidaGanada() {
         this.puntos += 3;
     }
-    
-    public int getHeroes(){
+
+    public int getHeroes() {
         return vecesBueno;
     }
-    
-    public int getVillanos(){
+
+    public int getVillanos() {
         return vecesMalo;
     }
-    
-    public int getVictorias(){
+
+    public int getVictorias() {
         return victorias;
     }
-    
-    public int getDerrotas(){
+
+    public int getDerrotas() {
         return derrotas;
     }
-    
+
+    public boolean getEliminado() {
+        return eliminado;
+    }
+
+    public void setEliminado(boolean eliminado) {
+        this.eliminado = eliminado;
+    }
+
     public void setContrasena(String nuevaContrasena) {
         this.contrasena = nuevaContrasena;
     }
+
 }

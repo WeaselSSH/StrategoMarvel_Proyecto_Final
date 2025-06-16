@@ -93,7 +93,13 @@ public class RegistroInicio {
 
         for (int i = 0; i < DatosGlobales.listaJugadores.cantidad(); i++) {
             Jugador jugadorTemp = DatosGlobales.listaJugadores.obtener(i);
+
             if (jugadorTemp.getUsuario().equals(usuario)) {
+                if (jugadorTemp.getEliminado()) {
+                    javax.swing.JOptionPane.showMessageDialog(null, "Error: Este usuario ha sido eliminado.");
+                    return;
+                }
+
                 if (jugadorTemp.getContrasena().equals(contrasena)) {
                     javax.swing.JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.");
                     DatosGlobales.jugadorHost = jugadorTemp;
@@ -101,12 +107,14 @@ public class RegistroInicio {
                     menuPrincipal.setVisible(true);
                     form.dispose();
                     return;
+                } else {
+                    javax.swing.JOptionPane.showMessageDialog(null, "Error: Contraseña incorrecta.");
+                    return;
                 }
-
             }
         }
 
-        javax.swing.JOptionPane.showMessageDialog(null, "Error: usuario o contraseña incorrecta.");
+        javax.swing.JOptionPane.showMessageDialog(null, "Error: Usuario no encontrado.");
     }
 
     public boolean validarCampos(String textoCampo1, String placeholder1, String textoCampo2, String placeholder2) {

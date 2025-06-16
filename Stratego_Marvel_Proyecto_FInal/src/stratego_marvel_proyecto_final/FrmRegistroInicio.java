@@ -11,6 +11,13 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
     public FrmRegistroInicio(String modo) {
         this.modo = modo;
         initComponents();
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                new FrmMenuInicial().setVisible(true);
+                dispose();
+            }
+        });
         
         registroInicio.agregarPlaceholder(txtUsuario, placeholderUsuario);
         registroInicio.agregarPlaceholder(txtContrasena, placeholderContrasena);
@@ -24,12 +31,6 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
         } else if (modo.equals("registro")) {
             btnRegistrarInicio.setText("Registrarse");
             lblTitulo.setText("CREAR JUGADOR");
-        }
-
-        if (modo.equals("login")) {
-            btnCancelarRegresar.setText("Regresar");
-        } else if (modo.equals("registro")) {
-            btnCancelarRegresar.setText("Cancelar");
         }
     }
 
@@ -45,7 +46,7 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
         btnCancelarRegresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 

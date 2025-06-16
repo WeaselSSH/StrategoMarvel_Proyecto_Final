@@ -8,17 +8,15 @@ public class FrmRanking extends javax.swing.JFrame {
 
     public FrmRanking() {
         initComponents();
-        tblRanking.setBackground(new Color(0, 0, 0, 0));
-        tblRanking.setForeground(Color.WHITE);
-
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-        renderer.setOpaque(false);
-        tblRanking.setDefaultRenderer(Object.class, renderer);
-        tblRanking.setShowGrid(true);
-        tblRanking.setGridColor(Color.WHITE);
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.getViewport().setOpaque(false);
-
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                new FrmUniversoMarvel().setVisible(true);
+                dispose();
+            }
+        });
+        
+        estilizarTabla();
         cargarRanking();
     }
 
@@ -27,26 +25,19 @@ public class FrmRanking extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        btnRegresar = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblRanking = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnRegresar.setBackground(new java.awt.Color(15, 14, 12));
-        btnRegresar.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
-        btnRegresar.setForeground(new java.awt.Color(255, 255, 255));
-        btnRegresar.setText("Regresar");
-        btnRegresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
-        btnRegresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegresarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 580, 100, 50));
+        jLabel5.setFont(new java.awt.Font("Bangers", 1, 48)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("RANKING");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 160, 40));
 
         tblRanking.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
         tblRanking.setModel(new javax.swing.table.DefaultTableModel(
@@ -66,10 +57,10 @@ public class FrmRanking extends javax.swing.JFrame {
         tblRanking.setShowGrid(false);
         jScrollPane1.setViewportView(tblRanking);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 430, 440));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, 430, 440));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundRanking.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 640));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 520, 540));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,20 +72,25 @@ public class FrmRanking extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegresarActionPerformed
-        // TODO add your handling code here:
-        FrmUniversoMarvel universoMarvel = new FrmUniversoMarvel();
-        universoMarvel.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btnRegresarActionPerformed
+    private void estilizarTabla() {
+        tblRanking.setBackground(new Color(0, 0, 0, 0));
+        tblRanking.setForeground(Color.WHITE);
+
+        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
+        renderer.setOpaque(false);
+        tblRanking.setDefaultRenderer(Object.class, renderer);
+        tblRanking.setShowGrid(true);
+        tblRanking.setGridColor(Color.WHITE);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+
+    }
 
     private void cargarRanking() {
         Jugador copia[] = new Jugador[DatosGlobales.listaJugadores.cantidad()];
@@ -158,8 +154,8 @@ public class FrmRanking extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegresar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRanking;

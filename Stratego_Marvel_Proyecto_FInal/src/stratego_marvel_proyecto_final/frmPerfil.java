@@ -6,6 +6,13 @@ public class frmPerfil extends javax.swing.JFrame {
 
     public frmPerfil() {
         initComponents();
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                new FrmMenuPrincipal().setVisible(true);
+                dispose();
+            }
+        });
         cargarTextos();
     }
 
@@ -40,7 +47,7 @@ public class frmPerfil extends javax.swing.JFrame {
         label8.setFont(new java.awt.Font("Imprint MT Shadow", 1, 18)); // NOI18N
         label8.setText("Partidas como Heroe");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -61,6 +68,11 @@ public class frmPerfil extends javax.swing.JFrame {
         btnBorrarCuenta.setForeground(new java.awt.Color(255, 255, 255));
         btnBorrarCuenta.setText("BORRAR CUENTA");
         btnBorrarCuenta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        btnBorrarCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarCuentaActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnBorrarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 180, 40));
 
         jLabel1.setFont(new java.awt.Font("Bangers", 0, 24)); // NOI18N
@@ -132,10 +144,9 @@ public class frmPerfil extends javax.swing.JFrame {
 
     private void btnContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContraseniaActionPerformed
         // TODO add your handling code here:
-        Jugador j = DatosGlobales.jugadorHost;
 
         String actual = javax.swing.JOptionPane.showInputDialog(this, "Ingresa tu contraseña actual:");
-        if (!actual.equals(j.getContrasena())) {
+        if (!actual.equals(jugadorHost.getContrasena())) {
             javax.swing.JOptionPane.showMessageDialog(this, "Contraseña actual incorrecta.");
             return;
         }
@@ -145,15 +156,29 @@ public class frmPerfil extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(this, "Error: La nueva contraseña no puede estar vacía.");
             return;
         }
-        
+
         if (nueva.length() != 5) {
             javax.swing.JOptionPane.showMessageDialog(this, "Error: La nueva contraseña debe tener exactamente 5 caracteres.");
             return;
         }
 
-        j.setContrasena(nueva);
+        jugadorHost.setContrasena(nueva);
         javax.swing.JOptionPane.showMessageDialog(this, "Contraseña cambiada exitosamente!");
     }//GEN-LAST:event_btnContraseniaActionPerformed
+
+    private void btnBorrarCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarCuentaActionPerformed
+        // TODO add your handling code here:
+        String actual = javax.swing.JOptionPane.showInputDialog(this, "Ingresa tu contraseña actual:");
+        if (!actual.equals(jugadorHost.getContrasena())) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Contraseña actual incorrecta.");
+        } else {
+            DatosGlobales.jugadorHost.setEliminado(true);
+            javax.swing.JOptionPane.showMessageDialog(null, "Cuenta borrada exitosamente.");
+            FrmMenuInicial menuInicial = new FrmMenuInicial();
+            menuInicial.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnBorrarCuentaActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

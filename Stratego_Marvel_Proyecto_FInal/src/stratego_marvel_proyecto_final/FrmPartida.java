@@ -245,6 +245,52 @@ public class FrmPartida extends javax.swing.JFrame {
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
                                             
+                                        }else if(rankAtaque==10 && rankDefensa==1){
+                                           System.out.println("Una ficha de rango 1 derrotó al gigante de 10 :0");
+                                           fichaAtacante.setIcon(null);//Elimina a ficha de ataque 
+                                            //Limpieza de datos
+                                            filaInicio=0;
+                                            columnaInicio=0;
+                                            filaFinal=0;
+                                            columnaFinal=0;
+                                            casillaSeleccionada=null;
+                                            rangoFichaSelecc=0;
+
+                                            filaInicialProvisional=0;
+                                            filaFinalComparativa=0;
+                                            filaFinalComparativa2=0;
+                                            rangoFichaSelecc=0;
+                                            columnaProvisional=0;
+                                        
+                                        }else if(rankAtaque==1 && rankDefensa==10){
+                                            System.out.println("Una ficha de rango 1 derrotó al gigante de 10 :0");
+                                            fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
+                                            //Desarrolla procedimiento de movimiento
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+                                            //efectua el metodo de movimiento
+                                            System.out.println("Entro al proceso de mover ficha");
+
+
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            //String rutaImagenInicial = imagenInicial.getDescription();
+                                            botones[filaFinal][columnaFinal].setIcon(imagenInicial);
+                                            botones[filaInicio][columnaInicio].setIcon(null);
+
+                                            //Limpia la casilla seleccionada
+                                            filaInicio=0;
+                                            columnaInicio=0;
+                                            filaFinal=0;
+                                            columnaFinal=0;
+                                            casillaSeleccionada=null;
+                                            rangoFichaSelecc=0;
+
+                                            filaInicialProvisional=0;
+                                            filaFinalComparativa=0;
+                                            filaFinalComparativa2=0;
+                                            rangoFichaSelecc=0;
+                                            columnaProvisional=0;
+                                            
                                         }else if(rankAtaque>rankDefensa){
                                             System.out.println("Ha vencido la ficha de ataque");
                                             fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha

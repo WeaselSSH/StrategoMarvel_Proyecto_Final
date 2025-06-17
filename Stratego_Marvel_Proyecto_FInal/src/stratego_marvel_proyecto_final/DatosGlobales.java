@@ -8,10 +8,10 @@ public class DatosGlobales {
     public static Ficha[] fichas() {
         return new Ficha[]{
             //tierra y bombas
-            new Ficha("/imagenes/heroEarth.png", "TIERRA", "BUENO", 0),
+            new Ficha("/imagenes/heroEarth.png", "TIERRA", "BUENO", 11),//Set de rango 11 para que el rango 0 sea exclusivo de bombas
             new Ficha("/imagenes/novaBlast.png", "BOMBA", "BUENO", 0),
             //tierra y bombas malos
-            new Ficha("/imagenes/villainEarth.png", "TIERRA", "MALO", 0),
+            new Ficha("/imagenes/villainEarth.png", "TIERRA", "MALO", 11),
             new Ficha("/imagenes/pumpkinBomb.png", "BOMBA", "MALO", 0),
             // fichas rango 2
             new Ficha("/imagenes/gambit.png", "RANGO_2", "BUENO", 2),

@@ -202,7 +202,25 @@ public class FrmPartida extends javax.swing.JFrame {
                                         int rankAtaque=rangoFichaSelecc;
                                         
                                         //Verificar si la ficha de ataque es de mayor rango
-                                        if(rankAtaque>rankDefensa){
+                                        
+                                        if(rankDefensa==0){
+                                            System.out.println("¡Se ha activado una bomba!");
+                                            fichaAtacante.setIcon(null);//Elimina a ficha de ataque
+                                            
+                                            //Limpieza de datos
+                                            filaInicio=0;
+                                            columnaInicio=0;
+                                            filaFinal=0;
+                                            columnaFinal=0;
+                                            casillaSeleccionada=null;
+                                            rangoFichaSelecc=0;
+
+                                            filaInicialProvisional=0;
+                                            filaFinalComparativa=0;
+                                            filaFinalComparativa2=0;
+                                            rangoFichaSelecc=0;
+                                            columnaProvisional=0;
+                                        }else if(rankAtaque>rankDefensa){
                                             System.out.println("Ha vencido la ficha de ataque");
                                             fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
                                             //Desarrolla procedimiento de movimiento
@@ -248,11 +266,33 @@ public class FrmPartida extends javax.swing.JFrame {
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
                                             
-                                            
-                                            
                                         }else if(rankDefensa==rankAtaque){
                                             System.out.println("Se queda en un empate");
                                             //Limpieza de datos
+                                            filaInicio=0;
+                                            columnaInicio=0;
+                                            filaFinal=0;
+                                            columnaFinal=0;
+                                            casillaSeleccionada=null;
+                                            rangoFichaSelecc=0;
+
+                                            filaInicialProvisional=0;
+                                            filaFinalComparativa=0;
+                                            filaFinalComparativa2=0;
+                                            rangoFichaSelecc=0;
+                                            columnaProvisional=0; 
+                                        }else if(rankAtaque==3 && rankDefensa==0){//Caso que la atacante sea ficha que desactiva bombas
+                                            System.out.println("¡Se ha desactivado una bomba!");
+                                            fichaDefensora.setIcon(null);
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            //String rutaImagenInicial = imagenInicial.getDescription();
+                                            botones[filaFinal][columnaFinal].setIcon(imagenInicial);
+                                            botones[filaInicio][columnaInicio].setIcon(null);
+
+                                            //Limpia la casilla seleccionada
                                             filaInicio=0;
                                             columnaInicio=0;
                                             filaFinal=0;
@@ -358,7 +398,25 @@ public class FrmPartida extends javax.swing.JFrame {
                                         int rankAtaque=rangoFichaSelecc;
                                         
                                         //Verificar si la ficha de ataque es de mayor rango
-                                        if(rankAtaque>rankDefensa){
+                                        
+                                        if(rankDefensa==0){
+                                            System.out.println("¡Se ha activado una bomba!");
+                                            fichaAtacante.setIcon(null);//Elimina a ficha de ataque
+                                            
+                                            //Limpieza de datos
+                                            filaInicio=0;
+                                            columnaInicio=0;
+                                            filaFinal=0;
+                                            columnaFinal=0;
+                                            casillaSeleccionada=null;
+                                            rangoFichaSelecc=0;
+
+                                            filaInicialProvisional=0;
+                                            filaFinalComparativa=0;
+                                            filaFinalComparativa2=0;
+                                            rangoFichaSelecc=0;
+                                            columnaProvisional=0;
+                                        }else if(rankAtaque>rankDefensa){
                                             System.out.println("Ha vencido la ficha de ataque");
                                             fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
                                             //Desarrolla procedimiento de movimiento
@@ -461,8 +519,19 @@ public class FrmPartida extends javax.swing.JFrame {
                                     
                                 }
                         }else{
-                            System.out.println("Womp Womp, movimiento invalido");
-                            rangoFichaSelecc=0;
+                        //Limpieza de datos
+                        filaInicio=0;
+                        columnaInicio=0;
+                        filaFinal=0;
+                        columnaFinal=0;
+                        casillaSeleccionada=null;
+                        rangoFichaSelecc=0;
+
+                        filaInicialProvisional=0;
+                        filaFinalComparativa=0;
+                        filaFinalComparativa2=0;
+                        columnaProvisional=0;
+                            
                         }
                     }
                 });

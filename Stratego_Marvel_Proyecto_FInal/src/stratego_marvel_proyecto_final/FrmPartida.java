@@ -201,9 +201,33 @@ public class FrmPartida extends javax.swing.JFrame {
                                         int rankDefensa= infoDefensa.getRango();
                                         int rankAtaque=rangoFichaSelecc;
                                         
-                                        //Verificar si la ficha de ataque es de mayor rango
-                                        
-                                        if(rankDefensa==0){
+                                        //Verificacion de los distintos tipos de casos y excepciones de fichas
+                               
+                                        if(rankAtaque==3 && rankDefensa==0){ //Casos en donde ficha de rank 3 desactiva una bomba
+                                            System.out.println("¡Se ha desactivado una bomba!");
+                                            fichaDefensora.setIcon(null);
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            //String rutaImagenInicial = imagenInicial.getDescription();
+                                            botones[filaFinal][columnaFinal].setIcon(imagenInicial);
+                                            botones[filaInicio][columnaInicio].setIcon(null);
+
+                                            //Limpia la casilla seleccionada
+                                            filaInicio=0;
+                                            columnaInicio=0;
+                                            filaFinal=0;
+                                            columnaFinal=0;
+                                            casillaSeleccionada=null;
+                                            rangoFichaSelecc=0;
+
+                                            filaInicialProvisional=0;
+                                            filaFinalComparativa=0;
+                                            filaFinalComparativa2=0;
+                                            rangoFichaSelecc=0;
+                                            columnaProvisional=0;
+                                        }else if(rankDefensa==0){
                                             System.out.println("¡Se ha activado una bomba!");
                                             fichaAtacante.setIcon(null);//Elimina a ficha de ataque
                                             
@@ -220,6 +244,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             filaFinalComparativa2=0;
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
+                                            
                                         }else if(rankAtaque>rankDefensa){
                                             System.out.println("Ha vencido la ficha de ataque");
                                             fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
@@ -281,30 +306,6 @@ public class FrmPartida extends javax.swing.JFrame {
                                             filaFinalComparativa2=0;
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0; 
-                                        }else if(rankAtaque==3 && rankDefensa==0){//Caso que la atacante sea ficha que desactiva bombas
-                                            System.out.println("¡Se ha desactivado una bomba!");
-                                            fichaDefensora.setIcon(null);
-                                            filaFinal= fila;
-                                            columnaFinal=columna;
-
-                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
-                                            //String rutaImagenInicial = imagenInicial.getDescription();
-                                            botones[filaFinal][columnaFinal].setIcon(imagenInicial);
-                                            botones[filaInicio][columnaInicio].setIcon(null);
-
-                                            //Limpia la casilla seleccionada
-                                            filaInicio=0;
-                                            columnaInicio=0;
-                                            filaFinal=0;
-                                            columnaFinal=0;
-                                            casillaSeleccionada=null;
-                                            rangoFichaSelecc=0;
-
-                                            filaInicialProvisional=0;
-                                            filaFinalComparativa=0;
-                                            filaFinalComparativa2=0;
-                                            rangoFichaSelecc=0;
-                                            columnaProvisional=0;
                                         }
                                         
                                         

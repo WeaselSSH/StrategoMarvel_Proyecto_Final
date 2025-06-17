@@ -114,7 +114,7 @@ public class FrmPartida extends javax.swing.JFrame {
                         System.out.println(rangoFichaSelecc);
                         
                         if(rangoFichaSelecc ==1 || rangoFichaSelecc == 3 || rangoFichaSelecc == 4 ||
-                                rangoFichaSelecc == 5 || rangoFichaSelecc == 6 || rangoFichaSelecc == 7 || rangoFichaSelecc == 8 || rangoFichaSelecc == 9){
+                                rangoFichaSelecc == 5 || rangoFichaSelecc == 6 || rangoFichaSelecc == 7 || rangoFichaSelecc == 8 || rangoFichaSelecc == 9 || rangoFichaSelecc ==10){
                             
                             
                             System.out.println("Entra al comparador de rango");
@@ -123,13 +123,6 @@ public class FrmPartida extends javax.swing.JFrame {
                             int filaComp=fila;
                             int columnaComp=columna;
 
-                            /*
-                            //Variable booleana que evalua posiciones
-                            boolean movimientoValido = (filaComp == filaInicialProvisional || filaComp == filaInicialProvisional+1 || filaComp == filaInicialProvisional-1)&&
-                                    (columnaComp ==columnaProvisional || columnaComp == columnaProvisional +1 || columnaComp == columnaProvisional -1);
-                            
-                            */
-                            
                             //Desarrollo de comprobante de movimiento a base de valor absoluto
                             int diferenciaFila =Math.abs(filaComp -filaInicialProvisional);
                             int diferenciaColumna = Math.abs(columnaComp - columnaProvisional);
@@ -219,8 +212,77 @@ public class FrmPartida extends javax.swing.JFrame {
                             }
                             
                             
+                        }else if(rangoFichaSelecc == 2){
+                            //Comprobar si hay una ficha en la casilla hacia donde se va a mover
+                                if(tablero.fichaOcupada(fila, columna)){//Caso en que si haya una ficha 
+                                    System.out.println("Entra a campo de ficha Ocupada");
+                                    //Proceso para conocer el bando de la ficha seleccionada
+                                    ImageIcon tipofichaAMover = (ImageIcon) botones[fila][columna].getIcon();
+                                    String rutaIconoFichaAMover = tipofichaAMover.getDescription();
+
+
+                                    //Proceso para conocer el bando de la ficha que ocupa el lugar de la casilla a donde se va a mover
+                                    for(Ficha infoFicha: DatosGlobales.fichas()){
+                                        if(infoFicha.equals(rutaIconoFichaAMover)){
+                                            rangoFichaSeleccionada=infoFicha.getBando();
+                                        }
+                                    }
+
+                                    //Mismo proceso pero para ficha ya seleccionada
+                                    for(Ficha infoFicha: DatosGlobales.fichas()){
+                                        if(infoFicha.equals(rutaIconoFichaSelecc)){
+                                            rangoFichaOcupada=infoFicha.getBando();
+                                        }
+                                    }
+
+                                    //Comprueba caso en que sean del mismo bando -No se efectua movimiento
+                                    if(rangoFichaSeleccionada.equals(rangoFichaOcupada)){
+                                        System.out.println("No se efectua movimiento");
+                                        rangoFichaSeleccionada="";
+                                        rangoFichaOcupada=""; //Reseteo del registro de rangos
+                                        casillaSeleccionada= null;
+                                        rangoFichaSelecc=0;
+                                        filaInicialProvisional=0;
+                                        filaFinalComparativa=0;
+                                        filaFinalComparativa2=0;
+                                        rangoFichaSelecc=0;
+                                        columnaProvisional=0;
+                                        
+                                        
+                                        
+                                        
+                                    }//Aqui se haria un else que inicializaria el procedimiento de combate
+
+                                }else{
+                                    //Caso en donde casilla no esta ocupada
+                                    filaFinal= fila;
+                                    columnaFinal=columna;
+                                    //efectua el metodo de movimiento
+                                    System.out.println("Entro al proceso de mover ficha");
+
+
+                                    ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                    //String rutaImagenInicial = imagenInicial.getDescription();
+                                    botones[filaFinal][columnaFinal].setIcon(imagenInicial);
+                                    botones[filaInicio][columnaInicio].setIcon(null);
+
+                                    //Limpia la casilla seleccionada
+                                    filaInicio=0;
+                                    columnaInicio=0;
+                                    filaFinal=0;
+                                    columnaFinal=0;
+                                    casillaSeleccionada=null;
+                                    rangoFichaSelecc=0;
+                                    
+                                    filaInicialProvisional=0;
+                                    filaFinalComparativa=0;
+                                    filaFinalComparativa2=0;
+                                    rangoFichaSelecc=0;
+                                    columnaProvisional=0;
+                                    
+                                }
                         }else{
-                            System.out.println("Se efectua un movimiento aun mayor mas libre");
+                            System.out.println("Womp Womp, movimiento invalido");
                             rangoFichaSelecc=0;
                         }
                     }

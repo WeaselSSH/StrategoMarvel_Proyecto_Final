@@ -408,6 +408,14 @@ public class FrmPartida extends javax.swing.JFrame {
                                             
                                         }else if(rankDefensa==rankAtaque){
                                             System.out.println("Se queda en un empate");
+                                            
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            //String rutaImagenInicial = imagenInicial.getDescription();
+                                            botones[filaFinal+1][columnaFinal].setIcon(imagenInicial);
+                                            botones[filaInicio][columnaInicio].setIcon(null);
+                                            
                                             //Limpieza de datos
                                             filaInicio=0;
                                             columnaInicio=0;

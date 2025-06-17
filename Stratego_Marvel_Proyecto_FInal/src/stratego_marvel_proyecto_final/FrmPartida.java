@@ -95,7 +95,7 @@ public class FrmPartida extends javax.swing.JFrame {
                         }
         
                         
-                        int rangoFichaSelecc=0;
+                        int rangoFichaSelecc=0;//Rango de ficha seleccionada para mover
                         String rutaIconoFichaSelecc = tipofichaSelecc.getDescription();
                         System.out.println(rutaIconoFichaSelecc);
                         
@@ -151,17 +151,35 @@ public class FrmPartida extends javax.swing.JFrame {
 
                                     //Proceso para conocer el bando de la ficha que ocupa el lugar de la casilla a donde se va a mover
                                     for(Ficha infoFicha: DatosGlobales.fichas()){
+                                        /*
                                         if(infoFicha.equals(rutaIconoFichaAMover)){
+                                            rangoFichaSeleccionada=infoFicha.getBando();
+                                            
+                                        }
+                                        */
+                                        if (rutaIconoFichaAMover.contains(infoFicha.getRutaImagen())) {
                                             rangoFichaSeleccionada=infoFicha.getBando();
                                         }
                                     }
 
                                     //Mismo proceso pero para ficha ya seleccionada
                                     for(Ficha infoFicha: DatosGlobales.fichas()){
+                                        /*
                                         if(infoFicha.equals(rutaIconoFichaSelecc)){
                                             rangoFichaOcupada=infoFicha.getBando();
+                                            
                                         }
+                                        */
+                                         if (rutaIconoFichaSelecc.contains(infoFicha.getRutaImagen())) {
+                                            rangoFichaOcupada=infoFicha.getBando();
+                                        }
+                                        
+                                        
                                     }
+                                    
+                                    System.out.println("He aqui los rangos de las fichas: ");
+                                    System.out.println(rangoFichaSeleccionada);
+                                    System.out.println(rangoFichaOcupada);
 
                                     //Comprueba caso en que sean del mismo bando -No se efectua movimiento
                                     if(rangoFichaSeleccionada.equals(rangoFichaOcupada)){
@@ -176,10 +194,76 @@ public class FrmPartida extends javax.swing.JFrame {
                                         rangoFichaSelecc=0;
                                         columnaProvisional=0;
                                         
+                                    }else{
+                                        System.out.println("Entra a proceso de combate");
+                                        JButton fichaAtacante=casillaSeleccionada;
+                                        JButton fichaDefensora = botones[fila][columna];
+                                        
+                                        //Proceso para obtener rango de ficha de defensa
+                                        ImageIcon ImageDefensa= (ImageIcon) fichaDefensora.getIcon();
+                        
+                                        if (ImageDefensa == null) {
+                                        return;
+                                        }
+                                        String rutaDefensa = ImageDefensa.getDescription();
+                                        Ficha infoDefensa= tablero.obtenerFicha(rutaDefensa);
+                                        
+                                        int rankDefensa= infoDefensa.getRango();
+                                        int rankAtaque=rangoFichaSelecc;
+                                        
+                                        //Verificar si la ficha de ataque es de mayor rango
+                                        if(rankAtaque>rankDefensa){
+                                            System.out.println("Ha vencido la ficha de ataque");
+                                            fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
+                                            //Desarrolla procedimiento de movimiento
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+                                            //efectua el metodo de movimiento
+                                            System.out.println("Entro al proceso de mover ficha");
+
+
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            //String rutaImagenInicial = imagenInicial.getDescription();
+                                            botones[filaFinal][columnaFinal].setIcon(imagenInicial);
+                                            botones[filaInicio][columnaInicio].setIcon(null);
+
+                                            //Limpia la casilla seleccionada
+                                            filaInicio=0;
+                                            columnaInicio=0;
+                                            filaFinal=0;
+                                            columnaFinal=0;
+                                            casillaSeleccionada=null;
+                                            rangoFichaSelecc=0;
+
+                                            filaInicialProvisional=0;
+                                            filaFinalComparativa=0;
+                                            filaFinalComparativa2=0;
+                                            rangoFichaSelecc=0;
+                                            columnaProvisional=0;
+                                        }else if(rankDefensa>rankAtaque){
+                                            System.out.println("Ha vencido la ficha de defensa");
+                                            fichaAtacante.setIcon(null);//Elimina a ficha de ataque
+                                            
+                                            //Limpieza de datos
+                                            filaInicio=0;
+                                            columnaInicio=0;
+                                            filaFinal=0;
+                                            columnaFinal=0;
+                                            casillaSeleccionada=null;
+                                            rangoFichaSelecc=0;
+
+                                            filaInicialProvisional=0;
+                                            filaFinalComparativa=0;
+                                            filaFinalComparativa2=0;
+                                            rangoFichaSelecc=0;
+                                            columnaProvisional=0;
+                                            
+                                            
+                                            
+                                        }
                                         
                                         
-                                        
-                                    }//Aqui se haria un else que inicializaria el procedimiento de combate
+                                    }
 
                                 }else{
                                     //Caso en donde casilla no esta ocupada

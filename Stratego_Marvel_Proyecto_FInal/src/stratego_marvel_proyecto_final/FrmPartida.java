@@ -262,7 +262,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
                                         
-                                        }else if(rankAtaque==1 && rankDefensa==10){
+                                        }else if(rankAtaque==1 && rankDefensa==10){//Caso que la ficha 1 pueda atacar a la ficha 10
                                             System.out.println("Una ficha de rango 1 derrotó al gigante de 10 :0");
                                             fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
                                             //Desarrolla procedimiento de movimiento
@@ -338,7 +338,12 @@ public class FrmPartida extends javax.swing.JFrame {
                                             columnaProvisional=0;
                                             
                                         }else if(rankDefensa==rankAtaque){
-                                            System.out.println("Se queda en un empate");
+                                            //Ambas fichas se destruyen 
+                                            System.out.println("Empate, ambas se destruyen");
+                                            filaFinal=fila;
+                                            columnaFinal=columna;
+                                            botones[filaFinal][columnaFinal].setIcon(null);
+                                            botones[filaInicio][columnaInicio].setIcon(null);
                                             //Limpieza de datos
                                             filaInicio=0;
                                             columnaInicio=0;
@@ -512,13 +517,11 @@ public class FrmPartida extends javax.swing.JFrame {
                                             
                                             
                                         }else if(rankDefensa==rankAtaque){
-                                            System.out.println("Se queda en un empate");
+                                            System.out.println("Se queda en un empate. Ambas se destruyen");
                                             
                                             filaFinal= fila;
                                             columnaFinal=columna;
-                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
-                                            //String rutaImagenInicial = imagenInicial.getDescription();
-                                            botones[filaFinal+1][columnaFinal].setIcon(imagenInicial);
+                                            botones[filaFinal][columnaFinal].setIcon(null);
                                             botones[filaInicio][columnaInicio].setIcon(null);
                                             
                                             //Limpieza de datos

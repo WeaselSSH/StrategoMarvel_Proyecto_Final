@@ -264,5 +264,74 @@ public class Tablero {
         return referenceBoton;
     }
     
+    
+    public void visibilidadTurnos(boolean turnos){
+        
+
+        ImageIcon backCard = new ImageIcon(getClass().getResource("/imagenes/backard.png"));
+        if(turnos==true){
+            //Desarrollo para mostrar y manipular fichas de heroes
+            for(int i=0; i<botones.length; i++){//Evaluacion de fichas de bando villano para ocultar
+                for(int j=0; j<botones.length; j++){
+                    ImageIcon infoFicha= (ImageIcon) botones[i][j].getIcon();//Obtengo info de la imagen que contenga la ficha              
+                    if (infoFicha == null) {
+                        return;
+                    }
+                    String rutaFicha = infoFicha.getDescription();//Obtengo la ruta
+                    Ficha selecFicha = obtenerFicha(rutaFicha);//obtengo informacion de la ficha en base a la ruta
+                    String bandoFicha= selecFicha.getBando();//Obtengo el bando al que pertenece la ficha
+                    
+                    if(bandoFicha.equals("MALO")){
+                        botones[i][j].setEnabled(false);//Se desactiva la ficha
+                        botones[i][j].setDisabledIcon(backCard);//se establece la cara trasera de la ficha
+                    }
+                    
+                    if(bandoFicha.equals("BUENO")){
+                        botones[i][j].setEnabled(true);//se reactiva la ficha
+                        botones[i][j].setDisabledIcon(null);//se muestra la cara frontal
+                    }
+
+                    
+                }
+                
+                
+                
+            }
+
+        }else if(turnos==false){
+            //Desarrollo para mostrar y manipular fichas de villanos
+               for(int i=0; i<botones.length; i++){//Evaluacion de fichas de bando villano para ocultar
+                for(int j=0; j<botones.length; j++){
+                    ImageIcon infoFicha= (ImageIcon) botones[i][j].getIcon();//Obtengo info de la imagen que contenga la ficha              
+                    if (infoFicha == null) {
+                        botones[i][j].setEnabled(true);
+                        botones[i][j].setDisabledIcon(null);
+                        return;
+                    }
+                    String rutaFicha = infoFicha.getDescription();//Obtengo la ruta
+                    Ficha selecFicha = obtenerFicha(rutaFicha);//obtengo informacion de la ficha en base a la ruta
+                    String bandoFicha= selecFicha.getBando();
+                    
+                    if(bandoFicha.equals("MALO")){
+                        //Se establece el icono back de la carta
+                        botones[i][j].setEnabled(true);
+                        botones[i][j].setDisabledIcon(null);
+                    }
+                    
+                    if(bandoFicha.equals("BUENO")){
+                        botones[i][j].setEnabled(false);
+                        botones[i][j].setDisabledIcon(backCard);
+                    }
+
+                    
+                }
+
+            }
+        }
+        
+        
+    }
+    
+    
 
 }

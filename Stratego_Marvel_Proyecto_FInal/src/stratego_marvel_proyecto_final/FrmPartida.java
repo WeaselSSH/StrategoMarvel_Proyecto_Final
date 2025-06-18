@@ -35,6 +35,9 @@ public class FrmPartida extends javax.swing.JFrame {
     JButton casillaSeleccionada = null;
     Ficha extractor;
     
+    //Variable de turnos
+    boolean estadoTurno=true; //true= heroes ; false=villanos
+    
 
     public FrmPartida() {
         initComponents();
@@ -57,6 +60,8 @@ public class FrmPartida extends javax.swing.JFrame {
                     
                 });
                 
+                
+                
                 //Listener de movimiento
                 botones[i][j].addActionListener(e ->{
                     if(casillaSeleccionada == null){
@@ -75,6 +80,10 @@ public class FrmPartida extends javax.swing.JFrame {
                             filaFinalComparativa2=filaInicialProvisional+1;//Mueve hacia atras
                             revisionColumna1=columnaProvisional+1;
                             revisionColumna2=columnaProvisional-1;
+                            
+                        
+                            
+                            
                         }else{
                             //No se recoge nada
                         }
@@ -227,6 +236,16 @@ public class FrmPartida extends javax.swing.JFrame {
                                             filaFinalComparativa2=0;
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
+                                            
+                                            //Actualizacion de turno a la hora de hacer movimiento
+                                            if(estadoTurno==true){
+                                                estadoTurno=false;
+                                            }else{
+                                                estadoTurno=true;
+                                            }
+                                            System.out.println("Estado de turno: "+estadoTurno);
+
+                                            
                                         }else if(rankDefensa==0){
                                             System.out.println("¡Se ha activado una bomba!");
                                             fichaAtacante.setIcon(null);//Elimina a ficha de ataque
@@ -245,6 +264,14 @@ public class FrmPartida extends javax.swing.JFrame {
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
                                             
+                                            //Actualizacion de turno a la hora de hacer movimiento
+                                            if(estadoTurno==true){
+                                                estadoTurno=false;
+                                            }else{
+                                                estadoTurno=true;
+                                            }
+                                            System.out.println("Estado de turno: "+estadoTurno);
+                                            
                                         }else if(rankAtaque==10 && rankDefensa==1){
                                            System.out.println("Una ficha de rango 1 derrotó al gigante de 10 :0");
                                            fichaAtacante.setIcon(null);//Elimina a ficha de ataque 
@@ -261,7 +288,15 @@ public class FrmPartida extends javax.swing.JFrame {
                                             filaFinalComparativa2=0;
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
-                                        
+                                            
+                                            //Actualizacion de turno a la hora de hacer movimiento
+                                            if(estadoTurno==true){
+                                                estadoTurno=false;
+                                            }else{
+                                                estadoTurno=true;
+                                            }
+                                            System.out.println("Estado de turno: "+estadoTurno);
+                                            
                                         }else if(rankAtaque==1 && rankDefensa==10){//Caso que la ficha 1 pueda atacar a la ficha 10
                                             System.out.println("Una ficha de rango 1 derrotó al gigante de 10 :0");
                                             fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
@@ -291,6 +326,16 @@ public class FrmPartida extends javax.swing.JFrame {
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
                                             
+                                            
+                                            //Actualizacion de turno a la hora de hacer movimiento
+                                            if(estadoTurno==true){
+                                                estadoTurno=false;
+                                            }else{
+                                                estadoTurno=true;
+                                            }
+                                            System.out.println("Estado de turno: "+estadoTurno);
+                                            
+                                            
                                         }else if(rankAtaque>rankDefensa){
                                             System.out.println("Ha vencido la ficha de ataque");
                                             fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
@@ -319,6 +364,17 @@ public class FrmPartida extends javax.swing.JFrame {
                                             filaFinalComparativa2=0;
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
+                                            
+                                            //Actualizacion de turno a la hora de hacer movimiento
+                                            if(estadoTurno==true){
+                                                estadoTurno=false;
+                                            }else{
+                                                estadoTurno=true;
+                                            }
+                                            System.out.println("Estado de turno: "+estadoTurno);
+                                            
+                                            
+                                            
                                         }else if(rankDefensa>rankAtaque){
                                             System.out.println("Ha vencido la ficha de defensa");
                                             fichaAtacante.setIcon(null);//Elimina a ficha de ataque
@@ -336,6 +392,15 @@ public class FrmPartida extends javax.swing.JFrame {
                                             filaFinalComparativa2=0;
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
+                                            
+                                            //Actualizacion de turno a la hora de hacer movimiento
+                                            if(estadoTurno==true){
+                                                estadoTurno=false;
+                                            }else{
+                                                estadoTurno=true;
+                                            }
+                                            System.out.println("Estado de turno: "+estadoTurno);
+                                            
                                             
                                         }else if(rankDefensa==rankAtaque){
                                             //Ambas fichas se destruyen 
@@ -357,6 +422,16 @@ public class FrmPartida extends javax.swing.JFrame {
                                             filaFinalComparativa2=0;
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0; 
+                                            
+                                            //Actualizacion de turno a la hora de hacer movimiento
+                                            if(estadoTurno==true){
+                                                estadoTurno=false;
+                                            }else{
+                                                estadoTurno=true;
+                                            }
+                                            System.out.println("Estado de turno: "+estadoTurno);
+                                            
+                                            
                                         }
                                         
                                         
@@ -388,6 +463,13 @@ public class FrmPartida extends javax.swing.JFrame {
                                     filaFinalComparativa2=0;
                                     rangoFichaSelecc=0;
                                     columnaProvisional=0;
+                                    //Actualizacion de turno a la hora de hacer movimiento
+                                    if(estadoTurno==true){
+                                        estadoTurno=false;
+                                    }else{
+                                        estadoTurno=true;
+                                    }
+                                    System.out.println("Estado de turno: "+estadoTurno);
                                     
                                 }
                             }
@@ -429,7 +511,13 @@ public class FrmPartida extends javax.swing.JFrame {
                                         rangoFichaSelecc=0;
                                         columnaProvisional=0;
                                         
-                                        
+                                        //Actualizacion de turno a la hora de hacer movimiento
+                                        if(estadoTurno==true){
+                                            estadoTurno=false;
+                                        }else{
+                                            estadoTurno=true;
+                                        }
+                                        System.out.println("Estado de turno: "+estadoTurno);
                                         
                                         
                                     }else{
@@ -468,6 +556,15 @@ public class FrmPartida extends javax.swing.JFrame {
                                             filaFinalComparativa2=0;
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
+                                            
+                                            //Actualizacion de turno a la hora de hacer movimiento
+                                            if(estadoTurno==true){
+                                                estadoTurno=false;
+                                            }else{
+                                                estadoTurno=true;
+                                            }
+                                            System.out.println("Estado de turno: "+estadoTurno);
+                                            
                                         }else if(rankAtaque>rankDefensa){
                                             System.out.println("Ha vencido la ficha de ataque");
                                             fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
@@ -496,6 +593,15 @@ public class FrmPartida extends javax.swing.JFrame {
                                             filaFinalComparativa2=0;
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
+                                            
+                                            //Actualizacion de turno a la hora de hacer movimiento
+                                            if(estadoTurno==true){
+                                                estadoTurno=false;
+                                            }else{
+                                                estadoTurno=true;
+                                            }
+                                            System.out.println("Estado de turno: "+estadoTurno);
+                                            
                                         }else if(rankDefensa>rankAtaque){
                                             System.out.println("Ha vencido la ficha de defensa");
                                             fichaAtacante.setIcon(null);//Elimina a ficha de ataque
@@ -514,7 +620,13 @@ public class FrmPartida extends javax.swing.JFrame {
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
                                             
-                                            
+                                            //Actualizacion de turno a la hora de hacer movimiento
+                                            if(estadoTurno==true){
+                                                estadoTurno=false;
+                                            }else{
+                                                estadoTurno=true;
+                                            }
+                                            System.out.println("Estado de turno: "+estadoTurno);
                                             
                                         }else if(rankDefensa==rankAtaque){
                                             System.out.println("Se queda en un empate. Ambas se destruyen");
@@ -537,6 +649,16 @@ public class FrmPartida extends javax.swing.JFrame {
                                             filaFinalComparativa2=0;
                                             rangoFichaSelecc=0;
                                             columnaProvisional=0;
+                                            
+                                            
+                                            //Actualizacion de turno a la hora de hacer movimiento
+                                            if(estadoTurno==true){
+                                                estadoTurno=false;
+                                            }else{
+                                                estadoTurno=true;
+                                            }
+                                            System.out.println("Estado de turno: "+estadoTurno);
+                                            
                                         }
                                     }
 
@@ -567,6 +689,15 @@ public class FrmPartida extends javax.swing.JFrame {
                                     rangoFichaSelecc=0;
                                     columnaProvisional=0;
                                     
+                                    //Actualizacion de turno a la hora de hacer movimiento
+                                    if(estadoTurno==true){
+                                        estadoTurno=false;
+                                    }else{
+                                        estadoTurno=true;
+                                    }
+                                    System.out.println("Estado de turno: "+estadoTurno);
+                                    
+                                    
                                 }
                         }else{
                         //Limpieza de datos
@@ -581,6 +712,15 @@ public class FrmPartida extends javax.swing.JFrame {
                         filaFinalComparativa=0;
                         filaFinalComparativa2=0;
                         columnaProvisional=0;
+                        
+                        //Actualizacion de turno a la hora de hacer movimiento
+                        if(estadoTurno==true){
+                            estadoTurno=false;
+                        }else{
+                            estadoTurno=true;
+                        }
+                        System.out.println("Estado de turno: "+estadoTurno);
+                        
                             
                         }
                     }

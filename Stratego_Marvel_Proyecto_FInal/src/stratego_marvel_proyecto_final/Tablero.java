@@ -166,6 +166,15 @@ public class Tablero {
         Border borde = fichaSeleccionada.getBando().equals("BUENO") ? bordeAzul : bordeRojo;
         botones[fil][col].setBorder(borde);
         bordeActivo[fil][col] = true;
+        
+        /*
+        if(fichaSeleccionada.getBando().equals("BUENO")){
+            botones[fil][col].setEnabled(true);
+        }else if(fichaSeleccionada.getBando().equals("MALO")){
+            botones[fil][col].setEnabled(true);
+        }
+*/
+        
 
         boolean esRango2 = fichaSeleccionada.getTipo().equals("RANGO_2");
         marcarBordes(fil, col, borde, esRango2, fichaSeleccionada.getBando());
@@ -202,6 +211,7 @@ public class Tablero {
                             } else {
                                 botones[nuevaFila][nuevaCol].setBorder(borde);
                                 bordeActivo[nuevaFila][nuevaCol] = true;
+                                botones[nuevaFila][nuevaCol].setEnabled(true);//Activa solo el marcado dentro de casilla
                                 break;
                             }
                         }

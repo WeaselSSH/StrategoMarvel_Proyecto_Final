@@ -89,6 +89,7 @@ public class FrmPartida extends javax.swing.JFrame {
                             //No se recoge nada
                         }
                     }else{
+                        //botones[fila][columna].setEnabled(true);
                         //Caso cuando ya hay una ficha previamente seleccionada
                         
                         //Comprobantes de rango de ambas fichas en comparacion
@@ -198,6 +199,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                         System.out.println("Entra a proceso de combate");
                                         JButton fichaAtacante=casillaSeleccionada;
                                         JButton fichaDefensora = botones[fila][columna];
+                                        
                                         
                                         //Proceso para obtener rango de ficha de defensa
                                         ImageIcon ImageDefensa= (ImageIcon) fichaDefensora.getIcon();

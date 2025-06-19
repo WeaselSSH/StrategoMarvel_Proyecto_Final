@@ -142,9 +142,10 @@ public class Tablero {
 
     public void botonClick(int fila, int columna) {
         agregarQuitarBorde(fila, columna);
+        
     }
 
-    private void agregarQuitarBorde(int fil, int col) {
+    private void agregarQuitarBorde(int fil, int col) {//Genera espacio de bordes
         if (bordeActivo[fil][col]) {
             quitarBordes();
             return;
@@ -167,13 +168,15 @@ public class Tablero {
         botones[fil][col].setBorder(borde);
         bordeActivo[fil][col] = true;
         
-        /*
+        
+        
         if(fichaSeleccionada.getBando().equals("BUENO")){
+            //ImageIcon backCard = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
             botones[fil][col].setEnabled(true);
         }else if(fichaSeleccionada.getBando().equals("MALO")){
             botones[fil][col].setEnabled(true);
-        }
-*/
+        }//Esto activa la ficha independientemente de cual sea el caso. Con tal sea abarcada la zona por el rectangulo de seleccion
+
         
 
         boolean esRango2 = fichaSeleccionada.getTipo().equals("RANGO_2");
@@ -262,6 +265,16 @@ public class Tablero {
         }
         return null;
     }
+    
+    public Ficha obtenerFicha2(String rutaRevez){ //Metodo para obtener la ficha a base de la imagen trasera
+          Ficha[] fichas = DatosGlobales.fichas();
+        for (Ficha ficha2 : fichas) {
+            if (rutaRevez.contains(ficha2.getBackCard())) {
+                return ficha2;
+            }
+        }
+        return null;
+    }
 
     private boolean posicionValida(int fila, int columna) {
         return fila >= 0 && fila < 10 && columna >= 0 && columna < 10;
@@ -278,46 +291,214 @@ public class Tablero {
     public void visibilidadTurnos(boolean turnos){
         
 
-        ImageIcon backCard = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
+        //ImageIcon backCard = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
+          for(int i=0; i<botones.length; i++){//Evaluacion de fichas de bando villano para ocultar
+                for(int j=0; j<botones.length; j++){
+                    ImageIcon infoFicha= (ImageIcon) botones[i][j].getIcon();//Obtengo info de la imagen que contenga la ficha 
+                    boolean verificacionf=false;
+                    boolean verificacionb=false;
+                    Ficha selecFicha = null;
+
+                       //try{ 
+                        if(infoFicha==null){
+                            return;
+                        }
+                        String bandoFicha="";
+                        String rutaFicha="";
+                        ImageIcon frontCard= new ImageIcon();
+                        ImageIcon BackCard= new ImageIcon();
+                        
+                        //try{
+                            String rutFicha = infoFicha.getDescription();//Obtengo la ruta
+                            try{
+                                selecFicha = obtenerFicha(rutFicha); //EN base a ruta de personaje
+                            }catch(NullPointerException e){
+                                selecFicha= obtenerFicha2(rutFicha); //En base a ruta de imagen trasera
+                                continue;
+                            }
+                            //obtengo informacion de la ficha en base a la ruta
+
+                            
+                            
+                            
+                            String bandFicha= selecFicha.getBando();//AQUIIIIIIIIIIIIIIIII
+                            
+                            String RealImage=selecFicha.getRutaImagen();
+                            System.out.println(RealImage);
+                            frontCard= new ImageIcon(getClass().getResource(RealImage));
+                            String backImage=selecFicha.getBackCard();
+                            System.out.println(backImage);
+                            BackCard= new ImageIcon(getClass().getResource(backImage));
+                            
+                            bandoFicha=bandFicha;
+                            rutaFicha=rutFicha;
+                        //}catch(NullPointerException e){//caso que sea el back de la ficha
+                            if(turnos==true){
+                                if(bandoFicha.equals("BUENO")){
+                                    botones[i][j].setIcon(frontCard);
+                                    
+                                }else if(bandoFicha.equals("MALO")){
+                                    botones[i][j].setIcon(BackCard);
+                                }
+                                
+                                
+                                /*
+                                if(botones[i][j].getClientProperty("BANDO").equals("BUENO")){
+                                    botones[i][j].setIcon(new ImageIcon(getClass().getResource("rutaReal")));
+                                }else if(botones[i][j].getClientProperty("BANDO").equals("MALO")){
+                                   botones[i][j].setIcon(backCard); 
+                                }
+                                */
+                            
+                            }else if(turnos==false){
+                                if(bandoFicha.equals("MALO")){
+                                    botones[i][j].setIcon(frontCard);
+                                }else if(bandoFicha.equals("BUENO")){
+                                    botones[i][j].setIcon(BackCard);
+                                }
+                                /*
+                                 if(botones[i][j].getClientProperty("BANDO").equals("MALO")){
+                                     botones[i][j].setIcon(new ImageIcon(getClass().getResource("rutaReal")));
+                                 }else if(botones[i][j].getClientProperty("BANDO").equals("BUENO")){
+                                     botones[i][j].setIcon(backCard); 
+                                 }
+                                */
+                            }
+                        
+                        
+                        /*
+                        if(bandoFicha.equals(null)){
+                            boolean esTurnoPropio= (turnos && bandoFicha.equals("BUENO")) || (!turnos && bandoFicha.equals("MALO"));
+                            if(esTurnoPropio){
+                                botones[i][j].setIcon(new ImageIcon(getClass().getResource("rutaReal")));
+                            }else{
+                                 botones[i][j].setIcon(backCard);
+                            }
+                        }else{
+                            botones[i][j].putClientProperty("BANDO", bandoFicha);
+                            botones[i][j].putClientProperty("rutaReal", rutaFicha);
+                        }
+                        */
+                        
+                        /*
+                        boolean esTurnoPropio= (turnos && bandoFicha.equals("BUENO")) || (!turnos && bandoFicha.equals("MALO"));
+                        
+                        if(turnos==true){
+                            if(botones[i][j].getClientProperty("BANDO").equals("BUENO")){
+                                botones[i][j].setIcon(new ImageIcon(getClass().getResource("rutaReal")));
+                            }else if(botones[i][j].getClientProperty("BANDO").equals("MALO")){
+                               botones[i][j].setIcon(backCard); 
+                            }
+                            
+                        }else if(turnos==false){
+                             if(botones[i][j].getClientProperty("BANDO").equals("MALO")){
+                                 botones[i][j].setIcon(new ImageIcon(getClass().getResource("rutaReal")));
+                             }else if(botones[i][j].getClientProperty("BANDO").equals("BUENO")){
+                                 botones[i][j].setIcon(backCard); 
+                             }
+                        }
+                        */
+                        
+                        /*
+                        if(bandoFicha.equals("MALO")){
+                            //Se establece el icono back de la carta
+                            botones[i][j].setIcon(backCard);
+                        }
+
+                        if(bandoFicha.equals("BUENO")){
+                            botones[i][j].setIcon(new ImageIcon(getClass().getResource(rutaFicha)));
+                        }
+*/                  /*
+                    }catch(NullPointerException e){
+                        if (infoFicha == null) {
+                            System.out.println("No se detecto info info en esta casilla, casilla vacia");
+                            
+                        }else{
+                            System.out.println("Si detecto algo y es problema interno");
+                        }
+                        
+                        if(verificacionf==false){
+                            System.out.println("No se creo el objeto de ficha correctamente");
+                        }else{
+                            System.out.println("Si creo el objeto de ficha correctamente");
+                        }
+                        
+                        if(verificacionb=false){
+                            System.out.println("No se determino el banod correctamente");
+                        }else{
+                            System.out.println("Se determino el bando correctamente");
+                        }
+                        
+                    }
+                    */
+                }
+            }
+        
+        
+        
+        
+        
+       /*
         if(turnos==true){
             //Desarrollo para mostrar y manipular fichas de heroes
             for(int i=0; i<botones.length; i++){//Evaluacion de fichas de bando villano para ocultar
                 for(int j=0; j<botones.length; j++){
-                    ImageIcon infoFicha= (ImageIcon) botones[i][j].getIcon();//Obtengo info de la imagen que contenga la ficha       
+                    
+                    
+                    
+                    
+                    ImageIcon infoFicha= (ImageIcon) botones[i][j].getIcon();//Obtengo info de la imagen que contenga la ficha 
+                    
+                    
+                    
+                    
                     
                        try{
                         
                         if (infoFicha == null) {
-                        botones[i][j].setEnabled(true);
-                        botones[i][j].setDisabledIcon(null);
-                        
+                        botones[i][j].setIcon(null);
+                        botones[i][j].putClientProperty("bando", null);//Propiedad a boton de bando
+                        botones[i][j].putClientProperty("rutaReal", null);
                         }
+                        
+                        
+                        
                         String rutaFicha = infoFicha.getDescription();//Obtengo la ruta
                         Ficha selecFicha = obtenerFicha(rutaFicha);//obtengo informacion de la ficha en base a la ruta
                         String bandoFicha= selecFicha.getBando();
-                              
+                        
+                        
+                        
+                        botones[i][j].putClientProperty("BANDO", bandoFicha);
+                        botones[i][j].putClientProperty("rutaReal", rutaFicha);
+                        
+                        boolean esTurnoPropio= (turnos && bandoFicha.equals("BUENO"));
+                        
+                        if(esTurnoPropio){
+                            botones[i][j].setIcon(new ImageIcon(getClass().getResource("rutaReal")));
+                        }else{
+                             botones[i][j].setIcon(backCard);
+                        }
+                        
+                        /*
                         if(bandoFicha.equals("MALO")){
                             //Se establece el icono back de la carta
-                            botones[i][j].setEnabled(false);
-                            botones[i][j].setDisabledIcon(backCard);
+                            botones[i][j].setIcon(backCard);
                         }
 
                         if(bandoFicha.equals("BUENO")){
-                            botones[i][j].setEnabled(true);
-                            botones[i][j].setDisabledIcon(null);
+                            botones[i][j].setIcon(new ImageIcon(getClass().getResource(rutaFicha)));
                         }
+
+                          
+                        
                     }catch(NullPointerException e){
                         System.out.println("Casilla Vacia");
-                    };
-                    
-
-                    
+                    };  
                 }
-                
-                
-                
             }
 
+            
         }else if(turnos==false){
             //Desarrollo para mostrar y manipular fichas de villanos
                for(int i=0; i<botones.length; i++){
@@ -327,38 +508,39 @@ public class Tablero {
                     try{
                         
                         if (infoFicha == null) {
-                        botones[i][j].setEnabled(true);
-                        botones[i][j].setDisabledIcon(null);
-                        
+                            botones[i][j].setIcon(null);
+                            botones[i][j].putClientProperty("bando", null);//Propiedad a boton de bando
+                            botones[i][j].putClientProperty("rutaReal", null);
                         }
+                        
+                        //String OriginalRute = (String) botones[i][j].getClientProperty("rutaReal");
+                        //botones[i][j].setIcon(new ImageIcon(getClass().getResource(OriginalRute)));
+
+
                         String rutaFicha = infoFicha.getDescription();//Obtengo la ruta
                         Ficha selecFicha = obtenerFicha(rutaFicha);//obtengo informacion de la ficha en base a la ruta
                         String bandoFicha= selecFicha.getBando();
-                              
-                        if(bandoFicha.equals("MALO")){
-                            //Se establece el icono back de la carta
-                            botones[i][j].setEnabled(true);
-                            botones[i][j].setDisabledIcon(null);
-                        }
+                        
+                   
+                        
+                        botones[i][j].putClientProperty("BANDO", bandoFicha);
+                        botones[i][j].putClientProperty("rutaReal", rutaFicha);
 
-                        if(bandoFicha.equals("BUENO")){
-                            botones[i][j].setEnabled(false);
-                            botones[i][j].setDisabledIcon(backCard);
+                            boolean esTurnoPropio= (turnos && bandoFicha.equals("MALO")) || (!turnos && bandoFicha.equals("BUENO"));
+
+                            if(esTurnoPropio){
+                               botones[i][j].setIcon(new ImageIcon(getClass().getResource("rutaReal")));
+                            }else{
+                                 botones[i][j].setIcon(backCard);
                         }
                     }catch(NullPointerException e){
                         System.out.println("Casilla Vacia");
                     };
-                    
-                    
-                    
-                    
-              
-
-                    
                 }
 
             }
         }
+      */
         
         
     }

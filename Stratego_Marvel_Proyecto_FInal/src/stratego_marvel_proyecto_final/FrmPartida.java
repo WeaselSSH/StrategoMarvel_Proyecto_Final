@@ -73,10 +73,10 @@ public class FrmPartida extends javax.swing.JFrame {
                             casillaSeleccionada = botones[fila][columna];
                             
                             //Posicion de la ficha seleccionada 
-                            filaInicio=fila;
-                            columnaInicio= columna;
-                            filaInicialProvisional=fila;
-                            columnaProvisional=columna;
+                            filaInicio= (int) casillaSeleccionada.getClientProperty("fila");
+                            columnaInicio= (int) casillaSeleccionada.getClientProperty("col");
+                            filaInicialProvisional=(int) casillaSeleccionada.getClientProperty("fila");
+                            columnaProvisional=(int) casillaSeleccionada.getClientProperty("col");
                             filaFinalComparativa=filaInicialProvisional-1;//Mueve hacia delante
                             filaFinalComparativa2=filaInicialProvisional+1;//Mueve hacia atras
                             revisionColumna1=columnaProvisional+1;
@@ -89,7 +89,6 @@ public class FrmPartida extends javax.swing.JFrame {
                             //No se recoge nada
                         }
                     }else{
-                        //botones[fila][columna].setEnabled(true);
                         //Caso cuando ya hay una ficha previamente seleccionada
                         
                         //Comprobantes de rango de ambas fichas en comparacion
@@ -97,12 +96,13 @@ public class FrmPartida extends javax.swing.JFrame {
                         String rangoFichaOcupada="";
                         
                         //Obtener informacion de ficha ya seleccionada
-                        
-                        
                         ImageIcon tipofichaSelecc= (ImageIcon) casillaSeleccionada.getIcon();
-                        
+                        Ficha fichaselecc = null;                      
                         if (tipofichaSelecc == null) {
-                        return;
+                            System.out.println("No hay ficha seleccionada");
+                            return;
+                        }else{
+                            fichaselecc = (Ficha) casillaSeleccionada.getClientProperty("ficha"); //obtengo info de ficha
                         }
         
                         
@@ -110,8 +110,13 @@ public class FrmPartida extends javax.swing.JFrame {
                         String rutaIconoFichaSelecc = tipofichaSelecc.getDescription();
                         System.out.println(rutaIconoFichaSelecc);
                         
-                        Ficha selected = tablero.obtenerFicha(rutaIconoFichaSelecc);
-                        rangoFichaSelecc= selected.getRango();
+                        Ficha selected = tablero.obtenerFicha(rutaIconoFichaSelecc, rutaIconoFichaSelecc);
+                        if(fichaselecc!= null){
+                            rangoFichaSelecc= (int) casillaSeleccionada.getClientProperty("rango");
+                        }else{
+                            System.out.println("No hay ficha seleccionada");
+                        }
+                        
 
                         
 
@@ -208,7 +213,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                         return;
                                         }
                                         String rutaDefensa = ImageDefensa.getDescription();
-                                        Ficha infoDefensa= tablero.obtenerFicha(rutaDefensa);
+                                        Ficha infoDefensa= tablero.obtenerFicha(rutaDefensa, rutaDefensa);
                                         
                                         int rankDefensa= infoDefensa.getRango();
                                         int rankAtaque=rangoFichaSelecc;
@@ -544,7 +549,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                         return;
                                         }
                                         String rutaDefensa = ImageDefensa.getDescription();
-                                        Ficha infoDefensa= tablero.obtenerFicha(rutaDefensa);
+                                        Ficha infoDefensa= tablero.obtenerFicha(rutaDefensa, rutaDefensa);
                                         
                                         int rankDefensa= infoDefensa.getRango();
                                         int rankAtaque=rangoFichaSelecc;

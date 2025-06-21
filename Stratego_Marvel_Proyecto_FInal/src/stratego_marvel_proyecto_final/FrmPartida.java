@@ -459,7 +459,6 @@ public class FrmPartida extends javax.swing.JFrame {
                                         //Verificar en caso que se haya capturado las tierras 
                                         if(rankAtaque==1 && rankDefensa==11){
                                             //Villanos han capturado la tierra
-                                            JOptionPane.showMessageDialog(null, "Los Villanos Han Capturado la Tierra. Los villanos ganan.");
                                             fichaDefensora.setIcon(null);
                                             filaFinal= fila;
                                             columnaFinal=columna;
@@ -467,13 +466,15 @@ public class FrmPartida extends javax.swing.JFrame {
                                             //String rutaImagenInicial = imagenInicial.getDescription();
                                             botones[filaFinal][columnaFinal].setIcon(imagenInicial);
                                             botones[filaInicio][columnaInicio].setIcon(null);
-
+                                            JOptionPane.showMessageDialog(null, "Los Villanos Han Capturado la Tierra. Los villanos ganan.");
+                                            DatosGlobales.jugadorContricante.partidaGanada();
+                                            FrmMenuPrincipal menuBack= new FrmMenuPrincipal();
+                                            menuBack.setVisible(true);
                                             this.dispose();
                                         }
                                         
                                         if(rankAtaque==1 && rankDefensa==12){
                                             //Heroes salvan la tierra
-                                            JOptionPane.showMessageDialog(null, "Los Heroes han Salvado la Tierra. Los Heroes ganan.");
                                             fichaDefensora.setIcon(null);
                                             filaFinal= fila;
                                             columnaFinal=columna;
@@ -481,6 +482,10 @@ public class FrmPartida extends javax.swing.JFrame {
                                             //String rutaImagenInicial = imagenInicial.getDescription();
                                             botones[filaFinal][columnaFinal].setIcon(imagenInicial);
                                             botones[filaInicio][columnaInicio].setIcon(null);
+                                            JOptionPane.showMessageDialog(null, "Los Heroes han Salvado la Tierra. Los Heroes ganan.");
+                                            DatosGlobales.jugadorHost.partidaGanada();
+                                            FrmMenuPrincipal menuBack= new FrmMenuPrincipal();
+                                            menuBack.setVisible(true);
                                             this.dispose();
                                         }
                                         

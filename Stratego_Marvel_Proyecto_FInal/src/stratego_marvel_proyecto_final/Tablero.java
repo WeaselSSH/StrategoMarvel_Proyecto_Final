@@ -420,12 +420,20 @@ public class Tablero {
         //Verificacion de Win/Lose mediante cantidad 
         if(cantidadHeroes==0 && cantidadVillanos==0){
             JOptionPane.showMessageDialog(null, "¡Empate!");
+            FrmMenuPrincipal menuBack= new FrmMenuPrincipal();
+            menuBack.setVisible(true);
             ventana.dispose();
         }else if(cantidadHeroes>cantidadVillanos && cantidadVillanos==0){
             JOptionPane.showMessageDialog(null, "Todos los villanos han sido derrotados. ¡Han Ganado los Heroes!");
+            DatosGlobales.jugadorHost.partidaGanada();//Agrega puntos
+            FrmMenuPrincipal menuBack= new FrmMenuPrincipal();
+            menuBack.setVisible(true);
             ventana.dispose();
         }else if(cantidadVillanos>cantidadHeroes && cantidadHeroes==0){
             JOptionPane.showMessageDialog(null, "Todos los heroes han sido derrotados. ¡Han Ganado los Villanos!");
+            DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
+            FrmMenuPrincipal menuBack= new FrmMenuPrincipal();
+            menuBack.setVisible(true);
             ventana.dispose();
         }
     }

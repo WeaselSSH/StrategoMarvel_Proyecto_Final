@@ -13,7 +13,10 @@ public class Tablero {
     private JButton[][] botones = new JButton[10][10];
     Border bordeAzul = new LineBorder(Color.BLUE, 3);
     Border bordeRojo = new LineBorder(Color.RED, 3);
+    //boolean que sirve para la validación tanto de bordes visuales como movimiento (backend y frontend por asi decirlo)
     private final boolean[][] bordeActivo = new boolean[10][10];
+
+    //coordenadas de las casillas de lago (o sea las que están deshabilitadas)
     private final int[][] casillasLago = {
         {4, 2}, {4, 3}, {5, 2}, {5, 3},
         {4, 6}, {4, 7}, {5, 6}, {5, 7}
@@ -45,7 +48,10 @@ public class Tablero {
                 int columna = random.nextInt(8) + 1;
 
                 ImageIcon imagen = new ImageIcon(getClass().getResource(ficha.getRutaImagen()));
+
+                //pone como descripción la ruta de la imagen para saber cual es después (cuando esté oculta)
                 imagen.setDescription(ficha.getRutaImagen());
+
                 botones[fila][columna].setIcon(imagen);
 
                 asignarBombas(columna, fila, ficha.getBando());
@@ -59,21 +65,23 @@ public class Tablero {
                 ? "/imagenes/novaBlast.png"
                 : "/imagenes/pumpkinBomb.png";
 
-        ImageIcon imagen1 = new ImageIcon(getClass().getResource(rutaBomba));
-        imagen1.setDescription(rutaBomba);
-        botones[fila][columna - 1].setIcon(imagen1);
+        ImageIcon bomba1 = new ImageIcon(getClass().getResource(rutaBomba));
 
-        ImageIcon imagen2 = new ImageIcon(getClass().getResource(rutaBomba));
-        imagen2.setDescription(rutaBomba);
-        botones[fila][columna + 1].setIcon(imagen2);
+        //misma lógica que lo anterior (basicamente si es set description es por lo de antes)
+        bomba1.setDescription(rutaBomba);
+        botones[fila][columna - 1].setIcon(bomba1);
 
-        ImageIcon iconoCentral = new ImageIcon(getClass().getResource(rutaBomba));
-        iconoCentral.setDescription(rutaBomba);
+        ImageIcon bomba2 = new ImageIcon(getClass().getResource(rutaBomba));
+        bomba2.setDescription(rutaBomba);
+        botones[fila][columna + 1].setIcon(bomba2);
+
+        ImageIcon imagenCentral = new ImageIcon(getClass().getResource(rutaBomba));
+        imagenCentral.setDescription(rutaBomba);
 
         if (bando.equalsIgnoreCase("BUENO")) {
-            botones[fila - 1][columna].setIcon(iconoCentral);
+            botones[fila - 1][columna].setIcon(imagenCentral);
         } else {
-            botones[fila + 1][columna].setIcon(iconoCentral);
+            botones[fila + 1][columna].setIcon(imagenCentral);
         }
     }
 
@@ -156,12 +164,18 @@ public class Tablero {
     }
 
     public void botonClick(int fila, int columna) {
+
+        //castearlo a imagen
         ImageIcon icono = (ImageIcon) botones[fila][columna].getIcon();
 
         if (fichaSeleccionada == null) {
             if (icono != null) {
                 Ficha ficha = obtenerFicha(icono.getDescription());
-                if (ficha != null && ficha.getBando().equals(turnoActual) && !ficha.getTipo().equals("TIERRA") && !ficha.getTipo().equals("BOMBA")) {
+
+                //validar que sea el turno del jugador, el bando y todo eso
+                if (ficha != null && ficha.getBando().equals(turnoActual)
+                        && !ficha.getTipo().equals("TIERRA") && !ficha.getTipo().equals("BOMBA")) {
+
                     fichaSeleccionada = ficha;
                     filaSeleccionada = fila;
                     columnaSeleccionada = columna;
@@ -170,6 +184,7 @@ public class Tablero {
             }
         } else {
             if (fila == filaSeleccionada && columna == columnaSeleccionada) {
+                //resetear las variables donde se almacena la ficha actual y lo demás
                 fichaSeleccionada = null;
                 filaSeleccionada = -1;
                 columnaSeleccionada = -1;
@@ -178,8 +193,10 @@ public class Tablero {
             }
 
             if (bordeActivo[fila][columna]) {
+            //aquí se usa la lègica de marcar borde para la logica con el boolean borde activo
                 boolean movido = moverFicha(filaSeleccionada, columnaSeleccionada, fila, columna);
                 if (movido) {
+                    //si la ficha se ha movido se cambia de turno
                     turnoActual = turnoActual.equals("BUENO") ? "MALO" : "BUENO";
                     actualizarImagenes();
                 }
@@ -220,6 +237,7 @@ public class Tablero {
     }
 
     private void marcarBordes(int fil, int col, Border borde, boolean rango2, String bandoFichaSeleccionada) {
+        //aqui es donde ocurre la lógica para mover también
         int[][] direcciones = {
             {-1, 0},
             {1, 0},
@@ -273,6 +291,7 @@ public class Tablero {
                 if (verificarCasillaLago(nuevaFila, nuevaCol)) {
                     continue;
                 }
+                //en estas se usa continue porque si no no deja mover en las otras direcciones porque se iría del ciclo
 
                 ImageIcon icono = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
 
@@ -332,6 +351,8 @@ public class Tablero {
     }
 
     private boolean moverFicha(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
+
+        //se obtienen las imagenes
         ImageIcon imagenOrigen = (ImageIcon) botones[filaOrigen][columnaOrigen].getIcon();
         ImageIcon imagenDestino = (ImageIcon) botones[filaDestino][columnaDestino].getIcon();
 
@@ -346,7 +367,7 @@ public class Tablero {
             botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
             botones[filaOrigen][columnaOrigen].setIcon(null);
             return true;
-        } else {
+        } else { //logica de combate
             if (fichaDestino.getTipo().equals("BOMBA")) {
                 if (fichaOrigen.getRango() == 3) {
                     botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
@@ -376,33 +397,34 @@ public class Tablero {
             }
         }
     }
-    
-    private void actualizarImagenes() {
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
-            ImageIcon icono = (ImageIcon) botones[i][j].getIcon();
-            if (icono == null) 
-                continue;
 
-            String descripcion = icono.getDescription();
-            Ficha ficha = obtenerFicha(descripcion);
-            
-            if (ficha == null) 
-                continue;
+    private void actualizarImagenes() { //lógica para cambiar la backcard
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                ImageIcon icono = (ImageIcon) botones[i][j].getIcon();
+                if (icono == null) {
+                    continue;
+                }
 
-            ImageIcon nuevaImagen;
+                String descripcion = icono.getDescription();
+                Ficha ficha = obtenerFicha(descripcion);
 
-            if (ficha.getBando().equals(turnoActual)) {
-                nuevaImagen = new ImageIcon(getClass().getResource(ficha.getRutaImagen()));
-            } else {
-                nuevaImagen = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
+                if (ficha == null) {
+                    continue;
+                }
+
+                ImageIcon nuevaImagen;
+
+                if (ficha.getBando().equals(turnoActual)) {
+                    nuevaImagen = new ImageIcon(getClass().getResource(ficha.getRutaImagen()));
+                } else {
+                    nuevaImagen = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
+                }
+
+                nuevaImagen.setDescription(ficha.getRutaImagen());
+                botones[i][j].setIcon(nuevaImagen);
             }
-
-            nuevaImagen.setDescription(ficha.getRutaImagen());
-            botones[i][j].setIcon(nuevaImagen);
         }
     }
-}
-
 
 }

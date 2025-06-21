@@ -22,10 +22,9 @@ public class Tablero {
     //inicializado en bueno porque empiezan los buenos
     private String turnoActual = "BUENO";
 
-    //inicializadas en ese valor para que el programa detecte como si fuera vacío la selección
-    private int filaSeleccionada = -1;
-    private int columnaSeleccionada = -1;
-    private Ficha fichaSeleccionada = null;
+    private int filaSeleccionada;
+    private int columnaSeleccionada;
+    private Ficha fichaSeleccionada;
 
     public Tablero(JButton[][] botones) {
         this.botones = botones;

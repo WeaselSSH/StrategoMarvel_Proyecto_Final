@@ -14,6 +14,18 @@ public class Tablero {
     Border bordeAzul = new LineBorder(Color.BLUE, 3);
     Border bordeRojo = new LineBorder(Color.RED, 3);
     private final boolean[][] bordeActivo = new boolean[10][10];
+    private final int[][] casillasLago = {
+        {4, 2}, {4, 3}, {5, 2}, {5, 3},
+        {4, 6}, {4, 7}, {5, 6}, {5, 7}
+    };
+
+    //inicializado en bueno porque empiezan los buenos
+    private String turnoActual = "BUENO";
+
+    //inicializadas en ese valor para que el programa detecte como si fuera vacío la selección
+    private int filaSeleccionada = -1;
+    private int columnaSeleccionada = -1;
+    private Ficha fichaSeleccionada = null;
 
     public Tablero(JButton[][] botones) {
         this.botones = botones;
@@ -24,6 +36,7 @@ public class Tablero {
         asignarTierraYBombas();
         asignarFichasRestantes(DatosGlobales.fichas(), "BUENO");
         asignarFichasRestantes(DatosGlobales.fichas(), "MALO");
+        bloquearLago();
     }
 
     private void asignarTierraYBombas() {
@@ -128,7 +141,40 @@ public class Tablero {
     }
 
     public void botonClick(int fila, int columna) {
-        agregarQuitarBorde(fila, columna);
+        ImageIcon icono = (ImageIcon) botones[fila][columna].getIcon();
+
+        if (fichaSeleccionada == null) {
+            if (icono != null) {
+                Ficha ficha = obtenerFicha(icono.getDescription());
+                if (ficha != null && ficha.getBando().equals(turnoActual) && !ficha.getTipo().equals("TIERRA") && !ficha.getTipo().equals("BOMBA")) {
+                    fichaSeleccionada = ficha;
+                    filaSeleccionada = fila;
+                    columnaSeleccionada = columna;
+                    agregarQuitarBorde(fila, columna);
+                }
+            }
+        } else {
+            if (fila == filaSeleccionada && columna == columnaSeleccionada) {
+                fichaSeleccionada = null;
+                filaSeleccionada = -1;
+                columnaSeleccionada = -1;
+                quitarBordes();
+                return;
+            }
+            
+            if (bordeActivo[fila][columna]) {
+                boolean movido = moverFicha(filaSeleccionada, columnaSeleccionada, fila, columna);
+                if (movido) {
+                    turnoActual = turnoActual.equals("BUENO") ? "MALO" : "BUENO";
+                    System.out.println("Turno cambiado a: " + turnoActual);
+                }
+            }
+
+            fichaSeleccionada = null;
+            filaSeleccionada = -1;
+            columnaSeleccionada = -1;
+            quitarBordes();
+        }
     }
 
     private void agregarQuitarBorde(int fil, int col) {
@@ -179,6 +225,10 @@ public class Tablero {
                         break;
                     }
 
+                    if (verificarCasillaLago(nuevaFila, nuevaCol)) {
+                        break;
+                    }
+
                     ImageIcon icono = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
 
                     if (icono != null) {
@@ -202,6 +252,10 @@ public class Tablero {
                 nuevaCol += dir[1];
 
                 if (!posicionValida(nuevaFila, nuevaCol)) {
+                    continue;
+                }
+
+                if (verificarCasillaLago(nuevaFila, nuevaCol)) {
                     continue;
                 }
 
@@ -243,4 +297,69 @@ public class Tablero {
     private boolean posicionValida(int fila, int columna) {
         return fila >= 0 && fila < 10 && columna >= 0 && columna < 10;
     }
+
+    private void bloquearLago() {
+        for (int[] posicion : casillasLago) {
+            int fila = posicion[0];
+            int columna = posicion[1];
+
+            botones[fila][columna].setEnabled(false);
+        }
+    }
+
+    private boolean verificarCasillaLago(int fila, int columna) {
+        for (int[] pos : casillasLago) {
+            if (pos[0] == fila && pos[1] == columna) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean moverFicha(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
+        ImageIcon imagenOrigen = (ImageIcon) botones[filaOrigen][columnaOrigen].getIcon();
+        ImageIcon imagenDestino = (ImageIcon) botones[filaDestino][columnaDestino].getIcon();
+
+        if (imagenOrigen == null) {
+            return false;
+        }
+
+        Ficha fichaOrigen = obtenerFicha(imagenOrigen.getDescription());
+        Ficha fichaDestino = (imagenDestino != null) ? obtenerFicha(imagenDestino.getDescription()) : null;
+
+        if (fichaDestino == null) {
+            botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
+            botones[filaOrigen][columnaOrigen].setIcon(null);
+            return true;
+        } else {
+            if (fichaDestino.getTipo().equals("BOMBA")) {
+                if (fichaOrigen.getRango() == 3) {
+                    botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
+                    botones[filaOrigen][columnaOrigen].setIcon(null);
+                    return true;
+                } else {
+                    botones[filaOrigen][columnaOrigen].setIcon(null);
+                    botones[filaDestino][columnaDestino].setIcon(null);
+                    return true;
+                }
+            } else {
+                int rangoOrigen = fichaOrigen.getRango();
+                int rangoDestino = fichaDestino.getRango();
+
+                if (rangoOrigen > rangoDestino) {
+                    botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
+                    botones[filaOrigen][columnaOrigen].setIcon(null);
+                    return true;
+                } else if (rangoOrigen < rangoDestino) {
+                    botones[filaOrigen][columnaOrigen].setIcon(null);
+                    return true;
+                } else {
+                    botones[filaOrigen][columnaOrigen].setIcon(null);
+                    botones[filaDestino][columnaDestino].setIcon(null);
+                    return true;
+                }
+            }
+        }
+    }
+
 }

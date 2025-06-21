@@ -6,6 +6,8 @@ import java.util.Random;
 import javax.swing.border.LineBorder;
 import javax.swing.border.Border;
 import java.awt.Color;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Tablero {
 
@@ -307,10 +309,10 @@ public class Tablero {
                     try{
                         selecFicha = obtenerFicha(infoFicha.getDescription(), infoFicha.getDescription());
                        // selecFichaBack=obtenerFicha2(infoFicha.getDescription());
-                        System.out.println("Se obtuvo front card");
+                        
                     }catch(NullPointerException e){
                         selecFicha = obtenerFicha2(infoFicha.getDescription());//Intenta con la ruta del reverso
-                        System.out.println("Se obtuvo backcard");
+                        
                     }
                     
                     if(selecFicha==null){
@@ -390,27 +392,45 @@ public class Tablero {
                 String bandoFicha=selecFicha.getBando();
               
                 if(bandoFicha.equals("BUENO")){
+                    System.out.println("Conto uno bueno");
                     UpdateCantH++;
                 }else if(bandoFicha.equals("MALO")){
+                    System.out.println("Conto uno malo");
                     UpdateCantV++;
                 }  
             }
         }
         
-        //Revisa que la cantidad actualizada sea menor a la actual para actualizar
-        if(UpdateCantH<cantHeroes){
-            cantHeroes=UpdateCantH;
-        }
-        
-        if(UpdateCantV<cantVillanos){
-            cantVillanos=UpdateCantV;
-        }
+        //Actualiza la cantidad de fichas jugables
+        cantHeroes=UpdateCantH-7;
+        cantVillanos=UpdateCantV-7;
+ 
         System.out.println("Cantidad actual de heroes: "+cantHeroes);
         System.out.println("Cantidad actual de villanos: "+cantVillanos);
-        
-        
-        
     }
+    
+    public void WinOrLoose(JFrame ventana){
+        //Este metodo evalua el win/Lose mediante la cantidad de fichas jugables que quedan en el tablero
+        conteoFichas();//Ejecutre el conteo de fichas jugables
+        
+        int cantidadHeroes=cantHeroes-7;
+        int cantidadVillanos=cantVillanos-7;
+        
+        
+        //Verificacion de Win/Lose mediante cantidad 
+        if(cantidadHeroes==0 && cantidadVillanos==0){
+            JOptionPane.showMessageDialog(null, "¡Empate!");
+            ventana.dispose();
+        }else if(cantidadHeroes>cantidadVillanos && cantidadVillanos==0){
+            JOptionPane.showMessageDialog(null, "Todos los villanos han sido derrotados. ¡Han Ganado los Heroes!");
+            ventana.dispose();
+        }else if(cantidadVillanos>cantidadHeroes && cantidadHeroes==0){
+            JOptionPane.showMessageDialog(null, "Todos los heroes han sido derrotados. ¡Han Ganado los Villanos!");
+            ventana.dispose();
+        }
+    }
+    
+    
     
     
     

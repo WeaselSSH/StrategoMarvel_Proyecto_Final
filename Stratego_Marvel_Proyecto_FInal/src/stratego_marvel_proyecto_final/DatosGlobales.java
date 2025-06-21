@@ -4,6 +4,7 @@ public class DatosGlobales {
 
     public static ListaJugadores listaJugadores = new ListaJugadores();
     public static Jugador jugadorHost = null;
+    public static Jugador jugadorContricante= null;
 
     public static Ficha[] fichas() {
         return new Ficha[]{
@@ -11,7 +12,7 @@ public class DatosGlobales {
             new Ficha("/imagenes/heroEarth.png", "TIERRA", "BUENO", 11,"/backsides/backcard1.png"),//Set de rango 11 para que el rango 0 sea exclusivo de bombas
             new Ficha("/imagenes/novaBlast.png", "BOMBA", "BUENO", 0,"/backsides/backcard2.png"),
             //tierra y bombas malos
-            new Ficha("/imagenes/villainEarth.png", "TIERRA", "MALO", 11,"/backsides/backcard3.png"),
+            new Ficha("/imagenes/villainEarth.png", "TIERRA", "MALO", 12,"/backsides/backcard3.png"),
             new Ficha("/imagenes/pumpkinBomb.png", "BOMBA", "MALO", 0,"/backsides/backcard4.png"),
             // fichas rango 2
             new Ficha("/imagenes/gambit.png", "RANGO_2", "BUENO", 2,"/backsides/backcard5.png"),

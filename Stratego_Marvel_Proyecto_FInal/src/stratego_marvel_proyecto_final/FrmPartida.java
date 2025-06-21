@@ -253,6 +253,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             }
                                             System.out.println("Estado de turno: "+estadoTurno);
                                             tablero.visibilidadTurnos(estadoTurno);
+                                            tablero.conteoFichas();
 
                                             
                                         }else if(rankDefensa==0){
@@ -281,6 +282,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             }
                                             System.out.println("Estado de turno: "+estadoTurno);
                                             tablero.visibilidadTurnos(estadoTurno);
+                                            tablero.conteoFichas();
                                             
                                         }else if(rankAtaque==10 && rankDefensa==1){
                                            System.out.println("Una ficha de rango 1 derrotó al gigante de 10 :0");
@@ -307,6 +309,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             }
                                             System.out.println("Estado de turno: "+estadoTurno);
                                             tablero.visibilidadTurnos(estadoTurno);
+                                            tablero.conteoFichas();
                                             
                                         }else if(rankAtaque==1 && rankDefensa==10){//Caso que la ficha 1 pueda atacar a la ficha 10
                                             System.out.println("Una ficha de rango 1 derrotó al gigante de 10 :0");
@@ -346,6 +349,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             }
                                             System.out.println("Estado de turno: "+estadoTurno);
                                             tablero.visibilidadTurnos(estadoTurno);
+                                            tablero.conteoFichas();
                                             
                                             
                                         }else if(rankAtaque>rankDefensa){
@@ -385,6 +389,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             }
                                             System.out.println("Estado de turno: "+estadoTurno);
                                             tablero.visibilidadTurnos(estadoTurno);
+                                            tablero.conteoFichas();
                                             
                                             
                                             
@@ -414,6 +419,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             }
                                             System.out.println("Estado de turno: "+estadoTurno);
                                             tablero.visibilidadTurnos(estadoTurno);
+                                            tablero.conteoFichas();
                                             
                                             
                                         }else if(rankDefensa==rankAtaque){
@@ -445,6 +451,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             }
                                             System.out.println("Estado de turno: "+estadoTurno);
                                             tablero.visibilidadTurnos(estadoTurno);
+                                            tablero.conteoFichas();
                                             
                                             
                                         }
@@ -486,6 +493,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                     }
                                     System.out.println("Estado de turno: "+estadoTurno);
                                     tablero.visibilidadTurnos(estadoTurno);
+                                    tablero.conteoFichas();
                                     
                                 }
                             }
@@ -535,6 +543,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                         }
                                         System.out.println("Estado de turno: "+estadoTurno);
                                         tablero.visibilidadTurnos(estadoTurno);
+                                        tablero.conteoFichas();
                                         
                                         
                                     }else{
@@ -582,6 +591,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             }
                                             System.out.println("Estado de turno: "+estadoTurno);
                                             tablero.visibilidadTurnos(estadoTurno);
+                                            tablero.conteoFichas();
                                             
                                         }else if(rankAtaque>rankDefensa){
                                             System.out.println("Ha vencido la ficha de ataque");
@@ -620,6 +630,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             }
                                             System.out.println("Estado de turno: "+estadoTurno);
                                             tablero.visibilidadTurnos(estadoTurno);
+                                            tablero.conteoFichas();
                                             
                                         }else if(rankDefensa>rankAtaque){
                                             System.out.println("Ha vencido la ficha de defensa");
@@ -647,6 +658,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             }
                                             System.out.println("Estado de turno: "+estadoTurno);
                                             tablero.visibilidadTurnos(estadoTurno);
+                                            tablero.conteoFichas();
                                             
                                         }else if(rankDefensa==rankAtaque){
                                             System.out.println("Se queda en un empate. Ambas se destruyen");
@@ -679,6 +691,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             }
                                             System.out.println("Estado de turno: "+estadoTurno);
                                             tablero.visibilidadTurnos(estadoTurno);
+                                            tablero.conteoFichas();
                                             
                                         }
                                     }
@@ -718,6 +731,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                     }
                                     System.out.println("Estado de turno: "+estadoTurno);
                                     tablero.visibilidadTurnos(estadoTurno);
+                                    tablero.conteoFichas();
                                     
                                     
                                 }
@@ -743,6 +757,7 @@ public class FrmPartida extends javax.swing.JFrame {
                         }
                         System.out.println("Estado de turno: "+estadoTurno);
                         tablero.visibilidadTurnos(estadoTurno);
+                        tablero.conteoFichas();
                         
                             
                         }

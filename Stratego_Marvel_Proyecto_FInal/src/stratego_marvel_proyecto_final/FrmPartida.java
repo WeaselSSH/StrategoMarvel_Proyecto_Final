@@ -258,9 +258,10 @@ public class FrmPartida extends javax.swing.JFrame {
                                             
                                         }else if(rankDefensa==0){
                                             System.out.println("¡Se ha activado una bomba!");
-                                            fichaAtacante.setIcon(null);//Elimina a ficha de ataque
+                                            
                                             
                                             //Limpieza de datos
+                                            fichaAtacante.setIcon(null);//Elimina a ficha de ataque
                                             filaInicio=0;
                                             columnaInicio=0;
                                             filaFinal=0;
@@ -286,6 +287,25 @@ public class FrmPartida extends javax.swing.JFrame {
                                             
                                         }else if(rankAtaque==10 && rankDefensa==1){
                                            System.out.println("Una ficha de rango 1 derrotó al gigante de 10 :0");
+                                           
+                                           
+                                           //Establecimiento de mensaje de ataque
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            ImageIcon imagenFinal = (ImageIcon) botones[filaFinal][columnaFinal].getIcon();
+                                            
+                                            String routeFinal = imagenFinal.getDescription();
+                                            String routeInicial= imagenInicial.getDescription();
+                                            Ficha imagenVencedora=tablero.obtenerFicha(routeInicial, routeInicial);
+                                            Ficha Imagefinal = tablero.obtenerFicha(routeFinal, routeFinal);
+                                            String nameAtacante= Imagefinal.getName();
+                                            
+                                            ImageIcon fotoFinal = new ImageIcon(getClass().getResource(Imagefinal.getRutaImagen()));
+                                            tablero.animacionLucha(imagenInicial, fotoFinal, nameAtacante);
+                                           
+                                           
+                                           
                                            fichaAtacante.setIcon(null);//Elimina a ficha de ataque 
                                             //Limpieza de datos
                                             filaInicio=0;
@@ -313,19 +333,28 @@ public class FrmPartida extends javax.swing.JFrame {
                                             
                                         }else if(rankAtaque==1 && rankDefensa==10){//Caso que la ficha 1 pueda atacar a la ficha 10
                                             System.out.println("Una ficha de rango 1 derrotó al gigante de 10 :0");
-                                            fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
-                                            //Desarrolla procedimiento de movimiento
+                                            
+                                            
+                                            //Establecimiento de mensaje de ataque
                                             filaFinal= fila;
                                             columnaFinal=columna;
-                                            //efectua el metodo de movimiento
-                                            System.out.println("Entro al proceso de mover ficha");
-
-
                                             ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            ImageIcon imagenFinal = (ImageIcon) botones[filaFinal][columnaFinal].getIcon();
+                                            
+                                            String routeFinal = imagenFinal.getDescription();
+                                            String routeInicial= imagenInicial.getDescription();
+                                            Ficha imagenVencedora=tablero.obtenerFicha(routeInicial, routeInicial);
+                                            Ficha Imagefinal = tablero.obtenerFicha(routeFinal, routeFinal);
+                                            String nameAtacante= imagenVencedora.getName();
+                                            ImageIcon fotoFinal = new ImageIcon(getClass().getResource(Imagefinal.getRutaImagen()));
+                                            tablero.animacionLucha(imagenInicial, fotoFinal, nameAtacante);
+                                            
+                                            
                                             //String rutaImagenInicial = imagenInicial.getDescription();
                                             botones[filaFinal][columnaFinal].setIcon(imagenInicial);
                                             botones[filaInicio][columnaInicio].setIcon(null);
 
+                                            fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
                                             //Limpia la casilla seleccionada
                                             filaInicio=0;
                                             columnaInicio=0;
@@ -359,21 +388,19 @@ public class FrmPartida extends javax.swing.JFrame {
                                             ImageIcon imagenFinal = (ImageIcon) botones[filaFinal][columnaFinal].getIcon();
                                             
                                             String routeFinal = imagenFinal.getDescription();
+                                            String routeInicial= imagenInicial.getDescription();
+                                            Ficha imagenVencedora=tablero.obtenerFicha(routeInicial, routeInicial);
                                             Ficha Imagefinal = tablero.obtenerFicha(routeFinal, routeFinal);
-                                            String nameFinal= Imagefinal.getName();
+                                            String nameAtacante= imagenVencedora.getName();
+                                            System.out.println(nameAtacante);
                                             
                                             ImageIcon fotoFinal = new ImageIcon(getClass().getResource(Imagefinal.getRutaImagen()));
-                                            tablero.animacionLucha(imagenInicial, fotoFinal);
-                                            System.out.println("Ha vencido la ficha de ataque");
+                                            tablero.animacionLucha(imagenInicial, fotoFinal, nameAtacante);
                                             fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
                                             //Desarrolla procedimiento de movimiento
                                             
                                             //efectua el metodo de movimiento
-                                            System.out.println("Entro al proceso de mover ficha");
 
-
-                                            
-                                            String rutaImagenInicial = imagenInicial.getDescription();
                                             botones[filaFinal][columnaFinal].setIcon(imagenInicial);
                                             botones[filaInicio][columnaInicio].setIcon(null);
 
@@ -404,7 +431,21 @@ public class FrmPartida extends javax.swing.JFrame {
                                             
                                             
                                         }else if(rankDefensa>rankAtaque){
-                                            System.out.println("Ha vencido la ficha de defensa");
+                                            
+                                            //Establecimiento de mensaje de ataque
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            ImageIcon imagenFinal = (ImageIcon) botones[filaFinal][columnaFinal].getIcon();
+                                            
+                                            String routeFinal = imagenFinal.getDescription();
+                                            String routeInicial= imagenInicial.getDescription();
+                                            Ficha imagenVencedora=tablero.obtenerFicha(routeInicial, routeInicial);
+                                            Ficha Imagefinal = tablero.obtenerFicha(routeFinal, routeFinal);
+                                            String nameDefensa= Imagefinal.getName();
+                                            ImageIcon fotoFinal = new ImageIcon(getClass().getResource(Imagefinal.getRutaImagen()));
+                                            tablero.animacionLucha(imagenInicial, fotoFinal, nameDefensa);
+                                        
                                             fichaAtacante.setIcon(null);//Elimina a ficha de ataque
                                             
                                             //Limpieza de datos
@@ -638,15 +679,22 @@ public class FrmPartida extends javax.swing.JFrame {
                                             
                                         }else if(rankAtaque>rankDefensa){
                                             System.out.println("Ha vencido la ficha de ataque");
-                                            fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
-                                            //Desarrolla procedimiento de movimiento
+                                            //Hace la funcion de eliminar a ficha
+                                            //Establecimiento de mensaje de ataque
                                             filaFinal= fila;
                                             columnaFinal=columna;
-                                            //efectua el metodo de movimiento
-                                            System.out.println("Entro al proceso de mover ficha");
-
-
                                             ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            ImageIcon imagenFinal = (ImageIcon) botones[filaFinal][columnaFinal].getIcon();
+                                            
+                                            String routeFinal = imagenFinal.getDescription();
+                                            String routeInicial= imagenInicial.getDescription();
+                                            Ficha imagenVencedora=tablero.obtenerFicha(routeInicial, routeInicial);
+                                            Ficha Imagefinal = tablero.obtenerFicha(routeFinal, routeFinal);
+                                            String nameAtacante= imagenVencedora.getName();
+                                            ImageIcon fotoFinal = new ImageIcon(getClass().getResource(Imagefinal.getRutaImagen()));
+                                            tablero.animacionLucha(imagenInicial, fotoFinal, nameAtacante);
+                                            fichaDefensora.setIcon(null);
+                                            
                                             //String rutaImagenInicial = imagenInicial.getDescription();
                                             botones[filaFinal][columnaFinal].setIcon(imagenInicial);
                                             botones[filaInicio][columnaInicio].setIcon(null);
@@ -677,7 +725,25 @@ public class FrmPartida extends javax.swing.JFrame {
                                             
                                         }else if(rankDefensa>rankAtaque){
                                             System.out.println("Ha vencido la ficha de defensa");
-                                            fichaAtacante.setIcon(null);//Elimina a ficha de ataque
+                                            //Elimina a ficha de ataque
+                                            //Establecimiento de mensaje de ataque
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            System.out.println(imagenInicial);
+                                            ImageIcon imagenFinal = (ImageIcon) botones[filaFinal][columnaFinal].getIcon();
+                                            
+                                            String routeFinal = imagenFinal.getDescription();
+                                            String routeInicial= imagenInicial.getDescription();
+                                            Ficha imagenVencedora=tablero.obtenerFicha(routeInicial, routeInicial);
+                                            Ficha Imagefinal = tablero.obtenerFicha(routeFinal, routeFinal);
+                                            String nameDefensa= Imagefinal.getName();
+                                            ImageIcon fotoFinal = new ImageIcon(getClass().getResource(Imagefinal.getRutaImagen()));
+                                            tablero.animacionLucha(imagenInicial, fotoFinal, nameDefensa);
+                                            fichaAtacante.setIcon(null);
+                                            
+                                            
+                                            
                                             
                                             //Limpieza de datos
                                             filaInicio=0;

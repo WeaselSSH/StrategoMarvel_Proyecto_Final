@@ -442,8 +442,8 @@ public class Tablero {
         }
     }
     
-    public void animacionLucha(ImageIcon imagHeroe, ImageIcon imagVillano){
-        PanelLucha lucha = new PanelLucha(imagHeroe, imagVillano);
+    public void animacionLucha(ImageIcon imagHeroe, ImageIcon imagVillano, String nombre){
+        PanelLucha lucha = new PanelLucha(imagHeroe, imagVillano, nombre);
         lucha.setVisible(true);
     }
     

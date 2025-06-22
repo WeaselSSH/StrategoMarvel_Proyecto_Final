@@ -8,7 +8,7 @@ public class Ficha {
     private String rutaRevez;
     private String nombre="";
     
-    public Ficha(String rutaImagen, String tipo, String bando, int rango, String rutaRevez) {
+    public Ficha(String rutaImagen, String tipo, String bando, int rango, String rutaRevez, String nombre) {
         this.rutaImagen = rutaImagen;
         this.tipo = tipo;
         this.rango = rango;

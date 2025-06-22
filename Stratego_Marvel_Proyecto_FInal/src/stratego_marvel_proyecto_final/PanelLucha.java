@@ -4,7 +4,12 @@
  */
 package stratego_marvel_proyecto_final;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.Timer;
 
 /**
  *
@@ -15,12 +20,31 @@ public class PanelLucha extends javax.swing.JFrame {
     /**
      * Creates new form PanelLucha
      */
-    public PanelLucha(ImageIcon imagAtak, ImageIcon imagDef) {
+    
+    private Timer timer;
+    
+    public PanelLucha(ImageIcon imagAtak, ImageIcon imagDef, String nombre) {
         initComponents();
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        this.setLocationRelativeTo(null);
         charVillian.setIcon(imagAtak);
         charHeroe.setIcon(imagDef);
-        //nombretxt.setText(nombre);
+        nombretxt.setEditable(false);
+        nombretxt.setText(nombre);
         this.setVisible(true);
+        
+        //Timer para que se muestre la ventana solamente por 5 segundos
+       
+        timer= new Timer(3000, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                PanelLucha.this.setVisible(false);
+                timer.stop();
+            }
+        });
+        timer.start();
+        
+        
     }
 
     /**
@@ -57,10 +81,10 @@ public class PanelLucha extends javax.swing.JFrame {
         jLabel1.setText("Ha Vencido: ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, -1, -1));
 
+        nombretxt.setBackground(new java.awt.Color(51, 51, 51));
         nombretxt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         nombretxt.setForeground(new java.awt.Color(255, 255, 255));
         nombretxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        nombretxt.setText("jTextField1");
         getContentPane().add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 130, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundfight.png"))); // NOI18N

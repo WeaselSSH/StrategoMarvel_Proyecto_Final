@@ -88,18 +88,18 @@ public class Tablero {
         bomba2.setDescription(rutaBomba);
         botones[fila][columna + 1].setIcon(bomba2);
 
-        ImageIcon imagenCentral;
+        ImageIcon bomba3;
         if (bando.equals(turnoActual)) {
-            imagenCentral = new ImageIcon(getClass().getResource(rutaBomba));
+            bomba3 = new ImageIcon(getClass().getResource(rutaBomba));
         } else {
-            imagenCentral = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
+            bomba3 = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
         }
-        imagenCentral.setDescription(rutaBomba);
+        bomba3.setDescription(rutaBomba);
 
         if (bando.equalsIgnoreCase("BUENO")) {
-            botones[fila - 1][columna].setIcon(imagenCentral);
+            botones[fila - 1][columna].setIcon(bomba3);
         } else {
-            botones[fila + 1][columna].setIcon(imagenCentral);
+            botones[fila + 1][columna].setIcon(bomba3);
         }
     }
 
@@ -291,10 +291,10 @@ public class Tablero {
                         break;
                     }
 
-                    ImageIcon icono = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
+                    ImageIcon imagen = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
 
-                    if (icono != null) {
-                        Ficha fichaEncontrada = obtenerFicha(icono.getDescription());
+                    if (imagen != null) {
+                        Ficha fichaEncontrada = obtenerFicha(imagen.getDescription());
                         if (fichaEncontrada != null) {
                             if (fichaEncontrada.getBando().equals(bandoFichaSeleccionada)) {
                                 break;
@@ -322,10 +322,10 @@ public class Tablero {
                 }
                 //en estas se usa continue porque si no no deja mover en las otras direcciones porque se iría del ciclo
 
-                ImageIcon icono = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
+                ImageIcon imagen = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
 
-                if (icono != null) {
-                    Ficha fichaEncontrada = obtenerFicha(icono.getDescription());
+                if (imagen != null) {
+                    Ficha fichaEncontrada = obtenerFicha(imagen.getDescription());
                     if (fichaEncontrada != null && !fichaEncontrada.getBando().equals(bandoFichaSeleccionada)) {
                         botones[nuevaFila][nuevaCol].setBorder(borde);
                         bordeActivo[nuevaFila][nuevaCol] = true;
@@ -442,12 +442,12 @@ public class Tablero {
     private void actualizarImagenes() { //lógica para cambiar la backcard
         for (int i = 0; i < 10; i++) {
             for (int j = 0; j < 10; j++) {
-                ImageIcon icono = (ImageIcon) botones[i][j].getIcon();
-                if (icono == null) {
+                ImageIcon imagen = (ImageIcon) botones[i][j].getIcon();
+                if (imagen == null) {
                     continue;
                 }
 
-                String descripcion = icono.getDescription();
+                String descripcion = imagen.getDescription();
                 Ficha ficha = obtenerFicha(descripcion);
 
                 if (ficha == null) {

@@ -353,17 +353,27 @@ public class FrmPartida extends javax.swing.JFrame {
                                             
                                             
                                         }else if(rankAtaque>rankDefensa){
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            ImageIcon imagenFinal = (ImageIcon) botones[filaFinal][columnaFinal].getIcon();
+                                            
+                                            String routeFinal = imagenFinal.getDescription();
+                                            Ficha Imagefinal = tablero.obtenerFicha(routeFinal, routeFinal);
+                                            String nameFinal= Imagefinal.getName();
+                                            
+                                            ImageIcon fotoFinal = new ImageIcon(getClass().getResource(Imagefinal.getRutaImagen()));
+                                            tablero.animacionLucha(imagenInicial, fotoFinal);
                                             System.out.println("Ha vencido la ficha de ataque");
                                             fichaDefensora.setIcon(null);//Hace la funcion de eliminar a ficha
                                             //Desarrolla procedimiento de movimiento
-                                            filaFinal= fila;
-                                            columnaFinal=columna;
+                                            
                                             //efectua el metodo de movimiento
                                             System.out.println("Entro al proceso de mover ficha");
 
 
-                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
-                                            //String rutaImagenInicial = imagenInicial.getDescription();
+                                            
+                                            String rutaImagenInicial = imagenInicial.getDescription();
                                             botones[filaFinal][columnaFinal].setIcon(imagenInicial);
                                             botones[filaInicio][columnaInicio].setIcon(null);
 

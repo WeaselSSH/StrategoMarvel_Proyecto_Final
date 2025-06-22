@@ -10,7 +10,7 @@ public class DatosGlobales {
         return new Ficha[]{
             //tierra y bombas
             new Ficha("/imagenes/heroEarth.png", "TIERRA", "BUENO", 11,"/backsides/backcard1.png"),//Set de rango 11 para que el rango 0 sea exclusivo de bombas
-            new Ficha("/imagenes/novaBlast.png", "BOMBA", "BUENO", 0,"/backsides/backcard2.png"),
+            new Ficha("/imagenes/novaBlast.png", "BOMBA", "BUENO", 0,"/backsides/backcard2.png"),//Agregado el nombre como propiedad para poder acceder a el a la hora de mostrar las luchas
             //tierra y bombas malos
             new Ficha("/imagenes/villainEarth.png", "TIERRA", "MALO", 12,"/backsides/backcard3.png"),
             new Ficha("/imagenes/pumpkinBomb.png", "BOMBA", "MALO", 0,"/backsides/backcard4.png"),

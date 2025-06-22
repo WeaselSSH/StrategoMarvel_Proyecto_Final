@@ -6,6 +6,7 @@ public class Ficha {
     private int rango;
     private String bando;
     private String rutaRevez;
+    private String nombre="";
     
     public Ficha(String rutaImagen, String tipo, String bando, int rango, String rutaRevez) {
         this.rutaImagen = rutaImagen;
@@ -13,6 +14,7 @@ public class Ficha {
         this.rango = rango;
         this.bando = bando;
         this.rutaRevez=rutaRevez;
+        this.nombre=nombre;
     }
     
     public String getRutaImagen() {
@@ -33,5 +35,9 @@ public class Ficha {
     
     public String getBackCard(){
         return rutaRevez;
+    }
+    
+    public String getName(){//Metodo para devolver el nombre
+        return nombre;
     }
 }

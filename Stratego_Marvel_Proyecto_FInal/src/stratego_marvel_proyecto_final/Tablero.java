@@ -304,18 +304,20 @@ public class Tablero {
                     }
                     
                     Ficha selecFicha = null;
-                    Ficha selecFichaBack=null;
+                    //Ficha selecFichaBack=null;
                     
                     try{
                         selecFicha = obtenerFicha(infoFicha.getDescription(), infoFicha.getDescription());
                        // selecFichaBack=obtenerFicha2(infoFicha.getDescription());
                         
                     }catch(NullPointerException e){
-                        selecFicha = obtenerFicha2(infoFicha.getDescription());//Intenta con la ruta del reverso
+                        //selecFicha = obtenerFicha2(infoFicha.getDescription());//Intenta con la ruta del reverso
+                        System.out.println("XD");
                         
                     }
                     
                     if(selecFicha==null){
+                        System.out.println("Quedo nulo");
                         botones[i][j].putClientProperty("ficha", null);
                         botones[i][j].putClientProperty("bando", null);
                         botones[i][j].putClientProperty("rango", null);
@@ -365,6 +367,8 @@ public class Tablero {
               System.out.println("Es turno de Villanos");
           }
     }
+    
+    
     
     public void conteoFichas(){//Metodo que revisa la cantidad de fichas jugables en el tablero
         //Valores que actualizaran la cantidad
@@ -438,10 +442,10 @@ public class Tablero {
         }
     }
     
+    public void animacionLucha(ImageIcon imagHeroe, ImageIcon imagVillano){
+        PanelLucha lucha = new PanelLucha(imagHeroe, imagVillano);
+        lucha.setVisible(true);
+    }
     
     
-    
-    
-    
-
 }

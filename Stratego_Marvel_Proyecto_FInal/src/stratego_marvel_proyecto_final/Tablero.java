@@ -411,6 +411,25 @@ public class Tablero {
                 int rangoOrigen = fichaOrigen.getRango();
                 int rangoDestino = fichaDestino.getRango();
 
+                if (rangoOrigen == 1 && rangoDestino == 10) {
+                    botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
+                    botones[filaOrigen][columnaOrigen].setIcon(null);
+                    return true;
+                }
+
+                // Rango 1 le gana a rango 10 sin importar quién ataca
+                if ((rangoOrigen == 1 && rangoDestino == 10) || (rangoOrigen == 10 && rangoDestino == 1)) {
+                    if (rangoOrigen == 1) {
+                        // Gana rango 1 y pierde 10
+                        botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
+                        botones[filaOrigen][columnaOrigen].setIcon(null);
+                    } else {
+                        //ataca rango 10 y pierde 1
+                        botones[filaOrigen][columnaOrigen].setIcon(null);
+                    }
+                    return true;
+                }
+
                 if (rangoOrigen > rangoDestino) {
                     botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
                     botones[filaOrigen][columnaOrigen].setIcon(null);

@@ -257,7 +257,23 @@ public class FrmPartida extends javax.swing.JFrame {
 
                                             
                                         }else if(rankDefensa==0){
-                                            System.out.println("¡Se ha activado una bomba!");
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            ImageIcon imagenFinal = (ImageIcon) botones[filaFinal][columnaFinal].getIcon();
+                                            
+                                            String routeFinal = imagenFinal.getDescription();
+                                            String routeInicial= imagenInicial.getDescription();
+                                            Ficha imagenInd=tablero.obtenerFicha(routeInicial, routeInicial);
+                                            Ficha ImageBomba = tablero.obtenerFicha(routeFinal, routeFinal);
+                                            String nameAtacante= imagenInd.getName();
+                                            
+                                            ImageIcon fotoFinal = new ImageIcon(getClass().getResource(ImageBomba.getRutaImagen()));
+                                            tablero.animacionBombaAct(fotoFinal,imagenInicial , nameAtacante);
+                                            fichaDefensora.setIcon(null);
+                                            
+                                            
+                                            
                                             
                                             
                                             //Limpieza de datos
@@ -478,6 +494,20 @@ public class FrmPartida extends javax.swing.JFrame {
                                             System.out.println("Empate, ambas se destruyen");
                                             filaFinal=fila;
                                             columnaFinal=columna;
+                                            //Animacion de empate
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            System.out.println(imagenInicial);
+                                            ImageIcon imagenFinal = (ImageIcon) botones[filaFinal][columnaFinal].getIcon();
+                                            
+                                            String routeFinal = imagenFinal.getDescription();
+                                            String routeInicial= imagenInicial.getDescription();
+                                            Ficha imagenVencedora=tablero.obtenerFicha(routeInicial, routeInicial);
+                                            Ficha Imagefinal = tablero.obtenerFicha(routeFinal, routeFinal);
+                                            ImageIcon fotoFinal = new ImageIcon(getClass().getResource(Imagefinal.getRutaImagen()));
+                                            tablero.animacionEmpate(imagenInicial, fotoFinal);
+                                
                                             botones[filaFinal][columnaFinal].setIcon(null);
                                             botones[filaInicio][columnaInicio].setIcon(null);
                                             //Limpieza de datos
@@ -650,7 +680,26 @@ public class FrmPartida extends javax.swing.JFrame {
                                         //Verificar si la ficha de ataque es de mayor rango
                                         
                                         if(rankDefensa==0){
-                                            System.out.println("¡Se ha activado una bomba!");
+                                            //Procedimineto de activacion de bomba
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            ImageIcon imagenFinal = (ImageIcon) botones[filaFinal][columnaFinal].getIcon();
+                                            
+                                            String routeFinal = imagenFinal.getDescription();
+                                            String routeInicial= imagenInicial.getDescription();
+                                            Ficha imagenInd=tablero.obtenerFicha(routeInicial, routeInicial);
+                                            Ficha ImageBomba = tablero.obtenerFicha(routeFinal, routeFinal);
+                                            String nameAtacante= imagenInd.getName();
+                                            
+                                            ImageIcon fotoFinal = new ImageIcon(getClass().getResource(ImageBomba.getRutaImagen()));
+                                            tablero.animacionBombaAct(fotoFinal,imagenInicial , nameAtacante);
+                                            fichaDefensora.setIcon(null);
+                                            
+                                            
+                                            
+                                            
+                                            
                                             fichaAtacante.setIcon(null);//Elimina a ficha de ataque
                                             
                                             //Limpieza de datos
@@ -774,6 +823,26 @@ public class FrmPartida extends javax.swing.JFrame {
                                             
                                             filaFinal= fila;
                                             columnaFinal=columna;
+                                            
+                                            //Proceso para animacion de empate
+                                            filaFinal= fila;
+                                            columnaFinal=columna;
+                                            ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            System.out.println(imagenInicial);
+                                            ImageIcon imagenFinal = (ImageIcon) botones[filaFinal][columnaFinal].getIcon();
+                                            
+                                            String routeFinal = imagenFinal.getDescription();
+                                            String routeInicial= imagenInicial.getDescription();
+                                            Ficha imagenVencedora=tablero.obtenerFicha(routeInicial, routeInicial);
+                                            Ficha Imagefinal = tablero.obtenerFicha(routeFinal, routeFinal);
+                                            ImageIcon fotoFinal = new ImageIcon(getClass().getResource(Imagefinal.getRutaImagen()));
+                                            tablero.animacionEmpate(imagenInicial, fotoFinal);
+                                            
+                                            
+                                            
+                                            
+                                            
+                                            
                                             botones[filaFinal][columnaFinal].setIcon(null);
                                             botones[filaInicio][columnaInicio].setIcon(null);
                                             

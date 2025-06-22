@@ -447,5 +447,16 @@ public class Tablero {
         lucha.setVisible(true);
     }
     
+    public void animacionEmpate(ImageIcon imagAtak, ImageIcon imageDef){
+        PanelEmpate empate = new PanelEmpate(imagAtak, imageDef);
+        empate.setVisible(true);
+    }
+    
+    public void animacionBombaAct(ImageIcon imagBomb, ImageIcon imageInd, String nombre){
+        PanelBombaActivada bombact = new PanelBombaActivada(imagBomb, imageInd, nombre);
+        bombact.setVisible(true);
+    }
+            
+    
     
 }

@@ -221,16 +221,25 @@ public class FrmPartida extends javax.swing.JFrame {
                                         
                                         //Verificacion de los distintos tipos de casos y excepciones de fichas
                                         if(rankAtaque==3 && rankDefensa==0){ //Casos en donde ficha de rank 3 desactiva una bomba
-                                            System.out.println("¡Se ha desactivado una bomba!");
-                                            fichaDefensora.setIcon(null);
                                             filaFinal= fila;
                                             columnaFinal=columna;
-
                                             ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();
+                                            ImageIcon imagenFinal = (ImageIcon) botones[filaFinal][columnaFinal].getIcon();
+                                            
+                                            String routeFinal = imagenFinal.getDescription();
+                                            String routeInicial= imagenInicial.getDescription();
+                                            Ficha imagenInd=tablero.obtenerFicha(routeInicial, routeInicial);
+                                            Ficha ImageBomba = tablero.obtenerFicha(routeFinal, routeFinal);
+                                            String nameAtacante= imagenInd.getName();
+                                            
+                                            ImageIcon fotoFinal = new ImageIcon(getClass().getResource(ImageBomba.getRutaImagen()));
+                                            tablero.animacionBombaDesct(fotoFinal,imagenInicial , nameAtacante);
+                                            fichaDefensora.setIcon(null);
+                                            
                                             //String rutaImagenInicial = imagenInicial.getDescription();
                                             botones[filaFinal][columnaFinal].setIcon(imagenInicial);
                                             botones[filaInicio][columnaInicio].setIcon(null);
-
+                                            
                                             //Limpia la casilla seleccionada
                                             filaInicio=0;
                                             columnaInicio=0;
@@ -256,7 +265,7 @@ public class FrmPartida extends javax.swing.JFrame {
                                             tablero.WinOrLoose(this);
 
                                             
-                                        }else if(rankDefensa==0){
+                                        }else if(rankDefensa==0 && rankAtaque!=3){
                                             filaFinal= fila;
                                             columnaFinal=columna;
                                             ImageIcon imagenInicial = (ImageIcon) botones[filaInicio][columnaInicio].getIcon();

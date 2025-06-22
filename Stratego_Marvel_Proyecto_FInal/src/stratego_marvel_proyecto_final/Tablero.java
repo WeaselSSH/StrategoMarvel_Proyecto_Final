@@ -456,6 +456,11 @@ public class Tablero {
         PanelBombaActivada bombact = new PanelBombaActivada(imagBomb, imageInd, nombre);
         bombact.setVisible(true);
     }
+    
+    public void animacionBombaDesct(ImageIcon imagBomb, ImageIcon imageInd, String nombre){
+        PanelBombaDesactivada bombact = new PanelBombaDesactivada(imagBomb, imageInd, nombre);
+        bombact.setVisible(true);
+    }
             
     
     

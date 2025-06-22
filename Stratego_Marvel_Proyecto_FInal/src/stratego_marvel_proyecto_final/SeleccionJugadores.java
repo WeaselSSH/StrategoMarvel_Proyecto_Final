@@ -4,6 +4,9 @@
  */
 package stratego_marvel_proyecto_final;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author David
@@ -14,15 +17,25 @@ public class SeleccionJugadores extends javax.swing.JFrame {
     ListaJugadores jugadoresActivos = DatosGlobales.listaJugadores;//quiza algo inecesario, si veo que sirve sin esto, se quita
     int cantPlayersActivos= jugadoresActivos.cantidad();
     //String playersActivos[]= new String[cantPlayersActivos];
-    
+
     
     
     /**
      * Creates new form SeleccionJugadores
      */
     public SeleccionJugadores() {
+        
         initComponents();
         NormalPanelConfig.configuracion(this);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                FrmMenuPrincipal backmenu = new FrmMenuPrincipal();
+                backmenu.setVisible(true);
+                dispose();
+            }
+        });
+        
         jcontricantes.removeAllItems();
         for(int i=0; i<cantPlayersActivos; i++){//Obtengo el nombre de todos los usuarios activos
             Jugador playertemp= jugadoresActivos.obtener(i);
@@ -50,86 +63,39 @@ public class SeleccionJugadores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        label1 = new java.awt.Label();
         jLabel2 = new javax.swing.JLabel();
-        regresarButon = new javax.swing.JButton();
         btnJugar = new javax.swing.JButton();
         jcontricantes = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        label1.setAlignment(java.awt.Label.CENTER);
-        label1.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
-        label1.setText("Seleccion de Jugadores");
-
-        jLabel2.setFont(new java.awt.Font("Gadugi", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Elegir Contricante");
+        jLabel2.setText("Elija un Contricante");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 440, 70));
 
-        regresarButon.setText("Regresar");
-        regresarButon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regresarButonActionPerformed(evt);
-            }
-        });
-
-        btnJugar.setText("jugar");
+        btnJugar.setBackground(new java.awt.Color(101, 0, 0));
+        btnJugar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnJugar.setText("Jugar");
+        btnJugar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJugarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 180, 60));
 
         jcontricantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcontricantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 180, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(190, 190, 190)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jcontricantes, 0, 129, Short.MAX_VALUE)
-                            .addComponent(btnJugar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(regresarButon)))
-                .addContainerGap(54, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jcontricantes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnJugar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                .addComponent(regresarButon)
-                .addGap(16, 16, 16))
-        );
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundContricante.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void regresarButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarButonActionPerformed
-        new FrmMenuPrincipal().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_regresarButonActionPerformed
 
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
@@ -180,9 +146,8 @@ public class SeleccionJugadores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnJugar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JComboBox<String> jcontricantes;
-    private java.awt.Label label1;
-    private javax.swing.JButton regresarButon;
     // End of variables declaration//GEN-END:variables
 }

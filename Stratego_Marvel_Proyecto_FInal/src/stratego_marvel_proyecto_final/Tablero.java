@@ -12,8 +12,8 @@ public class Tablero {
 
     Random random = new Random();
     private JButton[][] botones = new JButton[10][10];
-    Border bordeAzul = new LineBorder(Color.BLUE, 3);
-    Border bordeRojo = new LineBorder(Color.RED, 3);
+    Border bordeAzul = new LineBorder(new Color(0,0,130),5);
+    Border bordeRojo = new LineBorder(new Color(140,0,0),5);
     //boolean que sirve para la validación tanto de bordes visuales como movimiento (backend y frontend por asi decirlo)
     private final boolean[][] bordeActivo = new boolean[10][10];
 
@@ -57,11 +57,13 @@ public class Tablero {
                 int fila = ficha.getBando().equals("BUENO") ? 9 : 0;
                 int columna = random.nextInt(8) + 1;
 
-                ImageIcon imagen = cargarImagenEscalada(ficha.getRutaImagen(), 64, 64);
-
-                //pone como descripción la ruta de la imagen para saber cual es después (cuando esté oculta)
+                ImageIcon imagen;
+                if (ficha.getBando().equals(turnoActual)) {
+                    imagen = cargarImagenEscalada(ficha.getRutaImagen(), 64, 64);
+                } else {
+                    imagen = cargarImagenEscalada("/imagenes/backcard.png", 64, 64);
+                }
                 imagen.setDescription(ficha.getRutaImagen());
-
                 botones[fila][columna].setIcon(imagen);
 
                 asignarBombas(columna, fila, ficha.getBando());
@@ -75,17 +77,30 @@ public class Tablero {
                 ? "/imagenes/novaBlast.png"
                 : "/imagenes/pumpkinBomb.png";
 
-        ImageIcon bomba1 = cargarImagenEscalada(rutaBomba, 64, 64);
-
-        //misma lógica que lo anterior (basicamente si es set description es por lo de antes)
+        ImageIcon bomba1;
+        if (bando.equals(turnoActual)) {
+            bomba1 = cargarImagenEscalada(rutaBomba, 64, 64);
+        } else {
+            bomba1 = cargarImagenEscalada("/imagenes/backcard.png", 64, 64);
+        }
         bomba1.setDescription(rutaBomba);
         botones[fila][columna - 1].setIcon(bomba1);
 
-        ImageIcon bomba2 = cargarImagenEscalada(rutaBomba, 64, 64);
+        ImageIcon bomba2;
+        if (bando.equals(turnoActual)) {
+            bomba2 = cargarImagenEscalada(rutaBomba, 64, 64);
+        } else {
+            bomba2 = cargarImagenEscalada("/imagenes/backcard.png", 64, 64);
+        }
         bomba2.setDescription(rutaBomba);
         botones[fila][columna + 1].setIcon(bomba2);
 
-        ImageIcon imagenCentral = cargarImagenEscalada(rutaBomba, 64, 64);
+        ImageIcon imagenCentral;
+        if (bando.equals(turnoActual)) {
+            imagenCentral = cargarImagenEscalada(rutaBomba, 64, 64);
+        } else {
+            imagenCentral = cargarImagenEscalada("/imagenes/backcard.png", 64, 64);
+        }
         imagenCentral.setDescription(rutaBomba);
 
         if (bando.equalsIgnoreCase("BUENO")) {
@@ -108,7 +123,12 @@ public class Tablero {
             int columna = random.nextInt(10);
 
             if (botones[fila][columna].getIcon() == null) {
-                ImageIcon icono = cargarImagenEscalada(rutaBomba, 64, 64);
+                ImageIcon icono;
+                if (bando.equals(turnoActual)) {
+                    icono = cargarImagenEscalada(rutaBomba, 64, 64);
+                } else {
+                    icono = cargarImagenEscalada("/imagenes/backcard.png", 64, 64);
+                }
                 icono.setDescription(rutaBomba);
                 botones[fila][columna].setIcon(icono);
                 bombasColocadas++;

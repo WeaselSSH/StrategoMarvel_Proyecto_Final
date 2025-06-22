@@ -10,7 +10,7 @@ public class FrmPartida extends javax.swing.JFrame {
     public FrmPartida() {
         initComponents();
         crearBotones();
-        tablero = new Tablero(botones);
+        tablero = new Tablero(botones, lblTurno);
         tablero.inicializar();
     }
 
@@ -36,6 +36,7 @@ public class FrmPartida extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         panelTablero = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        lblTurno = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,13 +52,17 @@ public class FrmPartida extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 640, -1));
 
+        lblTurno.setFont(new java.awt.Font("Bangers", 0, 36)); // NOI18N
+        lblTurno.setText("TURNO: HEROES");
+        jPanel1.add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 200, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 900, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -101,6 +106,7 @@ public class FrmPartida extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblTurno;
     private javax.swing.JPanel panelTablero;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,14 +3,22 @@ package stratego_marvel_proyecto_final;
 public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     public FrmMenuPrincipal() {
+        this.setUndecorated(true);
         initComponents();
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                new FrmMenuInicial().setVisible(true);
-                dispose();
+        habilitarBtnPartida();
+    }
+
+    private void habilitarBtnPartida() {
+        int jugadoresActivos = 0;
+
+        for (int i = 0; i < DatosGlobales.listaJugadores.cantidad(); i++) {
+            Jugador jugador = DatosGlobales.listaJugadores.obtener(i);
+            if (!jugador.getEliminado()) {
+                jugadoresActivos++;
             }
-        });
+        }
+
+        JugarButton.setEnabled(jugadoresActivos >= 2);
     }
 
     @SuppressWarnings("unchecked")
@@ -114,8 +122,17 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_PerfilButtonActionPerformed
 
     private void LogoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutButtonActionPerformed
-        new FrmMenuInicial().setVisible(true);
-        this.dispose();
+        int opcion = javax.swing.JOptionPane.showConfirmDialog(
+                this,
+                "¿Está seguro de cerrar sesión?",
+                "Confirmación cierre de sesión",
+                javax.swing.JOptionPane.YES_NO_OPTION
+        );
+
+        if (opcion == javax.swing.JOptionPane.YES_OPTION) {
+            new FrmMenuInicial().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_LogoutButtonActionPerformed
 
     private void btnUniversoMarvelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUniversoMarvelActionPerformed

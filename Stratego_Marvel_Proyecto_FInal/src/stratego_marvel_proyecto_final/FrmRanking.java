@@ -116,6 +116,8 @@ public class FrmRanking extends javax.swing.JFrame {
 
         for (int i = 0; i < copia.length; i++) {
             Jugador jugador = copia[i];
+            
+            if(!jugador.getEliminado())
             modelo.addRow(new Object[]{i + 1, jugador.getUsuario(), jugador.getPuntos()});
         }
 

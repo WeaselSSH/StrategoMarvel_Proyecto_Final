@@ -70,7 +70,7 @@ public class RegistroInicio {
 
         for (int i = 0; i < DatosGlobales.listaJugadores.cantidad(); i++) {
             Jugador jugadorTemp = DatosGlobales.listaJugadores.obtener(i);
-            if (jugadorTemp.getUsuario().equalsIgnoreCase(usuario)) {
+            if (jugadorTemp.getUsuario().equalsIgnoreCase(usuario) && !jugadorTemp.getEliminado()) {
                 javax.swing.JOptionPane.showMessageDialog(null, "Error: Nombre de usuario registrado previamente.");
                 return;
             }
@@ -94,12 +94,7 @@ public class RegistroInicio {
         for (int i = 0; i < DatosGlobales.listaJugadores.cantidad(); i++) {
             Jugador jugadorTemp = DatosGlobales.listaJugadores.obtener(i);
 
-            if (jugadorTemp.getUsuario().equals(usuario)) {
-                if (jugadorTemp.getEliminado()) {
-                    javax.swing.JOptionPane.showMessageDialog(null, "Error: Este usuario ha sido eliminado.");
-                    return;
-                }
-
+            if (jugadorTemp.getUsuario().equals(usuario) && !jugadorTemp.getEliminado()) {
                 if (jugadorTemp.getContrasena().equals(contrasena)) {
                     javax.swing.JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.");
                     DatosGlobales.jugadorHost = jugadorTemp;

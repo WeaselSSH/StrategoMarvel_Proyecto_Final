@@ -6,14 +6,15 @@ import java.util.Random;
 import javax.swing.border.LineBorder;
 import javax.swing.border.Border;
 import java.awt.Color;
-import java.awt.Image;
+import javax.swing.JLabel;
 
 public class Tablero {
 
     Random random = new Random();
     private JButton[][] botones = new JButton[10][10];
-    Border bordeAzul = new LineBorder(new Color(0,0,130),5);
-    Border bordeRojo = new LineBorder(new Color(140,0,0),5);
+    private JLabel lblTurno;
+    Border bordeAzul = new LineBorder(new Color(0, 0, 130), 5);
+    Border bordeRojo = new LineBorder(new Color(140, 0, 0), 5);
     //boolean que sirve para la validación tanto de bordes visuales como movimiento (backend y frontend por asi decirlo)
     private final boolean[][] bordeActivo = new boolean[10][10];
 
@@ -30,8 +31,9 @@ public class Tablero {
     private int columnaSeleccionada;
     private Ficha fichaSeleccionada;
 
-    public Tablero(JButton[][] botones) {
+    public Tablero(JButton[][] botones, JLabel turno) {
         this.botones = botones;
+        this.lblTurno = turno;
     }
 
     public void inicializar() {
@@ -42,15 +44,6 @@ public class Tablero {
         bloquearLago();
     }
 
-    private ImageIcon cargarImagenEscalada(String ruta, int ancho, int alto) {
-        ImageIcon originalIcon = new ImageIcon(getClass().getResource(ruta));
-        Image imagenOriginal = originalIcon.getImage();
-        Image imagenReescalada = imagenOriginal.getScaledInstance(ancho, alto, Image.SCALE_SMOOTH);
-        ImageIcon iconoReescalado = new ImageIcon(imagenReescalada);
-        iconoReescalado.setDescription(ruta);
-        return iconoReescalado;
-    }
-
     private void asignarTierraYBombas() {
         for (Ficha ficha : DatosGlobales.fichas()) {
             if (ficha.getTipo().equals("TIERRA")) {
@@ -59,9 +52,9 @@ public class Tablero {
 
                 ImageIcon imagen;
                 if (ficha.getBando().equals(turnoActual)) {
-                    imagen = cargarImagenEscalada(ficha.getRutaImagen(), 64, 64);
+                    imagen = new ImageIcon(getClass().getResource(ficha.getRutaImagen()));
                 } else {
-                    imagen = cargarImagenEscalada("/imagenes/backcard.png", 64, 64);
+                    imagen = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
                 }
                 imagen.setDescription(ficha.getRutaImagen());
                 botones[fila][columna].setIcon(imagen);
@@ -79,27 +72,27 @@ public class Tablero {
 
         ImageIcon bomba1;
         if (bando.equals(turnoActual)) {
-            bomba1 = cargarImagenEscalada(rutaBomba, 64, 64);
+            bomba1 = new ImageIcon(getClass().getResource(rutaBomba));
         } else {
-            bomba1 = cargarImagenEscalada("/imagenes/backcard.png", 64, 64);
+            bomba1 = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
         }
         bomba1.setDescription(rutaBomba);
         botones[fila][columna - 1].setIcon(bomba1);
 
         ImageIcon bomba2;
         if (bando.equals(turnoActual)) {
-            bomba2 = cargarImagenEscalada(rutaBomba, 64, 64);
+            bomba2 = new ImageIcon(getClass().getResource(rutaBomba));
         } else {
-            bomba2 = cargarImagenEscalada("/imagenes/backcard.png", 64, 64);
+            bomba2 = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
         }
         bomba2.setDescription(rutaBomba);
         botones[fila][columna + 1].setIcon(bomba2);
 
         ImageIcon imagenCentral;
         if (bando.equals(turnoActual)) {
-            imagenCentral = cargarImagenEscalada(rutaBomba, 64, 64);
+            imagenCentral = new ImageIcon(getClass().getResource(rutaBomba));
         } else {
-            imagenCentral = cargarImagenEscalada("/imagenes/backcard.png", 64, 64);
+            imagenCentral = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
         }
         imagenCentral.setDescription(rutaBomba);
 
@@ -123,14 +116,14 @@ public class Tablero {
             int columna = random.nextInt(10);
 
             if (botones[fila][columna].getIcon() == null) {
-                ImageIcon icono;
+                ImageIcon imagen;
                 if (bando.equals(turnoActual)) {
-                    icono = cargarImagenEscalada(rutaBomba, 64, 64);
+                    imagen = new ImageIcon(getClass().getResource(rutaBomba));
                 } else {
-                    icono = cargarImagenEscalada("/imagenes/backcard.png", 64, 64);
+                    imagen = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
                 }
-                icono.setDescription(rutaBomba);
-                botones[fila][columna].setIcon(icono);
+                imagen.setDescription(rutaBomba);
+                botones[fila][columna].setIcon(imagen);
                 bombasColocadas++;
             }
         }
@@ -163,10 +156,10 @@ public class Tablero {
 
                 if (ficha.getBando().equals(turnoActual)) {
                     // Mostrar imagen real
-                    imagen = cargarImagenEscalada(ficha.getRutaImagen(), 64, 64);
+                    imagen = new ImageIcon(getClass().getResource(ficha.getRutaImagen()));
                 } else {
                     // Mostrar la backcard
-                    imagen = cargarImagenEscalada("/imagenes/backcard.png", 64, 64);
+                    imagen = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
                 }
 
                 imagen.setDescription(ficha.getRutaImagen());
@@ -227,7 +220,13 @@ public class Tablero {
                 boolean movido = moverFicha(filaSeleccionada, columnaSeleccionada, fila, columna);
                 if (movido) {
                     //si la ficha se ha movido se cambia de turno
-                    turnoActual = turnoActual.equals("BUENO") ? "MALO" : "BUENO";
+                    if (turnoActual.equals("BUENO")) {
+                        turnoActual = "MALO";
+                        lblTurno.setText("TURNO: VILLANOS");
+                    } else {
+                        turnoActual = "BUENO";
+                        lblTurno.setText("TURNO: HEROES");
+                    }
                     actualizarImagenes();
                 }
             }
@@ -351,7 +350,7 @@ public class Tablero {
     private Ficha obtenerFicha(String rutaImagen) {
         Ficha[] fichas = DatosGlobales.fichas();
         for (Ficha ficha : fichas) {
-            if (rutaImagen.contains(ficha.getRutaImagen())) {
+            if (rutaImagen.equals(ficha.getRutaImagen())) {
                 return ficha;
             }
         }
@@ -446,9 +445,9 @@ public class Tablero {
                 ImageIcon nuevaImagen;
 
                 if (ficha.getBando().equals(turnoActual)) {
-                    nuevaImagen = cargarImagenEscalada(ficha.getRutaImagen(), 64, 64);
+                    nuevaImagen = new ImageIcon(getClass().getResource(ficha.getRutaImagen()));
                 } else {
-                    nuevaImagen = cargarImagenEscalada("/imagenes/backcard.png", 64, 64);
+                    nuevaImagen = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
                 }
 
                 nuevaImagen.setDescription(ficha.getRutaImagen());

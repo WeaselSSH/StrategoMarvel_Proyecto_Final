@@ -3,6 +3,7 @@ package stratego_marvel_proyecto_final;
 public class FrmMenuInicial extends javax.swing.JFrame {
 
     public FrmMenuInicial() {
+        this.setUndecorated(true);
         initComponents();
         this.setTitle("VENTANA DE REGISTRO");
     }
@@ -18,8 +19,6 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         btnCrearPlayer = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

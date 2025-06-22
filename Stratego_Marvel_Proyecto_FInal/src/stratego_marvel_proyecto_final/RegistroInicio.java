@@ -70,7 +70,7 @@ public class RegistroInicio {
 
         for (int i = 0; i < DatosGlobales.listaJugadores.cantidad(); i++) {
             Jugador jugadorTemp = DatosGlobales.listaJugadores.obtener(i);
-            if (jugadorTemp.getUsuario().equals(usuario)) {
+            if (jugadorTemp.getUsuario().equalsIgnoreCase(usuario)) {
                 javax.swing.JOptionPane.showMessageDialog(null, "Error: Nombre de usuario registrado previamente.");
                 return;
             }

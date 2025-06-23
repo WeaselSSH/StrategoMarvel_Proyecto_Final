@@ -33,6 +33,7 @@ public class frmPerfil extends javax.swing.JFrame {
         jOptionPane1 = new javax.swing.JOptionPane();
         label8 = new java.awt.Label();
         jPanel1 = new javax.swing.JPanel();
+        btnLog = new javax.swing.JButton();
         btnContrasenia = new javax.swing.JButton();
         btnBorrarCuenta = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -42,8 +43,6 @@ public class frmPerfil extends javax.swing.JFrame {
         lblVecesHeroe = new javax.swing.JLabel();
         lblVictorias = new javax.swing.JLabel();
         lblPuntaje = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblHistorialBatallas = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
 
         label8.setFont(new java.awt.Font("Imprint MT Shadow", 1, 18)); // NOI18N
@@ -52,6 +51,18 @@ public class frmPerfil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnLog.setBackground(new java.awt.Color(199, 21, 37));
+        btnLog.setFont(new java.awt.Font("Bangers", 0, 14)); // NOI18N
+        btnLog.setForeground(new java.awt.Color(255, 255, 255));
+        btnLog.setText("VER HISTORIAL DE BATALLAS");
+        btnLog.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        btnLog.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 140, 40));
 
         btnContrasenia.setBackground(new java.awt.Color(199, 21, 37));
         btnContrasenia.setFont(new java.awt.Font("Bangers", 0, 14)); // NOI18N
@@ -63,7 +74,7 @@ public class frmPerfil extends javax.swing.JFrame {
                 btnContraseniaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 180, 40));
+        jPanel1.add(btnContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 140, 40));
 
         btnBorrarCuenta.setBackground(new java.awt.Color(199, 21, 37));
         btnBorrarCuenta.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
@@ -75,7 +86,7 @@ public class frmPerfil extends javax.swing.JFrame {
                 btnBorrarCuentaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBorrarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 180, 40));
+        jPanel1.add(btnBorrarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 120, 40));
 
         jLabel1.setFont(new java.awt.Font("Bangers", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,33 +125,18 @@ public class frmPerfil extends javax.swing.JFrame {
         lblPuntaje.setText("puntaje");
         jPanel1.add(lblPuntaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 120, -1));
 
-        tblHistorialBatallas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(tblHistorialBatallas);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 270, 200));
-
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundPerfilJugador.png"))); // NOI18N
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 550));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 360, 380));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 544, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -184,6 +180,12 @@ public class frmPerfil extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBorrarCuentaActionPerformed
 
+    private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
+        // TODO add your handling code here:
+        FrmLog log = new FrmLog();
+        log.setVisible(true);
+    }//GEN-LAST:event_btnLogActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -222,11 +224,11 @@ public class frmPerfil extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBorrarCuenta;
     private javax.swing.JButton btnContrasenia;
+    private javax.swing.JButton btnLog;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private java.awt.Label label8;
     private javax.swing.JLabel lblDerrotas;
     private javax.swing.JLabel lblHost;
@@ -234,6 +236,5 @@ public class frmPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel lblVecesHeroe;
     private javax.swing.JLabel lblVecesVillano;
     private javax.swing.JLabel lblVictorias;
-    private javax.swing.JTable tblHistorialBatallas;
     // End of variables declaration//GEN-END:variables
 }

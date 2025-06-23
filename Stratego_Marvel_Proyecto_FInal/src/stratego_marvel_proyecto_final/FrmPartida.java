@@ -131,10 +131,10 @@ public class FrmPartida extends javax.swing.JFrame {
                     DatosGlobales.jugadorVillian.partidaGanada();
 
                     DatosGlobales.jugadorHeroe.setLog(nombreJugadorVillian + " VENCEDOR USANDO LOS HEROES"
-                            + "DEBIDO A QUE " + nombreJugadorHeroe + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
+                            + " DEBIDO A QUE " + nombreJugadorHeroe + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
 
                     DatosGlobales.jugadorVillian.setLog(nombreJugadorVillian + " VENCEDOR USANDO LOS HEROES"
-                            + "DEBIDO A QUE " + nombreJugadorHeroe + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
+                            + " DEBIDO A QUE " + nombreJugadorHeroe + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
 
                     PanelRendirseH rendidoB = new PanelRendirseH(this);
                     rendidoB.setVisible(true);
@@ -143,10 +143,10 @@ public class FrmPartida extends javax.swing.JFrame {
                     DatosGlobales.jugadorVillian.partidaPerdida();
 
                     DatosGlobales.jugadorHeroe.setLog(nombreJugadorHeroe + " VENCEDOR USANDO LOS HEROES"
-                            + "DEBIDO A QUE " + nombreJugadorVillian + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
+                            + " DEBIDO A QUE " + nombreJugadorVillian + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
 
                     DatosGlobales.jugadorVillian.setLog(nombreJugadorHeroe + " VENCEDOR USANDO LOS HEROES"
-                            + "DEBIDO A QUE " + nombreJugadorVillian + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
+                            + " DEBIDO A QUE " + nombreJugadorVillian + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
 
                     PanelRendirseV rendidoV = new PanelRendirseV(this);
                     rendidoV.setVisible(true);

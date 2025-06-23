@@ -95,6 +95,7 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         crearPlayer.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnLoginActionPerformed
+    //xd
 
     private void btnCrearPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPlayerActionPerformed
         FrmRegistroInicio crearPlayer = new FrmRegistroInicio("registro");

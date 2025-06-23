@@ -29,8 +29,8 @@ public class Tablero {
         {4, 6}, {4, 7}, {5, 6}, {5, 7}
     };
 
-    private int cantHeroes = 33;
-    private int cantVillanos = 33;
+    private int cantHeroes = 0;
+    private int cantVillanos = 0;
 
     int cantHeroesDerrotados = 0;
     int cantVillanosDerrotados = 0;
@@ -484,9 +484,11 @@ public class Tablero {
                 //Reubicacion de verificacion de captura tierra
                 if(rangoOrigen==1 && rangoDestino==12){
                     animacionWinHeroes();
+                    bloquear();
                     return true;
                 }else if(rangoOrigen==1 && rangoDestino==11){
                     animacionWinVillanos();
+                    bloquear();
                     return true;
                 }//Indicar movimiento no valido
                 
@@ -503,11 +505,13 @@ public class Tablero {
                     animacionLucha(imagenOrigen, imagDefense, nombreOrigen);
                     botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
+                    WinOrLoose(savedpartida);
                     return true;
                 } else if (rangoOrigen < rangoDestino) {
                     agregarFichaDerrotada(fichaOrigen);
                     animacionLucha(imagDefense, imagenOrigen, nombreDestino);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
+                    WinOrLoose(savedpartida);
                     return true;
                 }else{
                     animacionEmpate(imagenOrigen, imagDefense);
@@ -515,6 +519,7 @@ public class Tablero {
                     agregarFichaDerrotada(fichaDestino);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     botones[filaDestino][columnaDestino].setIcon(null);
+                    WinOrLoose(savedpartida);
                     return true;
                 }
                 
@@ -598,8 +603,7 @@ public class Tablero {
         cantHeroes = UpdateCantH - 7;
         cantVillanos = UpdateCantV - 7;
 
-        System.out.println("Cantidad actual de heroes: " + cantHeroes);
-        System.out.println("Cantidad actual de villanos: " + cantVillanos);
+      
     }
 
     public void WinOrLoose(JFrame ventana) {
@@ -608,18 +612,24 @@ public class Tablero {
 
         int cantidadHeroes = cantHeroes;
         int cantidadVillanos = cantVillanos;
+        
+        System.out.println("Cantidad actual de heroes: " + cantidadHeroes);
+        System.out.println("Cantidad actual de villanos: " + cantidadVillanos);
 
         //Verificacion de Win/Lose mediante cantidad 
         if (cantidadHeroes == 0 && cantidadVillanos == 0) {
             animacionEmpatexFichas();
+            bloquear();
             
         } else if (cantidadHeroes > cantidadVillanos && cantidadVillanos == 0) {
             DatosGlobales.jugadorHost.partidaGanada();
             animacionNoFichasV();
+            bloquear();
             
         } else if (cantidadVillanos > cantidadHeroes && cantidadHeroes == 0) {
             DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
             animacionNoFichasH();
+            bloquear();
       
         }
     }
@@ -627,8 +637,9 @@ public class Tablero {
     
     //Animaciones de lucha 
     public void animacionLucha(ImageIcon imagHeroe, ImageIcon imagVillano, String nombre) {
-        PanelLucha lucha = new PanelLucha(imagHeroe, imagVillano, nombre);
+        PanelLucha lucha = new PanelLucha(imagHeroe, imagVillano, nombre );
         lucha.setVisible(true);
+        
     }
 
     public void animacionEmpate(ImageIcon imagAtak, ImageIcon imageDef) {
@@ -681,5 +692,15 @@ public class Tablero {
     public String getTurno(){
         return turnoActual;
     }
+    
+    
+    public void bloquear(){
+        savedpartida.setEnabled(false);
+    }
+    
+    public void desbloquear(){
+        savedpartida.setEnabled(true);
+    }
             
+           
 }

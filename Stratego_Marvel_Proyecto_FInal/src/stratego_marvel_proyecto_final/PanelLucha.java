@@ -22,7 +22,6 @@ public class PanelLucha extends javax.swing.JFrame {
      */
     
     private Timer timer;
-    
     public PanelLucha(ImageIcon imagAtak, ImageIcon imagDef, String nombre) {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -38,8 +37,10 @@ public class PanelLucha extends javax.swing.JFrame {
         timer= new Timer(3000, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
+               
                 PanelLucha.this.setVisible(false);
                 timer.stop();
+          
             }
         });
         timer.start();

@@ -8,6 +8,7 @@ public class FrmPartida extends javax.swing.JFrame {
     private JButton botones[][] = new JButton[10][10];
     private Tablero tablero;
 
+
     public FrmPartida() {
         initComponents();
         crearBotones();

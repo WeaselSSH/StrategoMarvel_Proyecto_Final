@@ -1,6 +1,7 @@
 package stratego_marvel_proyecto_final;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 public class FrmPartida extends javax.swing.JFrame {
 
@@ -38,6 +39,7 @@ public class FrmPartida extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         lblTurno = new javax.swing.JLabel();
         btnCementerio = new javax.swing.JButton();
+        rendirsebutton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,7 +57,7 @@ public class FrmPartida extends javax.swing.JFrame {
 
         lblTurno.setFont(new java.awt.Font("Bangers", 0, 36)); // NOI18N
         lblTurno.setText("TURNO: HEROES");
-        jPanel1.add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 210, -1));
+        jPanel1.add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 310, -1));
 
         btnCementerio.setText("Cementerio");
         btnCementerio.addActionListener(new java.awt.event.ActionListener() {
@@ -65,13 +67,21 @@ public class FrmPartida extends javax.swing.JFrame {
         });
         jPanel1.add(btnCementerio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 680, 150, 40));
 
+        rendirsebutton.setText("Rendirse");
+        rendirsebutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rendirsebuttonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(rendirsebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 130, 130, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 921, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -90,6 +100,31 @@ public class FrmPartida extends javax.swing.JFrame {
         );
         cementerio.setVisible(true);
     }//GEN-LAST:event_btnCementerioActionPerformed
+
+    private void rendirsebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rendirsebuttonActionPerformed
+        String turnoActual = tablero.getTurno();
+        
+        int opcion = JOptionPane.showConfirmDialog(null, 
+                "¿Desea Rendirse?", "", JOptionPane.YES_NO_OPTION);
+        
+        switch(opcion){
+            case JOptionPane.YES_OPTION:
+                if(turnoActual.equals("BUENO")){
+                    DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
+                    PanelRendirseH rendidoB = new PanelRendirseH(this);
+                    rendidoB.setVisible(true);
+                }else if(turnoActual.equals("MALO")){
+                    DatosGlobales.jugadorHost.partidaGanada();
+                    PanelRendirseV rendidoV = new PanelRendirseV(this);
+                    rendidoV.setVisible(true);
+                }
+                break;
+            case JOptionPane.NO_OPTION:
+                break;
+        }
+        
+        
+    }//GEN-LAST:event_rendirsebuttonActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -127,5 +162,6 @@ public class FrmPartida extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTurno;
     private javax.swing.JPanel panelTablero;
+    private javax.swing.JButton rendirsebutton;
     // End of variables declaration//GEN-END:variables
 }

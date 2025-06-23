@@ -614,14 +614,18 @@ public class Tablero {
             animacionEmpatexFichas();
             
         } else if (cantidadHeroes > cantidadVillanos && cantidadVillanos == 0) {
+            DatosGlobales.jugadorHost.partidaGanada();
             animacionNoFichasV();
             
         } else if (cantidadVillanos > cantidadHeroes && cantidadHeroes == 0) {
+            DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
             animacionNoFichasH();
       
         }
     }
 
+    
+    //Animaciones de lucha 
     public void animacionLucha(ImageIcon imagHeroe, ImageIcon imagVillano, String nombre) {
         PanelLucha lucha = new PanelLucha(imagHeroe, imagVillano, nombre);
         lucha.setVisible(true);
@@ -642,22 +646,28 @@ public class Tablero {
         bombact.setVisible(true);
     }
     
+    
+    //Animaciones para ganar/perder partidas
     public void animacionWinHeroes(){//mostrar animacion de win heroes
+        DatosGlobales.jugadorHost.partidaGanada();
         PanelWin winheroes= new PanelWin(savedpartida);
         winheroes.setVisible(true);
     }
     
     public void animacionWinVillanos(){//mostrar animacion de win villanos
+        DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
         PanelLoose winVillanos = new PanelLoose(savedpartida);
         winVillanos.setVisible(true);
     }
     
     public void animacionNoFichasV(){
+        DatosGlobales.jugadorHost.partidaGanada();
         PanelNoFichasV winHeroesF= new PanelNoFichasV(savedpartida);
         winHeroesF.setVisible(true);
     }
     
     public void animacionNoFichasH(){
+        DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
         PanelNoFichasH winVillanosF = new PanelNoFichasH(savedpartida);
         winVillanosF.setVisible(true);
     }
@@ -667,4 +677,9 @@ public class Tablero {
         PanelEmpateNoFichas empatesupremo = new PanelEmpateNoFichas(savedpartida);
         empatesupremo.setVisible(true);
     }
+    
+    public String getTurno(){
+        return turnoActual;
+    }
+            
 }

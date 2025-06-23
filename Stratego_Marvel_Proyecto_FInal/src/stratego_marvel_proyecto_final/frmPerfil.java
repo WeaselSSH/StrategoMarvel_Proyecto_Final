@@ -51,7 +51,7 @@ public class frmPerfil extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnContrasenia.setBackground(new java.awt.Color(24, 78, 230));
+        btnContrasenia.setBackground(new java.awt.Color(255, 87, 102));
         btnContrasenia.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
         btnContrasenia.setForeground(new java.awt.Color(255, 255, 255));
         btnContrasenia.setText("CAMBIAR CONTRASEÒA");
@@ -63,7 +63,7 @@ public class frmPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(btnContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 180, 40));
 
-        btnBorrarCuenta.setBackground(new java.awt.Color(24, 78, 230));
+        btnBorrarCuenta.setBackground(new java.awt.Color(255, 87, 102));
         btnBorrarCuenta.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
         btnBorrarCuenta.setForeground(new java.awt.Color(255, 255, 255));
         btnBorrarCuenta.setText("BORRAR CUENTA");

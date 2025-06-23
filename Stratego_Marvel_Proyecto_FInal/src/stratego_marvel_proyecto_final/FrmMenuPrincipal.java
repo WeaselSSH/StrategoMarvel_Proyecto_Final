@@ -27,6 +27,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         jToggleButton1 = new javax.swing.JToggleButton();
         jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         btnUniversoMarvel = new javax.swing.JButton();
         JugarButton = new javax.swing.JButton();
@@ -39,6 +40,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/imagenConfig.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 10, 30, 30));
 
         jLabel5.setFont(new java.awt.Font("Bangers", 1, 54)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -186,6 +190,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton PerfilButton;
     private javax.swing.JButton btnUniversoMarvel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JToggleButton jToggleButton1;

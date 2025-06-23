@@ -3,23 +3,28 @@ package stratego_marvel_proyecto_final;
 public class FrmLog extends javax.swing.JFrame {
 
     String[] logs = DatosGlobales.jugadorHost.getLog();
-    
+
     public FrmLog() {
         initComponents();
-        
+        tblLogs.setFocusable(false);
+        tblLogs.setColumnSelectionAllowed(false);
+        tblLogs.setRowSelectionAllowed(false);
         tblLogs.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
-                new String[]{
-                    "Log de Partidas"
-                }
-        ));
+                new String[]{"Log de Partidas"}
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        });
+
         mostrarLogs(logs);
     }
 
     public void mostrarLogs(String[] logs) {
         javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) tblLogs.getModel();
         model.setRowCount(0);
-        
 
         for (String log : logs) {
             if (log != null) {

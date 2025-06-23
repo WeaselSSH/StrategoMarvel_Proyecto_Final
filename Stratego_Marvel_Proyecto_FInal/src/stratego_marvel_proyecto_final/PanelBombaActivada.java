@@ -69,29 +69,34 @@ public class PanelBombaActivada extends javax.swing.JFrame {
 
         charVillian.setBackground(new java.awt.Color(51, 51, 51));
         charVillian.setForeground(new java.awt.Color(51, 51, 51));
+        charVillian.setBorder(null);
         getContentPane().add(charVillian, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 83, 73));
 
         charHeroe.setBackground(new java.awt.Color(51, 51, 51));
+        charHeroe.setBorder(null);
         getContentPane().add(charHeroe, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, 83, 73));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vbomb.gif"))); // NOI18N
+        jButton1.setBorder(null);
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, 100, 100));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Activó una Bomba");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 140, 180, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 180, -1));
 
+        nombretxt.setEditable(false);
         nombretxt.setBackground(new java.awt.Color(51, 51, 51));
         nombretxt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         nombretxt.setForeground(new java.awt.Color(255, 255, 255));
         nombretxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nombretxt.setBorder(null);
         nombretxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombretxtActionPerformed(evt);
             }
         });
-        getContentPane().add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 110, 40));
+        getContentPane().add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 140, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundfight.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 210));

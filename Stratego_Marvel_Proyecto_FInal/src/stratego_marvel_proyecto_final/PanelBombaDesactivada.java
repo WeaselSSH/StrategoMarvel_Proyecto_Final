@@ -69,12 +69,15 @@ public class PanelBombaDesactivada extends javax.swing.JFrame {
 
         charVillian.setBackground(new java.awt.Color(51, 51, 51));
         charVillian.setForeground(new java.awt.Color(51, 51, 51));
+        charVillian.setBorder(null);
         getContentPane().add(charVillian, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 40, 83, 73));
 
         charHeroe.setBackground(new java.awt.Color(51, 51, 51));
+        charHeroe.setBorder(null);
         getContentPane().add(charHeroe, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, 83, 73));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vherramienta.png"))); // NOI18N
+        jButton1.setBorder(null);
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 30, 90, 90));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
@@ -86,12 +89,13 @@ public class PanelBombaDesactivada extends javax.swing.JFrame {
         nombretxt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         nombretxt.setForeground(new java.awt.Color(255, 255, 255));
         nombretxt.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nombretxt.setBorder(null);
         nombretxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombretxtActionPerformed(evt);
             }
         });
-        getContentPane().add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 120, 40));
+        getContentPane().add(nombretxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 130, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundfight.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 210));

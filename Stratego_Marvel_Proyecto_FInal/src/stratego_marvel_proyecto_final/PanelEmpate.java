@@ -65,12 +65,15 @@ public class PanelEmpate extends javax.swing.JFrame {
 
         charVillian.setBackground(new java.awt.Color(51, 51, 51));
         charVillian.setForeground(new java.awt.Color(51, 51, 51));
-        getContentPane().add(charVillian, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 83, 73));
+        charVillian.setBorder(null);
+        getContentPane().add(charVillian, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 83, 73));
 
         charHeroe.setBackground(new java.awt.Color(51, 51, 51));
-        getContentPane().add(charHeroe, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 50, 83, 73));
+        charHeroe.setBorder(null);
+        getContentPane().add(charHeroe, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 50, 83, 73));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vsicon.gif"))); // NOI18N
+        jButton1.setBorder(null);
         getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 100, 100));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N

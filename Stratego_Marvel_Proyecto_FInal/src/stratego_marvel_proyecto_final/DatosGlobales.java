@@ -4,6 +4,7 @@ public class DatosGlobales {
 
     public static ListaJugadores listaJugadores = new ListaJugadores();
     public static Jugador jugadorHost = null;
+    public static Jugador jugadorContricante= null;
 
     public static Ficha[] fichas() {
         return new Ficha[]{

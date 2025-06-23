@@ -20,12 +20,14 @@ public class Tablero {
     //boolean que sirve para la validación tanto de bordes visuales como movimiento (backend y frontend por asi decirlo)
     private final boolean[][] bordeActivo = new boolean[10][10];
 
-<<<<<<< HEAD
     //coordenadas de las casillas de lago (o sea las que están deshabilitadas)
     private final int[][] casillasLago = {
         {4, 2}, {4, 3}, {5, 2}, {5, 3},
         {4, 6}, {4, 7}, {5, 6}, {5, 7}
     };
+    
+    private int cantHeroes = 33;
+    private int cantVillanos = 33;
 
     //inicializado en bueno porque empiezan los buenos
     private String turnoActual = "BUENO";
@@ -35,7 +37,6 @@ public class Tablero {
     private Ficha fichaSeleccionada;
 
     public Tablero(JButton[][] botones, JLabel turno) {
->>>>>>> branch-copia-(branch-edwin)
         this.botones = botones;
         this.lblTurno = turno;
     }
@@ -201,8 +202,6 @@ public class Tablero {
     }
 
     public void botonClick(int fila, int columna) {
-<<<<<<< HEAD
-
         //castearlo a imagen
         ImageIcon imagen = (ImageIcon) botones[fila][columna].getIcon();
 
@@ -251,10 +250,6 @@ public class Tablero {
             columnaSeleccionada = -1;
             quitarBordes();
         }
-=======
-        agregarQuitarBorde(fila, columna);
-        
->>>>>>> branch-copia-(branch-edwin)
     }
 
     private void agregarQuitarBorde(int fil, int col) {//Genera espacio de bordes
@@ -271,7 +266,7 @@ public class Tablero {
         }
 
         String rutaImagen = imagen.getDescription();
-        Ficha fichaSeleccionada = obtenerFicha(rutaImagen, rutaImagen);
+        Ficha fichaSeleccionada = obtenerFicha(rutaImagen);
         if (fichaSeleccionada == null) {
             return;
         }
@@ -320,16 +315,12 @@ public class Tablero {
                     if (verificarCasillaLago(nuevaFila, nuevaCol)) {
                         break;
                     }
-
-<<<<<<< HEAD
+                    
                     ImageIcon imagen = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
 
                     if (imagen != null) {
                         Ficha fichaEncontrada = obtenerFicha(imagen.getDescription());
-=======
-                    if (icono != null) {
-                        Ficha fichaEncontrada = obtenerFicha(icono.getDescription(), icono.getDescription());
->>>>>>> branch-copia-(branch-edwin)
+
                         if (fichaEncontrada != null) {
                             if (fichaEncontrada.getBando().equals(bandoFichaSeleccionada)) {
                                 break;
@@ -358,15 +349,11 @@ public class Tablero {
                 }
                 //en estas se usa continue porque si no no deja mover en las otras direcciones porque se iría del ciclo
 
-<<<<<<< HEAD
                 ImageIcon imagen = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
 
                 if (imagen != null) {
                     Ficha fichaEncontrada = obtenerFicha(imagen.getDescription());
-=======
-                if (icono != null) {
-                    Ficha fichaEncontrada = obtenerFicha(icono.getDescription(), icono.getDescription());
->>>>>>> branch-copia-(branch-edwin)
+                    
                     if (fichaEncontrada != null && !fichaEncontrada.getBando().equals(bandoFichaSeleccionada)) {
                         botones[nuevaFila][nuevaCol].setBorder(borde);
                         bordeActivo[nuevaFila][nuevaCol] = true;
@@ -388,25 +375,11 @@ public class Tablero {
         }
     }
 
-    public Ficha obtenerFicha(String rutaImagen, String revez) {
+    public Ficha obtenerFicha(String rutaImagen) {
         Ficha[] fichas = DatosGlobales.fichas();
         for (Ficha ficha : fichas) {
-<<<<<<< HEAD
             if (rutaImagen.equals(ficha.getRutaImagen())) {
-=======
-            if (rutaImagen.contains(ficha.getRutaImagen()) || rutaImagen.contains(ficha.getBackCard())) {
->>>>>>> branch-copia-(branch-edwin)
                 return ficha;
-            }
-        }
-        return null;
-    }
-    
-    public Ficha obtenerFicha2(String rutaRevez){ //Metodo para obtener la ficha a base de la imagen trasera
-          Ficha[] fichas = DatosGlobales.fichas();
-        for (Ficha ficha2 : fichas) {
-            if (rutaRevez.contains(ficha2.getBackCard())) {
-                return ficha2;
             }
         }
         return null;
@@ -416,7 +389,6 @@ public class Tablero {
         return fila >= 0 && fila < 10 && columna >= 0 && columna < 10;
     }
 
-<<<<<<< HEAD
     private void bloquearLago() {
         for (int[] posicion : casillasLago) {
             int fila = posicion[0];
@@ -524,92 +496,11 @@ public class Tablero {
         }
     }
 
-=======
-     
     //Este metodo servirá para referenciar al posicion del boton que se ha presionado
     public JButton referenciaBoton(int fila, int columna){
         JButton referenceBoton =botones[fila][columna]; 
         return referenceBoton;
     }
-    
-    
-    public void visibilidadTurnos(boolean turnos){
-
-          for(int i=0; i<botones.length; i++){//Evaluacion de fichas de bando villano para ocultar
-                for(int j=0; j<botones.length; j++){
-                    
-                    ImageIcon infoFicha= (ImageIcon) botones[i][j].getIcon();//Obtengo info de la imagen que contenga la ficha 
-
-                    if(infoFicha==null){
-                        continue;//No hay ficha en esta casilla
-                    }
-                    
-                    Ficha selecFicha = null;
-                    //Ficha selecFichaBack=null;
-                    
-                    try{
-                        selecFicha = obtenerFicha(infoFicha.getDescription(), infoFicha.getDescription());
-                       // selecFichaBack=obtenerFicha2(infoFicha.getDescription());
-                        
-                    }catch(NullPointerException e){
-                        //selecFicha = obtenerFicha2(infoFicha.getDescription());//Intenta con la ruta del reverso
-                        System.out.println("XD");
-                        
-                    }
-                    
-                    if(selecFicha==null){
-                        System.out.println("Quedo nulo");
-                        botones[i][j].putClientProperty("ficha", null);
-                        botones[i][j].putClientProperty("bando", null);
-                        botones[i][j].putClientProperty("rango", null);
-                        botones[i][j].putClientProperty("fila",i);
-                        botones[i][j].putClientProperty("col", j);
-
-                        continue;//No se pudo identificar la ficha
-                    }
-
-                    //Obtencion de informacion
-                    String bandoFicha=selecFicha.getBando();
-                    String rutaFrontal=selecFicha.getRutaImagen();
-                    String rutaTrasera= selecFicha.getBackCard();
-                    int rangoFicha = selecFicha.getRango();
-                    
-                    ImageIcon frontCard= new ImageIcon(getClass().getResource(rutaFrontal));
-                    ImageIcon BackCard= new ImageIcon(getClass().getResource(rutaTrasera));
-                        
-                    //Guardado directo en boton
-                    botones[i][j].putClientProperty("ficha", selecFicha);
-                    botones[i][j].putClientProperty("bando", bandoFicha);
-                    botones[i][j].putClientProperty("rango", rangoFicha);
-                    botones[i][j].putClientProperty("fila",i);
-                    botones[i][j].putClientProperty("col", j);
-                    
-                    //Logica de visibilidad segun turnos
-                    if(turnos){
-                        if(bandoFicha.equals("BUENO")){
-                            botones[i][j].setIcon(frontCard);
-                        }else if(bandoFicha.equals("MALO")){
-                            botones[i][j].setIcon(BackCard);
-                        }
-                    }else{
-                        if(bandoFicha.equals("MALO")){
-                            botones[i][j].setIcon(frontCard);
-                        }else if(bandoFicha.equals("BUENO")){
-                            botones[i][j].setIcon(BackCard);
-                        }
-                    }
-
-                }//fin for1
-            }//fin for2
-          
-          if(turnos){
-              System.out.println("Es turno de Heroes");
-          }else{
-              System.out.println("Es turno de Villanos");
-          }
-    }
-    
-    
     
     public void conteoFichas(){//Metodo que revisa la cantidad de fichas jugables en el tablero
         //Valores que actualizaran la cantidad
@@ -625,10 +516,9 @@ public class Tablero {
                 }
                     
                 Ficha selecFicha = null;
-                Ficha selecFichaBack=null;
                     
                 try{
-                    selecFicha = obtenerFicha(infoFicha.getDescription(), infoFicha.getDescription());//Obtencion de la ficha 
+                    selecFicha = obtenerFicha(infoFicha.getDescription());//Obtencion de la ficha 
                 }catch(NullPointerException e){
                     System.out.println("Womp Womp");
                 }
@@ -702,8 +592,4 @@ public class Tablero {
         PanelBombaDesactivada bombact = new PanelBombaDesactivada(imagBomb, imageInd, nombre);
         bombact.setVisible(true);
     }
-            
-    
-    
->>>>>>> branch-copia-(branch-edwin)
 }

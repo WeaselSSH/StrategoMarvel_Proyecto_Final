@@ -12,8 +12,8 @@ import javax.swing.JOptionPane;
 
 public class Tablero {
 
-    static Ficha fichasDerrotadasBuenos[] = new Ficha[50];
-    static Ficha fichasDerrotadasMalos[] = new Ficha[50];
+    Ficha fichasDerrotadasBuenos[] = new Ficha[50];
+    Ficha fichasDerrotadasMalos[] = new Ficha[50];
 
     Random random = new Random();
     private JButton[][] botones = new JButton[10][10];
@@ -32,8 +32,8 @@ public class Tablero {
     private int cantHeroes = 33;
     private int cantVillanos = 33;
 
-    static int cantHeroesDerrotados = 0;
-    static int cantVillanosDerrotados = 0;
+    int cantHeroesDerrotados = 0;
+    int cantVillanosDerrotados = 0;
 
     //inicializado en bueno porque empiezan los buenos
     private String turnoActual = "BUENO";

@@ -55,7 +55,7 @@ public class FrmPartida extends javax.swing.JFrame {
 
         lblTurno.setFont(new java.awt.Font("Bangers", 0, 36)); // NOI18N
         lblTurno.setText("TURNO: HEROES");
-        jPanel1.add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 200, -1));
+        jPanel1.add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 210, -1));
 
         btnCementerio.setText("Cementerio");
         btnCementerio.addActionListener(new java.awt.event.ActionListener() {
@@ -71,7 +71,7 @@ public class FrmPartida extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 921, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

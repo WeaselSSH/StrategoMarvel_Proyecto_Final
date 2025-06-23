@@ -82,6 +82,9 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
 
     private void btnBatallasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatallasActionPerformed
         // TODO add your handling code here:
+        FrmBatallas batallas = new FrmBatallas();
+        batallas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnBatallasActionPerformed
 
     public static void main(String args[]) {

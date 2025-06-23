@@ -1,8 +1,6 @@
 package stratego_marvel_proyecto_final;
 
 import javax.swing.table.DefaultTableModel;
-import java.awt.Color;
-import javax.swing.table.DefaultTableCellRenderer;
 
 public class FrmRanking extends javax.swing.JFrame {
 
@@ -15,8 +13,6 @@ public class FrmRanking extends javax.swing.JFrame {
                 dispose();
             }
         });
-        
-        estilizarTabla();
         cargarRanking();
     }
 
@@ -78,19 +74,6 @@ public class FrmRanking extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void estilizarTabla() {
-        tblRanking.setBackground(new Color(0, 0, 0, 0));
-        tblRanking.setForeground(Color.WHITE);
-
-        DefaultTableCellRenderer renderer = new DefaultTableCellRenderer();
-        renderer.setOpaque(false);
-        tblRanking.setDefaultRenderer(Object.class, renderer);
-        tblRanking.setShowGrid(true);
-        tblRanking.setGridColor(Color.WHITE);
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.getViewport().setOpaque(false);
-
-    }
 
     private void cargarRanking() {
         Jugador copia[] = new Jugador[DatosGlobales.listaJugadores.cantidad()];

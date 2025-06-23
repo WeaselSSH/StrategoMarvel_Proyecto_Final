@@ -50,6 +50,9 @@ public class SeleccionJugadores extends javax.swing.JFrame {
             }else{
                  jcontricantes.addItem(nameCont);
             }
+         jbandos.removeAllItems();
+         jbandos.addItem("HEROES");
+         jbandos.addItem("VILLANOS");
            
          
         }
@@ -67,19 +70,27 @@ public class SeleccionJugadores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnJugar = new javax.swing.JButton();
         jcontricantes = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        jbandos = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+
+        jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Elija un Contricante");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Elija un Contricante");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 440, 70));
+        jLabel2.setText("Elija un Bando");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 190, 40));
 
         btnJugar.setBackground(new java.awt.Color(255, 255, 255));
         btnJugar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
@@ -92,10 +103,19 @@ public class SeleccionJugadores extends javax.swing.JFrame {
                 btnJugarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 180, 60));
+        getContentPane().add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 180, 60));
 
         jcontricantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jcontricantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 180, -1));
+        getContentPane().add(jcontricantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 170, -1));
+
+        jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Elija un Contricante");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 190, 40));
+
+        jbandos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jbandos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 130, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundContricante.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -109,6 +129,19 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         String playerSeleccionado= (String) jcontricantes.getSelectedItem();
         Jugador playerTemp = jugadoresActivos.obtenerbyName(playerSeleccionado);
         DatosGlobales.jugadorContricante= playerTemp;
+        String eleccion= (String) jbandos.getSelectedItem();
+        if(eleccion.equals("HEROES")){
+            DatosGlobales.jugadorHeroe = DatosGlobales.jugadorHost;
+            DatosGlobales.jugadorVillian= DatosGlobales.jugadorContricante;
+            System.out.println(DatosGlobales.jugadorHeroe.getUsuario());
+            System.out.println(DatosGlobales.jugadorVillian.getUsuario());
+        }else if(eleccion.equals("VILLANOS")){
+            DatosGlobales.jugadorVillian= DatosGlobales.jugadorHost;
+            DatosGlobales.jugadorHeroe= DatosGlobales.jugadorContricante;
+            System.out.println(DatosGlobales.jugadorHeroe.getUsuario());
+            System.out.println(DatosGlobales.jugadorVillian.getUsuario());
+            
+        }
         System.out.println("Contricante sera: "+playerSeleccionado);
         System.out.println(playerTemp);
         new FrmPartida().setVisible(true);
@@ -155,6 +188,9 @@ public class SeleccionJugadores extends javax.swing.JFrame {
     private javax.swing.JButton btnJugar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JComboBox<String> jbandos;
     private javax.swing.JComboBox<String> jcontricantes;
     // End of variables declaration//GEN-END:variables
 }

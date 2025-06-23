@@ -5,6 +5,8 @@ public class DatosGlobales {
     public static ListaJugadores listaJugadores = new ListaJugadores();
     public static Jugador jugadorHost = null;
     public static Jugador jugadorContricante= null;
+    public static Jugador jugadorHeroe= null;
+    public static Jugador jugadorVillian = null;
     public static int victoriaVillanos;
     public static int victoriaHeroes;
     public static int partidasTotales;

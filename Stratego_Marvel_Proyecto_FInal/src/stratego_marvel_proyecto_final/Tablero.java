@@ -483,10 +483,16 @@ public class Tablero {
 
                 //Reubicacion de verificacion de captura tierra
                 if(rangoOrigen==1 && rangoDestino==12){
+                    DatosGlobales.jugadorHeroe.partidaGanada();
+                    DatosGlobales.jugadorVillian.partidaPerdida();
+                    DatosGlobales.victoriaHeroes++;
                     animacionWinHeroes();
                     bloquear();
                     return true;
                 }else if(rangoOrigen==1 && rangoDestino==11){
+                    DatosGlobales.jugadorVillian.partidaGanada();//Agregado de puntos
+                    DatosGlobales.jugadorHeroe.partidaPerdida();
+                    DatosGlobales.victoriaVillanos++;
                     animacionWinVillanos();
                     bloquear();
                     return true;
@@ -619,15 +625,15 @@ public class Tablero {
             bloquear();
             
         } else if (cantidadHeroes > cantidadVillanos && cantidadVillanos == 0) {
-            DatosGlobales.jugadorHost.partidaGanada();
-            DatosGlobales.jugadorContricante.partidaPerdida();
+            DatosGlobales.jugadorHeroe.partidaGanada();
+            DatosGlobales.jugadorVillian.partidaPerdida();
             DatosGlobales.victoriaHeroes++;
             animacionNoFichasV();
             bloquear();
             
         } else if (cantidadVillanos > cantidadHeroes && cantidadHeroes == 0) {
-            DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
-            DatosGlobales.jugadorHost.partidaPerdida();
+            DatosGlobales.jugadorVillian.partidaGanada();//Agregado de puntos
+            DatosGlobales.jugadorHeroe.partidaPerdida();
             DatosGlobales.victoriaVillanos++;
             animacionNoFichasH();
             bloquear();

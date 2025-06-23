@@ -19,7 +19,7 @@ public class Tablero {
 
     private String nombreJugadorHeroe = DatosGlobales.jugadorHeroe.getUsuario().toUpperCase();
     private String nombreJugadorVillian = DatosGlobales.jugadorVillian.getUsuario().toUpperCase();
-            String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+    String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
 
     Random random = new Random();
     private JButton[][] botones = new JButton[10][10];
@@ -490,7 +490,7 @@ public class Tablero {
                     DatosGlobales.jugadorHeroe.partidaGanada();
                     DatosGlobales.jugadorVillian.partidaPerdida();
                     DatosGlobales.victoriaHeroes++;
-                    DatosGlobales.jugadorHeroe.setLog(nombreJugadorHeroe + " VENCEDOR USANDO LOS HEROES CAPTURANDO LA TIERRA DE " 
+                    DatosGlobales.jugadorHeroe.setLog(nombreJugadorHeroe + " VENCEDOR USANDO LOS HEROES CAPTURANDO LA TIERRA DE "
                             + nombreJugadorVillian + " " + "[" + fecha + "]");
                     animacionWinHeroes();
                     bloquear();
@@ -499,7 +499,7 @@ public class Tablero {
                     DatosGlobales.jugadorVillian.partidaGanada();//Agregado de puntos
                     DatosGlobales.jugadorHeroe.partidaPerdida();
                     DatosGlobales.victoriaVillanos++;
-                    DatosGlobales.jugadorHeroe.setLog(nombreJugadorVillian + " VENCEDOR USANDO LOS HEROES CAPTURANDO LA TIERRA DE " 
+                    DatosGlobales.jugadorHeroe.setLog(nombreJugadorVillian + " VENCEDOR USANDO LOS HEROES CAPTURANDO LA TIERRA DE "
                             + nombreJugadorHeroe + " " + "[" + fecha + "]");
                     animacionWinVillanos();
                     bloquear();
@@ -625,6 +625,10 @@ public class Tablero {
 
         //Verificacion de Win/Lose mediante cantidad 
         if (cantidadHeroes == 0 && cantidadVillanos == 0) {
+            DatosGlobales.jugadorHeroe.setLog(nombreJugadorHeroe + "HA EMPATADO CON"
+                    + " " + nombreJugadorVillian + " POR FALTA DE FICHAS MOVIBLES " + "[" + fecha + "]");
+            DatosGlobales.jugadorVillian.setLog(nombreJugadorVillian + "HA EMPATADO CON"
+                    + " " + nombreJugadorHeroe + " POR FALTA DE FICHAS MOVIBLES " + "[" + fecha + "]");
             animacionEmpatexFichas();
             bloquear();
 
@@ -633,7 +637,7 @@ public class Tablero {
             DatosGlobales.jugadorVillian.partidaPerdida();
             DatosGlobales.victoriaHeroes++;
             DatosGlobales.jugadorHeroe.setLog(nombreJugadorHeroe + " VENCEDOR USANDO LOS HEROES"
-                            + " DEBIDO A QUE " + nombreJugadorVillian + " SE HA QUEDADO SIN FICHAS MOVIBLES " + "[" + fecha + "]");
+                    + " DEBIDO A QUE " + nombreJugadorVillian + " SE HA QUEDADO SIN FICHAS MOVIBLES " + "[" + fecha + "]");
             animacionNoFichasV();
             bloquear();
 
@@ -641,7 +645,7 @@ public class Tablero {
             DatosGlobales.jugadorVillian.partidaGanada();//Agregado de puntos
             DatosGlobales.jugadorHeroe.partidaPerdida();
             DatosGlobales.jugadorHeroe.setLog(nombreJugadorVillian + " VENCEDOR USANDO LOS HEROES"
-                            + " DEBIDO A QUE " + nombreJugadorHeroe + " SE HA QUEDADO SIN FICHAS MOVIBLES " + "[" + fecha + "]");
+                    + " DEBIDO A QUE " + nombreJugadorHeroe + " SE HA QUEDADO SIN FICHAS MOVIBLES " + "[" + fecha + "]");
             DatosGlobales.victoriaVillanos++;
             animacionNoFichasH();
             bloquear();

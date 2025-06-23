@@ -69,15 +69,18 @@ public class Jugador {
         this.contrasena = nuevaContrasena;
     }
 
-    public void setLog(String log) {
-        if (cantidadLogs < this.log.length) {
-            this.log[cantidadLogs] = log;
+    public void setLog(String nuevoLog) {
+        if (cantidadLogs < log.length) {
+            for (int i = cantidadLogs; i > 0; i--) {
+                log[i] = log[i - 1];
+            }
+            log[0] = nuevoLog;
             cantidadLogs++;
         } else {
-            for (int i = 1; i < this.log.length; i++) {
-                this.log[i - 1] = this.log[i];
+            for (int i = log.length - 1; i > 0; i--) {
+                log[i] = log[i - 1];
             }
-            this.log[this.log.length - 1] = log;
+            log[0] = nuevoLog;
         }
     }
 

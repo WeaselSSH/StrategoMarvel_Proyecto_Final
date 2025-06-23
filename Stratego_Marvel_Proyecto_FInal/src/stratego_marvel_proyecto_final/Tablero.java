@@ -490,6 +490,8 @@ public class Tablero {
                     DatosGlobales.jugadorHeroe.partidaGanada();
                     DatosGlobales.jugadorVillian.partidaPerdida();
                     DatosGlobales.victoriaHeroes++;
+                    DatosGlobales.jugadorHeroe.setLog(nombreJugadorHeroe + " VENCEDOR USANDO LOS HEROES CAPTURANDO LA TIERRA DE " 
+                            + nombreJugadorVillian + " " + "[" + fecha + "]");
                     animacionWinHeroes();
                     bloquear();
                     return true;
@@ -497,6 +499,8 @@ public class Tablero {
                     DatosGlobales.jugadorVillian.partidaGanada();//Agregado de puntos
                     DatosGlobales.jugadorHeroe.partidaPerdida();
                     DatosGlobales.victoriaVillanos++;
+                    DatosGlobales.jugadorHeroe.setLog(nombreJugadorVillian + " VENCEDOR USANDO LOS HEROES CAPTURANDO LA TIERRA DE " 
+                            + nombreJugadorHeroe + " " + "[" + fecha + "]");
                     animacionWinVillanos();
                     bloquear();
                     return true;
@@ -628,12 +632,16 @@ public class Tablero {
             DatosGlobales.jugadorHeroe.partidaGanada();
             DatosGlobales.jugadorVillian.partidaPerdida();
             DatosGlobales.victoriaHeroes++;
+            DatosGlobales.jugadorHeroe.setLog(nombreJugadorHeroe + " VENCEDOR USANDO LOS HEROES"
+                            + " DEBIDO A QUE " + nombreJugadorVillian + " SE HA QUEDADO SIN FICHAS MOVIBLES " + "[" + fecha + "]");
             animacionNoFichasV();
             bloquear();
 
         } else if (cantidadVillanos > cantidadHeroes && cantidadHeroes == 0) {
             DatosGlobales.jugadorVillian.partidaGanada();//Agregado de puntos
             DatosGlobales.jugadorHeroe.partidaPerdida();
+            DatosGlobales.jugadorHeroe.setLog(nombreJugadorVillian + " VENCEDOR USANDO LOS HEROES"
+                            + " DEBIDO A QUE " + nombreJugadorHeroe + " SE HA QUEDADO SIN FICHAS MOVIBLES " + "[" + fecha + "]");
             DatosGlobales.victoriaVillanos++;
             animacionNoFichasH();
             bloquear();

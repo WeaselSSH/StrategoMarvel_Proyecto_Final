@@ -4,7 +4,7 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
 
     private String modo;
     public static String placeholderUsuario = "Tu nombre de usuario";
-    public static String placeholderContrasena = "Tu contraseña";
+    public static String placeholderContrasena = "Tu contraseï¿½a";
     
     private RegistroInicio registroInicio = new RegistroInicio();
 
@@ -27,7 +27,7 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
     
     private void modificarTextos() {
         if (modo.equals("login")) {
-            btnRegistrarInicio.setText("Iniciar sesión");
+            btnRegistrarInicio.setText("Iniciar sesiï¿½n");
             lblTitulo.setText("INICIO DE SESION");
         } else if (modo.equals("registro")) {
             btnRegistrarInicio.setText("Registrarse");
@@ -69,12 +69,16 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
         txtContrasena.setFont(new java.awt.Font("Komika Axis", 0, 12)); // NOI18N
         txtContrasena.setForeground(new java.awt.Color(51, 51, 51));
         txtContrasena.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtContrasena.setText("Tu contraseña");
+        txtContrasena.setText("Tu contraseï¿½a");
         txtContrasena.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 158, 50));
 
         btnRegistrarInicio.setBackground(new java.awt.Color(255, 255, 255));
+
         btnRegistrarInicio.setFont(new java.awt.Font("Bangers", 1, 15)); // NOI18N
+
+        btnRegistrarInicio.setFont(new java.awt.Font("Bangers", 1, 18)); // NOI18N
+
         btnRegistrarInicio.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrarInicio.setText("Registrarse");
         btnRegistrarInicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));

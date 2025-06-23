@@ -4,6 +4,7 @@ public class FrmBatallas extends javax.swing.JFrame {
 
     public FrmBatallas() {
         initComponents();
+        setLocationRelativeTo(null);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
@@ -48,10 +49,12 @@ public class FrmBatallas extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblUsuarioHist.setFont(new java.awt.Font("Bangers", 1, 36)); // NOI18N
+        lblUsuarioHist.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
         lblUsuarioHist.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuarioHist.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblUsuarioHist.setText("USUARIOS HISTORICOS:");
-        jPanel1.add(lblUsuarioHist, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 340, 50));
+        jPanel1.add(lblUsuarioHist, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 310, 50));
+
 
         lblUsuarioAct.setFont(new java.awt.Font("Bangers", 1, 36)); // NOI18N
         lblUsuarioAct.setForeground(new java.awt.Color(255, 255, 255));
@@ -63,20 +66,34 @@ public class FrmBatallas extends javax.swing.JFrame {
         lblVicVillanos.setText("VICTORIA VILLANOS:");
         jPanel1.add(lblVicVillanos, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 300, 50));
 
-        lblVicHeroes.setFont(new java.awt.Font("Bangers", 1, 36)); // NOI18N
-        lblVicHeroes.setForeground(new java.awt.Color(255, 255, 255));
-        lblVicHeroes.setText("VICTORIA HEROES:");
-        jPanel1.add(lblVicHeroes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 200, 290, 50));
+        lblVicVillanos.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
+        lblVicVillanos.setForeground(new java.awt.Color(255, 255, 255));
+        lblVicVillanos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVicVillanos.setText("USUARIOS ACTIVOS:");
+        jPanel1.add(lblVicVillanos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 270, 50));
 
-        lblTotalBatallas.setFont(new java.awt.Font("Bangers", 1, 36)); // NOI18N
+        lblUsuarioAct.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
+        lblUsuarioAct.setForeground(new java.awt.Color(255, 255, 255));
+        lblUsuarioAct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblUsuarioAct.setText("VICTORIA VILLANOS:");
+        jPanel1.add(lblUsuarioAct, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 300, 50));
+
+
+        lblVicHeroes.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
+        lblVicHeroes.setForeground(new java.awt.Color(255, 255, 255));
+        lblVicHeroes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVicHeroes.setText("VICTORIA HEROES:");
+        jPanel1.add(lblVicHeroes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 260, 50));
+
+        lblTotalBatallas.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
         lblTotalBatallas.setForeground(new java.awt.Color(255, 255, 255));
         lblTotalBatallas.setText("BATALLAS TOTALES:");
-        jPanel1.add(lblTotalBatallas, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, 320, 50));
+        jPanel1.add(lblTotalBatallas, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 500, 50));
 
         jLabel5.setFont(new java.awt.Font("Bangers", 1, 54)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("BATALLAS");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, -1, 50));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundBatallas.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 700, 460));

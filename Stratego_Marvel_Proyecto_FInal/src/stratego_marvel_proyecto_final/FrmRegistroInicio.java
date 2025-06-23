@@ -12,13 +12,7 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
         this.modo = modo;
         initComponents();
         setLocationRelativeTo(null);
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                new FrmMenuInicial2().setVisible(true);
-                dispose();
-            }
-        });
+   
         
         registroInicio.agregarPlaceholder(txtUsuario, placeholderUsuario);
         registroInicio.agregarPlaceholder(txtContrasena, placeholderContrasena);

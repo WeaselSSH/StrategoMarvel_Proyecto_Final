@@ -62,10 +62,10 @@ public class frmPerfil extends javax.swing.JFrame {
                 btnLogActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, 140, 40));
+        jPanel1.add(btnLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 220, 40));
 
         btnContrasenia.setBackground(new java.awt.Color(199, 21, 37));
-        btnContrasenia.setFont(new java.awt.Font("Bangers", 0, 14)); // NOI18N
+        btnContrasenia.setFont(new java.awt.Font("Bangers", 0, 12)); // NOI18N
         btnContrasenia.setForeground(new java.awt.Color(255, 255, 255));
         btnContrasenia.setText("CAMBIAR CONTRASEÒA");
         btnContrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -74,10 +74,10 @@ public class frmPerfil extends javax.swing.JFrame {
                 btnContraseniaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 140, 40));
+        jPanel1.add(btnContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 150, 40));
 
         btnBorrarCuenta.setBackground(new java.awt.Color(199, 21, 37));
-        btnBorrarCuenta.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
+        btnBorrarCuenta.setFont(new java.awt.Font("Bangers", 0, 14)); // NOI18N
         btnBorrarCuenta.setForeground(new java.awt.Color(255, 255, 255));
         btnBorrarCuenta.setText("BORRAR CUENTA");
         btnBorrarCuenta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -86,7 +86,7 @@ public class frmPerfil extends javax.swing.JFrame {
                 btnBorrarCuentaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBorrarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 120, 40));
+        jPanel1.add(btnBorrarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 140, 40));
 
         jLabel1.setFont(new java.awt.Font("Bangers", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -183,6 +183,7 @@ public class frmPerfil extends javax.swing.JFrame {
     private void btnLogActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogActionPerformed
         // TODO add your handling code here:
         FrmLog log = new FrmLog();
+        log.setLocationRelativeTo(null);
         log.setVisible(true);
     }//GEN-LAST:event_btnLogActionPerformed
 

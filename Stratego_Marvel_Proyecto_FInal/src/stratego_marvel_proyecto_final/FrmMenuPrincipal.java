@@ -136,7 +136,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         );
 
         if (opcion == javax.swing.JOptionPane.YES_OPTION) {
-            new FrmMenuInicial().setVisible(true);
+            new FrmMenuInicial2().setVisible(true);
             this.dispose();
         }
     }//GEN-LAST:event_LogoutButtonActionPerformed

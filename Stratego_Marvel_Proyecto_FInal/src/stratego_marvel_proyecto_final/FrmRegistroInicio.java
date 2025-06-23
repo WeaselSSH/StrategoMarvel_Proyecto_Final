@@ -15,7 +15,7 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
-                new FrmMenuInicial().setVisible(true);
+                new FrmMenuInicial2().setVisible(true);
                 dispose();
             }
         });
@@ -129,7 +129,7 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
     private void btnCancelarRegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarRegresarActionPerformed
         // TODO add your handling code here:
 
-        FrmMenuInicial MenuPrincipal = new FrmMenuInicial();
+        FrmMenuInicial2 MenuPrincipal = new FrmMenuInicial2();
         MenuPrincipal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCancelarRegresarActionPerformed

@@ -78,7 +78,7 @@ public class RegistroInicio {
 
         DatosGlobales.listaJugadores.agregar(new Jugador(usuario, contrasena));
         javax.swing.JOptionPane.showMessageDialog(null, "Jugador creado correctamente.");
-        FrmMenuInicial menuInicial = new FrmMenuInicial();
+        FrmMenuInicial2 menuInicial = new FrmMenuInicial2();
         menuInicial.setVisible(true);
         form.dispose();
     }

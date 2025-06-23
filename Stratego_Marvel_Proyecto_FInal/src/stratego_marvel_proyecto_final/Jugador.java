@@ -4,6 +4,7 @@ public class Jugador {
 
     private String usuario;
     private String log[] = new String[5];
+    private int cantidadLogs;
     private String contrasena;
     private int puntos;
     private int vecesBueno;
@@ -15,6 +16,8 @@ public class Jugador {
     public Jugador(String usuario, String contrasena) {
         this.usuario = usuario;
         this.contrasena = contrasena;
+        this.cantidadLogs = 0;
+        this.puntos = 0;
     }
 
     public String getUsuario() {
@@ -33,7 +36,7 @@ public class Jugador {
         this.puntos += 3;
         this.victorias++;
     }
-    
+
     public void partidaPerdida() {
         this.derrotas++;
     }
@@ -65,17 +68,25 @@ public class Jugador {
     public void setContrasena(String nuevaContrasena) {
         this.contrasena = nuevaContrasena;
     }
-    
-    public void setLog (String log) {
-        for (int i = 0; i < this.log.length; i++) {
-            if (this.log[i] != null) {
-                this.log[i] = log;
-                break;
+
+    public void setLog(String log) {
+        if (cantidadLogs < this.log.length) {
+            this.log[cantidadLogs] = log;
+            cantidadLogs++;
+        } else {
+            for (int i = 1; i < this.log.length; i++) {
+                this.log[i - 1] = this.log[i];
             }
+            this.log[this.log.length - 1] = log;
         }
     }
-    
-    public void getLog() {
+
+    public String[] getLog() {
+        return this.log;
+    }
+
+    public int getCantidadLogs() {
+        return this.cantidadLogs;
     }
 
 }

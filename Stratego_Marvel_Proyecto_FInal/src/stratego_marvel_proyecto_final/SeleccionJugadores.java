@@ -4,18 +4,54 @@
  */
 package stratego_marvel_proyecto_final;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author David
  */
 public class SeleccionJugadores extends javax.swing.JFrame {
 
+    
+    ListaJugadores jugadoresActivos = DatosGlobales.listaJugadores;//quiza algo inecesario, si veo que sirve sin esto, se quita
+    int cantPlayersActivos= jugadoresActivos.cantidad();
+    //String playersActivos[]= new String[cantPlayersActivos];
+
+    
+    
     /**
      * Creates new form SeleccionJugadores
      */
     public SeleccionJugadores() {
+        
         initComponents();
         NormalPanelConfig.configuracion(this);
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent e) {
+                FrmMenuPrincipal backmenu = new FrmMenuPrincipal();
+                backmenu.setVisible(true);
+                dispose();
+            }
+        });
+        
+        jcontricantes.removeAllItems();
+        for(int i=0; i<cantPlayersActivos; i++){//Obtengo el nombre de todos los usuarios activos
+            Jugador playertemp= jugadoresActivos.obtener(i);
+            String nameHost= DatosGlobales.jugadorHost.getUsuario();
+            String nameCont= playertemp.getUsuario();
+            if(nameCont.equals(nameHost)){//Verificador para no agregar el nombre del Host
+                //Salta el nombre del Host
+            }else{
+                 jcontricantes.addItem(nameCont);
+            }
+           
+         
+        }
+        
+        
+        
     }
 
     /**
@@ -27,118 +63,48 @@ public class SeleccionJugadores extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        label1 = new java.awt.Label();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        hostextF = new javax.swing.JTextField();
-        jugadorescont = new javax.swing.JComboBox<>();
-        regresarButon = new javax.swing.JButton();
         btnJugar = new javax.swing.JButton();
+        jcontricantes = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        label1.setAlignment(java.awt.Label.CENTER);
-        label1.setFont(new java.awt.Font("Impact", 0, 36)); // NOI18N
-        label1.setText("Seleccion de Jugadores");
-
-        jLabel1.setFont(new java.awt.Font("Imprint MT Shadow", 0, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Jugador Host");
-
-        jLabel2.setFont(new java.awt.Font("Imprint MT Shadow", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Jugador Contricante");
+        jLabel2.setText("Elija un Contricante");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 440, 70));
 
-        hostextF.setText(" ");
-        hostextF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hostextFActionPerformed(evt);
-            }
-        });
-
-        jugadorescont.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        regresarButon.setText("Regresar");
-        regresarButon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                regresarButonActionPerformed(evt);
-            }
-        });
-
-        btnJugar.setText("jugar");
+        btnJugar.setBackground(new java.awt.Color(101, 0, 0));
+        btnJugar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnJugar.setText("Jugar");
+        btnJugar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnJugarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 180, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(hostextF, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(134, 134, 134)
-                        .addComponent(jugadorescont, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75))))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(regresarButon)))
-                .addContainerGap(54, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(216, 216, 216)
-                .addComponent(btnJugar)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hostextF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jugadorescont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(btnJugar)
-                .addGap(48, 48, 48)
-                .addComponent(regresarButon)
-                .addGap(16, 16, 16))
-        );
+        jcontricantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jcontricantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 180, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundContricante.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 370));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void hostextFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hostextFActionPerformed
-        
-        //Buscar comando para desactivar esta caja y que solo aparezca el texto
-
-    }//GEN-LAST:event_hostextFActionPerformed
-
-    private void regresarButonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarButonActionPerformed
-        new FrmMenuPrincipal().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_regresarButonActionPerformed
-
     private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnJugarActionPerformed
         // TODO add your handling code here:
+        String playerSeleccionado= (String) jcontricantes.getSelectedItem();
+        Jugador playerTemp = jugadoresActivos.obtenerbyName(playerSeleccionado);
+        DatosGlobales.jugadorContricante= playerTemp;
+        System.out.println("Contricante sera: "+playerSeleccionado);
+        System.out.println(playerTemp);
         new FrmPartida().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnJugarActionPerformed
@@ -181,11 +147,8 @@ public class SeleccionJugadores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnJugar;
-    private javax.swing.JTextField hostextF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JComboBox<String> jugadorescont;
-    private java.awt.Label label1;
-    private javax.swing.JButton regresarButon;
+    private javax.swing.JComboBox<String> jcontricantes;
     // End of variables declaration//GEN-END:variables
 }

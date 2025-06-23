@@ -22,6 +22,16 @@ public class ListaJugadores {
         }
         return null;
     }
+    
+    public Jugador obtenerbyName(String nombre){//Devuelve el jugador mediante el nombre, usado en seleccion de jugador
+        for(int i=0; i<jugadores.length; i++){
+            Jugador playerTemp=jugadores[i];
+             if(nombre.equals(playerTemp.getUsuario())){
+                return playerTemp;
+            }
+        }
+        return null;
+    }
 
     public int cantidad() {
         return tamanio;

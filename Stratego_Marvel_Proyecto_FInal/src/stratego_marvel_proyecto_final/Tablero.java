@@ -7,6 +7,8 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.Border;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Tablero {
 
@@ -18,6 +20,7 @@ public class Tablero {
     //boolean que sirve para la validación tanto de bordes visuales como movimiento (backend y frontend por asi decirlo)
     private final boolean[][] bordeActivo = new boolean[10][10];
 
+<<<<<<< HEAD
     //coordenadas de las casillas de lago (o sea las que están deshabilitadas)
     private final int[][] casillasLago = {
         {4, 2}, {4, 3}, {5, 2}, {5, 3},
@@ -32,8 +35,19 @@ public class Tablero {
     private Ficha fichaSeleccionada;
 
     public Tablero(JButton[][] botones, JLabel turno) {
+>>>>>>> branch-copia-(branch-edwin)
         this.botones = botones;
         this.lblTurno = turno;
+    }
+    
+    
+    
+    //Metodo que brindara informacion si la ficha se encuentra ocupada
+    public boolean fichaOcupada(int fila, int columna){
+        if(botones[fila][columna].getIcon() == null){
+            return false;
+        }
+        return true;
     }
 
     public void inicializar() {
@@ -187,6 +201,7 @@ public class Tablero {
     }
 
     public void botonClick(int fila, int columna) {
+<<<<<<< HEAD
 
         //castearlo a imagen
         ImageIcon imagen = (ImageIcon) botones[fila][columna].getIcon();
@@ -236,9 +251,13 @@ public class Tablero {
             columnaSeleccionada = -1;
             quitarBordes();
         }
+=======
+        agregarQuitarBorde(fila, columna);
+        
+>>>>>>> branch-copia-(branch-edwin)
     }
 
-    private void agregarQuitarBorde(int fil, int col) {
+    private void agregarQuitarBorde(int fil, int col) {//Genera espacio de bordes
         if (bordeActivo[fil][col]) {
             quitarBordes();
             return;
@@ -252,7 +271,7 @@ public class Tablero {
         }
 
         String rutaImagen = imagen.getDescription();
-        Ficha fichaSeleccionada = obtenerFicha(rutaImagen);
+        Ficha fichaSeleccionada = obtenerFicha(rutaImagen, rutaImagen);
         if (fichaSeleccionada == null) {
             return;
         }
@@ -260,6 +279,17 @@ public class Tablero {
         Border borde = fichaSeleccionada.getBando().equals("BUENO") ? bordeAzul : bordeRojo;
         botones[fil][col].setBorder(borde);
         bordeActivo[fil][col] = true;
+        
+        
+        
+        if(fichaSeleccionada.getBando().equals("BUENO")){
+            //ImageIcon backCard = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
+            botones[fil][col].setEnabled(true);
+        }else if(fichaSeleccionada.getBando().equals("MALO")){
+            botones[fil][col].setEnabled(true);
+        }//Esto activa la ficha independientemente de cual sea el caso. Con tal sea abarcada la zona por el rectangulo de seleccion
+
+        
 
         boolean esRango2 = fichaSeleccionada.getTipo().equals("RANGO_2");
         marcarBordes(fil, col, borde, esRango2, fichaSeleccionada.getBando());
@@ -291,16 +321,22 @@ public class Tablero {
                         break;
                     }
 
+<<<<<<< HEAD
                     ImageIcon imagen = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
 
                     if (imagen != null) {
                         Ficha fichaEncontrada = obtenerFicha(imagen.getDescription());
+=======
+                    if (icono != null) {
+                        Ficha fichaEncontrada = obtenerFicha(icono.getDescription(), icono.getDescription());
+>>>>>>> branch-copia-(branch-edwin)
                         if (fichaEncontrada != null) {
                             if (fichaEncontrada.getBando().equals(bandoFichaSeleccionada)) {
                                 break;
                             } else {
                                 botones[nuevaFila][nuevaCol].setBorder(borde);
                                 bordeActivo[nuevaFila][nuevaCol] = true;
+                                botones[nuevaFila][nuevaCol].setEnabled(true);//Activa solo el marcado dentro de casilla
                                 break;
                             }
                         }
@@ -322,10 +358,15 @@ public class Tablero {
                 }
                 //en estas se usa continue porque si no no deja mover en las otras direcciones porque se iría del ciclo
 
+<<<<<<< HEAD
                 ImageIcon imagen = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
 
                 if (imagen != null) {
                     Ficha fichaEncontrada = obtenerFicha(imagen.getDescription());
+=======
+                if (icono != null) {
+                    Ficha fichaEncontrada = obtenerFicha(icono.getDescription(), icono.getDescription());
+>>>>>>> branch-copia-(branch-edwin)
                     if (fichaEncontrada != null && !fichaEncontrada.getBando().equals(bandoFichaSeleccionada)) {
                         botones[nuevaFila][nuevaCol].setBorder(borde);
                         bordeActivo[nuevaFila][nuevaCol] = true;
@@ -347,11 +388,25 @@ public class Tablero {
         }
     }
 
-    private Ficha obtenerFicha(String rutaImagen) {
+    public Ficha obtenerFicha(String rutaImagen, String revez) {
         Ficha[] fichas = DatosGlobales.fichas();
         for (Ficha ficha : fichas) {
+<<<<<<< HEAD
             if (rutaImagen.equals(ficha.getRutaImagen())) {
+=======
+            if (rutaImagen.contains(ficha.getRutaImagen()) || rutaImagen.contains(ficha.getBackCard())) {
+>>>>>>> branch-copia-(branch-edwin)
                 return ficha;
+            }
+        }
+        return null;
+    }
+    
+    public Ficha obtenerFicha2(String rutaRevez){ //Metodo para obtener la ficha a base de la imagen trasera
+          Ficha[] fichas = DatosGlobales.fichas();
+        for (Ficha ficha2 : fichas) {
+            if (rutaRevez.contains(ficha2.getBackCard())) {
+                return ficha2;
             }
         }
         return null;
@@ -361,6 +416,7 @@ public class Tablero {
         return fila >= 0 && fila < 10 && columna >= 0 && columna < 10;
     }
 
+<<<<<<< HEAD
     private void bloquearLago() {
         for (int[] posicion : casillasLago) {
             int fila = posicion[0];
@@ -468,4 +524,186 @@ public class Tablero {
         }
     }
 
+=======
+     
+    //Este metodo servirá para referenciar al posicion del boton que se ha presionado
+    public JButton referenciaBoton(int fila, int columna){
+        JButton referenceBoton =botones[fila][columna]; 
+        return referenceBoton;
+    }
+    
+    
+    public void visibilidadTurnos(boolean turnos){
+
+          for(int i=0; i<botones.length; i++){//Evaluacion de fichas de bando villano para ocultar
+                for(int j=0; j<botones.length; j++){
+                    
+                    ImageIcon infoFicha= (ImageIcon) botones[i][j].getIcon();//Obtengo info de la imagen que contenga la ficha 
+
+                    if(infoFicha==null){
+                        continue;//No hay ficha en esta casilla
+                    }
+                    
+                    Ficha selecFicha = null;
+                    //Ficha selecFichaBack=null;
+                    
+                    try{
+                        selecFicha = obtenerFicha(infoFicha.getDescription(), infoFicha.getDescription());
+                       // selecFichaBack=obtenerFicha2(infoFicha.getDescription());
+                        
+                    }catch(NullPointerException e){
+                        //selecFicha = obtenerFicha2(infoFicha.getDescription());//Intenta con la ruta del reverso
+                        System.out.println("XD");
+                        
+                    }
+                    
+                    if(selecFicha==null){
+                        System.out.println("Quedo nulo");
+                        botones[i][j].putClientProperty("ficha", null);
+                        botones[i][j].putClientProperty("bando", null);
+                        botones[i][j].putClientProperty("rango", null);
+                        botones[i][j].putClientProperty("fila",i);
+                        botones[i][j].putClientProperty("col", j);
+
+                        continue;//No se pudo identificar la ficha
+                    }
+
+                    //Obtencion de informacion
+                    String bandoFicha=selecFicha.getBando();
+                    String rutaFrontal=selecFicha.getRutaImagen();
+                    String rutaTrasera= selecFicha.getBackCard();
+                    int rangoFicha = selecFicha.getRango();
+                    
+                    ImageIcon frontCard= new ImageIcon(getClass().getResource(rutaFrontal));
+                    ImageIcon BackCard= new ImageIcon(getClass().getResource(rutaTrasera));
+                        
+                    //Guardado directo en boton
+                    botones[i][j].putClientProperty("ficha", selecFicha);
+                    botones[i][j].putClientProperty("bando", bandoFicha);
+                    botones[i][j].putClientProperty("rango", rangoFicha);
+                    botones[i][j].putClientProperty("fila",i);
+                    botones[i][j].putClientProperty("col", j);
+                    
+                    //Logica de visibilidad segun turnos
+                    if(turnos){
+                        if(bandoFicha.equals("BUENO")){
+                            botones[i][j].setIcon(frontCard);
+                        }else if(bandoFicha.equals("MALO")){
+                            botones[i][j].setIcon(BackCard);
+                        }
+                    }else{
+                        if(bandoFicha.equals("MALO")){
+                            botones[i][j].setIcon(frontCard);
+                        }else if(bandoFicha.equals("BUENO")){
+                            botones[i][j].setIcon(BackCard);
+                        }
+                    }
+
+                }//fin for1
+            }//fin for2
+          
+          if(turnos){
+              System.out.println("Es turno de Heroes");
+          }else{
+              System.out.println("Es turno de Villanos");
+          }
+    }
+    
+    
+    
+    public void conteoFichas(){//Metodo que revisa la cantidad de fichas jugables en el tablero
+        //Valores que actualizaran la cantidad
+        int UpdateCantH=0;
+        int UpdateCantV=0;
+        //Recorrido para revision
+        for(int i=0; i<botones.length; i++){
+            for(int j=0; j<botones.length; j++){
+                ImageIcon infoFicha= (ImageIcon) botones[i][j].getIcon();//Obtengo info de la imagen que contenga la ficha 
+
+                if(infoFicha==null){
+                    continue;//No hay ficha en esta casilla
+                }
+                    
+                Ficha selecFicha = null;
+                Ficha selecFichaBack=null;
+                    
+                try{
+                    selecFicha = obtenerFicha(infoFicha.getDescription(), infoFicha.getDescription());//Obtencion de la ficha 
+                }catch(NullPointerException e){
+                    System.out.println("Womp Womp");
+                }
+                
+                //Obtencion del bando de la ficha
+                String bandoFicha=selecFicha.getBando();
+              
+                if(bandoFicha.equals("BUENO")){
+                    System.out.println("Conto uno bueno");
+                    UpdateCantH++;
+                }else if(bandoFicha.equals("MALO")){
+                    System.out.println("Conto uno malo");
+                    UpdateCantV++;
+                }  
+            }
+        }
+        
+        //Actualiza la cantidad de fichas jugables
+        cantHeroes=UpdateCantH-7;
+        cantVillanos=UpdateCantV-7;
+ 
+        System.out.println("Cantidad actual de heroes: "+cantHeroes);
+        System.out.println("Cantidad actual de villanos: "+cantVillanos);
+    }
+    
+    public void WinOrLoose(JFrame ventana){
+        //Este metodo evalua el win/Lose mediante la cantidad de fichas jugables que quedan en el tablero
+        conteoFichas();//Ejecutre el conteo de fichas jugables
+        
+        int cantidadHeroes=cantHeroes-7;
+        int cantidadVillanos=cantVillanos-7;
+        
+        
+        //Verificacion de Win/Lose mediante cantidad 
+        if(cantidadHeroes==0 && cantidadVillanos==0){
+            JOptionPane.showMessageDialog(null, "¡Empate!");
+            FrmMenuPrincipal menuBack= new FrmMenuPrincipal();
+            menuBack.setVisible(true);
+            ventana.dispose();
+        }else if(cantidadHeroes>cantidadVillanos && cantidadVillanos==0){
+            JOptionPane.showMessageDialog(null, "Todos los villanos han sido derrotados. ¡Han Ganado los Heroes!");
+            DatosGlobales.jugadorHost.partidaGanada();//Agrega puntos
+            FrmMenuPrincipal menuBack= new FrmMenuPrincipal();
+            menuBack.setVisible(true);
+            ventana.dispose();
+        }else if(cantidadVillanos>cantidadHeroes && cantidadHeroes==0){
+            JOptionPane.showMessageDialog(null, "Todos los heroes han sido derrotados. ¡Han Ganado los Villanos!");
+            DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
+            FrmMenuPrincipal menuBack= new FrmMenuPrincipal();
+            menuBack.setVisible(true);
+            ventana.dispose();
+        }
+    }
+    
+    public void animacionLucha(ImageIcon imagHeroe, ImageIcon imagVillano, String nombre){
+        PanelLucha lucha = new PanelLucha(imagHeroe, imagVillano, nombre);
+        lucha.setVisible(true);
+    }
+    
+    public void animacionEmpate(ImageIcon imagAtak, ImageIcon imageDef){
+        PanelEmpate empate = new PanelEmpate(imagAtak, imageDef);
+        empate.setVisible(true);
+    }
+    
+    public void animacionBombaAct(ImageIcon imagBomb, ImageIcon imageInd, String nombre){
+        PanelBombaActivada bombact = new PanelBombaActivada(imagBomb, imageInd, nombre);
+        bombact.setVisible(true);
+    }
+    
+    public void animacionBombaDesct(ImageIcon imagBomb, ImageIcon imageInd, String nombre){
+        PanelBombaDesactivada bombact = new PanelBombaDesactivada(imagBomb, imageInd, nombre);
+        bombact.setVisible(true);
+    }
+            
+    
+    
+>>>>>>> branch-copia-(branch-edwin)
 }

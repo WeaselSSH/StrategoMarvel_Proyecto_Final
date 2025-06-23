@@ -28,6 +28,7 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         initComponents();
         NormalPanelConfig.configuracion(this);
         setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {

@@ -611,22 +611,14 @@ public class Tablero {
 
         //Verificacion de Win/Lose mediante cantidad 
         if (cantidadHeroes == 0 && cantidadVillanos == 0) {
-            JOptionPane.showMessageDialog(null, "¡Empate!");
-            FrmMenuPrincipal menuBack = new FrmMenuPrincipal();
-            menuBack.setVisible(true);
-            ventana.dispose();
+            animacionEmpatexFichas();
+            
         } else if (cantidadHeroes > cantidadVillanos && cantidadVillanos == 0) {
-            JOptionPane.showMessageDialog(null, "Todos los villanos han sido derrotados. ¡Han Ganado los Heroes!");
-            DatosGlobales.jugadorHost.partidaGanada();//Agrega puntos
-            FrmMenuPrincipal menuBack = new FrmMenuPrincipal();
-            menuBack.setVisible(true);
-            ventana.dispose();
+            animacionNoFichasV();
+            
         } else if (cantidadVillanos > cantidadHeroes && cantidadHeroes == 0) {
-            JOptionPane.showMessageDialog(null, "Todos los heroes han sido derrotados. ¡Han Ganado los Villanos!");
-            DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
-            FrmMenuPrincipal menuBack = new FrmMenuPrincipal();
-            menuBack.setVisible(true);
-            ventana.dispose();
+            animacionNoFichasH();
+      
         }
     }
 
@@ -658,5 +650,21 @@ public class Tablero {
     public void animacionWinVillanos(){//mostrar animacion de win villanos
         PanelLoose winVillanos = new PanelLoose(savedpartida);
         winVillanos.setVisible(true);
+    }
+    
+    public void animacionNoFichasV(){
+        PanelNoFichasV winHeroesF= new PanelNoFichasV(savedpartida);
+        winHeroesF.setVisible(true);
+    }
+    
+    public void animacionNoFichasH(){
+        PanelNoFichasH winVillanosF = new PanelNoFichasH(savedpartida);
+        winVillanosF.setVisible(true);
+    }
+    
+    //Caso de empate por no fichas
+    public void animacionEmpatexFichas(){
+        PanelEmpateNoFichas empatesupremo = new PanelEmpateNoFichas(savedpartida);
+        empatesupremo.setVisible(true);
     }
 }

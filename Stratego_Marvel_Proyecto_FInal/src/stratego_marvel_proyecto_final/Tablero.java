@@ -612,9 +612,6 @@ public class Tablero {
 
         int cantidadHeroes = cantHeroes;
         int cantidadVillanos = cantVillanos;
-        
-        System.out.println("Cantidad actual de heroes: " + cantidadHeroes);
-        System.out.println("Cantidad actual de villanos: " + cantidadVillanos);
 
         //Verificacion de Win/Lose mediante cantidad 
         if (cantidadHeroes == 0 && cantidadVillanos == 0) {
@@ -624,12 +621,14 @@ public class Tablero {
         } else if (cantidadHeroes > cantidadVillanos && cantidadVillanos == 0) {
             DatosGlobales.jugadorHost.partidaGanada();
             DatosGlobales.jugadorContricante.partidaPerdida();
+            DatosGlobales.victoriaHeroes++;
             animacionNoFichasV();
             bloquear();
             
         } else if (cantidadVillanos > cantidadHeroes && cantidadHeroes == 0) {
             DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
             DatosGlobales.jugadorHost.partidaPerdida();
+            DatosGlobales.victoriaVillanos++;
             animacionNoFichasH();
             bloquear();
       
@@ -663,12 +662,14 @@ public class Tablero {
     //Animaciones para ganar/perder partidas
     public void animacionWinHeroes(){//mostrar animacion de win heroes
         DatosGlobales.jugadorHost.partidaGanada();
+        DatosGlobales.victoriaHeroes++;
         PanelWin winheroes= new PanelWin(savedpartida);
         winheroes.setVisible(true);
     }
     
     public void animacionWinVillanos(){//mostrar animacion de win villanos
         DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
+        DatosGlobales.victoriaVillanos++;
         PanelLoose winVillanos = new PanelLoose(savedpartida);
         winVillanos.setVisible(true);
     }

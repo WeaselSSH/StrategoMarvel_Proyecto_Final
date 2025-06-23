@@ -6,6 +6,8 @@ import java.util.Random;
 import javax.swing.border.LineBorder;
 import javax.swing.border.Border;
 import java.awt.Color;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JLabel;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -14,6 +16,10 @@ public class Tablero {
 
     Ficha fichasDerrotadasBuenos[] = new Ficha[50];
     Ficha fichasDerrotadasMalos[] = new Ficha[50];
+
+    private String nombreJugadorHeroe = DatosGlobales.jugadorHeroe.getUsuario().toUpperCase();
+    private String nombreJugadorVillian = DatosGlobales.jugadorVillian.getUsuario().toUpperCase();
+            String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
 
     Random random = new Random();
     private JButton[][] botones = new JButton[10][10];
@@ -43,10 +49,9 @@ public class Tablero {
     private Ficha fichaSeleccionada;
 
     private JFrame savedpartida;//guarda el formpartida para cerrarlo cuando todo termine
-    
-    
+
     public Tablero(JButton[][] botones, JLabel turno, JFrame partida) {
-        savedpartida=partida;
+        savedpartida = partida;
         this.botones = botones;
         this.lblTurno = turno;
     }
@@ -388,11 +393,11 @@ public class Tablero {
         }
         return null;
     }
-    
-    public Ficha buscarxNombre(String nombre){//Metodo que permitira ubicar la fecha mediante nombre, util para animaciones
-        Ficha[]fichas= DatosGlobales.fichas();
-        for(Ficha ficha: fichas){
-            if(nombre.equals(ficha.getName())){
+
+    public Ficha buscarxNombre(String nombre) {//Metodo que permitira ubicar la fecha mediante nombre, util para animaciones
+        Ficha[] fichas = DatosGlobales.fichas();
+        for (Ficha ficha : fichas) {
+            if (nombre.equals(ficha.getName())) {
                 return ficha;
             }
         }
@@ -440,16 +445,16 @@ public class Tablero {
         //se obtienen las imagenes
         ImageIcon imagenOrigen = (ImageIcon) botones[filaOrigen][columnaOrigen].getIcon();
         ImageIcon imagenDestino = (ImageIcon) botones[filaDestino][columnaDestino].getIcon();
-        
+
         if (imagenOrigen == null) {
             return false;
         }
 
         Ficha fichaOrigen = obtenerFicha(imagenOrigen.getDescription());
         Ficha fichaDestino = (imagenDestino != null) ? obtenerFicha(imagenDestino.getDescription()) : null;
-        
+
         //Obtencion de nombres de las fichas
-        String nombreOrigen= fichaOrigen.getName();
+        String nombreOrigen = fichaOrigen.getName();
         String nombreDestino;
 
         if (fichaDestino == null) {
@@ -457,11 +462,10 @@ public class Tablero {
             botones[filaOrigen][columnaOrigen].setIcon(null);
             return true;
         } else { //logica de combate
-            nombreDestino=fichaDestino.getName();//Set de mombre en caso que ficha destino no sea null
-            Ficha defenTemp= this.buscarxNombre(nombreDestino);//Busca la ficha de acuerdo a su nombre
+            nombreDestino = fichaDestino.getName();//Set de mombre en caso que ficha destino no sea null
+            Ficha defenTemp = this.buscarxNombre(nombreDestino);//Busca la ficha de acuerdo a su nombre
             ImageIcon imagDefense = new ImageIcon(getClass().getResource(defenTemp.getRutaImagen()));//Establece la imagen verdadera de la ficha
 
-            
             if (fichaDestino.getTipo().equals("BOMBA")) {
                 if (fichaOrigen.getRango() == 3) {
                     animacionBombaDesct(imagDefense, imagenOrigen, nombreOrigen);
@@ -482,14 +486,14 @@ public class Tablero {
                 int rangoDestino = fichaDestino.getRango();
 
                 //Reubicacion de verificacion de captura tierra
-                if(rangoOrigen==1 && rangoDestino==12){
+                if (rangoOrigen == 1 && rangoDestino == 12) {
                     DatosGlobales.jugadorHeroe.partidaGanada();
                     DatosGlobales.jugadorVillian.partidaPerdida();
                     DatosGlobales.victoriaHeroes++;
                     animacionWinHeroes();
                     bloquear();
                     return true;
-                }else if(rangoOrigen==1 && rangoDestino==11){
+                } else if (rangoOrigen == 1 && rangoDestino == 11) {
                     DatosGlobales.jugadorVillian.partidaGanada();//Agregado de puntos
                     DatosGlobales.jugadorHeroe.partidaPerdida();
                     DatosGlobales.victoriaVillanos++;
@@ -497,7 +501,7 @@ public class Tablero {
                     bloquear();
                     return true;
                 }//Indicar movimiento no valido
-                
+
                 if (rangoOrigen == 1 && rangoDestino == 10) {
                     agregarFichaDerrotada(fichaDestino);
                     animacionLucha(imagenOrigen, imagDefense, nombreOrigen);
@@ -519,7 +523,7 @@ public class Tablero {
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     WinOrLoose(savedpartida);
                     return true;
-                }else{
+                } else {
                     animacionEmpate(imagenOrigen, imagDefense);
                     agregarFichaDerrotada(fichaOrigen);
                     agregarFichaDerrotada(fichaDestino);
@@ -528,10 +532,7 @@ public class Tablero {
                     WinOrLoose(savedpartida);
                     return true;
                 }
-                
-                
-                
-                
+
             }
         }
     }
@@ -609,7 +610,6 @@ public class Tablero {
         cantHeroes = UpdateCantH - 7;
         cantVillanos = UpdateCantV - 7;
 
-      
     }
 
     public void WinOrLoose(JFrame ventana) {
@@ -623,30 +623,29 @@ public class Tablero {
         if (cantidadHeroes == 0 && cantidadVillanos == 0) {
             animacionEmpatexFichas();
             bloquear();
-            
+
         } else if (cantidadHeroes > cantidadVillanos && cantidadVillanos == 0) {
             DatosGlobales.jugadorHeroe.partidaGanada();
             DatosGlobales.jugadorVillian.partidaPerdida();
             DatosGlobales.victoriaHeroes++;
             animacionNoFichasV();
             bloquear();
-            
+
         } else if (cantidadVillanos > cantidadHeroes && cantidadHeroes == 0) {
             DatosGlobales.jugadorVillian.partidaGanada();//Agregado de puntos
             DatosGlobales.jugadorHeroe.partidaPerdida();
             DatosGlobales.victoriaVillanos++;
             animacionNoFichasH();
             bloquear();
-      
+
         }
     }
 
-    
     //Animaciones de lucha 
     public void animacionLucha(ImageIcon imagHeroe, ImageIcon imagVillano, String nombre) {
-        PanelLucha lucha = new PanelLucha(imagHeroe, imagVillano, nombre );
+        PanelLucha lucha = new PanelLucha(imagHeroe, imagVillano, nombre);
         lucha.setVisible(true);
-        
+
     }
 
     public void animacionEmpate(ImageIcon imagAtak, ImageIcon imageDef) {
@@ -663,51 +662,48 @@ public class Tablero {
         PanelBombaDesactivada bombact = new PanelBombaDesactivada(imagBomb, imageInd, nombre);
         bombact.setVisible(true);
     }
-    
-    
+
     //Animaciones para ganar/perder partidas
-    public void animacionWinHeroes(){//mostrar animacion de win heroes
+    public void animacionWinHeroes() {//mostrar animacion de win heroes
         DatosGlobales.jugadorHost.partidaGanada();
         DatosGlobales.victoriaHeroes++;
-        PanelWin winheroes= new PanelWin(savedpartida);
+        PanelWin winheroes = new PanelWin(savedpartida);
         winheroes.setVisible(true);
     }
-    
-    public void animacionWinVillanos(){//mostrar animacion de win villanos
+
+    public void animacionWinVillanos() {//mostrar animacion de win villanos
         DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
         DatosGlobales.victoriaVillanos++;
         PanelLoose winVillanos = new PanelLoose(savedpartida);
         winVillanos.setVisible(true);
     }
-    
-    public void animacionNoFichasV(){
-        PanelNoFichasV winHeroesF= new PanelNoFichasV(savedpartida);
+
+    public void animacionNoFichasV() {
+        PanelNoFichasV winHeroesF = new PanelNoFichasV(savedpartida);
         winHeroesF.setVisible(true);
     }
-    
-    public void animacionNoFichasH(){
+
+    public void animacionNoFichasH() {
         PanelNoFichasH winVillanosF = new PanelNoFichasH(savedpartida);
         winVillanosF.setVisible(true);
     }
-    
+
     //Caso de empate por no fichas
-    public void animacionEmpatexFichas(){
+    public void animacionEmpatexFichas() {
         PanelEmpateNoFichas empatesupremo = new PanelEmpateNoFichas(savedpartida);
         empatesupremo.setVisible(true);
     }
-    
-    public String getTurno(){
+
+    public String getTurno() {
         return turnoActual;
     }
-    
-    
-    public void bloquear(){
+
+    public void bloquear() {
         savedpartida.setEnabled(false);
     }
-    
-    public void desbloquear(){
+
+    public void desbloquear() {
         savedpartida.setEnabled(true);
     }
-            
-           
+
 }

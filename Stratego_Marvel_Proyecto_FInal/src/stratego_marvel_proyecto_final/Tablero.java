@@ -449,6 +449,7 @@ public class Tablero {
         if (imagenOrigen == null) {
             return false;
         }
+        //XD
 
         Ficha fichaOrigen = obtenerFicha(imagenOrigen.getDescription());
         Ficha fichaDestino = (imagenDestino != null) ? obtenerFicha(imagenDestino.getDescription()) : null;

@@ -2,6 +2,8 @@ package stratego_marvel_proyecto_final;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class FrmPartida extends javax.swing.JFrame {
 
@@ -116,6 +118,7 @@ public class FrmPartida extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCementerioActionPerformed
 
     private void rendirsebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rendirsebuttonActionPerformed
+        String fecha = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
         String turnoActual = tablero.getTurno();
 
         int opcion = JOptionPane.showConfirmDialog(null,
@@ -128,10 +131,10 @@ public class FrmPartida extends javax.swing.JFrame {
                     DatosGlobales.jugadorVillian.partidaGanada();
 
                     DatosGlobales.jugadorHeroe.setLog(nombreJugadorVillian + " VENCEDOR USANDO LOS HEROES"
-                            + "DEBIDO A QUE " + nombreJugadorHeroe + " SE HA RETIRADO DEL JUEGO");
+                            + "DEBIDO A QUE " + nombreJugadorHeroe + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
 
                     DatosGlobales.jugadorVillian.setLog(nombreJugadorVillian + " VENCEDOR USANDO LOS HEROES"
-                            + "DEBIDO A QUE " + nombreJugadorHeroe + " SE HA RETIRADO DEL JUEGO");
+                            + "DEBIDO A QUE " + nombreJugadorHeroe + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
 
                     PanelRendirseH rendidoB = new PanelRendirseH(this);
                     rendidoB.setVisible(true);
@@ -140,10 +143,10 @@ public class FrmPartida extends javax.swing.JFrame {
                     DatosGlobales.jugadorVillian.partidaPerdida();
 
                     DatosGlobales.jugadorHeroe.setLog(nombreJugadorHeroe + " VENCEDOR USANDO LOS HEROES"
-                            + "DEBIDO A QUE " + nombreJugadorVillian + " SE HA RETIRADO DEL JUEGO");
+                            + "DEBIDO A QUE " + nombreJugadorVillian + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
 
                     DatosGlobales.jugadorVillian.setLog(nombreJugadorHeroe + " VENCEDOR USANDO LOS HEROES"
-                            + "DEBIDO A QUE " + nombreJugadorVillian + " SE HA RETIRADO DEL JUEGO");
+                            + "DEBIDO A QUE " + nombreJugadorVillian + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
 
                     PanelRendirseV rendidoV = new PanelRendirseV(this);
                     rendidoV.setVisible(true);

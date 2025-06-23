@@ -12,13 +12,6 @@ public class FrmLog extends javax.swing.JFrame {
                     "Log de Partidas"
                 }
         ));
-        
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                dispose();
-            }
-        });
         mostrarLogs(logs);
     }
 
@@ -40,7 +33,7 @@ public class FrmLog extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLogs = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tblLogs.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

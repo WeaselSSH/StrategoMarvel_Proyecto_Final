@@ -41,8 +41,8 @@ public class FrmMenuInicial2 extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("MARVEL STRATEGO");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 50, 390, 70));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/strategologo.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 450, 70));
 
         ExitButton.setBackground(new java.awt.Color(255, 255, 255));
         ExitButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N

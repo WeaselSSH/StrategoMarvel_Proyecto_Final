@@ -4,6 +4,7 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
 
     public FrmUniversoMarvel() {
         initComponents();
+        System.out.println("e");
         setLocationRelativeTo(null);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override

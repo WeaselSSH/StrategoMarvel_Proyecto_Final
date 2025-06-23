@@ -10,8 +10,8 @@ public class FrmPartida extends javax.swing.JFrame {
     private JButton botones[][] = new JButton[10][10];
     private Tablero tablero;
 
-    private String nombreJugadorHeroe = DatosGlobales.jugadorHeroe.getUsuario();
-    private String nombreJugadorVillian = DatosGlobales.jugadorVillian.getUsuario();
+    private String nombreJugadorHeroe = DatosGlobales.jugadorHeroe.getUsuario().toUpperCase();
+    private String nombreJugadorVillian = DatosGlobales.jugadorVillian.getUsuario().toUpperCase();
 
     public FrmPartida() {
         this.setUndecorated(true);

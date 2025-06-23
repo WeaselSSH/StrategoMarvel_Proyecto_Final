@@ -5,6 +5,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     public FrmMenuPrincipal() {
         this.setUndecorated(true);
         initComponents();
+        setLocationRelativeTo(null);
         habilitarBtnPartida();
     }
 
@@ -46,12 +47,13 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Bangers", 1, 54)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("MENU PRINCIPAL");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 320, 50));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 540, 50));
 
-        btnUniversoMarvel.setBackground(new java.awt.Color(234, 31, 37));
-        btnUniversoMarvel.setFont(new java.awt.Font("Bangers", 0, 28)); // NOI18N
-        btnUniversoMarvel.setForeground(new java.awt.Color(255, 255, 255));
+        btnUniversoMarvel.setBackground(new java.awt.Color(255, 255, 255));
+        btnUniversoMarvel.setFont(new java.awt.Font("Bangers", 1, 20)); // NOI18N
+        btnUniversoMarvel.setForeground(new java.awt.Color(0, 0, 0));
         btnUniversoMarvel.setText("UNIVERSO MARVEL");
         btnUniversoMarvel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         btnUniversoMarvel.addActionListener(new java.awt.event.ActionListener() {
@@ -59,11 +61,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 btnUniversoMarvelActionPerformed(evt);
             }
         });
-        jPanel1.add(btnUniversoMarvel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 200, 60));
+        jPanel1.add(btnUniversoMarvel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 210, 60));
 
-        JugarButton.setBackground(new java.awt.Color(234, 31, 37));
-        JugarButton.setFont(new java.awt.Font("Bangers", 0, 28)); // NOI18N
-        JugarButton.setForeground(new java.awt.Color(255, 255, 255));
+        JugarButton.setBackground(new java.awt.Color(255, 255, 255));
+        JugarButton.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
+        JugarButton.setForeground(new java.awt.Color(0, 0, 0));
         JugarButton.setText("Partida Nueva");
         JugarButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         JugarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -73,9 +75,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(JugarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 200, 60));
 
-        LogoutButton.setBackground(new java.awt.Color(234, 31, 37));
-        LogoutButton.setFont(new java.awt.Font("Bangers", 0, 28)); // NOI18N
-        LogoutButton.setForeground(new java.awt.Color(255, 255, 255));
+        LogoutButton.setBackground(new java.awt.Color(255, 255, 255));
+        LogoutButton.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
+        LogoutButton.setForeground(new java.awt.Color(0, 0, 0));
         LogoutButton.setText("Cerrar Sesión");
         LogoutButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         LogoutButton.addActionListener(new java.awt.event.ActionListener() {
@@ -85,9 +87,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 200, 60));
 
-        PerfilButton.setBackground(new java.awt.Color(234, 31, 37));
-        PerfilButton.setFont(new java.awt.Font("Bangers", 0, 28)); // NOI18N
-        PerfilButton.setForeground(new java.awt.Color(255, 255, 255));
+        PerfilButton.setBackground(new java.awt.Color(255, 255, 255));
+        PerfilButton.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
+        PerfilButton.setForeground(new java.awt.Color(0, 0, 0));
         PerfilButton.setText("Mi Perfil");
         PerfilButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         PerfilButton.addActionListener(new java.awt.event.ActionListener() {
@@ -95,7 +97,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                 PerfilButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(PerfilButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 200, 60));
+        jPanel1.add(PerfilButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, 210, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundMenuPrincipal.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 330));

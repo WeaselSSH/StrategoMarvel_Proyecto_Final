@@ -11,6 +11,7 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
     public FrmRegistroInicio(String modo) {
         this.modo = modo;
         initComponents();
+        setLocationRelativeTo(null);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
@@ -50,20 +51,21 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblTitulo.setFont(new java.awt.Font("Bangers", 1, 48)); // NOI18N
+        lblTitulo.setFont(new java.awt.Font("Bangers", 1, 31)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitulo.setText("INICIO DE SESION");
-        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 300, -1));
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 300, -1));
 
-        txtUsuario.setBackground(new java.awt.Color(216, 27, 47));
+        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setFont(new java.awt.Font("Komika Axis", 0, 12)); // NOI18N
-        txtUsuario.setForeground(new java.awt.Color(51, 51, 51));
+        txtUsuario.setForeground(new java.awt.Color(0, 0, 0));
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUsuario.setText("Tu nombre de usuario");
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 158, 50));
 
-        txtContrasena.setBackground(new java.awt.Color(216, 27, 47));
+        txtContrasena.setBackground(new java.awt.Color(255, 255, 255));
         txtContrasena.setFont(new java.awt.Font("Komika Axis", 0, 12)); // NOI18N
         txtContrasena.setForeground(new java.awt.Color(51, 51, 51));
         txtContrasena.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -71,9 +73,9 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
         txtContrasena.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 158, 50));
 
-        btnRegistrarInicio.setBackground(new java.awt.Color(216, 27, 47));
-        btnRegistrarInicio.setFont(new java.awt.Font("Bangers", 0, 20)); // NOI18N
-        btnRegistrarInicio.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrarInicio.setBackground(new java.awt.Color(255, 255, 255));
+        btnRegistrarInicio.setFont(new java.awt.Font("Bangers", 1, 18)); // NOI18N
+        btnRegistrarInicio.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrarInicio.setText("Registrarse");
         btnRegistrarInicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         btnRegistrarInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -83,9 +85,9 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
         });
         jPanel1.add(btnRegistrarInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 120, 50));
 
-        btnCancelarRegresar.setBackground(new java.awt.Color(216, 27, 47));
-        btnCancelarRegresar.setFont(new java.awt.Font("Bangers", 0, 20)); // NOI18N
-        btnCancelarRegresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelarRegresar.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelarRegresar.setFont(new java.awt.Font("Bangers", 1, 18)); // NOI18N
+        btnCancelarRegresar.setForeground(new java.awt.Color(0, 0, 0));
         btnCancelarRegresar.setText("Cancelar");
         btnCancelarRegresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         btnCancelarRegresar.addActionListener(new java.awt.event.ActionListener() {

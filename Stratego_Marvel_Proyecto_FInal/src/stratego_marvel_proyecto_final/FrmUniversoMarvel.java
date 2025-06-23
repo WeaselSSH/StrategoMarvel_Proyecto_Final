@@ -4,6 +4,7 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
 
     public FrmUniversoMarvel() {
         initComponents();
+        setLocationRelativeTo(null);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
@@ -30,7 +31,7 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Bangers", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("UNIVERSO MARVEL");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 310, 40));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 350, 40));
 
         btnRanking.setBackground(new java.awt.Color(242, 80, 53));
         btnRanking.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
@@ -57,7 +58,7 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
         jPanel1.add(btnBatallas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 130, 45));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundUniversoMarvel.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 220));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 220));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

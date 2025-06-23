@@ -5,6 +5,7 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     public FrmMenuInicial() {
         this.setUndecorated(true);
         initComponents();
+        setLocationRelativeTo(null);
         this.setTitle("VENTANA DE REGISTRO");
     }
 

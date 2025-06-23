@@ -27,12 +27,13 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         
         initComponents();
         NormalPanelConfig.configuracion(this);
+        setLocationRelativeTo(null);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
                 FrmMenuPrincipal backmenu = new FrmMenuPrincipal();
                 backmenu.setVisible(true);
-                dispose();
+                SeleccionJugadores.this.dispose();
             }
         });
         
@@ -77,9 +78,11 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         jLabel2.setText("Elija un Contricante");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 440, 70));
 
-        btnJugar.setBackground(new java.awt.Color(101, 0, 0));
+        btnJugar.setBackground(new java.awt.Color(255, 255, 255));
         btnJugar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
+        btnJugar.setForeground(new java.awt.Color(0, 0, 0));
         btnJugar.setText("Jugar");
+        btnJugar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
         btnJugar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

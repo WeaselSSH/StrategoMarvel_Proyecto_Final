@@ -6,6 +6,7 @@ public class frmPerfil extends javax.swing.JFrame {
 
     public frmPerfil() {
         initComponents();
+        setLocationRelativeTo(null);
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
@@ -51,8 +52,8 @@ public class frmPerfil extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnContrasenia.setBackground(new java.awt.Color(255, 87, 102));
-        btnContrasenia.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
+        btnContrasenia.setBackground(new java.awt.Color(199, 21, 37));
+        btnContrasenia.setFont(new java.awt.Font("Bangers", 0, 14)); // NOI18N
         btnContrasenia.setForeground(new java.awt.Color(255, 255, 255));
         btnContrasenia.setText("CAMBIAR CONTRASEñA");
         btnContrasenia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -63,7 +64,7 @@ public class frmPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(btnContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 480, 180, 40));
 
-        btnBorrarCuenta.setBackground(new java.awt.Color(255, 87, 102));
+        btnBorrarCuenta.setBackground(new java.awt.Color(199, 21, 37));
         btnBorrarCuenta.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
         btnBorrarCuenta.setForeground(new java.awt.Color(255, 255, 255));
         btnBorrarCuenta.setText("BORRAR CUENTA");
@@ -75,30 +76,32 @@ public class frmPerfil extends javax.swing.JFrame {
         });
         jPanel1.add(btnBorrarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 180, 40));
 
-        jLabel1.setFont(new java.awt.Font("Bangers", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Bangers", 0, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("HISTORIAL DE PARTIDAS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 190, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 330, -1));
 
-        lblHost.setFont(new java.awt.Font("Bangers", 0, 48)); // NOI18N
+        lblHost.setFont(new java.awt.Font("Bangers", 0, 36)); // NOI18N
         lblHost.setForeground(new java.awt.Color(255, 255, 255));
+        lblHost.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHost.setText("Nombre de Usuario");
-        jPanel1.add(lblHost, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 330, -1));
+        jPanel1.add(lblHost, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 350, -1));
 
         lblDerrotas.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
         lblDerrotas.setForeground(new java.awt.Color(255, 255, 255));
         lblDerrotas.setText("Derrotas:");
         jPanel1.add(lblDerrotas, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 110, -1));
 
-        lblVecesVillano.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
+        lblVecesVillano.setFont(new java.awt.Font("Bangers", 0, 15)); // NOI18N
         lblVecesVillano.setForeground(new java.awt.Color(255, 255, 255));
         lblVecesVillano.setText("Veces como villano:");
-        jPanel1.add(lblVecesVillano, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 160, -1));
+        jPanel1.add(lblVecesVillano, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 170, -1));
 
-        lblVecesHeroe.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
+        lblVecesHeroe.setFont(new java.awt.Font("Bangers", 0, 15)); // NOI18N
         lblVecesHeroe.setForeground(new java.awt.Color(255, 255, 255));
         lblVecesHeroe.setText("Veces como héroe:");
-        jPanel1.add(lblVecesHeroe, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 150, -1));
+        jPanel1.add(lblVecesHeroe, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 170, -1));
 
         lblVictorias.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
         lblVictorias.setForeground(new java.awt.Color(255, 255, 255));

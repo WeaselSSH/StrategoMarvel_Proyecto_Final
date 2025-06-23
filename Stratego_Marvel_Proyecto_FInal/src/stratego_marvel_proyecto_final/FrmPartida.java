@@ -12,6 +12,7 @@ public class FrmPartida extends javax.swing.JFrame {
     public FrmPartida() {
         this.setUndecorated(true);
         initComponents();
+        setLocationRelativeTo(null);
         crearBotones();
         DatosGlobales.partidasTotales++;
         tablero = new Tablero(botones, lblTurno, this);

@@ -135,17 +135,11 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         if(eleccion.equals("HEROES")){
             DatosGlobales.jugadorHeroe = DatosGlobales.jugadorHost;
             DatosGlobales.jugadorVillian= DatosGlobales.jugadorContricante;
-            System.out.println(DatosGlobales.jugadorHeroe.getUsuario());
-            System.out.println(DatosGlobales.jugadorVillian.getUsuario());
         }else if(eleccion.equals("VILLANOS")){
             DatosGlobales.jugadorVillian= DatosGlobales.jugadorHost;
             DatosGlobales.jugadorHeroe= DatosGlobales.jugadorContricante;
-            System.out.println(DatosGlobales.jugadorHeroe.getUsuario());
-            System.out.println(DatosGlobales.jugadorVillian.getUsuario());
-            
         }
-        System.out.println("Contricante sera: "+playerSeleccionado);
-        System.out.println(playerTemp);
+        
         new FrmPartida().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnJugarActionPerformed

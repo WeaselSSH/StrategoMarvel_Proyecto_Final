@@ -18,6 +18,8 @@ public class Jugador {
         this.contrasena = contrasena;
         this.cantidadLogs = 0;
         this.puntos = 0;
+        this.vecesBueno = 0;
+        this.vecesMalo = 0;
     }
 
     public String getUsuario() {
@@ -53,6 +55,14 @@ public class Jugador {
         return victorias;
     }
 
+    public void setVecesBueno() {
+        this.vecesBueno++;
+    }
+    
+    public void setVecesMalo() {
+        this.vecesMalo++;
+    }
+    
     public int getDerrotas() {
         return derrotas;
     }

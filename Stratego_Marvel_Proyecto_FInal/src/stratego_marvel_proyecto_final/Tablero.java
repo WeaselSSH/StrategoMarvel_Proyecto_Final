@@ -384,6 +384,16 @@ public class Tablero {
         }
         return null;
     }
+    
+    public Ficha buscarxNombre(String nombre){//Metodo que permitira ubicar la fecha mediante nombre, util para animaciones
+        Ficha[]fichas= DatosGlobales.fichas();
+        for(Ficha ficha: fichas){
+            if(nombre.equals(ficha.getName())){
+                return ficha;
+            }
+        }
+        return null;
+    }
 
     private boolean posicionValida(int fila, int columna) {
         return fila >= 0 && fila < 10 && columna >= 0 && columna < 10;
@@ -426,26 +436,37 @@ public class Tablero {
         //se obtienen las imagenes
         ImageIcon imagenOrigen = (ImageIcon) botones[filaOrigen][columnaOrigen].getIcon();
         ImageIcon imagenDestino = (ImageIcon) botones[filaDestino][columnaDestino].getIcon();
-
+        
         if (imagenOrigen == null) {
             return false;
         }
 
         Ficha fichaOrigen = obtenerFicha(imagenOrigen.getDescription());
         Ficha fichaDestino = (imagenDestino != null) ? obtenerFicha(imagenDestino.getDescription()) : null;
+        
+        //Obtencion de nombres de las fichas
+        String nombreOrigen= fichaOrigen.getName();
+        String nombreDestino;
 
         if (fichaDestino == null) {
             botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
             botones[filaOrigen][columnaOrigen].setIcon(null);
             return true;
         } else { //logica de combate
+            nombreDestino=fichaDestino.getName();//Set de mombre en caso que ficha destino no sea null
+            Ficha defenTemp= this.buscarxNombre(nombreDestino);//Busca la ficha de acuerdo a su nombre
+            ImageIcon imagDefense = new ImageIcon(getClass().getResource(defenTemp.getRutaImagen()));//Establece la imagen verdadera de la ficha
+
+            
             if (fichaDestino.getTipo().equals("BOMBA")) {
                 if (fichaOrigen.getRango() == 3) {
+                    animacionBombaDesct(imagDefense, imagenOrigen, nombreOrigen);
                     agregarFichaDerrotada(fichaDestino);
                     botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     return true;
                 } else {
+                    animacionBombaAct(imagDefense, imagenOrigen, nombreOrigen);
                     agregarFichaDerrotada(fichaOrigen);
                     agregarFichaDerrotada(fichaDestino);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
@@ -458,6 +479,7 @@ public class Tablero {
 
                 if (rangoOrigen == 1 && rangoDestino == 10) {
                     agregarFichaDerrotada(fichaDestino);
+                    animacionLucha(imagenOrigen, imagDefense, nombreOrigen);
                     botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     return true;
@@ -465,14 +487,17 @@ public class Tablero {
 
                 if (rangoOrigen > rangoDestino) {
                     agregarFichaDerrotada(fichaDestino);
+                    animacionLucha(imagenOrigen, imagDefense, nombreOrigen);
                     botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     return true;
                 } else if (rangoOrigen < rangoDestino) {
                     agregarFichaDerrotada(fichaOrigen);
+                    animacionLucha(imagDefense, imagenOrigen, nombreDestino);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     return true;
                 } else {
+                    animacionEmpate(imagenOrigen, imagDefense);
                     agregarFichaDerrotada(fichaOrigen);
                     agregarFichaDerrotada(fichaDestino);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
@@ -564,8 +589,8 @@ public class Tablero {
         //Este metodo evalua el win/Lose mediante la cantidad de fichas jugables que quedan en el tablero
         conteoFichas();//Ejecutre el conteo de fichas jugables
 
-        int cantidadHeroes = cantHeroes - 7;
-        int cantidadVillanos = cantVillanos - 7;
+        int cantidadHeroes = cantHeroes;
+        int cantidadVillanos = cantVillanos;
 
         //Verificacion de Win/Lose mediante cantidad 
         if (cantidadHeroes == 0 && cantidadVillanos == 0) {

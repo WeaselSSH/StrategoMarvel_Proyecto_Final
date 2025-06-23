@@ -486,14 +486,14 @@ public class Tablero {
                 int rangoDestino = fichaDestino.getRango();
 
                 //Reubicacion de verificacion de captura tierra
-                if (rangoOrigen == 1 && rangoDestino == 12) {
+                if (rangoDestino == 12) {
                     DatosGlobales.jugadorHeroe.partidaGanada();
                     DatosGlobales.jugadorVillian.partidaPerdida();
                     DatosGlobales.victoriaHeroes++;
                     animacionWinHeroes();
                     bloquear();
                     return true;
-                } else if (rangoOrigen == 1 && rangoDestino == 11) {
+                } else if (rangoDestino == 11) {
                     DatosGlobales.jugadorVillian.partidaGanada();//Agregado de puntos
                     DatosGlobales.jugadorHeroe.partidaPerdida();
                     DatosGlobales.victoriaVillanos++;
@@ -665,15 +665,11 @@ public class Tablero {
 
     //Animaciones para ganar/perder partidas
     public void animacionWinHeroes() {//mostrar animacion de win heroes
-        DatosGlobales.jugadorHost.partidaGanada();
-        DatosGlobales.victoriaHeroes++;
         PanelWin winheroes = new PanelWin(savedpartida);
         winheroes.setVisible(true);
     }
 
     public void animacionWinVillanos() {//mostrar animacion de win villanos
-        DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
-        DatosGlobales.victoriaVillanos++;
         PanelLoose winVillanos = new PanelLoose(savedpartida);
         winVillanos.setVisible(true);
     }

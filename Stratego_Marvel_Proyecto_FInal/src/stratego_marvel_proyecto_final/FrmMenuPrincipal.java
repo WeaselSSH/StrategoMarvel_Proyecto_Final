@@ -49,7 +49,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jLabel5.setText("MENU PRINCIPAL");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 320, 50));
 
-        btnUniversoMarvel.setBackground(new java.awt.Color(229, 65, 40));
+        btnUniversoMarvel.setBackground(new java.awt.Color(234, 31, 37));
         btnUniversoMarvel.setFont(new java.awt.Font("Bangers", 0, 28)); // NOI18N
         btnUniversoMarvel.setForeground(new java.awt.Color(255, 255, 255));
         btnUniversoMarvel.setText("UNIVERSO MARVEL");
@@ -61,7 +61,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnUniversoMarvel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, 200, 60));
 
-        JugarButton.setBackground(new java.awt.Color(229, 65, 40));
+        JugarButton.setBackground(new java.awt.Color(234, 31, 37));
         JugarButton.setFont(new java.awt.Font("Bangers", 0, 28)); // NOI18N
         JugarButton.setForeground(new java.awt.Color(255, 255, 255));
         JugarButton.setText("Partida Nueva");
@@ -73,7 +73,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(JugarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 200, 60));
 
-        LogoutButton.setBackground(new java.awt.Color(229, 65, 40));
+        LogoutButton.setBackground(new java.awt.Color(234, 31, 37));
         LogoutButton.setFont(new java.awt.Font("Bangers", 0, 28)); // NOI18N
         LogoutButton.setForeground(new java.awt.Color(255, 255, 255));
         LogoutButton.setText("Cerrar Sesión");
@@ -85,7 +85,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(LogoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 230, 200, 60));
 
-        PerfilButton.setBackground(new java.awt.Color(229, 65, 40));
+        PerfilButton.setBackground(new java.awt.Color(234, 31, 37));
         PerfilButton.setFont(new java.awt.Font("Bangers", 0, 28)); // NOI18N
         PerfilButton.setForeground(new java.awt.Color(255, 255, 255));
         PerfilButton.setText("Mi Perfil");

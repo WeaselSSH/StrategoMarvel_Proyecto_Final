@@ -32,7 +32,7 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
         jLabel5.setText("UNIVERSO MARVEL");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 310, 40));
 
-        btnRanking.setBackground(new java.awt.Color(4, 4, 4));
+        btnRanking.setBackground(new java.awt.Color(242, 80, 53));
         btnRanking.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
         btnRanking.setForeground(new java.awt.Color(255, 255, 255));
         btnRanking.setText("Ranking");
@@ -42,9 +42,9 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
                 btnRankingActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRanking, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 130, 45));
+        jPanel1.add(btnRanking, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 130, 45));
 
-        btnBatallas.setBackground(new java.awt.Color(4, 4, 4));
+        btnBatallas.setBackground(new java.awt.Color(242, 80, 53));
         btnBatallas.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
         btnBatallas.setForeground(new java.awt.Color(255, 255, 255));
         btnBatallas.setText("Batallas");
@@ -54,10 +54,10 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
                 btnBatallasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBatallas, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 120, 130, 45));
+        jPanel1.add(btnBatallas, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 130, 45));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundUniversoMarvel.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 280));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 220));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

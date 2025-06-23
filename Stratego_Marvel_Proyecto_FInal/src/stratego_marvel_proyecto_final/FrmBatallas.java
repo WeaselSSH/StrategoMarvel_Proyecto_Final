@@ -7,7 +7,7 @@ public class FrmBatallas extends javax.swing.JFrame {
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent e) {
-                new FrmMenuPrincipal().setVisible(true);
+                new FrmUniversoMarvel().setVisible(true);
                 dispose();
             }
         });

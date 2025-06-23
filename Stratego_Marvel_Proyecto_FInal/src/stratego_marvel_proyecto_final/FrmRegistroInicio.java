@@ -74,7 +74,7 @@ public class FrmRegistroInicio extends javax.swing.JFrame {
         jPanel1.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 158, 50));
 
         btnRegistrarInicio.setBackground(new java.awt.Color(255, 255, 255));
-        btnRegistrarInicio.setFont(new java.awt.Font("Bangers", 1, 18)); // NOI18N
+        btnRegistrarInicio.setFont(new java.awt.Font("Bangers", 1, 15)); // NOI18N
         btnRegistrarInicio.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrarInicio.setText("Registrarse");
         btnRegistrarInicio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));

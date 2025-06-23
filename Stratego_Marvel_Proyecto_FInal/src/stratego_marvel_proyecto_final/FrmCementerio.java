@@ -106,7 +106,7 @@ public class FrmCementerio extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Bangers", 1, 52)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("CEMENTERIO");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 230, 40));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 370, 40));
 
         jLabel6.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));

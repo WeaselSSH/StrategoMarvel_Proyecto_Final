@@ -42,7 +42,11 @@ public class Tablero {
     private int columnaSeleccionada;
     private Ficha fichaSeleccionada;
 
-    public Tablero(JButton[][] botones, JLabel turno) {
+    private JFrame savedpartida;//guarda el formpartida para cerrarlo cuando todo termine
+    
+    
+    public Tablero(JButton[][] botones, JLabel turno, JFrame partida) {
+        savedpartida=partida;
         this.botones = botones;
         this.lblTurno = turno;
     }
@@ -477,6 +481,15 @@ public class Tablero {
                 int rangoOrigen = fichaOrigen.getRango();
                 int rangoDestino = fichaDestino.getRango();
 
+                //Reubicacion de verificacion de captura tierra
+                if(rangoOrigen==1 && rangoDestino==12){
+                    animacionWinHeroes();
+                    return true;
+                }else if(rangoOrigen==1 && rangoDestino==11){
+                    animacionWinVillanos();
+                    return true;
+                }//Indicar movimiento no valido
+                
                 if (rangoOrigen == 1 && rangoDestino == 10) {
                     agregarFichaDerrotada(fichaDestino);
                     animacionLucha(imagenOrigen, imagDefense, nombreOrigen);
@@ -495,12 +508,6 @@ public class Tablero {
                     agregarFichaDerrotada(fichaOrigen);
                     animacionLucha(imagDefense, imagenOrigen, nombreDestino);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
-                    return true;
-                } else if(rangoOrigen == 1 && rangoDestino==12){//caso que se captura tierra villanos
-                    animacionWinHeroes();
-                    return true;
-                }else if(rangoOrigen == 1 && rangoDestino ==11){
-                    animacionWinVillanos();
                     return true;
                 }else{
                     animacionEmpate(imagenOrigen, imagDefense);
@@ -644,12 +651,12 @@ public class Tablero {
     }
     
     public void animacionWinHeroes(){//mostrar animacion de win heroes
-        PanelWin winheroes= new PanelWin();
+        PanelWin winheroes= new PanelWin(savedpartida);
         winheroes.setVisible(true);
     }
     
     public void animacionWinVillanos(){//mostrar animacion de win villanos
-        PanelLoose winVillanos = new PanelLoose();
+        PanelLoose winVillanos = new PanelLoose(savedpartida);
         winVillanos.setVisible(true);
     }
 }

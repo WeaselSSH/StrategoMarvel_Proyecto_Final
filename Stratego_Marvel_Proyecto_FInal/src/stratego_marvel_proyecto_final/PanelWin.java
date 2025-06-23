@@ -22,9 +22,12 @@ public class PanelWin extends javax.swing.JFrame {
      */
     
     private Timer timer;
+    private JFrame savedpartida;
     
-    public PanelWin() {
+    
+    public PanelWin(JFrame partida) {
         initComponents();
+        savedpartida = partida;
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -95,6 +98,7 @@ public class PanelWin extends javax.swing.JFrame {
        FrmMenuPrincipal regresar = new FrmMenuPrincipal();
        regresar.setVisible(true);
        this.dispose();
+       savedpartida.dispose();
     }//GEN-LAST:event_regresarButtonActionPerformed
 
     /**

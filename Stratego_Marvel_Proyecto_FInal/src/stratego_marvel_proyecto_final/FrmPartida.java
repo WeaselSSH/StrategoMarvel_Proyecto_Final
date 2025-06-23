@@ -10,7 +10,7 @@ public class FrmPartida extends javax.swing.JFrame {
     public FrmPartida() {
         initComponents();
         crearBotones();
-        tablero = new Tablero(botones, lblTurno);
+        tablero = new Tablero(botones, lblTurno, this);
         tablero.inicializar();
     }
 

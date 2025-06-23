@@ -22,9 +22,11 @@ public class PanelLoose extends javax.swing.JFrame {
      */
     
     private Timer timer;
+    private JFrame savedpartida;
     
-    public PanelLoose() {
+    public PanelLoose(JFrame partida) {
         initComponents();
+        savedpartida=partida;
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
@@ -95,6 +97,7 @@ public class PanelLoose extends javax.swing.JFrame {
        FrmMenuPrincipal regresar = new FrmMenuPrincipal();
        regresar.setVisible(true);
        this.dispose();
+       savedpartida.dispose();
     }//GEN-LAST:event_regresarButtonActionPerformed
 
     /**

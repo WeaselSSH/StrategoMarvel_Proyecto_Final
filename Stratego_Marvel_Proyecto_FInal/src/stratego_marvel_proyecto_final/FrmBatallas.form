@@ -55,7 +55,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblVicVillanos">
+        <Component class="javax.swing.JLabel" name="lblUsuarioAct">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Bangers" size="36" style="1"/>
@@ -71,7 +71,7 @@
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblUsuarioAct">
+        <Component class="javax.swing.JLabel" name="lblVicVillanos">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Bangers" size="36" style="1"/>

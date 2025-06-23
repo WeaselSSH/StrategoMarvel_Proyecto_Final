@@ -44,6 +44,7 @@ public class FrmPartida extends javax.swing.JFrame {
         lblTurno = new javax.swing.JLabel();
         btnCementerio = new javax.swing.JButton();
         rendirsebutton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -59,34 +60,41 @@ public class FrmPartida extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 640, -1));
 
-        lblTurno.setFont(new java.awt.Font("Bangers", 0, 36)); // NOI18N
+        lblTurno.setFont(new java.awt.Font("Bangers", 1, 30)); // NOI18N
+        lblTurno.setForeground(new java.awt.Color(255, 255, 255));
         lblTurno.setText("TURNO: HEROES");
         jPanel1.add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 310, -1));
 
+        btnCementerio.setBackground(new java.awt.Color(255, 255, 255));
+        btnCementerio.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCementerio.setForeground(new java.awt.Color(0, 0, 0));
         btnCementerio.setText("Cementerio");
         btnCementerio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCementerioActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCementerio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 680, 150, 40));
+        jPanel1.add(btnCementerio, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 160, 140, 40));
 
+        rendirsebutton.setBackground(new java.awt.Color(255, 255, 255));
+        rendirsebutton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        rendirsebutton.setForeground(new java.awt.Color(0, 0, 0));
         rendirsebutton.setText("Rendirse");
         rendirsebutton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rendirsebuttonActionPerformed(evt);
             }
         });
-        jPanel1.add(rendirsebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 130, 130, 40));
+        jPanel1.add(rendirsebutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 90, 140, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoPartida.png"))); // NOI18N
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 1030, 770));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,6 +173,7 @@ public class FrmPartida extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCementerio;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTurno;
     private javax.swing.JPanel panelTablero;

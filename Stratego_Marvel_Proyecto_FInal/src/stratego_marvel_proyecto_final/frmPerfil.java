@@ -18,6 +18,7 @@ public class frmPerfil extends javax.swing.JFrame {
     }
 
     private void cargarTextos() {
+        lblHost.setText(DatosGlobales.jugadorHost.getUsuario());
         lblPuntaje.setText("Puntaje: " + DatosGlobales.jugadorHost.getPuntos());
         lblVictorias.setText("Victorias: " + DatosGlobales.jugadorHost.getVictorias());
         lblDerrotas.setText("Derrotas: " + DatosGlobales.jugadorHost.getDerrotas());
@@ -177,7 +178,7 @@ public class frmPerfil extends javax.swing.JFrame {
         } else {
             DatosGlobales.jugadorHost.setEliminado(true);
             javax.swing.JOptionPane.showMessageDialog(null, "Cuenta borrada exitosamente.");
-            FrmMenuInicial menuInicial = new FrmMenuInicial();
+            FrmMenuInicial2 menuInicial = new FrmMenuInicial2();
             menuInicial.setVisible(true);
             this.dispose();
         }

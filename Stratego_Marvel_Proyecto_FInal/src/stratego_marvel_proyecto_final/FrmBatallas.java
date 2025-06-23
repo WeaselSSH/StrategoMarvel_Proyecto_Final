@@ -27,7 +27,7 @@ public class FrmBatallas extends javax.swing.JFrame {
 
         lblUsuarioHist.setText("USUARIOS HISTORICOS: " + DatosGlobales.listaJugadores.cantidad());
         lblUsuarioAct.setText("USUARIOS ACTIVOS: " + cantidadActivos);
-        lblVicVillanos.setText("VICTORIA VILLANOS: " + DatosGlobales.victoriaVillanos);
+        lblVicVillanos1.setText("VICTORIA VILLANOS: " + DatosGlobales.victoriaVillanos);
         lblVicHeroes.setText("VICTORIA HEROES: " + DatosGlobales.victoriaHeroes);
         lblTotalBatallas.setText("BATALLAS TOTALES: " + DatosGlobales.partidasTotales);
     }
@@ -39,7 +39,7 @@ public class FrmBatallas extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblUsuarioHist = new javax.swing.JLabel();
         lblUsuarioAct = new javax.swing.JLabel();
-        lblVicVillanos = new javax.swing.JLabel();
+        lblVicVillanos1 = new javax.swing.JLabel();
         lblVicHeroes = new javax.swing.JLabel();
         lblTotalBatallas = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -55,45 +55,34 @@ public class FrmBatallas extends javax.swing.JFrame {
         lblUsuarioHist.setText("USUARIOS HISTORICOS:");
         jPanel1.add(lblUsuarioHist, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 310, 50));
 
-
-        lblUsuarioAct.setFont(new java.awt.Font("Bangers", 1, 36)); // NOI18N
-        lblUsuarioAct.setForeground(new java.awt.Color(255, 255, 255));
-        lblUsuarioAct.setText("USUARIOS ACTIVOS:");
-        jPanel1.add(lblUsuarioAct, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 300, 50));
-
-        lblVicVillanos.setFont(new java.awt.Font("Bangers", 1, 36)); // NOI18N
-        lblVicVillanos.setForeground(new java.awt.Color(255, 255, 255));
-        lblVicVillanos.setText("VICTORIA VILLANOS:");
-        jPanel1.add(lblVicVillanos, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 300, 50));
-
-        lblVicVillanos.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
-        lblVicVillanos.setForeground(new java.awt.Color(255, 255, 255));
-        lblVicVillanos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblVicVillanos.setText("USUARIOS ACTIVOS:");
-        jPanel1.add(lblVicVillanos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 270, 50));
-
         lblUsuarioAct.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
         lblUsuarioAct.setForeground(new java.awt.Color(255, 255, 255));
         lblUsuarioAct.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblUsuarioAct.setText("VICTORIA VILLANOS:");
-        jPanel1.add(lblUsuarioAct, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 300, 50));
+        lblUsuarioAct.setText("USUARIOS ACTIVOS:");
+        jPanel1.add(lblUsuarioAct, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 120, 270, 50));
 
+        lblVicVillanos1.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
+        lblVicVillanos1.setForeground(new java.awt.Color(255, 255, 255));
+        lblVicVillanos1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblVicVillanos1.setText("VICTORIA VILLANOS:");
+        jPanel1.add(lblVicVillanos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 300, 50));
 
         lblVicHeroes.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
         lblVicHeroes.setForeground(new java.awt.Color(255, 255, 255));
         lblVicHeroes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblVicHeroes.setText("VICTORIA HEROES:");
-        jPanel1.add(lblVicHeroes, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, 260, 50));
+        jPanel1.add(lblVicHeroes, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 210, 260, 50));
 
         lblTotalBatallas.setFont(new java.awt.Font("Bangers", 1, 24)); // NOI18N
         lblTotalBatallas.setForeground(new java.awt.Color(255, 255, 255));
+        lblTotalBatallas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTotalBatallas.setText("BATALLAS TOTALES:");
-        jPanel1.add(lblTotalBatallas, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 500, 50));
+        jPanel1.add(lblTotalBatallas, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 500, 50));
 
         jLabel5.setFont(new java.awt.Font("Bangers", 1, 54)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("BATALLAS");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, -1, 50));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundBatallas.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 700, 460));
@@ -152,6 +141,6 @@ public class FrmBatallas extends javax.swing.JFrame {
     private javax.swing.JLabel lblUsuarioAct;
     private javax.swing.JLabel lblUsuarioHist;
     private javax.swing.JLabel lblVicHeroes;
-    private javax.swing.JLabel lblVicVillanos;
+    private javax.swing.JLabel lblVicVillanos1;
     // End of variables declaration//GEN-END:variables
 }

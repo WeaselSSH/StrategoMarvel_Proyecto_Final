@@ -1,12 +1,14 @@
 package stratego_marvel_proyecto_final;
 
+import javax.swing.JOptionPane;
+
 public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     public FrmMenuPrincipal() {
         this.setUndecorated(true);
         initComponents();
         setLocationRelativeTo(null);
-        habilitarBtnPartida();
+        //habilitarBtnPartida();
     }
 
     private void habilitarBtnPartida() {
@@ -117,8 +119,21 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JugarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JugarButtonActionPerformed
-        new SeleccionJugadores().setVisible(true);
-        this.dispose();
+         int jugadoresActivos = 0;
+
+        for (int i = 0; i < DatosGlobales.listaJugadores.cantidad(); i++) {
+            Jugador jugador = DatosGlobales.listaJugadores.obtener(i);
+            if (!jugador.getEliminado()) {
+                jugadoresActivos++;
+            }
+        }
+        
+        if(jugadoresActivos<=1){
+            JOptionPane.showMessageDialog(this, "Necesita mas de un jugador para acceder a esta funcion");
+        }else{
+             new SeleccionJugadores().setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_JugarButtonActionPerformed
 
     private void PerfilButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerfilButtonActionPerformed

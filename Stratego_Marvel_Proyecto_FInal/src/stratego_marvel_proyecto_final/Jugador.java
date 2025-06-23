@@ -3,6 +3,7 @@ package stratego_marvel_proyecto_final;
 public class Jugador {
 
     private String usuario;
+    private String log[] = new String[5];
     private String contrasena;
     private int puntos;
     private int vecesBueno;
@@ -63,6 +64,18 @@ public class Jugador {
 
     public void setContrasena(String nuevaContrasena) {
         this.contrasena = nuevaContrasena;
+    }
+    
+    public void setLog (String log) {
+        for (int i = 0; i < this.log.length; i++) {
+            if (this.log[i] != null) {
+                this.log[i] = log;
+                break;
+            }
+        }
+    }
+    
+    public void getLog() {
     }
 
 }

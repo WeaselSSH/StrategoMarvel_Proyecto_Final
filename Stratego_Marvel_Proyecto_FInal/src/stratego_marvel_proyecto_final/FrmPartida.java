@@ -8,6 +8,8 @@ public class FrmPartida extends javax.swing.JFrame {
     private JButton botones[][] = new JButton[10][10];
     private Tablero tablero;
 
+    private String nombreJugadorHeroe = DatosGlobales.jugadorHeroe.getUsuario();
+    private String nombreJugadorVillian = DatosGlobales.jugadorVillian.getUsuario();
 
     public FrmPartida() {
         this.setUndecorated(true);
@@ -115,20 +117,34 @@ public class FrmPartida extends javax.swing.JFrame {
 
     private void rendirsebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rendirsebuttonActionPerformed
         String turnoActual = tablero.getTurno();
-        
-        int opcion = JOptionPane.showConfirmDialog(null, 
+
+        int opcion = JOptionPane.showConfirmDialog(null,
                 "¿Desea Rendirse?", "", JOptionPane.YES_NO_OPTION);
-        
-        switch(opcion){
+
+        switch (opcion) {
             case JOptionPane.YES_OPTION:
-                if(turnoActual.equals("BUENO")){
-                    DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
-                    DatosGlobales.jugadorHost.partidaPerdida();
+                if (turnoActual.equals("BUENO")) {
+                    DatosGlobales.jugadorHeroe.partidaPerdida();//Agregado de puntos
+                    DatosGlobales.jugadorVillian.partidaGanada();
+
+                    DatosGlobales.jugadorHeroe.setLog(nombreJugadorVillian + " VENCEDOR USANDO LOS HEROES"
+                            + "DEBIDO A QUE " + nombreJugadorHeroe + " SE HA RETIRADO DEL JUEGO");
+
+                    DatosGlobales.jugadorVillian.setLog(nombreJugadorVillian + " VENCEDOR USANDO LOS HEROES"
+                            + "DEBIDO A QUE " + nombreJugadorHeroe + " SE HA RETIRADO DEL JUEGO");
+
                     PanelRendirseH rendidoB = new PanelRendirseH(this);
                     rendidoB.setVisible(true);
-                }else if(turnoActual.equals("MALO")){
-                    DatosGlobales.jugadorHost.partidaGanada();
-                    DatosGlobales.jugadorContricante.partidaPerdida();
+                } else if (turnoActual.equals("MALO")) {
+                    DatosGlobales.jugadorHeroe.partidaGanada();
+                    DatosGlobales.jugadorVillian.partidaPerdida();
+
+                    DatosGlobales.jugadorHeroe.setLog(nombreJugadorHeroe + " VENCEDOR USANDO LOS HEROES"
+                            + "DEBIDO A QUE " + nombreJugadorVillian + " SE HA RETIRADO DEL JUEGO");
+
+                    DatosGlobales.jugadorVillian.setLog(nombreJugadorHeroe + " VENCEDOR USANDO LOS HEROES"
+                            + "DEBIDO A QUE " + nombreJugadorVillian + " SE HA RETIRADO DEL JUEGO");
+
                     PanelRendirseV rendidoV = new PanelRendirseV(this);
                     rendidoV.setVisible(true);
                 }
@@ -136,8 +152,8 @@ public class FrmPartida extends javax.swing.JFrame {
             case JOptionPane.NO_OPTION:
                 break;
         }
-        
-        
+
+
     }//GEN-LAST:event_rendirsebuttonActionPerformed
 
     public static void main(String args[]) {

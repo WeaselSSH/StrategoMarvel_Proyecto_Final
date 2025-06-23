@@ -496,7 +496,13 @@ public class Tablero {
                     animacionLucha(imagDefense, imagenOrigen, nombreDestino);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     return true;
-                } else {
+                } else if(rangoOrigen == 1 && rangoDestino==12){//caso que se captura tierra villanos
+                    animacionWinHeroes();
+                    return true;
+                }else if(rangoOrigen == 1 && rangoDestino ==11){
+                    animacionWinVillanos();
+                    return true;
+                }else{
                     animacionEmpate(imagenOrigen, imagDefense);
                     agregarFichaDerrotada(fichaOrigen);
                     agregarFichaDerrotada(fichaDestino);
@@ -504,6 +510,10 @@ public class Tablero {
                     botones[filaDestino][columnaDestino].setIcon(null);
                     return true;
                 }
+                
+                
+                
+                
             }
         }
     }
@@ -631,5 +641,15 @@ public class Tablero {
     public void animacionBombaDesct(ImageIcon imagBomb, ImageIcon imageInd, String nombre) {
         PanelBombaDesactivada bombact = new PanelBombaDesactivada(imagBomb, imageInd, nombre);
         bombact.setVisible(true);
+    }
+    
+    public void animacionWinHeroes(){//mostrar animacion de win heroes
+        PanelWin winheroes= new PanelWin();
+        winheroes.setVisible(true);
+    }
+    
+    public void animacionWinVillanos(){//mostrar animacion de win villanos
+        PanelLoose winVillanos = new PanelLoose();
+        winVillanos.setVisible(true);
     }
 }

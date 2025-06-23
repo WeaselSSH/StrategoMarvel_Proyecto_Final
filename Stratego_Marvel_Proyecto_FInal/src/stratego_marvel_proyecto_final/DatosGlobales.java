@@ -9,10 +9,10 @@ public class DatosGlobales {
     public static Ficha[] fichas() {
         return new Ficha[]{
             //tierra y bombas
-            new Ficha("/imagenes/heroEarth.png", "TIERRA", "BUENO", 0, "TierraHeroes"),
+            new Ficha("/imagenes/heroEarth.png", "TIERRA", "BUENO", 11, "TierraHeroes"),
             new Ficha("/imagenes/Nova_Blast.png", "BOMBA", "BUENO", 0, "Nova Blas"),
             //tierra y bombas malos
-            new Ficha("/imagenes/villainEarth.png", "TIERRA", "MALO", 0, "TierraVillanos"),
+            new Ficha("/imagenes/villainEarth.png", "TIERRA", "MALO", 12, "TierraVillanos"),
             new Ficha("/imagenes/Pumpkin_Bomb.png", "BOMBA", "MALO", 0, "Pumpking Bomb"),
             // fichas rango 2
             new Ficha("/imagenes/Gambit.png", "RANGO_2", "BUENO", 2, "Gambit"),

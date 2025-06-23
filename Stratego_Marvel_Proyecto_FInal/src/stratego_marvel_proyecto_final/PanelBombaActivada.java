@@ -62,7 +62,6 @@ public class PanelBombaActivada extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         nombretxt = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        nombretxt1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -100,12 +99,6 @@ public class PanelBombaActivada extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundfight.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 210));
-
-        nombretxt1.setBackground(new java.awt.Color(51, 51, 51));
-        nombretxt1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        nombretxt1.setForeground(new java.awt.Color(255, 255, 255));
-        nombretxt1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        getContentPane().add(nombretxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 130, 30));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -150,6 +143,5 @@ public class PanelBombaActivada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField nombretxt;
-    private javax.swing.JTextField nombretxt1;
     // End of variables declaration//GEN-END:variables
 }

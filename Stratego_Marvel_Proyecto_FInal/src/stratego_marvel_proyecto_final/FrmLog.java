@@ -6,6 +6,7 @@ public class FrmLog extends javax.swing.JFrame {
     
     public FrmLog() {
         initComponents();
+        
         tblLogs.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
                 new String[]{
@@ -18,6 +19,7 @@ public class FrmLog extends javax.swing.JFrame {
     public void mostrarLogs(String[] logs) {
         javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) tblLogs.getModel();
         model.setRowCount(0);
+        
 
         for (String log : logs) {
             if (log != null) {
@@ -45,8 +47,22 @@ public class FrmLog extends javax.swing.JFrame {
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblLogs);
+        if (tblLogs.getColumnModel().getColumnCount() > 0) {
+            tblLogs.getColumnModel().getColumn(0).setResizable(false);
+            tblLogs.getColumnModel().getColumn(1).setResizable(false);
+            tblLogs.getColumnModel().getColumn(2).setResizable(false);
+            tblLogs.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

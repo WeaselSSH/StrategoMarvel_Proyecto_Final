@@ -36,7 +36,6 @@ public class frmPerfil extends javax.swing.JFrame {
         btnLog = new javax.swing.JButton();
         btnContrasenia = new javax.swing.JButton();
         btnBorrarCuenta = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         lblHost = new javax.swing.JLabel();
         lblDerrotas = new javax.swing.JLabel();
         lblVecesVillano = new javax.swing.JLabel();
@@ -62,7 +61,7 @@ public class frmPerfil extends javax.swing.JFrame {
                 btnLogActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 220, 40));
+        jPanel1.add(btnLog, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 220, 40));
 
         btnContrasenia.setBackground(new java.awt.Color(199, 21, 37));
         btnContrasenia.setFont(new java.awt.Font("Bangers", 0, 12)); // NOI18N
@@ -74,7 +73,7 @@ public class frmPerfil extends javax.swing.JFrame {
                 btnContraseniaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 150, 40));
+        jPanel1.add(btnContrasenia, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 150, 40));
 
         btnBorrarCuenta.setBackground(new java.awt.Color(199, 21, 37));
         btnBorrarCuenta.setFont(new java.awt.Font("Bangers", 0, 14)); // NOI18N
@@ -86,13 +85,7 @@ public class frmPerfil extends javax.swing.JFrame {
                 btnBorrarCuentaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBorrarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 140, 40));
-
-        jLabel1.setFont(new java.awt.Font("Bangers", 0, 20)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("HISTORIAL DE PARTIDAS");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 330, -1));
+        jPanel1.add(btnBorrarCuenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 140, 40));
 
         lblHost.setFont(new java.awt.Font("Bangers", 0, 36)); // NOI18N
         lblHost.setForeground(new java.awt.Color(255, 255, 255));
@@ -226,7 +219,6 @@ public class frmPerfil extends javax.swing.JFrame {
     private javax.swing.JButton btnBorrarCuenta;
     private javax.swing.JButton btnContrasenia;
     private javax.swing.JButton btnLog;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;

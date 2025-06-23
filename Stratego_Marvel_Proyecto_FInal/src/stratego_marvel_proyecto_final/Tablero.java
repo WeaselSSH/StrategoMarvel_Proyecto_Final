@@ -623,11 +623,13 @@ public class Tablero {
             
         } else if (cantidadHeroes > cantidadVillanos && cantidadVillanos == 0) {
             DatosGlobales.jugadorHost.partidaGanada();
+            DatosGlobales.jugadorContricante.partidaPerdida();
             animacionNoFichasV();
             bloquear();
             
         } else if (cantidadVillanos > cantidadHeroes && cantidadHeroes == 0) {
             DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
+            DatosGlobales.jugadorHost.partidaPerdida();
             animacionNoFichasH();
             bloquear();
       
@@ -672,13 +674,11 @@ public class Tablero {
     }
     
     public void animacionNoFichasV(){
-        DatosGlobales.jugadorHost.partidaGanada();
         PanelNoFichasV winHeroesF= new PanelNoFichasV(savedpartida);
         winHeroesF.setVisible(true);
     }
     
     public void animacionNoFichasH(){
-        DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
         PanelNoFichasH winVillanosF = new PanelNoFichasH(savedpartida);
         winVillanosF.setVisible(true);
     }

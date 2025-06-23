@@ -10,6 +10,7 @@ public class FrmPartida extends javax.swing.JFrame {
 
 
     public FrmPartida() {
+        this.setUndecorated(true);
         initComponents();
         crearBotones();
         tablero = new Tablero(botones, lblTurno, this);
@@ -42,7 +43,7 @@ public class FrmPartida extends javax.swing.JFrame {
         btnCementerio = new javax.swing.JButton();
         rendirsebutton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -112,10 +113,12 @@ public class FrmPartida extends javax.swing.JFrame {
             case JOptionPane.YES_OPTION:
                 if(turnoActual.equals("BUENO")){
                     DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
+                    DatosGlobales.jugadorHost.partidaPerdida();
                     PanelRendirseH rendidoB = new PanelRendirseH(this);
                     rendidoB.setVisible(true);
                 }else if(turnoActual.equals("MALO")){
                     DatosGlobales.jugadorHost.partidaGanada();
+                    DatosGlobales.jugadorContricante.partidaPerdida();
                     PanelRendirseV rendidoV = new PanelRendirseV(this);
                     rendidoV.setVisible(true);
                 }

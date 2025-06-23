@@ -30,6 +30,11 @@ public class Jugador {
 
     public void partidaGanada() {
         this.puntos += 3;
+        this.victorias++;
+    }
+    
+    public void partidaPerdida() {
+        this.derrotas++;
     }
 
     public int getHeroes() {

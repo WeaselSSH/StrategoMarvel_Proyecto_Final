@@ -129,6 +129,7 @@ public class FrmPartida extends javax.swing.JFrame {
                 if (turnoActual.equals("BUENO")) {
                     DatosGlobales.jugadorHeroe.partidaPerdida();//Agregado de puntos
                     DatosGlobales.jugadorVillian.partidaGanada();
+                    DatosGlobales.victoriaVillanos++;
 
                     DatosGlobales.jugadorHeroe.setLog(nombreJugadorVillian + " VENCEDOR USANDO LOS HEROES"
                             + " DEBIDO A QUE " + nombreJugadorHeroe + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");
@@ -141,6 +142,7 @@ public class FrmPartida extends javax.swing.JFrame {
                 } else if (turnoActual.equals("MALO")) {
                     DatosGlobales.jugadorHeroe.partidaGanada();
                     DatosGlobales.jugadorVillian.partidaPerdida();
+                    DatosGlobales.victoriaHeroes++;
 
                     DatosGlobales.jugadorHeroe.setLog(nombreJugadorHeroe + " VENCEDOR USANDO LOS HEROES"
                             + " DEBIDO A QUE " + nombreJugadorVillian + " SE HA RETIRADO DEL JUEGO " + "[" + fecha + "]");

@@ -7,9 +7,9 @@ public class DatosGlobales {
     public static Jugador jugadorContricante= null;
     public static Jugador jugadorHeroe= null;
     public static Jugador jugadorVillian = null;
-    public static int victoriaVillanos;
-    public static int victoriaHeroes;
-    public static int partidasTotales;
+    public static int victoriaVillanos = 0;
+    public static int victoriaHeroes = 0;
+    public static int partidasTotales = 0;
 
     public static Ficha[] fichas() {
         return new Ficha[]{

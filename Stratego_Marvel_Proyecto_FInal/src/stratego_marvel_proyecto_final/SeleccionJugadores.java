@@ -30,15 +30,6 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         setLocationRelativeTo(null);
 
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                FrmMenuPrincipal backmenu = new FrmMenuPrincipal();
-                backmenu.setVisible(true);
-                SeleccionJugadores.this.dispose();
-            }
-        });
         
         jcontricantes.removeAllItems();
         for(int i=0; i<cantPlayersActivos; i++){//Obtengo el nombre de todos los usuarios activos
@@ -76,6 +67,7 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         jcontricantes = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jbandos = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel3.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
@@ -83,7 +75,7 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Elija un Contricante");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
@@ -92,7 +84,6 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ELIJABAND.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 170, 70));
 
-        btnJugar.setBackground(new java.awt.Color(255, 255, 255));
         btnJugar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
         btnJugar.setForeground(new java.awt.Color(0, 0, 0));
         btnJugar.setText("Jugar");
@@ -116,6 +107,17 @@ public class SeleccionJugadores extends javax.swing.JFrame {
 
         jbandos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jbandos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 130, -1));
+
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("Regresar");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 323, 100, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundContricante.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -147,6 +149,12 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         new FrmPartida().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnJugarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FrmMenuPrincipal backmenu = new FrmMenuPrincipal();
+        backmenu.setVisible(true);
+        SeleccionJugadores.this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,6 +194,7 @@ public class SeleccionJugadores extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnJugar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -5,13 +5,6 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
     public FrmUniversoMarvel() {
         initComponents();
         setLocationRelativeTo(null);
-        this.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                new FrmMenuPrincipal().setVisible(true);
-                dispose();
-            }
-        });
     }
 
     @SuppressWarnings("unchecked")
@@ -23,6 +16,7 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         btnRanking = new javax.swing.JButton();
         btnBatallas = new javax.swing.JButton();
+        regresarbutton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoUniversoMarvel.png"))); // NOI18N
@@ -62,6 +56,18 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
         });
         jPanel1.add(btnBatallas, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, 130, 50));
 
+        regresarbutton.setBackground(new java.awt.Color(255, 51, 51));
+        regresarbutton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        regresarbutton.setForeground(new java.awt.Color(255, 255, 255));
+        regresarbutton.setText("Regresar");
+        regresarbutton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
+        regresarbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                regresarbuttonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(regresarbutton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 283, 100, 40));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondoUniversoMarvel.png"))); // NOI18N
         jLabel1.setText("jLabel1");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 570, 360));
@@ -84,6 +90,11 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
         batallas.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnBatallasActionPerformed
+
+    private void regresarbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regresarbuttonActionPerformed
+        new FrmMenuPrincipal().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_regresarbuttonActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -124,5 +135,6 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton regresarbutton;
     // End of variables declaration//GEN-END:variables
 }

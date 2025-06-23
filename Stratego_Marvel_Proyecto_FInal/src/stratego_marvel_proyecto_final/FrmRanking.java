@@ -34,8 +34,9 @@ public class FrmRanking extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Bangers", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LOGORANK.png"))); // NOI18N
         jLabel5.setText("RANKING");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 280, 40));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 530, 60));
 
         tblRanking.setFont(new java.awt.Font("Bangers", 0, 18)); // NOI18N
         tblRanking.setModel(new javax.swing.table.DefaultTableModel(

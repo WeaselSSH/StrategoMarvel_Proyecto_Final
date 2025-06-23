@@ -34,8 +34,9 @@ public class FrmUniversoMarvel extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Bangers", 1, 48)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LOGOUM.png"))); // NOI18N
         jLabel5.setText("UNIVERSO MARVEL");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 490, 40));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 530, 60));
 
         btnRanking.setBackground(new java.awt.Color(242, 80, 53));
         btnRanking.setFont(new java.awt.Font("Bangers", 1, 18)); // NOI18N

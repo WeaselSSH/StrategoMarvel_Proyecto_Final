@@ -48,8 +48,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Bangers", 1, 54)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("MENU PRINCIPAL");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 540, 50));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LOGOMN.png"))); // NOI18N
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 530, 60));
 
         btnUniversoMarvel.setBackground(new java.awt.Color(255, 255, 255));
         btnUniversoMarvel.setFont(new java.awt.Font("Bangers", 1, 20)); // NOI18N

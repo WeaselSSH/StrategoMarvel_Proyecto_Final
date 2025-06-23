@@ -81,8 +81,9 @@ public class FrmBatallas extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Bangers", 1, 54)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LOGOBTL.png"))); // NOI18N
         jLabel5.setText("BATALLAS");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, 50));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 530, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/backgroundBatallas.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 700, 460));

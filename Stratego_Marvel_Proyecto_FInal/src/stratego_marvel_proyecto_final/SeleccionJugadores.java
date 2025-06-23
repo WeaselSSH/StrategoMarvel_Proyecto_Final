@@ -89,8 +89,8 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Elija un Bando");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, 190, 40));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ELIJABAND.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 170, 70));
 
         btnJugar.setBackground(new java.awt.Color(255, 255, 255));
         btnJugar.setFont(new java.awt.Font("Leelawadee UI", 1, 24)); // NOI18N
@@ -103,7 +103,7 @@ public class SeleccionJugadores extends javax.swing.JFrame {
                 btnJugarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 180, 60));
+        getContentPane().add(btnJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 180, 60));
 
         jcontricantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jcontricantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 170, -1));
@@ -111,8 +111,8 @@ public class SeleccionJugadores extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Leelawadee UI", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Elija un Contricante");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 190, 40));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ELIJACONT.png"))); // NOI18N
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 60, 190, 70));
 
         jbandos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jbandos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, 130, -1));

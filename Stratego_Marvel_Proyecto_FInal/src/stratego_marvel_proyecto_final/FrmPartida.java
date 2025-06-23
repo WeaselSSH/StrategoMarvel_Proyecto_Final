@@ -37,6 +37,7 @@ public class FrmPartida extends javax.swing.JFrame {
         panelTablero = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         lblTurno = new javax.swing.JLabel();
+        btnCementerio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +57,14 @@ public class FrmPartida extends javax.swing.JFrame {
         lblTurno.setText("TURNO: HEROES");
         jPanel1.add(lblTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 20, 200, -1));
 
+        btnCementerio.setText("Cementerio");
+        btnCementerio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCementerioActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCementerio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 680, 150, 40));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,6 +81,15 @@ public class FrmPartida extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCementerioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCementerioActionPerformed
+        // TODO add your handling code here:
+        FrmCementerio cementerio = new FrmCementerio(
+                tablero.fichasDerrotadasBuenos, tablero.cantHeroesDerrotados,
+                tablero.fichasDerrotadasMalos, tablero.cantVillanosDerrotados
+        );
+        cementerio.setVisible(true);
+    }//GEN-LAST:event_btnCementerioActionPerformed
 
     public static void main(String args[]) {
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -104,6 +122,7 @@ public class FrmPartida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCementerio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTurno;

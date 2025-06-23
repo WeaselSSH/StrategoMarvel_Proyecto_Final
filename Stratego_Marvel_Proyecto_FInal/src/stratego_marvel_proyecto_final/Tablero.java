@@ -12,6 +12,9 @@ import javax.swing.JOptionPane;
 
 public class Tablero {
 
+    static Ficha fichasDerrotadasBuenos[] = new Ficha[50];
+    static Ficha fichasDerrotadasMalos[] = new Ficha[50];
+
     Random random = new Random();
     private JButton[][] botones = new JButton[10][10];
     private JLabel lblTurno;
@@ -25,9 +28,12 @@ public class Tablero {
         {4, 2}, {4, 3}, {5, 2}, {5, 3},
         {4, 6}, {4, 7}, {5, 6}, {5, 7}
     };
-    
+
     private int cantHeroes = 33;
     private int cantVillanos = 33;
+
+    static int cantHeroesDerrotados = 0;
+    static int cantVillanosDerrotados = 0;
 
     //inicializado en bueno porque empiezan los buenos
     private String turnoActual = "BUENO";
@@ -40,12 +46,10 @@ public class Tablero {
         this.botones = botones;
         this.lblTurno = turno;
     }
-    
-    
-    
+
     //Metodo que brindara informacion si la ficha se encuentra ocupada
-    public boolean fichaOcupada(int fila, int columna){
-        if(botones[fila][columna].getIcon() == null){
+    public boolean fichaOcupada(int fila, int columna) {
+        if (botones[fila][columna].getIcon() == null) {
             return false;
         }
         return true;
@@ -82,8 +86,8 @@ public class Tablero {
 
     private void asignarBombas(int columna, int fila, String bando) {
         String rutaBomba = bando.equals("BUENO")
-                ? "/imagenes/novaBlast.png"
-                : "/imagenes/pumpkinBomb.png";
+                ? "/imagenes/Nova_Blast.png"
+                : "/imagenes/Pumpkin_Bomb.png";
 
         ImageIcon bomba1;
         if (bando.equals(turnoActual)) {
@@ -120,8 +124,8 @@ public class Tablero {
 
     private void asignarBombasRestantes(String bando) {
         String rutaBomba = bando.equals("BUENO")
-                ? "/imagenes/novaBlast.png"
-                : "/imagenes/pumpkinBomb.png";
+                ? "/imagenes/Nova_Blast.png"
+                : "/imagenes/Pumpkin_Bomb.png";
 
         int[] filasDisponibles = bando.equals("BUENO") ? new int[]{8, 9} : new int[]{0, 1};
 
@@ -274,17 +278,13 @@ public class Tablero {
         Border borde = fichaSeleccionada.getBando().equals("BUENO") ? bordeAzul : bordeRojo;
         botones[fil][col].setBorder(borde);
         bordeActivo[fil][col] = true;
-        
-        
-        
-        if(fichaSeleccionada.getBando().equals("BUENO")){
+
+        if (fichaSeleccionada.getBando().equals("BUENO")) {
             //ImageIcon backCard = new ImageIcon(getClass().getResource("/imagenes/backcard.png"));
             botones[fil][col].setEnabled(true);
-        }else if(fichaSeleccionada.getBando().equals("MALO")){
+        } else if (fichaSeleccionada.getBando().equals("MALO")) {
             botones[fil][col].setEnabled(true);
         }//Esto activa la ficha independientemente de cual sea el caso. Con tal sea abarcada la zona por el rectangulo de seleccion
-
-        
 
         boolean esRango2 = fichaSeleccionada.getTipo().equals("RANGO_2");
         marcarBordes(fil, col, borde, esRango2, fichaSeleccionada.getBando());
@@ -315,7 +315,7 @@ public class Tablero {
                     if (verificarCasillaLago(nuevaFila, nuevaCol)) {
                         break;
                     }
-                    
+
                     ImageIcon imagen = (ImageIcon) botones[nuevaFila][nuevaCol].getIcon();
 
                     if (imagen != null) {
@@ -353,7 +353,7 @@ public class Tablero {
 
                 if (imagen != null) {
                     Ficha fichaEncontrada = obtenerFicha(imagen.getDescription());
-                    
+
                     if (fichaEncontrada != null && !fichaEncontrada.getBando().equals(bandoFichaSeleccionada)) {
                         botones[nuevaFila][nuevaCol].setBorder(borde);
                         bordeActivo[nuevaFila][nuevaCol] = true;
@@ -407,6 +407,20 @@ public class Tablero {
         return false;
     }
 
+    private void agregarFichaDerrotada(Ficha ficha) {
+        if (ficha.getBando().equalsIgnoreCase("BUENO")) {
+            if (cantHeroesDerrotados < fichasDerrotadasBuenos.length) {
+                fichasDerrotadasBuenos[cantHeroesDerrotados] = ficha;
+                cantHeroesDerrotados++;
+            }
+        } else {
+            if (cantVillanosDerrotados < fichasDerrotadasMalos.length) {
+                fichasDerrotadasMalos[cantVillanosDerrotados] = ficha;
+                cantVillanosDerrotados++;
+            }
+        }
+    }
+
     private boolean moverFicha(int filaOrigen, int columnaOrigen, int filaDestino, int columnaDestino) {
 
         //se obtienen las imagenes
@@ -427,10 +441,13 @@ public class Tablero {
         } else { //logica de combate
             if (fichaDestino.getTipo().equals("BOMBA")) {
                 if (fichaOrigen.getRango() == 3) {
+                    agregarFichaDerrotada(fichaDestino);
                     botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     return true;
                 } else {
+                    agregarFichaDerrotada(fichaOrigen);
+                    agregarFichaDerrotada(fichaDestino);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     botones[filaDestino][columnaDestino].setIcon(null);
                     return true;
@@ -440,25 +457,24 @@ public class Tablero {
                 int rangoDestino = fichaDestino.getRango();
 
                 if (rangoOrigen == 1 && rangoDestino == 10) {
-                    botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
-                    botones[filaOrigen][columnaOrigen].setIcon(null);
-                    return true;
-                }
-
-                if (rangoOrigen == 1 && rangoDestino == 10) {
+                    agregarFichaDerrotada(fichaDestino);
                     botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     return true;
                 }
 
                 if (rangoOrigen > rangoDestino) {
+                    agregarFichaDerrotada(fichaDestino);
                     botones[filaDestino][columnaDestino].setIcon(imagenOrigen);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     return true;
                 } else if (rangoOrigen < rangoDestino) {
+                    agregarFichaDerrotada(fichaOrigen);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     return true;
                 } else {
+                    agregarFichaDerrotada(fichaOrigen);
+                    agregarFichaDerrotada(fichaDestino);
                     botones[filaOrigen][columnaOrigen].setIcon(null);
                     botones[filaDestino][columnaDestino].setIcon(null);
                     return true;
@@ -497,98 +513,97 @@ public class Tablero {
     }
 
     //Este metodo servirá para referenciar al posicion del boton que se ha presionado
-    public JButton referenciaBoton(int fila, int columna){
-        JButton referenceBoton =botones[fila][columna]; 
+    public JButton referenciaBoton(int fila, int columna) {
+        JButton referenceBoton = botones[fila][columna];
         return referenceBoton;
     }
-    
-    public void conteoFichas(){//Metodo que revisa la cantidad de fichas jugables en el tablero
-        //Valores que actualizaran la cantidad
-        int UpdateCantH=0;
-        int UpdateCantV=0;
-        //Recorrido para revision
-        for(int i=0; i<botones.length; i++){
-            for(int j=0; j<botones.length; j++){
-                ImageIcon infoFicha= (ImageIcon) botones[i][j].getIcon();//Obtengo info de la imagen que contenga la ficha 
 
-                if(infoFicha==null){
+    public void conteoFichas() {//Metodo que revisa la cantidad de fichas jugables en el tablero
+        //Valores que actualizaran la cantidad
+        int UpdateCantH = 0;
+        int UpdateCantV = 0;
+        //Recorrido para revision
+        for (int i = 0; i < botones.length; i++) {
+            for (int j = 0; j < botones.length; j++) {
+                ImageIcon infoFicha = (ImageIcon) botones[i][j].getIcon();//Obtengo info de la imagen que contenga la ficha 
+
+                if (infoFicha == null) {
                     continue;//No hay ficha en esta casilla
                 }
-                    
+
                 Ficha selecFicha = null;
-                    
-                try{
+
+                try {
                     selecFicha = obtenerFicha(infoFicha.getDescription());//Obtencion de la ficha 
-                }catch(NullPointerException e){
+                } catch (NullPointerException e) {
                     System.out.println("Womp Womp");
                 }
-                
+
                 //Obtencion del bando de la ficha
-                String bandoFicha=selecFicha.getBando();
-              
-                if(bandoFicha.equals("BUENO")){
+                String bandoFicha = selecFicha.getBando();
+
+                if (bandoFicha.equals("BUENO")) {
                     System.out.println("Conto uno bueno");
                     UpdateCantH++;
-                }else if(bandoFicha.equals("MALO")){
+                } else if (bandoFicha.equals("MALO")) {
                     System.out.println("Conto uno malo");
                     UpdateCantV++;
-                }  
+                }
             }
         }
-        
+
         //Actualiza la cantidad de fichas jugables
-        cantHeroes=UpdateCantH-7;
-        cantVillanos=UpdateCantV-7;
- 
-        System.out.println("Cantidad actual de heroes: "+cantHeroes);
-        System.out.println("Cantidad actual de villanos: "+cantVillanos);
+        cantHeroes = UpdateCantH - 7;
+        cantVillanos = UpdateCantV - 7;
+
+        System.out.println("Cantidad actual de heroes: " + cantHeroes);
+        System.out.println("Cantidad actual de villanos: " + cantVillanos);
     }
-    
-    public void WinOrLoose(JFrame ventana){
+
+    public void WinOrLoose(JFrame ventana) {
         //Este metodo evalua el win/Lose mediante la cantidad de fichas jugables que quedan en el tablero
         conteoFichas();//Ejecutre el conteo de fichas jugables
-        
-        int cantidadHeroes=cantHeroes-7;
-        int cantidadVillanos=cantVillanos-7;
-        
-        
+
+        int cantidadHeroes = cantHeroes - 7;
+        int cantidadVillanos = cantVillanos - 7;
+
         //Verificacion de Win/Lose mediante cantidad 
-        if(cantidadHeroes==0 && cantidadVillanos==0){
+        if (cantidadHeroes == 0 && cantidadVillanos == 0) {
             JOptionPane.showMessageDialog(null, "¡Empate!");
-            FrmMenuPrincipal menuBack= new FrmMenuPrincipal();
+            FrmMenuPrincipal menuBack = new FrmMenuPrincipal();
             menuBack.setVisible(true);
             ventana.dispose();
-        }else if(cantidadHeroes>cantidadVillanos && cantidadVillanos==0){
+        } else if (cantidadHeroes > cantidadVillanos && cantidadVillanos == 0) {
             JOptionPane.showMessageDialog(null, "Todos los villanos han sido derrotados. ¡Han Ganado los Heroes!");
             DatosGlobales.jugadorHost.partidaGanada();//Agrega puntos
-            FrmMenuPrincipal menuBack= new FrmMenuPrincipal();
+            FrmMenuPrincipal menuBack = new FrmMenuPrincipal();
             menuBack.setVisible(true);
             ventana.dispose();
-        }else if(cantidadVillanos>cantidadHeroes && cantidadHeroes==0){
+        } else if (cantidadVillanos > cantidadHeroes && cantidadHeroes == 0) {
             JOptionPane.showMessageDialog(null, "Todos los heroes han sido derrotados. ¡Han Ganado los Villanos!");
             DatosGlobales.jugadorContricante.partidaGanada();//Agregado de puntos
-            FrmMenuPrincipal menuBack= new FrmMenuPrincipal();
+            FrmMenuPrincipal menuBack = new FrmMenuPrincipal();
             menuBack.setVisible(true);
             ventana.dispose();
         }
     }
-    
-    public void animacionLucha(ImageIcon imagHeroe, ImageIcon imagVillano, String nombre){
+
+    public void animacionLucha(ImageIcon imagHeroe, ImageIcon imagVillano, String nombre) {
         PanelLucha lucha = new PanelLucha(imagHeroe, imagVillano, nombre);
         lucha.setVisible(true);
     }
-    
-    public void animacionEmpate(ImageIcon imagAtak, ImageIcon imageDef){
+
+    public void animacionEmpate(ImageIcon imagAtak, ImageIcon imageDef) {
         PanelEmpate empate = new PanelEmpate(imagAtak, imageDef);
         empate.setVisible(true);
     }
-    
-    public void animacionBombaAct(ImageIcon imagBomb, ImageIcon imageInd, String nombre){
+
+    public void animacionBombaAct(ImageIcon imagBomb, ImageIcon imageInd, String nombre) {
         PanelBombaActivada bombact = new PanelBombaActivada(imagBomb, imageInd, nombre);
         bombact.setVisible(true);
     }
-    
-    public void animacionBombaDesct(ImageIcon imagBomb, ImageIcon imageInd, String nombre){
+
+    public void animacionBombaDesct(ImageIcon imagBomb, ImageIcon imageInd, String nombre) {
         PanelBombaDesactivada bombact = new PanelBombaDesactivada(imagBomb, imageInd, nombre);
         bombact.setVisible(true);
     }
